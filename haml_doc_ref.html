@@ -1,0 +1,1245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <meta name="Content-Type" content="text/html; charset=UTF-8">
+<title>File: HAML_REFERENCE</title>
+<link rel="stylesheet" href="file.HAML_REFERENCE_files/style.css" type="text/css" media="screen" charset="utf-8">
+<link rel="stylesheet" href="file.HAML_REFERENCE_files/common.css" type="text/css" media="screen" charset="utf-8">
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="file.HAML_REFERENCE_files/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="file.HAML_REFERENCE_files/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="http://haml-lang.com/docs/yardoc/_index.html" title="Index">Index</a> » 
+    <span class="title">File: HAML_REFERENCE</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="http://haml-lang.com/docs/yardoc/" target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id="filecontents"><h1 id="haml_xhtml_abstraction_markup_language">Haml (XHTML Abstraction Markup Language)</h1>
+<div class="maruku_toc"><ul style="list-style: none;"><li><a href="#features">Features</a></li><li><a href="#using_haml">Using Haml</a><ul style="list-style: none;"><li><a href="#plugin">Rails/Merb Plugin</a><ul style="list-style: none;"><li><a href="#rails_xss_protection">Rails XSS Protection</a></li></ul></li><li><a href="#ruby_module">Ruby Module</a></li><li><a href="#options">Options</a></li><li><a href="#encodings">Encodings</a></li></ul></li><li><a href="#plain_text">Plain Text</a><ul style="list-style: none;"><li><a href="#escaping_">Escaping: <code>\</code></a></li></ul></li><li><a href="#html_elements">HTML Elements</a><ul style="list-style: none;"><li><a href="#element_name_">Element Name: <code>%</code></a></li><li><a href="#attributes">Attributes: <code>{}</code> or <code>()</code></a><ul style="list-style: none;"><li><a href="#class-and-id-attributes"><code>:class</code> and <code>:id</code> Attributes</a></li><li><a href="#htmlstyle_attributes_">HTML-style Attributes: <code>()</code></a></li><li><a href="#attribute_methods">Attribute Methods</a></li><li><a href="#boolean_attributes">Boolean Attributes</a></li><li><a href="#html5_custom_data_attributes">HTML5 Custom Data Attributes</a></li></ul></li><li><a href="#class_and_id__and_">Class and ID: <code>.</code> and <code>#</code></a><ul style="list-style: none;"><li><a href="#implicit_div_elements">Implicit Div Elements</a></li></ul></li><li><a href="#selfclosing_tags_">Self-Closing Tags: <code>/</code></a></li><li><a href="#whitespace_removal__and_">Whitespace Removal: <code>&gt;</code> and <code>&lt;</code></a></li><li><a href="#object_reference_">Object Reference: <code>[]</code></a></li></ul></li><li><a href="#doctype_">Doctype: <code>!!!</code></a></li><li><a href="#comments">Comments</a><ul style="list-style: none;"><li><a href="#html_comments_">HTML Comments: <code>/</code></a><ul style="list-style: none;"><li><a href="#conditional_comments_">Conditional Comments: <code>/[]</code></a></li></ul></li><li><a href="#haml_comments_">Haml Comments: <code>-#</code></a></li></ul></li><li><a href="#ruby_evaluation">Ruby Evaluation</a><ul style="list-style: none;"><li><a href="#inserting_ruby_">Inserting Ruby: <code>=</code></a></li><li><a href="#running_ruby_">Running Ruby: <code>-</code></a><ul style="list-style: none;"><li><a href="#ruby_blocks">Ruby Blocks</a></li></ul></li><li><a href="#tilde">Whitespace Preservation: <code>~</code></a></li><li><a href="#ruby_interpolation_">Ruby Interpolation: <code>#{}</code></a></li><li><a href="#escaping_html">Escaping HTML: <code>&amp;=</code></a></li><li><a href="#unescaping_html">Unescaping HTML: <code>!=</code></a></li></ul></li><li><a href="#filters">Filters</a><ul style="list-style: none;"><li><a href="#plain-filter"><code>:plain</code></a></li><li><a href="#javascript-filter"><code>:javascript</code></a></li><li><a href="#css-filter"><code>:css</code></a></li><li><a href="#cdata-filter"><code>:cdata</code></a></li><li><a href="#escaped-filter"><code>:escaped</code></a></li><li><a href="#ruby-filter"><code>:ruby</code></a></li><li><a href="#preserve-filter"><code>:preserve</code></a></li><li><a href="#erb-filter"><code>:erb</code></a></li><li><a href="#sass-filter"><code>:sass</code></a></li><li><a href="#textile-filter"><code>:textile</code></a></li><li><a href="#markdown-filter"><code>:markdown</code></a></li><li><a href="#maruku-filter"><code>:maruku</code></a></li><li><a href="#custom_filters">Custom Filters</a></li></ul></li><li><a href="#multiline">Multiline: <code>|</code></a></li><li><a href="#whitespace_preservation">Whitespace Preservation</a></li><li><a href="#helpers">Helpers</a></li></ul></div>
+<p>Haml is a markup language that&#8217;s used to cleanly and simply describe 
+the XHTML of any web document, without the use of inline code. Haml 
+functions as a replacement for inline page templating systems such as 
+PHP, ERB, and ASP. However, Haml avoids the need for explicitly coding 
+XHTML into the template, because it is actually an abstract description 
+of the XHTML, with some code to generate dynamic content.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li>Whitespace active</li>
+
+<li>Well-formatted markup</li>
+
+<li>DRY</li>
+
+<li>Follows CSS conventions</li>
+
+<li>Integrates Ruby code</li>
+
+<li>Implements Rails templates with the .haml extension</li>
+</ul>
+
+<h2 id="using_haml">Using Haml</h2>
+
+<p>Haml can be used in three ways: as a command-line tool, as a plugin 
+for Ruby on Rails, and as a standalone Ruby module. The first step for 
+all of these is to install the Haml gem:</p>
+
+<pre class="code">gem install haml</pre>
+
+<p>To run Haml from the command line, just use</p>
+
+<pre class="code">haml input.haml output.html</pre>
+
+<p>Use <code>haml --help</code> for full documentation.</p>
+
+<h3 id="plugin">Rails/Merb Plugin</h3>
+
+<p>To enable Haml in Rails versions before Rails 3, add the following line to <code>environment.rb</code>:</p>
+
+<pre class="code">config.gem "haml"</pre>
+
+<p>For Rails 3, instead add the following line to the Gemfile:</p>
+
+<pre class="code">gem "haml"</pre>
+
+<p>Once it&#8217;s installed, all view files with the <code>".html.haml"</code> extension will be compiled using Haml. Haml is enabled by default in Merb.</p>
+
+<p>You can access instance variables in Haml templates the same way you 
+do in ERB templates. Helper methods are also available in Haml 
+templates. For example (this example uses Rails, but the principle for 
+Merb is the same):</p>
+
+<pre class="code"># file: app/controllers/movies_controller.rb
+
+class MoviesController &lt; ApplicationController
+  def index
+    @title = "Teen Wolf"
+  end
+end
+
+-# file: app/views/movies/index.haml
+
+#content
+ .title
+   %h1= @title
+   = link_to 'Home', home_url</pre>
+
+<p>may be compiled to:</p>
+
+<pre class="code">&lt;div id='content'&gt;
+  &lt;div class='title'&gt;
+    &lt;h1&gt;Teen Wolf&lt;/h1&gt;
+    &lt;a href='/'&gt;Home&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h4 id="rails_xss_protection">Rails XSS Protection</h4>
+
+<p>Haml supports Rails&#8217; XSS protection scheme, which was introduced in 
+Rails 2.3.5+ and is enabled by default in 3.0.0+. If it&#8217;s enabled, 
+Haml&#8217;s <a href="#escape_html-option"><code>:escape_html</code></a> option is set to <code>true</code>
+ by default - like in ERB, all strings printed to a Haml template are 
+escaped by default. Also like ERB, strings marked as HTML safe are not 
+escaped. Haml also has <a href="#unescaping_html">its own syntax for printing a raw string to the template</a>.</p>
+
+<p>If the <code>:escape_html</code> option is set to false when XSS 
+protection is enabled, Haml doesn&#8217;t escape Ruby strings by default. 
+However, if a string marked HTML-safe is passed to <a href="#escaping_html">Haml&#8217;s escaping syntax</a>, it won&#8217;t be escaped.</p>
+
+<p>Finally, all the <a href="http://haml-lang.com/docs/yardoc/file.Helpers.html" title="Haml helpers">Haml helpers</a>
+ that return strings that are known to be HTML safe are marked as such. 
+In addition, string input is escaped unless it&#8217;s HTML safe.</p>
+
+<h3 id="ruby_module">Ruby Module</h3>
+
+<p>Haml can also be used completely separately from Rails and ActionView. To do this, install the gem with RubyGems:</p>
+
+<pre class="code">gem install haml</pre>
+
+<p>You can then use it by including the &#8220;haml&#8221; gem in Ruby code, and using <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Engine.html" title="Haml::Engine (class)">Haml::Engine</a></tt> like so:</p>
+
+<pre class="code">engine = Haml::Engine.new("%p Haml code!")
+engine.render #=&gt; "&lt;p&gt;Haml code!&lt;/p&gt;\n"</pre>
+
+<h3 id="options">Options</h3>
+
+<p>Options can be set by setting the <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Template.html#options-instance_method" title="Haml::Template#options (method)">Haml::Template.options</a></tt> hash in <code>environment.rb</code> in Rails&#8230;</p>
+
+<pre class="code">Haml::Template.options[:format] = :html5</pre>
+
+<p>&#8230;or by setting the <code>Merb::Plugin.config[:haml]</code> hash in <code>init.rb</code> in Merb&#8230;</p>
+
+<pre class="code">Merb::Plugin.config[:haml][:format] = :html5</pre>
+
+<p>&#8230;or by passing an options hash to <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Engine.html#initialize-instance_method" title="Haml::Engine#initialize (method)">Haml::Engine#initialize</a></tt>. Available options are:</p>
+
+<dl>
+<dt id="format-option"> <code>:format</code></dt>
+
+<dd>Determines the output format. Normally the default is <code>:xhtml</code>, although under Rails 3 it&#8217;s <code>:html5</code>, since that&#8217;s the Rails 3&#8217;s default format. Other options are <code>:html4</code> and <code>:html5</code>, which are identical to <code>:xhtml</code> except there are no self-closing tags, the XML prolog is ignored and correct DOCTYPEs are generated.</dd>
+
+<dt id="escape_html-option"> <code>:escape_html</code></dt>
+
+<dd>Sets whether or not to escape HTML-sensitive characters in script. If this is true, <code>=</code> behaves like <a href="#escaping_html"><code>&amp;=</code></a>; otherwise, it behaves like <a href="#unescaping_html"><code>!=</code></a>. Note that if this is set, <code>!=</code> should be used for yielding to subtemplates and rendering partials. See also <a href="#escaping_html">Escaping HTML</a> and <a href="#unescaping_html">Unescaping HTML</a> Defaults to false.</dd>
+
+<dt id="escape_attrs-option"> <code>:escape_attrs</code></dt>
+
+<dd>Sets whether or not to escape HTML-sensitive characters in 
+attributes. If this is true, all HTML-sensitive characters in attributes
+ are escaped. If it&#8217;s set to false, no HTML-sensitive characters in 
+attributes are escaped. If it&#8217;s set to <code>:once</code>, existing HTML escape sequences are preserved, but other HTML-sensitive characters are escaped. Defaults to <code>:once</code>.</dd>
+
+<dt id="ugly-option"> <code>:ugly</code></dt>
+
+<dd>If set to <code>true</code>, Haml makes no attempt to properly 
+indent or format the HTML output. This significantly improves rendering 
+performance but makes viewing the source unpleasant. Defaults to <code>true</code> in Rails production mode, and <code>false</code> everywhere else.</dd>
+
+<dt id="suppress_eval-option"> <code>:suppress_eval</code></dt>
+
+<dd>Whether or not attribute hashes and Ruby scripts designated by <code>=</code> or <code>~</code> should be evaluated. If this is <code>true</code>, said scripts are rendered as empty strings. Defaults to <code>false</code>.</dd>
+
+<dt id="attr_wrapper-option"> <code>:attr_wrapper</code></dt>
+
+<dd>The character that should wrap element attributes. This defaults to <code>'</code> (an apostrophe). Characters of this type within the attributes will be escaped (e.g. by replacing them with <code>&amp;apos;</code>) if the character is an apostrophe or a quotation mark.</dd>
+
+<dt id="filename-option"> <code>:filename</code></dt>
+
+<dd>The name of the Haml file being parsed. This is only used as 
+information when exceptions are raised. This is automatically assigned 
+when working through ActionView, so it&#8217;s really only useful for the user
+ to assign when dealing with Haml programatically.</dd>
+
+<dt id="line-option"> <code>:line</code></dt>
+
+<dd>The line offset of the Haml template being parsed. This is useful for inline templates, similar to the last argument to <code>Kernel#eval</code>.</dd>
+
+<dt id="autoclose-option"> <code>:autoclose</code></dt>
+
+<dd>A list of tag names that should be automatically self-closed if they
+ have no content. This can also contain regular expressions that match 
+tag names (or any object which responds to <code>#===</code>). Defaults to <code>['meta', 'img', 'link', 'br', 'hr', 'input', 'area', 'param', 'col', 'base']</code>.</dd>
+
+<dt id="preserve-option"> <code>:preserve</code></dt>
+
+<dd>A list of tag names that should automatically have their newlines preserved using the <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Helpers.html#preserve-instance_method" title="Haml::Helpers#preserve (method)">Haml::Helpers#preserve</a></tt> helper. This means that any content given on the same line as the tag will be preserved. For example, <code>%textarea= "Foo\nBar"</code> compiles to <code>&lt;textarea&gt;Foo&amp;#x000A;Bar&lt;/textarea&gt;</code>. Defaults to <code>['textarea', 'pre']</code>. See also <a href="#whitespace_preservation">Whitespace Preservation</a>.</dd>
+
+<dt id="encoding-option"> <code>:encoding</code></dt>
+
+<dd>The encoding to use for the HTML output. Only available in Ruby 1.9 or higher. This can be a string or an <code>Encoding</code> Object. Note that Haml <strong>does not</strong>
+ automatically re-encode Ruby values; any strings coming from outside 
+the application should be converted before being passed into the Haml 
+template. Defaults to <code>Encoding.default_internal</code>; if that&#8217;s not set, defaults to the encoding of the Haml template; if that&#8217;s <code>us-ascii</code>, defaults to <code>"utf-8"</code>. <br><br> <!-- There's no better way to do a paragraph break in a dl in Maruku -->
+ Many Ruby database drivers are not yet Ruby 1.9 compatible; in 
+particular, they return strings marked as ASCII-encoded even when those 
+strings contain non-ASCII characters (such as UTF-8). <strong>This will cause encoding errors</strong> if the Haml encoding isn&#8217;t set to <code>"ascii-8bit"</code>. To solve this, either call <code>#force_encoding</code> on all the strings returned from the database, set <code>:encoding</code> to <code>"ascii-8bit"</code>, or try to get the authors of the database drivers to make them Ruby 1.9 compatible.</dd>
+</dl>
+
+<h3 id="encodings">Encodings</h3>
+
+<p>When using Ruby 1.9 or later, Haml supports the same sorts of 
+encoding-declaration comments that Ruby does. Although both Ruby and 
+Haml support several different styles, the easiest it just to add <code>-# coding: encoding-name</code>
+ at the beginning of the Haml template (it must come before all other 
+lines). This will tell Haml that the template is encoded using the named
+ encoding.</p>
+
+<p>By default, the HTML generated by Haml has the same encoding as the Haml template. However, if <code>Encoding.default_internal</code> is set, Haml will attempt to use that instead. In addition, the <a href="#encoding-option"><code>:encoding</code> option</a> can be used to specify an output encoding manually.</p>
+
+<p>Note that, like Ruby, Haml does not support templates encoded in 
+UTF-16 or UTF-32, since these encodings are not compatible with ASCII. 
+It is possible to use these as the output encoding, though.</p>
+
+<h2 id="plain_text">Plain Text</h2>
+
+<p>A substantial portion of any HTML document is its content, which is 
+plain old text. Any Haml line that&#8217;s not interpreted as something else 
+is taken to be plain text, and passed through unmodified. For example:</p>
+
+<pre class="code">%gee
+  %whiz
+    Wow this is cool!</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;gee&gt;
+  &lt;whiz&gt;
+    Wow this is cool!
+  &lt;/whiz&gt;
+&lt;/gee&gt;</pre>
+
+<p>Note that HTML tags are passed through unmodified as well. If you 
+have some HTML you don&#8217;t want to convert to Haml, or you&#8217;re converting a
+ file line-by-line, you can just include it as-is. For example:</p>
+
+<pre class="code">%p
+  &lt;div id="blah"&gt;Blah!&lt;/div&gt;</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;p&gt;
+  &lt;div id="blah"&gt;Blah!&lt;/div&gt;
+&lt;/p&gt;</pre>
+
+<h3 id="escaping_">Escaping: <code>\</code></h3>
+
+<p>The backslash character escapes the first character of a line, 
+allowing use of otherwise interpreted characters as plain text. For 
+example:</p>
+
+<pre class="code">%title
+  = @title
+  \= @title</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;title&gt;
+  MyPage
+  = @title
+&lt;/title&gt;</pre>
+
+<h2 id="html_elements">HTML Elements</h2>
+
+<h3 id="element_name_">Element Name: <code>%</code></h3>
+
+<p>The percent character is placed at the beginning of a line. It&#8217;s 
+followed immediately by the name of an element, then optionally by 
+modifiers (see below), a space, and text to be rendered inside the 
+element. It creates an element in the form of <code>&lt;element&gt;&lt;/element&gt;</code>. For example:</p>
+
+<pre class="code">%one
+  %two
+    %three Hey there</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;one&gt;
+  &lt;two&gt;
+    &lt;three&gt;Hey there&lt;/three&gt;
+  &lt;/two&gt;
+&lt;/one&gt;</pre>
+
+<p>Any string is a valid element name; Haml will automatically generate opening and closing tags for any element.</p>
+
+<h3 id="attributes">Attributes: <code>{}</code> or <code>()</code></h3>
+
+<p>Brackets represent a Ruby hash that is used for specifying the 
+attributes of an element. It is literally evaluated as a Ruby hash, so 
+logic will work in it and local variables may be used. Quote characters 
+within the attribute will be replaced by appropriate escape sequences. 
+The hash is placed after the tag is defined. For example:</p>
+
+<pre class="code">%html{:xmlns =&gt; "http://www.w3.org/1999/xhtml", "xml:lang" =&gt; "en", :lang =&gt; "en"}</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'&gt;&lt;/html&gt;</pre>
+
+<p>Attribute hashes can also be stretched out over multiple lines to 
+accommodate many attributes. However, newlines may only be placed 
+immediately after commas. For example:</p>
+
+<pre class="code">%script{:type =&gt; "text/javascript",
+        :src  =&gt; "javascripts/script_#{2 + 7}"}</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;script src='javascripts/script_9' type='text/javascript'&gt;&lt;/script&gt;</pre>
+
+<h4 id="class-and-id-attributes"><code>:class</code> and <code>:id</code> Attributes</h4>
+
+<p>The <code>:class</code> and <code>:id</code> attributes can also be specified as a Ruby array whose elements will be joined together. A <code>:class</code> array is joined with <code>" "</code> and an <code>:id</code> array is joined with <code>"_"</code>. For example:</p>
+
+<pre class="code">%div{:id =&gt; [@item.type, @item.number], :class =&gt; [@item.type, @item.urgency]}</pre>
+
+<p>is equivalent to:</p>
+
+<pre class="code">%div{:id =&gt; "#{@item.type}_#{@item.number}", :class =&gt; "#{@item.type} #{@item.urgency}"}</pre>
+
+<p>The array will first be flattened and any elements that do not test 
+as true will be removed. The remaining elements will be converted to 
+strings. For example:</p>
+
+<pre class="code">%div{:class =&gt; [@item.type, @item == @sortcol &amp;&amp; [:sort, @sortdir]] } Contents</pre>
+
+<p>could render as any of:</p>
+
+<pre class="code">&lt;div class="numeric sort ascending"&gt;Contents&lt;/div&gt;
+&lt;div class="numeric"&gt;Contents&lt;/div&gt;
+&lt;div class="sort descending"&gt;Contents&lt;/div&gt;
+&lt;div&gt;Contents&lt;/div&gt;</pre>
+
+<p>depending on whether <code>@item.type</code> is <code>"numeric"</code> or <code>nil</code>, whether <code>@item == @sortcol</code>, and whether <code>@sortdir</code> is <code>"ascending"</code> or <code>"descending"</code>.</p>
+
+<p>If a single value is specified and it evaluates to false it is ignored; otherwise it gets converted to a string. For example:</p>
+
+<pre class="code">.item{:class =&gt; @item.is_empty? &amp;&amp; "empty"}</pre>
+
+<p>could render as either of:</p>
+
+<pre class="code">class="item"
+class="item empty"</pre>
+
+<h4 id="htmlstyle_attributes_">HTML-style Attributes: <code>()</code></h4>
+
+<p>Haml also supports a terser, less Ruby-specific attribute syntax 
+based on HTML&#8217;s attributes. These are used with parentheses instead of 
+brackets, like so:</p>
+
+<pre class="code">%html(xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en")</pre>
+
+<p>Ruby variables can be used by omitting the quotes. Local variables or instance variables can be used. For example:</p>
+
+<pre class="code">%a(title=@title href=href) Stuff</pre>
+
+<p>This is the same as:</p>
+
+<pre class="code">%a{:title =&gt; @title, :href =&gt; href} Stuff</pre>
+
+<p>Because there are no commas separating attributes, though, more 
+complicated expressions aren&#8217;t allowed. For those you&#8217;ll have to use the
+ <code>{}</code> syntax. You can, however, use both syntaxes together:</p>
+
+<pre class="code">%a(title=@title){:href =&gt; @link.href} Stuff</pre>
+
+<p>You can also use <code>#{}</code> interpolation to insert complicated expressions in a HTML-style attribute:</p>
+
+<pre class="code">%span(class="widget_#{@widget.number}")</pre>
+
+<p>HTML-style attributes can be stretched across multiple lines just like hash-style attributes:</p>
+
+<pre class="code">%script(type="text/javascript"
+        src="javascripts/script_#{2 + 7}")</pre>
+
+<h4 id="attribute_methods">Attribute Methods</h4>
+
+<p>A Ruby method call that returns a hash can be substituted for the hash contents. For example, <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Helpers.html" title="Haml::Helpers (module)">Haml::Helpers</a></tt> defines the following method:</p>
+
+<pre class="code">def html_attrs(lang = 'en-US')
+  {:xmlns =&gt; "http://www.w3.org/1999/xhtml", 'xml:lang' =&gt; lang, :lang =&gt; lang}
+end</pre>
+
+<p>This can then be used in Haml, like so:</p>
+
+<pre class="code">%html{html_attrs('fr-fr')}</pre>
+
+<p>This is compiled to:</p>
+
+<pre class="code">&lt;html lang='fr-fr' xml:lang='fr-fr' xmlns='http://www.w3.org/1999/xhtml'&gt;
+&lt;/html&gt;</pre>
+
+<p>You can use as many such attribute methods as you want by separating 
+them with commas, like a Ruby argument list. All the hashes will me 
+merged together, from left to right. For example, if you defined</p>
+
+<pre class="code">def hash1
+  {:bread =&gt; 'white', :filling =&gt; 'peanut butter and jelly'}
+end
+
+def hash2
+  {:bread =&gt; 'whole wheat'}
+end</pre>
+
+<p>then</p>
+
+<pre class="code">%sandwich{hash1, hash2, :delicious =&gt; true}/</pre>
+
+<p>would compile to:</p>
+
+<pre class="code">&lt;sandwich bread='whole wheat' delicious='true' filling='peanut butter and jelly' /&gt;</pre>
+
+<p>Note that the Haml attributes list has the same syntax as a Ruby 
+method call. This means that any attribute methods must come before the 
+hash literal.</p>
+
+<p>Attribute methods aren&#8217;t supported for HTML-style attributes.</p>
+
+<h4 id="boolean_attributes">Boolean Attributes</h4>
+
+<p>Some attributes, such as &#8220;checked&#8221; for <code>input</code> tags or &#8220;selected&#8221; for <code>option</code>
+ tags, are &#8220;boolean&#8221; in the sense that their values don&#8217;t matter - it 
+only matters whether or not they&#8217;re present. In HTML (but not XHTML), 
+these attributes can be written as</p>
+
+<pre class="code">&lt;input selected&gt;</pre>
+
+<p>To do this in Haml using hash-style attributes, just assign a Ruby <code>true</code> value to the attribute:</p>
+
+<pre class="code">%input{:selected =&gt; true}</pre>
+
+<p>In XHTML, the only valid value for these attributes is the name of the attribute. Thus this will render in XHTML as</p>
+
+<pre class="code">&lt;input selected='selected'&gt;</pre>
+
+<p>To set these attributes to false, simply assign them to a Ruby false value. In both XHTML and HTML</p>
+
+<pre class="code">%input{:selected =&gt; false}</pre>
+
+<p>will just render as</p>
+
+<pre class="code">&lt;input&gt;</pre>
+
+<p>HTML-style boolean attributes can be written just like HTML:</p>
+
+<pre class="code">%input(selected)</pre>
+
+<p>or using <code>true</code> and <code>false</code>:</p>
+
+<pre class="code">%input(selected=true)</pre>
+
+<h4 id="html5_custom_data_attributes">HTML5 Custom Data Attributes</h4>
+
+<p>HTML5 allows for adding <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data">custom non-visible data attributes</a> to elements using attribute names beginning with <code>data-</code>. Custom data attributes can be used in Haml by using the key <code>:data</code>
+ with a Hash value in an attribute hash. Each of the key/value pairs in 
+the Hash will be transformed into a custom data attribute. For example:</p>
+
+<pre class="code">%a{:href=&gt;"/posts", :data =&gt; {:author_id =&gt; 123}} Posts By Author</pre>
+
+<p>will render as:</p>
+
+<pre class="code">&lt;a data-author_id='123' href='/posts'&gt;Posts By Author&lt;/a&gt;</pre>
+
+<h3 id="class_and_id__and_">Class and ID: <code>.</code> and <code>#</code></h3>
+
+<p>The period and pound sign are borrowed from CSS. They are used as shortcuts to specify the <code>class</code> and <code>id</code>
+ attributes of an element, respectively. Multiple class names can be 
+specified in a similar way to CSS, by chaining the class names together 
+with periods. They are placed immediately after the tag and before an 
+attributes hash. For example:</p>
+
+<pre class="code">%div#things
+  %span#rice Chicken Fried
+  %p.beans{ :food =&gt; 'true' } The magical fruit
+  %h1.class.otherclass#id La La La</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;div id='things'&gt;
+  &lt;span id='rice'&gt;Chicken Fried&lt;/span&gt;
+  &lt;p class='beans' food='true'&gt;The magical fruit&lt;/p&gt;
+  &lt;h1 class='class otherclass' id='id'&gt;La La La&lt;/h1&gt;
+&lt;/div&gt;</pre>
+
+<p>And,</p>
+
+<pre class="code">%div#content
+  %div.articles
+    %div.article.title Doogie Howser Comes Out
+    %div.article.date 2006-11-05
+    %div.article.entry
+      Neil Patrick Harris would like to dispel any rumors that he is straight</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;div id='content'&gt;
+  &lt;div class='articles'&gt;
+    &lt;div class='article title'&gt;Doogie Howser Comes Out&lt;/div&gt;
+    &lt;div class='article date'&gt;2006-11-05&lt;/div&gt;
+    &lt;div class='article entry'&gt;
+      Neil Patrick Harris would like to dispel any rumors that he is straight
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<p>These shortcuts can be combined with long-hand attributes; the two 
+values will be merged together as though they were all placed in an 
+array (see <a href="#class-and-id-attributes">the documentation on <code>:class</code> and <code>:id</code> attributes</a>). For example:</p>
+
+<pre class="code">%div#Article.article.entry{:id =&gt; @article.number, :class =&gt; @article.visibility}</pre>
+
+<p>is equivalent to</p>
+
+<pre class="code">%div{:id =&gt; ['Article', @article.number], :class =&gt; ['article', 'entry', @article.visibility]} Gabba Hey</pre>
+
+<p>and could compile to:</p>
+
+<pre class="code">&lt;div class="article entry visible" id="Article_27"&gt;Gabba Hey&lt;/div&gt;</pre>
+
+<h4 id="implicit_div_elements">Implicit Div Elements</h4>
+
+<p>Because divs are used so often, they&#8217;re the default elements. If you only define a class and/or id using <code>.</code> or <code>#</code>, a div is automatically used. For example:</p>
+
+<pre class="code">#collection
+  .item
+    .description What a cool item!</pre>
+
+<p>is the same as:</p>
+
+<pre class="code">%div#collection
+  %div.item
+    %div.description What a cool item!</pre>
+
+<p>and is compiled to:</p>
+
+<pre class="code">&lt;div id='collection'&gt;
+  &lt;div class='item'&gt;
+    &lt;div class='description'&gt;What a cool item!&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h3 id="selfclosing_tags_">Self-Closing Tags: <code>/</code></h3>
+
+<p>The forward slash character, when placed at the end of a tag definition, causes the tag to be self-closed. For example:</p>
+
+<pre class="code">%br/
+%meta{'http-equiv' =&gt; 'Content-Type', :content =&gt; 'text/html'}/</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;br /&gt;
+&lt;meta http-equiv='Content-Type' content='text/html' /&gt;</pre>
+
+<p>Some tags are automatically closed, as long as they have no content. <code>meta</code>, <code>img</code>, <code>link</code>, <code>script</code>, <code>br</code>, and <code>hr</code> tags are closed by default. This list can be customized by setting the <a href="#autoclose-option"><code>:autoclose</code></a> option. For example:</p>
+
+<pre class="code">%br
+%meta{'http-equiv' =&gt; 'Content-Type', :content =&gt; 'text/html'}</pre>
+
+<p>is also compiled to:</p>
+
+<pre class="code">&lt;br /&gt;
+&lt;meta http-equiv='Content-Type' content='text/html' /&gt;</pre>
+
+<h3 id="whitespace_removal__and_">Whitespace Removal: <code>&gt;</code> and <code>&lt;</code></h3>
+
+<p><code>&gt;</code> and <code>&lt;</code> give you more control over the whitespace near a tag. <code>&gt;</code> will remove all whitespace surrounding a tag, while <code>&lt;</code> will remove all whitespace immediately within a tag. You can think of them as alligators eating the whitespace: <code>&gt;</code> faces out of the tag and eats the whitespace on the outside, and <code>&lt;</code>
+ faces into the tag and eats the whitespace on the inside. They&#8217;re 
+placed at the end of a tag definition, after class, id, and attribute 
+declarations but before <code>/</code> or <code>=</code>. For example:</p>
+
+<pre class="code">%blockquote&lt;
+  %div
+    Foo!</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;blockquote&gt;&lt;div&gt;
+  Foo!
+&lt;/div&gt;&lt;/blockquote&gt;</pre>
+
+<p>And:</p>
+
+<pre class="code">%img
+%img&gt;
+%img</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;img /&gt;&lt;img /&gt;&lt;img /&gt;</pre>
+
+<p>And:</p>
+
+<pre class="code">%p&lt;= "Foo\nBar"</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;p&gt;Foo
+Bar&lt;/p&gt;</pre>
+
+<p>And finally:</p>
+
+<pre class="code">%img
+%pre&gt;&lt;
+  foo
+  bar
+%img</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;img /&gt;&lt;pre&gt;foo
+bar&lt;/pre&gt;&lt;img /&gt;</pre>
+
+<h3 id="object_reference_">Object Reference: <code>[]</code></h3>
+
+<p>Square brackets follow a tag definition and contain a Ruby object 
+that is used to set the class and id of that tag. The class is set to 
+the object&#8217;s class (transformed to use underlines rather than camel 
+case) and the id is set to the object&#8217;s class, followed by its id. 
+Because the id of an object is normally an obscure implementation 
+detail, this is most useful for elements that represent instances of 
+Models. Additionally, the second argument (if present) will be used as a
+ prefix for both the id and class attributes. For example:</p>
+
+<pre class="code"># file: app/controllers/users_controller.rb
+
+def show
+  @user = CrazyUser.find(15)
+end
+
+-# file: app/views/users/show.haml
+
+%div[@user, :greeting]
+  %bar[290]/
+  Hello!</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;div class='greeting_crazy_user' id='greeting_crazy_user_15'&gt;
+  &lt;bar class='fixnum' id='fixnum_581' /&gt;
+  Hello!
+&lt;/div&gt;</pre>
+
+<p>If you require that the class be something other than the underscored object&#8217;s class, you can implement the <code>haml_object_ref</code> method on the object.</p>
+
+<pre class="code"># file: app/models/crazy_user.rb
+
+class CrazyUser &lt; ActiveRecord::Base
+  def haml_object_ref
+    "a_crazy_user"
+  end
+end
+
+-# file: app/views/users/show.haml
+
+%div[@user]
+  Hello!</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;div class='a_crazy_user' id='a_crazy_user_15'&gt;
+  Hello!
+&lt;/div&gt;</pre>
+
+<h2 id="doctype_">Doctype: <code>!!!</code></h2>
+
+<p>When describing HTML documents with Haml, you can have a document 
+type or XML prolog generated automatically by including the characters <code>!!!</code>. For example:</p>
+
+<pre class="code">!!! XML
+!!!
+%html
+  %head
+    %title Myspace
+  %body
+    %h1 I am the international space station
+    %p Sign my guestbook</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;?xml version='1.0' encoding='utf-8' ?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Myspace&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;I am the international space station&lt;/h1&gt;
+    &lt;p&gt;Sign my guestbook&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<p>You can also specify the specific doctype after the <code>!!!</code> When the <a href="#format-option"><code>:format</code></a> is set to <code>:xhtml</code> (the default except in Rails 3), the following doctypes are supported:</p>
+
+<dl>
+<dt><code>!!!</code></dt>
+
+<dd>XHTML 1.0 Transitional<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</code></dd>
+
+<dt><code>!!! Strict</code></dt>
+
+<dd>XHTML 1.0 Strict<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</code></dd>
+
+<dt><code>!!! Frameset</code></dt>
+
+<dd>XHTML 1.0 Frameset<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt;</code></dd>
+
+<dt><code>!!! 5</code></dt>
+
+<dd>XHTML 5<br> <code>&lt;!DOCTYPE html&gt;</code><br></dd>
+
+<dt><code>!!! 1.1</code></dt>
+
+<dd>XHTML 1.1<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;</code></dd>
+
+<dt><code>!!! Basic</code></dt>
+
+<dd>XHTML Basic 1.1<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd"&gt; </code></dd>
+
+<dt><code>!!! Mobile</code></dt>
+
+<dd>XHTML Mobile 1.2<br> <code>&lt;!DOCTYPE html PUBLIC 
+"-//WAPFORUM//DTD XHTML Mobile 1.2//EN" 
+"http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd"&gt;</code></dd>
+
+<dt><code>!!! RDFa</code></dt>
+
+<dd>XHTML+RDFa 1.0<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"&gt;</code></dd>
+</dl>
+
+<p>When the <a href="#format-option"><code>:format</code></a> option is set to <code>:html4</code>, the following doctypes are supported:</p>
+
+<dl>
+<dt><code>!!!</code></dt>
+
+<dd>HTML 4.01 Transitional<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</code></dd>
+
+<dt><code>!!! Strict</code></dt>
+
+<dd>HTML 4.01 Strict<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;</code></dd>
+
+<dt><code>!!! Frameset</code></dt>
+
+<dd>HTML 4.01 Frameset<br> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"&gt;</code></dd>
+</dl>
+
+<p>When the <a href="#format-option"><code>:format</code></a> option is set to <code>:html5</code>, <code>!!!</code> is always <code>&lt;!DOCTYPE html&gt;</code>.</p>
+
+<p>If you&#8217;re not using the UTF-8 character set for your document, you 
+can specify which encoding should appear in the XML prolog in a similar 
+way. For example:</p>
+
+<pre class="code">!!! XML iso-8859-1</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;?xml version='1.0' encoding='iso-8859-1' ?&gt;</pre>
+
+<h2 id="comments">Comments</h2>
+
+<p>Haml supports two sorts of comments: those that show up in the HTML output and those that don&#8217;t.</p>
+
+<h3 id="html_comments_">HTML Comments: <code>/</code></h3>
+
+<p>The forward slash character, when placed at the beginning of a line, wraps all text after it in an HTML comment. For example:</p>
+
+<pre class="code">%peanutbutterjelly
+  / This is the peanutbutterjelly element
+  I like sandwiches!</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;peanutbutterjelly&gt;
+  &lt;!-- This is the peanutbutterjelly element --&gt;
+  I like sandwiches!
+&lt;/peanutbutterjelly&gt;</pre>
+
+<p>The forward slash can also wrap indented sections of code. For example:</p>
+
+<pre class="code">/
+  %p This doesn't render...
+  %div
+    %h1 Because it's commented out!</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;!--
+  &lt;p&gt;This doesn't render...&lt;/p&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Because it's commented out!&lt;/h1&gt;
+  &lt;/div&gt;
+--&gt;</pre>
+
+<h4 id="conditional_comments_">Conditional Comments: <code>/[]</code></h4>
+
+<p>You can also use <a href="http://www.quirksmode.org/css/condcom.html">Internet Explorer conditional comments</a> by enclosing the condition in square brackets after the <code>/</code>. For example:</p>
+
+<pre class="code">/[if IE]
+  %a{ :href =&gt; 'http://www.mozilla.com/en-US/firefox/' }
+    %h1 Get Firefox</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;!--[if IE]&gt;
+  &lt;a href='http://www.mozilla.com/en-US/firefox/'&gt;
+    &lt;h1&gt;Get Firefox&lt;/h1&gt;
+  &lt;/a&gt;
+&lt;![endif]--&gt;</pre>
+
+<h3 id="haml_comments_">Haml Comments: <code>-#</code></h3>
+
+<p>The hyphen followed immediately by the pound sign signifies a silent 
+comment. Any text following this isn&#8217;t rendered in the resulting 
+document at all.</p>
+
+<p>For example:</p>
+
+<pre class="code">%p foo
+-# This is a comment
+%p bar</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;p&gt;foo&lt;/p&gt;
+&lt;p&gt;bar&lt;/p&gt;</pre>
+
+<p>You can also nest text beneath a silent comment. None of this text will be rendered. For example:</p>
+
+<pre class="code">%p foo
+-#
+  This won't be displayed
+    Nor will this
+%p bar</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;p&gt;foo&lt;/p&gt;
+&lt;p&gt;bar&lt;/p&gt;</pre>
+
+<h2 id="ruby_evaluation">Ruby Evaluation</h2>
+
+<h3 id="inserting_ruby_">Inserting Ruby: <code>=</code></h3>
+
+<p>The equals character is followed by Ruby code. This code is evaluated and the output is inserted into the document. For example:</p>
+
+<pre class="code">%p
+  = ['hi', 'there', 'reader!'].join " "
+  = "yo"</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;p&gt;
+  hi there reader!
+  yo
+&lt;/p&gt;</pre>
+
+<p>If the <a href="#escape_html-option"><code>:escape_html</code></a> option is set, <code>=</code> will sanitize any HTML-sensitive characters generated by the script. For example:</p>
+
+<pre class="code">= '&lt;script&gt;alert("I\'m evil!");&lt;/script&gt;'</pre>
+
+<p>would be compiled to</p>
+
+<pre class="code">&amp;lt;script&amp;gt;alert(&amp;quot;I'm evil!&amp;quot;);&amp;lt;/script&amp;gt;</pre>
+
+<p><code>=</code> can also be used at the end of a tag to insert Ruby code within that tag. For example:</p>
+
+<pre class="code">%p= "hello"</pre>
+
+<p>would be compiled to</p>
+
+<pre class="code">&lt;p&gt;hello&lt;/p&gt;</pre>
+
+<p>A line of Ruby code can be stretched over multiple lines as long as each line but the last ends with a comma. For example:</p>
+
+<pre class="code">= link_to_remote "Add to cart",
+    :url =&gt; { :action =&gt; "add", :id =&gt; product.id },
+    :update =&gt; { :success =&gt; "cart", :failure =&gt; "error" }</pre>
+
+<p>Note that it&#8217;s illegal to nest code within a tag that ends with <code>=</code>.</p>
+
+<h3 id="running_ruby_">Running Ruby: <code>-</code></h3>
+
+<p>The hyphen character is also followed by Ruby code. This code is evaluated but <em>not</em> inserted into the document.</p>
+
+<p><strong>It is not recommended that you use this widely; almost all 
+processing code and logic should be restricted to the Controller, the 
+Helper, or partials.</strong></p>
+
+<p>For example:</p>
+
+<pre class="code">- foo = "hello"
+- foo &lt;&lt; " there"
+- foo &lt;&lt; " you!"
+%p= foo</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;p&gt;
+  hello there you!
+&lt;/p&gt;</pre>
+
+<p>A line of Ruby code can be stretched over multiple lines as long as each line but the last ends with a comma. For example:</p>
+
+<pre class="code">- links = {:home =&gt; "/",
+    :docs =&gt; "/docs",
+    :about =&gt; "/about"}</pre>
+
+<h4 id="ruby_blocks">Ruby Blocks</h4>
+
+<p>Ruby blocks, like XHTML tags, don&#8217;t need to be explicitly closed in 
+Haml. Rather, they&#8217;re automatically closed, based on indentation. A 
+block begins whenever the indentation is increased after a Ruby 
+evaluation command. It ends when the indentation decreases (as long as 
+it&#8217;s not an <code>else</code> clause or something similar). For example:</p>
+
+<pre class="code">- (42...47).each do |i|
+  %p= i
+%p See, I can count!</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;p&gt;42&lt;/p&gt;
+&lt;p&gt;43&lt;/p&gt;
+&lt;p&gt;44&lt;/p&gt;
+&lt;p&gt;45&lt;/p&gt;
+&lt;p&gt;46&lt;/p&gt;
+&lt;p&gt;See, I can count!&lt;/p&gt;</pre>
+
+<p>Another example:</p>
+
+<pre class="code">%p
+  - case 2
+  - when 1
+    = "1!"
+  - when 2
+    = "2?"
+  - when 3
+    = "3."</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;p&gt;
+  2?
+&lt;/p&gt;</pre>
+
+<h3 id="tilde">Whitespace Preservation: <code>~</code></h3>
+
+<p><code>~</code> works just like <code>=</code>, except that it runs <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Helpers.html#find_and_preserve-instance_method" title="Haml::Helpers#find_and_preserve (method)">Haml::Helpers#find_and_preserve</a></tt> on its input. For example,</p>
+
+<pre class="code">~ "Foo\n&lt;pre&gt;Bar\nBaz&lt;/pre&gt;"</pre>
+
+<p>is the same as:</p>
+
+<pre class="code">= find_and_preserve("Foo\n&lt;pre&gt;Bar\nBaz&lt;/pre&gt;")</pre>
+
+<p>and is compiled to:</p>
+
+<pre class="code">Foo
+&lt;pre&gt;Bar&amp;#x000A;Baz&lt;/pre&gt;</pre>
+
+<p>See also <a href="#whitespace_preservation">Whitespace Preservation</a>.</p>
+
+<h3 id="ruby_interpolation_">Ruby Interpolation: <code>#{}</code></h3>
+
+<p>Ruby code can also be interpolated within plain text using <code>#{}</code>, similarly to Ruby string interpolation. For example,</p>
+
+<pre class="code">%p This is #{h quality} cake!</pre>
+
+<p>is the same as</p>
+
+<pre class="code">%p= "This is the #{h quality} cake!"</pre>
+
+<p>and might compile to</p>
+
+<pre class="code">&lt;p&gt;This is scrumptious cake!&lt;/p&gt;</pre>
+
+<p>Backslashes can be used to escape <code>#{</code> strings, but they don&#8217;t act as escapes anywhere else in the string. For example:</p>
+
+<pre class="code">%p
+  Look at \\#{h word} lack of backslash: \#{foo}
+  And yon presence thereof: \{foo}</pre>
+
+<p>might compile to</p>
+
+<pre class="code">&lt;p&gt;
+  Look at \yon lack of backslash: #{foo}
+  And yon presence thereof: \{foo}
+&lt;/p&gt;</pre>
+
+<p>Interpolation can also be used within <a href="#filters">filters</a>. For example:</p>
+
+<pre class="code">:javascript
+  $(document).ready(function() {
+    alert(#{@message.to_json});
+  });</pre>
+
+<p>might compile to</p>
+
+<pre class="code">&lt;script type='text/javascript'&gt;
+  //&lt;![CDATA[
+    $(document).ready(function() {
+      alert("Hi there!");
+    });
+  //]]&gt;
+&lt;/script&gt;</pre>
+
+<h3 id="escaping_html">Escaping HTML: <code>&amp;=</code></h3>
+
+<p>An ampersand followed by one or two equals characters evaluates Ruby 
+code just like the equals without the ampersand, but sanitizes any 
+HTML-sensitive characters in the result of the code. For example:</p>
+
+<pre class="code">&amp;= "I like cheese &amp; crackers"</pre>
+
+<p>compiles to</p>
+
+<pre class="code">I like cheese &amp;amp; crackers</pre>
+
+<p>If the <a href="#escape_html-option"><code>:escape_html</code></a> option is set, <code>&amp;=</code> behaves identically to <code>=</code>.</p>
+
+<p><code>&amp;</code> can also be used on its own so that <code>#{}</code> interpolation is escaped. For example,</p>
+
+<pre class="code">&amp; I like #{"cheese &amp; crackers"}</pre>
+
+<p>compiles to</p>
+
+<pre class="code">I like cheese &amp;amp; crackers</pre>
+
+<h3 id="unescaping_html">Unescaping HTML: <code>!=</code></h3>
+
+<p>An exclamation mark followed by one or two equals characters 
+evaluates Ruby code just like the equals would, but never sanitizes the 
+HTML.</p>
+
+<p>By default, the single equals doesn&#8217;t sanitize HTML either. However, if the <a href="#escape_html-option"><code>:escape_html</code></a> option is set, <code>=</code> will sanitize the HTML, but <code>!=</code> still won&#8217;t. For example, if <code>:escape_html</code> is set:</p>
+
+<pre class="code">= "I feel &lt;strong&gt;!"
+!= "I feel &lt;strong&gt;!"</pre>
+
+<p>compiles to</p>
+
+<pre class="code">I feel &amp;lt;strong&amp;gt;!
+I feel &lt;strong&gt;!</pre>
+
+<p><code>!</code> can also be used on its own so that <code>#{}</code> interpolation is unescaped. For example,</p>
+
+<pre class="code">! I feel #{"&lt;strong&gt;"}!</pre>
+
+<p>compiles to</p>
+
+<pre class="code">I feel &lt;strong&gt;!</pre>
+
+<h2 id="filters">Filters</h2>
+
+<p>The colon character designates a filter. This allows you to pass an 
+indented block of text as input to another filtering program and add the
+ result to the output of Haml. The syntax is simply a colon followed by 
+the name of the filter. For example,</p>
+
+<pre class="code">%p
+  :markdown
+    Textile
+    =======
+
+    Hello, *World*</pre>
+
+<p>is compiled to</p>
+
+<pre class="code">&lt;p&gt;
+  &lt;h1&gt;Textile&lt;/h1&gt;
+
+  &lt;p&gt;Hello, &lt;em&gt;World&lt;/em&gt;&lt;/p&gt;
+&lt;/p&gt;</pre>
+
+<p>Filters can have Ruby code interpolated with <code>#{}</code>. For example,</p>
+
+<pre class="code">- flavor = "raspberry"
+#content
+  :textile
+    I *really* prefer _#{h flavor}_ jam.</pre>
+
+<p>is compiled to</p>
+
+<pre class="code">&lt;div id='content'&gt;
+  &lt;p&gt;I &lt;strong&gt;really&lt;/strong&gt; prefer &lt;em&gt;raspberry&lt;/em&gt; jam.&lt;/p&gt;
+&lt;/div&gt;</pre>
+
+<p>Currently, filters ignore the <a href="#escape_html-option"><code>:escape_html</code></a> option. This means that <code>#{}</code> interpolation within filters is never HTML-escaped.</p>
+
+<p>Haml has the following filters defined:</p>
+
+<h3 id="plain-filter"><code>:plain</code></h3>
+
+<p>Does not parse the filtered text. This is useful for large blocks of 
+text without HTML tags, when you don&#8217;t want lines starting with <code>.</code> or <code>-</code> to be parsed.</p>
+
+<h3 id="javascript-filter"><code>:javascript</code></h3>
+
+<p>Surrounds the filtered text with <code>&lt;script&gt;</code> and CDATA tags. Useful for including inline Javascript.</p>
+
+<h3 id="css-filter"><code>:css</code></h3>
+
+<p>Surrounds the filtered text with <code>&lt;style&gt;</code> and CDATA tags. Useful for including inline CSS.</p>
+
+<h3 id="cdata-filter"><code>:cdata</code></h3>
+
+<p>Surrounds the filtered text with CDATA tags.</p>
+
+<h3 id="escaped-filter"><code>:escaped</code></h3>
+
+<p>Works the same as plain, but HTML-escapes the text before placing it in the document.</p>
+
+<h3 id="ruby-filter"><code>:ruby</code></h3>
+
+<p>Parses the filtered text with the normal Ruby interpreter. All output sent to <code>$stdout</code>, like with <code>puts</code>, is output into the Haml document. Not available if the <a href="#suppress_eval-option"><code>:suppress_eval</code></a> option is set to true. The Ruby code is evaluated in the same context as the Haml template.</p>
+
+<h3 id="preserve-filter"><code>:preserve</code></h3>
+
+<p>Inserts the filtered text into the template with whitespace preserved. <code>preserve</code>d
+ blocks of text aren&#8217;t indented, and newlines are replaced with the HTML
+ escape code for newlines, to preserve nice-looking output. See also <a href="#whitespace_preservation">Whitespace Preservation</a>.</p>
+
+<h3 id="erb-filter"><code>:erb</code></h3>
+
+<p>Parses the filtered text with ERb, like an RHTML template. Not available if the <a href="#suppress_eval-option"><code>:suppress_eval</code></a> option is set to true. Embedded Ruby code is evaluated in the same context as the Haml template.</p>
+
+<h3 id="sass-filter"><code>:sass</code></h3>
+
+<p>Parses the filtered text with Sass to produce CSS output.</p>
+
+<h3 id="textile-filter"><code>:textile</code></h3>
+
+<p>Parses the filtered text with <a href="http://www.textism.com/tools/textile">Textile</a>. Only works if <a href="http://redcloth.org/">RedCloth</a> is installed.</p>
+
+<h3 id="markdown-filter"><code>:markdown</code></h3>
+
+<p>Parses the filtered text with <a href="http://daringfireball.net/projects/markdown">Markdown</a>. Only works if <a href="http://github.com/rtomayko/rdiscount">RDiscount</a>, <a href="http://github.com/rtomayko/rpeg-markdown">RPeg-Markdown</a>, <a href="http://maruku.rubyforge.org/">Maruku</a>, or <a href="http://haml-lang.com/docs/yardoc/www.deveiate.org/projects/BlueCloth">BlueCloth</a> are installed.</p>
+
+<h3 id="maruku-filter"><code>:maruku</code></h3>
+
+<p>Parses the filtered text with <a href="http://maruku.rubyforge.org/">Maruku</a>, which has some non-standard extensions to Markdown.</p>
+
+<h3 id="custom_filters">Custom Filters</h3>
+
+<p>You can also define your own filters. See <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Filters.html" title="Haml::Filters (module)">Haml::Filters</a></tt> for details.</p>
+
+<h2 id="multiline">Multiline: <code>|</code></h2>
+
+<p>The pipe character designates a multiline string. It&#8217;s placed at the 
+end of a line (after some whitespace) and means that all following lines
+ that end with <code>|</code> will be evaluated as though they were on the same line. <strong>Note that even the last line in the multiline block should end with <code>|</code>.</strong> For example:</p>
+
+<pre class="code">%whoo
+  %hoo= h(                       |
+    "I think this might get " +  |
+    "pretty long so I should " + |
+    "probably make it " +        |
+    "multiline so it doesn't " + |
+    "look awful.")               |
+  %p This is short.</pre>
+
+<p>is compiled to:</p>
+
+<pre class="code">&lt;whoo&gt;
+  &lt;hoo&gt;I think this might get pretty long so I should probably make it multiline so it doesn't look awful.&lt;/hoo&gt;
+  &lt;p&gt;This is short&lt;/p&gt;
+&lt;/whoo&gt;</pre>
+
+<p>Using multiline declarations in Haml is intentionally awkward. This 
+is designed to discourage people from putting lots and lots of Ruby code
+ in their Haml templates. If you find yourself using multiline 
+declarations, stop and think: could I do this better with a helper?</p>
+
+<p>Note that there are a few cases where it&#8217;s useful to allow something 
+to flow over onto multiple lines in a non-awkward manner. One of these 
+is HTML attributes. Some elements just have lots of attributes, so you 
+can wrap attributes without using <code>|</code> (see <a href="#attributes">Attributes</a>).</p>
+
+<p>In addition, sometimes you need to call Ruby methods or declare data 
+structures that just need a lot of template information. So data 
+structures and functions that require lots of arguments can be wrapped 
+over multiple lines, as long as each line but the last ends in a comma 
+(see <a href="#inserting_ruby_">Inserting Ruby</a>).</p>
+
+<h2 id="whitespace_preservation">Whitespace Preservation</h2>
+
+<p>Sometimes you don&#8217;t want Haml to indent all your text. For example, tags like <code>pre</code> and <code>textarea</code> are whitespace-sensitive; indenting the text makes them render wrong.</p>
+
+<p>Haml deals with this by &#8220;preserving&#8221; newlines before they&#8217;re put into
+ the document &#8211; converting them to the XHTML whitespace escape code, <code>&amp;#x000A;</code>. Then Haml won&#8217;t try to re-format the indentation.</p>
+
+<p>Literal <code>textarea</code> and <code>pre</code> tags automatically preserve content given through <code>=</code>. Dynamically-generated <code>textarea</code>s and <code>pre</code>s can&#8217;t be preserved automatically, and so should be passed through <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Helpers.html#find_and_preserve-instance_method" title="Haml::Helpers#find_and_preserve (method)">Haml::Helpers#find_and_preserve</a></tt> or the <a href="#tilde"><code>~</code> command</a>, which has the same effect.</p>
+
+<p>Blocks of literal text can be preserved using the <a href="#preserve-filter"><code>:preserve</code> filter</a>.</p>
+
+<h2 id="helpers">Helpers</h2>
+
+<p>Haml offers a bunch of helpers that are useful for doing stuff like 
+preserving whitespace, creating nicely indented output for user-defined 
+helpers, and other useful things. The helpers are all documented in the <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Helpers.html" title="Haml::Helpers (module)">Haml::Helpers</a></tt> and <tt><a href="http://haml-lang.com/docs/yardoc/Haml/Helpers/ActionViewExtensions.html" title="Haml::Helpers::ActionViewExtensions (module)">Haml::Helpers::ActionViewExtensions</a></tt> modules.</p></div></div>
+    
+    <div id="footer">
+  Generated on Wed Jun 29 17:38:08 2011 by 
+  <a href="http://yardoc.org/" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.9.2).
+</div>
+
+
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script><script src="file.HAML_REFERENCE_files/ga.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("UA-535380-9");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
+
+
+  
+</body></html>
