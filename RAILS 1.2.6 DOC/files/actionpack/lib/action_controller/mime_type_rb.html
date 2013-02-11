@@ -1,0 +1,220 @@
+  <div id="fileHeader">
+    <h1>mime_type.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionpack/lib/action_controller/mime_type.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Wed Dec 06 15:26:18 -0800 2006</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module Mime
+  # Encapsulates the notion of a mime type. Can be used at render time, for example, with:
+  #
+  #   class PostsController &lt; ActionController::Base
+  #     def show
+  #       @post = Post.find(params[:id])
+  #
+  #       respond_to do |format|
+  #         format.html
+  #         format.ics { render :text =&gt; post.to_ics, :mime_type =&gt; Mime::Type[&quot;text/calendar&quot;]  }
+  #         format.xml { render :xml =&gt; @people.to_xml }
+  #       end
+  #     end
+  #   end
+  class Type
+    # A simple helper class used in parsing the accept header
+    class AcceptItem #:nodoc:
+      attr_accessor :order, :name, :q
+
+      def initialize(order, name, q=nil)
+        @order = order
+        @name = name.strip
+        q ||= 0.0 if @name == &quot;*/*&quot; # default &quot;*/*&quot; to end of list
+        @q = ((q || 1.0).to_f * 100).to_i
+      end
+
+      def to_s
+        @name
+      end
+
+      def &lt;=&gt;(item)
+        result = item.q &lt;=&gt; q
+        result = order &lt;=&gt; item.order if result == 0
+        result
+      end
+
+      def ==(item)
+        name == (item.respond_to?(:name) ? item.name : item)
+      end
+    end
+
+    class &lt;&lt; self
+      def lookup(string)
+        LOOKUP[string]
+      end
+
+      def register(string, symbol, synonyms = [])
+        Mime.send :const_set, symbol.to_s.upcase, Type.new(string, symbol, synonyms)
+        SET &lt;&lt; Mime.send(:const_get, symbol.to_s.upcase)
+        LOOKUP[string] = EXTENSION_LOOKUP[symbol.to_s] = SET.last        
+      end
+
+      def parse(accept_header)
+        # keep track of creation order to keep the subsequent sort stable
+        index = 0
+        list = accept_header.split(/,/).map! do |i| 
+          AcceptItem.new(index += 1, *i.split(/;\s*q=/))
+        end.sort!
+
+        # Take care of the broken text/xml entry by renaming or deleting it
+        text_xml = list.index(&quot;text/xml&quot;)
+        app_xml = list.index(&quot;application/xml&quot;)
+
+        if text_xml &amp;&amp; app_xml
+          # set the q value to the max of the two
+          list[app_xml].q = [list[text_xml].q, list[app_xml].q].max
+
+          # make sure app_xml is ahead of text_xml in the list
+          if app_xml &gt; text_xml
+            list[app_xml], list[text_xml] = list[text_xml], list[app_xml]
+            app_xml, text_xml = text_xml, app_xml
+          end
+
+          # delete text_xml from the list
+          list.delete_at(text_xml)
+  
+        elsif text_xml
+          list[text_xml].name = &quot;application/xml&quot;
+        end
+
+        # Look for more specific xml-based types and sort them ahead of app/xml
+
+        if app_xml
+          idx = app_xml
+          app_xml_type = list[app_xml]
+
+          while(idx &lt; list.length)
+            type = list[idx]
+            break if type.q &lt; app_xml_type.q
+            if type.name =~ /\+xml$/
+              list[app_xml], list[idx] = list[idx], list[app_xml]
+              app_xml = idx
+            end
+            idx += 1
+          end
+        end
+
+        list.map! { |i| Mime::Type.lookup(i.name) }.uniq!
+        list
+      end
+    end
+    
+    def initialize(string, symbol = nil, synonyms = [])
+      @symbol, @synonyms = symbol, synonyms
+      @string = string
+    end
+    
+    def to_s
+      @string
+    end
+    
+    def to_str
+      to_s
+    end
+    
+    def to_sym
+      @symbol || @string.to_sym
+    end
+
+    def ===(list)
+      if list.is_a?(Array)
+        (@synonyms + [ self ]).any? { |synonym| list.include?(synonym) }
+      else
+        super
+      end
+    end
+    
+    def ==(mime_type)
+      (@synonyms + [ self ]).any? { |synonym| synonym.to_s == mime_type.to_s } if mime_type
+    end
+  end
+
+  ALL   = Type.new &quot;*/*&quot;, :all
+  TEXT  = Type.new &quot;text/plain&quot;, :text
+  HTML  = Type.new &quot;text/html&quot;, :html, %w( application/xhtml+xml )
+  JS    = Type.new &quot;text/javascript&quot;, :js, %w( application/javascript application/x-javascript )
+  ICS   = Type.new &quot;text/calendar&quot;, :ics
+  CSV   = Type.new &quot;text/csv&quot;, :csv
+  XML   = Type.new &quot;application/xml&quot;, :xml, %w( text/xml application/x-xml )
+  RSS   = Type.new &quot;application/rss+xml&quot;, :rss
+  ATOM  = Type.new &quot;application/atom+xml&quot;, :atom
+  YAML  = Type.new &quot;application/x-yaml&quot;, :yaml, %w( text/yaml )
+  JSON  = Type.new &quot;application/json&quot;, :json, %w( text/x-json )
+
+  SET   = [ ALL, TEXT, HTML, JS, ICS, XML, RSS, ATOM, YAML, JSON ]
+
+  LOOKUP = Hash.new { |h, k| h[k] = Type.new(k) unless k == &quot;&quot; }
+
+  LOOKUP[&quot;*/*&quot;]                      = ALL
+
+  LOOKUP[&quot;text/plain&quot;]               = TEXT
+
+  LOOKUP[&quot;text/html&quot;]                = HTML
+  LOOKUP[&quot;application/xhtml+xml&quot;]    = HTML
+
+  LOOKUP[&quot;text/javascript&quot;]          = JS
+  LOOKUP[&quot;application/javascript&quot;]   = JS
+  LOOKUP[&quot;application/x-javascript&quot;] = JS
+
+  LOOKUP[&quot;text/calendar&quot;]            = ICS
+
+  LOOKUP[&quot;text/csv&quot;]                 = CSV
+
+  LOOKUP[&quot;application/xml&quot;]          = XML
+  LOOKUP[&quot;text/xml&quot;]                 = XML
+  LOOKUP[&quot;application/x-xml&quot;]        = XML
+
+  LOOKUP[&quot;text/yaml&quot;]                = YAML
+  LOOKUP[&quot;application/x-yaml&quot;]       = YAML
+
+  LOOKUP[&quot;application/rss+xml&quot;]      = RSS
+  LOOKUP[&quot;application/atom+xml&quot;]     = ATOM
+
+  LOOKUP[&quot;application/json&quot;]         = JSON
+  LOOKUP[&quot;text/x-json&quot;]              = JSON
+
+
+  EXTENSION_LOOKUP = Hash.new { |h, k| h[k] = Type.new(k) unless k == &quot;&quot; }
+
+  EXTENSION_LOOKUP[&quot;html&quot;]  = HTML
+  EXTENSION_LOOKUP[&quot;xhtml&quot;] = HTML
+
+  EXTENSION_LOOKUP[&quot;txt&quot;]   = TEXT
+
+  EXTENSION_LOOKUP[&quot;xml&quot;]   = XML
+
+  EXTENSION_LOOKUP[&quot;js&quot;]    = JS
+
+  EXTENSION_LOOKUP[&quot;ics&quot;]   = ICS
+
+  EXTENSION_LOOKUP[&quot;csv&quot;]   = CSV
+
+  EXTENSION_LOOKUP[&quot;yml&quot;]   = YAML
+  EXTENSION_LOOKUP[&quot;yaml&quot;]  = YAML
+
+  EXTENSION_LOOKUP[&quot;rss&quot;]   = RSS
+  EXTENSION_LOOKUP[&quot;atom&quot;]  = ATOM
+
+  EXTENSION_LOOKUP[&quot;json&quot;]  = JSON
+end
+</pre>
+    </div>

@@ -1,0 +1,44 @@
+  <div id="fileHeader">
+    <h1>benchmark_helper.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionpack/lib/action_view/helpers/benchmark_helper.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Jul 05 12:33:25 -0700 2005</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>require 'benchmark'
+
+module ActionView
+  module Helpers
+    module BenchmarkHelper
+      # Measures the execution time of a block in a template and reports the result to the log. Example:
+      #
+      #  &lt;% benchmark &quot;Notes section&quot; do %&gt;
+      #    &lt;%= expensive_notes_operation %&gt;
+      #  &lt;% end %&gt;
+      #
+      # Will add something like &quot;Notes section (0.34523)&quot; to the log.
+      #
+      # You may give an optional logger level as the second argument
+      # (:debug, :info, :warn, :error).  The default is :info.
+      def benchmark(message = &quot;Benchmarking&quot;, level = :info)
+        if @logger
+          real = Benchmark.realtime { yield }
+          @logger.send level, &quot;#{message} (#{'%.5f' % real})&quot;
+        end
+      end
+    end
+  end
+end
+</pre>
+    </div>

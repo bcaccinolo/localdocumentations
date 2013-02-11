@@ -1,0 +1,46 @@
+  <div id="fileHeader">
+    <h1>benchmark.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>activerecord/benchmarks/benchmark.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Feb 04 12:44:45 -0800 2007</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>$:.unshift(File.dirname(__FILE__) + '/../lib')
+if ARGV[2]
+  require 'rubygems'
+  gem 'activerecord', ARGV[2]
+else
+  require 'active_record'
+end
+
+ActiveRecord::Base.establish_connection(:adapter =&gt; &quot;mysql&quot;, :database =&gt; &quot;basecamp&quot;)
+
+class Post &lt; ActiveRecord::Base; end
+
+require 'benchmark'
+
+RUNS = ARGV[0].to_i
+if ARGV[1] == &quot;profile&quot; then require 'profile' end
+
+runtime = Benchmark::measure {
+  RUNS.times { 
+    Post.find_all(nil,nil,100).each { |p| p.title }
+  }
+}
+
+puts &quot;Runs: #{RUNS}&quot;
+puts &quot;Avg. runtime: #{runtime.real / RUNS}&quot;
+puts &quot;Requests/second: #{RUNS / runtime.real}&quot;
+</pre>
+    </div>

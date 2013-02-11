@@ -1,0 +1,401 @@
+  <div id="C00000247">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />Address<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/address_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/address.rb</a>
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/obsolete_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/obsolete.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+address.rb
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000843&name===" >==</a></li>
+  <li><a href="index.html?a=M000847&name=accept" >accept</a></li>
+  <li><a href="index.html?a=M000848&name=addr" >addr</a></li>
+  <li><a href="index.html?a=M000850&name=addr=" >addr=</a></li>
+  <li><a href="index.html?a=M000842&name=address" >address</a></li>
+  <li><a href="index.html?a=M000851&name=address=" >address=</a></li>
+  <li><a href="index.html?a=M000834&name=address_group?" >address_group?</a></li>
+  <li><a href="index.html?a=M000840&name=domain" >domain</a></li>
+  <li><a href="index.html?a=M000846&name=dup" >dup</a></li>
+  <li><a href="index.html?a=M000844&name=eql?" >eql?</a></li>
+  <li><a href="index.html?a=M000845&name=hash" >hash</a></li>
+  <li><a href="index.html?a=M000838&name=inspect" >inspect</a></li>
+  <li><a href="index.html?a=M000839&name=local" >local</a></li>
+  <li><a href="index.html?a=M000836&name=name=" >name=</a></li>
+  <li><a href="index.html?a=M000835&name=new" >new</a></li>
+  <li><a href="index.html?a=M000833&name=parse" >parse</a></li>
+  <li><a href="index.html?a=M000837&name=phrase=" >phrase=</a></li>
+  <li><a href="index.html?a=M000841&name=spec" >spec</a></li>
+  <li><a href="index.html?a=M000849&name=spec=" >spec=</a></li>
+  </ul>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li><a href="#" onclick="jsHref('classes/TMail/TextUtils.html');">TextUtils</a></li>
+  <li><a href="#" onclick="jsHref('classes/TMail/StrategyInterface.html');">StrategyInterface</a></li>
+</ul>
+
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>name</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>routes</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M000835" class="method">
+  <div id="M000835_title" class="title">
+    <b>new</b>( local, domain )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000835_source')" id="l_M000835_source">show source</a> ]</p>
+  <div id="M000835_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 48</span>
+48:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">local</span>, <span class="ruby-identifier">domain</span> )
+49:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">domain</span>
+50:         <span class="ruby-identifier">domain</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+51:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">SyntaxError</span>, <span class="ruby-value str">'empty word in domain'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">empty?</span>
+52:         <span class="ruby-keyword kw">end</span>
+53:       <span class="ruby-keyword kw">end</span>
+54:       <span class="ruby-ivar">@local</span> = <span class="ruby-identifier">local</span>
+55:       <span class="ruby-ivar">@domain</span> = <span class="ruby-identifier">domain</span>
+56:       <span class="ruby-ivar">@name</span>   = <span class="ruby-keyword kw">nil</span>
+57:       <span class="ruby-ivar">@routes</span> = []
+58:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000833" class="method">
+  <div id="M000833_title" class="title">
+    <b>parse</b>( str )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000833_source')" id="l_M000833_source">show source</a> ]</p>
+  <div id="M000833_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 40</span>
+40:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Address</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">str</span> )
+41:       <span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">:ADDRESS</span>, <span class="ruby-identifier">str</span>
+42:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000843" class="method">
+  <div id="M000843_title" class="title">
+    <b>==</b>( other )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000844&name=eql?">eql?</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000843_source')" id="l_M000843_source">show source</a> ]</p>
+  <div id="M000843_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 100</span>
+100:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>( <span class="ruby-identifier">other</span> )
+101:       <span class="ruby-identifier">other</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">:spec</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">spec</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">spec</span>
+102:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000847" class="method">
+  <div id="M000847_title" class="title">
+    <b>accept</b>( strategy, dummy1 = nil, dummy2 = nil )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000847_source')" id="l_M000847_source">show source</a> ]</p>
+  <div id="M000847_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 119</span>
+119:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">accept</span>( <span class="ruby-identifier">strategy</span>, <span class="ruby-identifier">dummy1</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">dummy2</span> = <span class="ruby-keyword kw">nil</span> )
+120:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@local</span>
+121:         <span class="ruby-identifier">strategy</span>.<span class="ruby-identifier">meta</span> <span class="ruby-value str">'&lt;&gt;'</span>   <span class="ruby-comment cmt"># empty return-path</span>
+122:         <span class="ruby-keyword kw">return</span>
+123:       <span class="ruby-keyword kw">end</span>
+124: 
+125:       <span class="ruby-identifier">spec_p</span> = (<span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@name</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@routes</span>.<span class="ruby-identifier">empty?</span>)
+126:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@name</span>
+127:         <span class="ruby-identifier">strategy</span>.<span class="ruby-identifier">phrase</span> <span class="ruby-ivar">@name</span>
+128:         <span class="ruby-identifier">strategy</span>.<span class="ruby-identifier">space</span>
+129:       <span class="ruby-keyword kw">end</span>
+130:       <span class="ruby-identifier">tmp</span> = <span class="ruby-identifier">spec_p</span> <span class="ruby-value">? </span><span class="ruby-value str">''</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'&lt;'</span>
+131:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@routes</span>.<span class="ruby-identifier">empty?</span>
+132:         <span class="ruby-identifier">tmp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@routes</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-value str">'@'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">':'</span>
+133:       <span class="ruby-keyword kw">end</span>
+134:       <span class="ruby-identifier">tmp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">spec</span>
+135:       <span class="ruby-identifier">tmp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'&gt;'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">spec_p</span>
+136:       <span class="ruby-identifier">strategy</span>.<span class="ruby-identifier">meta</span> <span class="ruby-identifier">tmp</span>
+137:       <span class="ruby-identifier">strategy</span>.<span class="ruby-identifier">lwsp</span> <span class="ruby-value str">''</span>
+138:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000848" class="method">
+  <div id="M000848_title" class="title">
+    <b>addr</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000841&name=spec">spec</a>
+</p>
+  </div>
+</div>
+<div id="M000850" class="method">
+  <div id="M000850_title" class="title">
+    <b>addr=</b>( str )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000849&name=spec=">spec=</a>
+</p>
+  </div>
+</div>
+<div id="M000842" class="method">
+  <div id="M000842_title" class="title">
+    <b>address</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000841&name=spec">spec</a>
+</p>
+  </div>
+</div>
+<div id="M000851" class="method">
+  <div id="M000851_title" class="title">
+    <b>address=</b>( str )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000849&name=spec=">spec=</a>
+</p>
+  </div>
+</div>
+<div id="M000834" class="method">
+  <div id="M000834_title" class="title">
+    <b>address_group?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000834_source')" id="l_M000834_source">show source</a> ]</p>
+  <div id="M000834_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">address_group?</span>
+45:       <span class="ruby-keyword kw">false</span>
+46:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000840" class="method">
+  <div id="M000840_title" class="title">
+    <b>domain</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000840_source')" id="l_M000840_source">show source</a> ]</p>
+  <div id="M000840_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 82</span>
+82:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">domain</span>
+83:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@domain</span>
+84:       <span class="ruby-identifier">join_domain</span>(<span class="ruby-ivar">@domain</span>)
+85:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000846" class="method">
+  <div id="M000846_title" class="title">
+    <b>dup</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000846_source')" id="l_M000846_source">show source</a> ]</p>
+  <div id="M000846_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 110</span>
+110:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dup</span>
+111:       <span class="ruby-identifier">obj</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@local</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-ivar">@domain</span>.<span class="ruby-identifier">dup</span>)
+112:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">name</span> = <span class="ruby-ivar">@name</span>.<span class="ruby-identifier">dup</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@name</span>
+113:       <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">routes</span>.<span class="ruby-identifier">replace</span> <span class="ruby-ivar">@routes</span>
+114:       <span class="ruby-identifier">obj</span>
+115:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000844" class="method">
+  <div id="M000844_title" class="title">
+    <b>eql?</b>( other )
+  </div>
+  <div class="description">
+  <p>
+Alias for #==
+</p>
+  </div>
+</div>
+<div id="M000845" class="method">
+  <div id="M000845_title" class="title">
+    <b>hash</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000845_source')" id="l_M000845_source">show source</a> ]</p>
+  <div id="M000845_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 106</span>
+106:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hash</span>
+107:       <span class="ruby-ivar">@local</span>.<span class="ruby-identifier">hash</span> <span class="ruby-operator">^</span> <span class="ruby-ivar">@domain</span>.<span class="ruby-identifier">hash</span>
+108:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000838" class="method">
+  <div id="M000838_title" class="title">
+    <b>inspect</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000838_source')" id="l_M000838_source">show source</a> ]</p>
+  <div id="M000838_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 72</span>
+72:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+73:       <span class="ruby-node">&quot;#&lt;#{self.class} #{address()}&gt;&quot;</span>
+74:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000839" class="method">
+  <div id="M000839_title" class="title">
+    <b>local</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000839_source')" id="l_M000839_source">show source</a> ]</p>
+  <div id="M000839_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 76</span>
+76:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">local</span>
+77:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@local</span>
+78:       <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&quot;&quot;'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@local</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@local</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">empty?</span>
+79:       <span class="ruby-ivar">@local</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">quote_atom</span>(<span class="ruby-identifier">i</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>)
+80:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000836" class="method">
+  <div id="M000836_title" class="title">
+    <b>name=</b>( str )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000837&name=phrase=">phrase=</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000836_source')" id="l_M000836_source">show source</a> ]</p>
+  <div id="M000836_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 62</span>
+62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">name=</span>( <span class="ruby-identifier">str</span> )
+63:       <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">str</span>
+64:       <span class="ruby-ivar">@name</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">empty?</span>
+65:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000837" class="method">
+  <div id="M000837_title" class="title">
+    <b>phrase=</b>( str )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000836&name=name=">name=</a>
+</p>
+  </div>
+</div>
+<div id="M000841" class="method">
+  <div id="M000841_title" class="title">
+    <b>spec</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000842&name=address">address</a>
+  <a href="index.html?a=M000848&name=addr">addr</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000841_source')" id="l_M000841_source">show source</a> ]</p>
+  <div id="M000841_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/address.rb, line 87</span>
+87:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">spec</span>
+88:       <span class="ruby-identifier">s</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">local</span>
+89:       <span class="ruby-identifier">d</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">domain</span>
+90:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">s</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">d</span>
+91:         <span class="ruby-identifier">s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'@'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>
+92:       <span class="ruby-keyword kw">else</span>
+93:         <span class="ruby-identifier">s</span>
+94:       <span class="ruby-keyword kw">end</span>
+95:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000849" class="method">
+  <div id="M000849_title" class="title">
+    <b>spec=</b>( str )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000850&name=addr=">addr=</a>
+  <a href="index.html?a=M000851&name=address=">address=</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000849_source')" id="l_M000849_source">show source</a> ]</p>
+  <div id="M000849_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/obsolete.rb, line 90</span>
+90:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">spec=</span>( <span class="ruby-identifier">str</span> )
+91:       <span class="ruby-ivar">@local</span>, <span class="ruby-ivar">@domain</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/@/</span>,<span class="ruby-value">2</span>).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\./</span>) }
+92:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

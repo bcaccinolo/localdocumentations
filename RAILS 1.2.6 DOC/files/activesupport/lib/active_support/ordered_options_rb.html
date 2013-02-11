@@ -1,0 +1,64 @@
+  <div id="fileHeader">
+    <h1>ordered_options.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>activesupport/lib/active_support/ordered_options.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Thu Aug 24 23:01:02 -0700 2006</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre># OrderedHash is namespaced to prevent conflicts with other implementations
+module ActiveSupport
+  class OrderedHash &lt; Array #:nodoc:
+    def []=(key, value)
+      if pair = assoc(key)
+        pair.pop
+        pair &lt;&lt; value
+      else
+        self &lt;&lt; [key, value]
+      end
+    end
+
+    def [](key)
+      pair = assoc(key)
+      pair ? pair.last : nil
+    end
+
+    def keys
+      collect { |key, value| key }
+    end
+
+    def values
+      collect { |key, value| value }
+    end
+  end
+end
+
+class OrderedOptions &lt; ActiveSupport::OrderedHash #:nodoc:
+  def []=(key, value)
+    super(key.to_sym, value)
+  end
+
+  def [](key)
+    super(key.to_sym)
+  end
+
+  def method_missing(name, *args)
+    if name.to_s =~ /(.*)=$/
+      self[$1.to_sym] = args.first
+    else
+      self[name]
+    end
+  end
+end
+</pre>
+    </div>

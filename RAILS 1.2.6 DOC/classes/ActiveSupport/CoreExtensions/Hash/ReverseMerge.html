@@ -1,0 +1,93 @@
+  <div id="C00000292">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />ReverseMerge<br/>
+  In:
+<a href="#" onclick="jsHref('files/activesupport/lib/active_support/core_ext/hash/reverse_merge_rb.html');">activesupport/lib/active_support/core_ext/hash/reverse_merge.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+Allows for reverse merging where its the keys in the calling hash that wins
+over those in the <tt>other_hash</tt>. This is particularly useful for
+initializing an incoming option hash with default values:
+</p>
+<pre>
+  def setup(options = {})
+    options.reverse_merge! :size =&gt; 25, :velocity =&gt; 10
+  end
+</pre>
+<p>
+The default :size and :velocity is only set if the <tt>options</tt> passed
+in doesn&#8217;t already have those keys set.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000985&name=reverse_merge" >reverse_merge</a></li>
+  <li><a href="index.html?a=M000986&name=reverse_merge!" >reverse_merge!</a></li>
+  <li><a href="index.html?a=M000987&name=reverse_update" >reverse_update</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000985" class="method">
+  <div id="M000985_title" class="title">
+    <b>reverse_merge</b>(other_hash)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000987&name=reverse_update">reverse_update</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000985_source')" id="l_M000985_source">show source</a> ]</p>
+  <div id="M000985_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/reverse_merge.rb, line 13</span>
+13:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse_merge</span>(<span class="ruby-identifier">other_hash</span>)
+14:           <span class="ruby-identifier">other_hash</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-keyword kw">self</span>)
+15:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000986" class="method">
+  <div id="M000986_title" class="title">
+    <b>reverse_merge!</b>(other_hash)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000986_source')" id="l_M000986_source">show source</a> ]</p>
+  <div id="M000986_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/reverse_merge.rb, line 17</span>
+17:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse_merge!</span>(<span class="ruby-identifier">other_hash</span>)
+18:           <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-identifier">other_hash</span>))
+19:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000987" class="method">
+  <div id="M000987_title" class="title">
+    <b>reverse_update</b>(other_hash)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000985&name=reverse_merge">reverse_merge</a>
+</p>
+  </div>
+</div>
+</div>
+
+  </div>

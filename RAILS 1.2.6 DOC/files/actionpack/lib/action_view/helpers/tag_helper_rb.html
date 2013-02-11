@@ -1,0 +1,123 @@
+  <div id="fileHeader">
+    <h1>tag_helper.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionpack/lib/action_view/helpers/tag_helper.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Jan 05 12:32:52 -0800 2007</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>require 'cgi'
+require 'erb'
+
+module ActionView
+  module Helpers #:nodoc:
+    # Use these methods to generate HTML tags programmatically when you can't use
+    # a Builder. By default, they output XHTML compliant tags.
+    module TagHelper
+      include ERB::Util
+
+      # Returns an empty HTML tag of type +name+ which by default is XHTML 
+      # compliant. Setting +open+ to true will create an open tag compatible 
+      # with HTML 4.0 and below. Add HTML attributes by passing an attributes 
+      # hash to +options+. For attributes with no value like (disabled and 
+      # readonly), give it a value of true in the +options+ hash. You can use
+      # symbols or strings for the attribute names.
+      #
+      #   tag(&quot;br&quot;)
+      #    # =&gt; &lt;br /&gt;
+      #   tag(&quot;br&quot;, nil, true)
+      #    # =&gt; &lt;br&gt;
+      #   tag(&quot;input&quot;, { :type =&gt; 'text', :disabled =&gt; true }) 
+      #    # =&gt; &lt;input type=&quot;text&quot; disabled=&quot;disabled&quot; /&gt;
+      def tag(name, options = nil, open = false)
+        &quot;&lt;#{name}#{tag_options(options) if options}&quot; + (open ? &quot;&gt;&quot; : &quot; /&gt;&quot;)
+      end
+
+      # Returns an HTML block tag of type +name+ surrounding the +content+. Add
+      # HTML attributes by passing an attributes hash to +options+. For attributes 
+      # with no value like (disabled and readonly), give it a value of true in 
+      # the +options+ hash. You can use symbols or strings for the attribute names.
+      #
+      #   content_tag(:p, &quot;Hello world!&quot;)
+      #    # =&gt; &lt;p&gt;Hello world!&lt;/p&gt;
+      #   content_tag(:div, content_tag(:p, &quot;Hello world!&quot;), :class =&gt; &quot;strong&quot;)
+      #    # =&gt; &lt;div class=&quot;strong&quot;&gt;&lt;p&gt;Hello world!&lt;/p&gt;&lt;/div&gt;
+      #   content_tag(&quot;select&quot;, options, :multiple =&gt; true)
+      #    # =&gt; &lt;select multiple=&quot;multiple&quot;&gt;...options...&lt;/select&gt;
+      #
+      # Instead of passing the content as an argument, you can also use a block
+      # in which case, you pass your +options+ as the second parameter.
+      #
+      #   &lt;% content_tag :div, :class =&gt; &quot;strong&quot; do -%&gt;
+      #     Hello world!
+      #   &lt;% end -%&gt;
+      #    # =&gt; &lt;div class=&quot;strong&quot;&gt;&lt;p&gt;Hello world!&lt;/p&gt;&lt;/div&gt;
+      def content_tag(name, content_or_options_with_block = nil, options = nil, &amp;block)
+        if block_given?
+          options = content_or_options_with_block if content_or_options_with_block.is_a?(Hash)
+          content = capture(&amp;block)
+          concat(content_tag_string(name, content, options), block.binding)
+        else
+          content = content_or_options_with_block
+          content_tag_string(name, content, options)
+        end
+      end
+
+      # Returns a CDATA section with the given +content+.  CDATA sections
+      # are used to escape blocks of text containing characters which would
+      # otherwise be recognized as markup. CDATA sections begin with the string
+      # &lt;tt&gt;&lt;![CDATA[&lt;/tt&gt; and end with (and may not contain) the string &lt;tt&gt;]]&gt;&lt;/tt&gt;.
+      #
+      #   cdata_section(&quot;&lt;hello world&gt;&quot;)
+      #    # =&gt; &lt;![CDATA[&lt;hello world&gt;]]&gt;
+      def cdata_section(content)
+        &quot;&lt;![CDATA[#{content}]]&gt;&quot;
+      end
+
+      # Returns the escaped +html+ without affecting existing escaped entities.
+      #
+      #   escape_once(&quot;1 &gt; 2 &amp;amp; 3&quot;)
+      #    # =&gt; &quot;1 &amp;lt; 2 &amp;amp; 3&quot;
+      def escape_once(html)
+        fix_double_escape(html_escape(html.to_s))
+      end
+
+      private
+        def content_tag_string(name, content, options)
+          tag_options = options ? tag_options(options) : &quot;&quot;
+          &quot;&lt;#{name}#{tag_options}&gt;#{content}&lt;/#{name}&gt;&quot;
+        end
+      
+        def tag_options(options)
+          cleaned_options = convert_booleans(options.stringify_keys.reject {|key, value| value.nil?})
+          ' ' + cleaned_options.map {|key, value| %(#{key}=&quot;#{escape_once(value)}&quot;)}.sort * ' ' unless cleaned_options.empty?
+        end
+
+        def convert_booleans(options)
+          %w( disabled readonly multiple ).each { |a| boolean_attribute(options, a) }
+          options
+        end
+
+        def boolean_attribute(options, attribute)
+          options[attribute] ? options[attribute] = attribute : options.delete(attribute)
+        end
+        
+        # Fix double-escaped entities, such as &amp;amp;amp;, &amp;amp;#123;, etc.
+        def fix_double_escape(escaped)
+          escaped.gsub(/&amp;amp;([a-z]+|(#\d+));/i) { &quot;&amp;#{$1};&quot; }
+        end
+    end
+  end
+end
+</pre>
+    </div>

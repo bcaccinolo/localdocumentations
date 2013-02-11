@@ -1,0 +1,222 @@
+  <div id="fileHeader">
+    <h1>invocation.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionwebservice/lib/action_web_service/invocation.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sat Apr 29 13:20:22 -0700 2006</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module ActionWebService # :nodoc:
+  module Invocation # :nodoc:
+    class InvocationError &lt; ActionWebService::ActionWebServiceError # :nodoc:
+    end
+
+    def self.included(base) # :nodoc:
+      base.extend(ClassMethods)
+      base.send(:include, ActionWebService::Invocation::InstanceMethods)
+    end
+
+    # Invocation interceptors provide a means to execute custom code before
+    # and after method invocations on ActionWebService::Base objects.
+    #
+    # When running in _Direct_ dispatching mode, ActionController filters
+    # should be used for this functionality instead.
+    #
+    # The semantics of invocation interceptors are the same as ActionController
+    # filters, and accept the same parameters and options.
+    #
+    # A _before_ interceptor can also cancel execution by returning +false+,
+    # or returning a &lt;tt&gt;[false, &quot;cancel reason&quot;]&lt;/tt&gt; array if it wishes to supply
+    # a reason for canceling the request.
+    #
+    # === Example
+    #
+    #   class CustomService &lt; ActionWebService::Base
+    #     before_invocation :intercept_add, :only =&gt; [:add]
+    #
+    #     def add(a, b)
+    #       a + b
+    #     end
+    #
+    #     private
+    #       def intercept_add
+    #         return [false, &quot;permission denied&quot;] # cancel it
+    #       end
+    #   end
+    #
+    # Options:
+    # [&lt;tt&gt;:except&lt;/tt&gt;]  A list of methods for which the interceptor will NOT be called
+    # [&lt;tt&gt;:only&lt;/tt&gt;]    A list of methods for which the interceptor WILL be called
+    module ClassMethods
+      # Appends the given +interceptors+ to be called
+      # _before_ method invocation.
+      def append_before_invocation(*interceptors, &amp;block)
+        conditions = extract_conditions!(interceptors)
+        interceptors &lt;&lt; block if block_given?
+        add_interception_conditions(interceptors, conditions)
+        append_interceptors_to_chain(&quot;before&quot;, interceptors)
+      end
+
+      # Prepends the given +interceptors+ to be called
+      # _before_ method invocation.
+      def prepend_before_invocation(*interceptors, &amp;block)
+        conditions = extract_conditions!(interceptors)
+        interceptors &lt;&lt; block if block_given?
+        add_interception_conditions(interceptors, conditions)
+        prepend_interceptors_to_chain(&quot;before&quot;, interceptors)
+      end
+
+      alias :before_invocation :append_before_invocation
+
+      # Appends the given +interceptors+ to be called
+      # _after_ method invocation.
+      def append_after_invocation(*interceptors, &amp;block)
+        conditions = extract_conditions!(interceptors)
+        interceptors &lt;&lt; block if block_given?
+        add_interception_conditions(interceptors, conditions)
+        append_interceptors_to_chain(&quot;after&quot;, interceptors)
+      end
+
+      # Prepends the given +interceptors+ to be called
+      # _after_ method invocation.
+      def prepend_after_invocation(*interceptors, &amp;block)
+        conditions = extract_conditions!(interceptors)
+        interceptors &lt;&lt; block if block_given?
+        add_interception_conditions(interceptors, conditions)
+        prepend_interceptors_to_chain(&quot;after&quot;, interceptors)
+      end
+
+      alias :after_invocation :append_after_invocation
+
+      def before_invocation_interceptors # :nodoc:
+        read_inheritable_attribute(&quot;before_invocation_interceptors&quot;)
+      end
+
+      def after_invocation_interceptors # :nodoc:
+        read_inheritable_attribute(&quot;after_invocation_interceptors&quot;)
+      end
+
+      def included_intercepted_methods # :nodoc:
+        read_inheritable_attribute(&quot;included_intercepted_methods&quot;) || {}
+      end
+      
+      def excluded_intercepted_methods # :nodoc:
+        read_inheritable_attribute(&quot;excluded_intercepted_methods&quot;) || {}
+      end
+
+      private
+        def append_interceptors_to_chain(condition, interceptors)
+          write_inheritable_array(&quot;#{condition}_invocation_interceptors&quot;, interceptors)
+        end
+
+        def prepend_interceptors_to_chain(condition, interceptors)
+          interceptors = interceptors + read_inheritable_attribute(&quot;#{condition}_invocation_interceptors&quot;)
+          write_inheritable_attribute(&quot;#{condition}_invocation_interceptors&quot;, interceptors)
+        end
+
+        def extract_conditions!(interceptors)
+          return nil unless interceptors.last.is_a? Hash
+          interceptors.pop
+        end
+
+        def add_interception_conditions(interceptors, conditions)
+          return unless conditions
+          included, excluded = conditions[:only], conditions[:except]
+          write_inheritable_hash(&quot;included_intercepted_methods&quot;, condition_hash(interceptors, included)) &amp;&amp; return if included
+          write_inheritable_hash(&quot;excluded_intercepted_methods&quot;, condition_hash(interceptors, excluded)) if excluded
+        end
+
+        def condition_hash(interceptors, *methods)
+          interceptors.inject({}) {|hash, interceptor| hash.merge(interceptor =&gt; methods.flatten.map {|method| method.to_s})}
+        end
+    end
+
+    module InstanceMethods # :nodoc:
+      def self.included(base)
+        base.class_eval do
+          alias_method_chain :perform_invocation, :interception
+        end
+      end
+
+      def perform_invocation_with_interception(method_name, params, &amp;block)
+        return if before_invocation(method_name, params, &amp;block) == false
+        return_value = perform_invocation_without_interception(method_name, params)
+        after_invocation(method_name, params, return_value)
+        return_value
+      end
+
+      def perform_invocation(method_name, params)
+        send(method_name, *params)
+      end
+
+      def before_invocation(name, args, &amp;block)
+        call_interceptors(self.class.before_invocation_interceptors, [name, args], &amp;block)
+      end
+
+      def after_invocation(name, args, result)
+        call_interceptors(self.class.after_invocation_interceptors, [name, args, result])
+      end
+
+      private
+
+        def call_interceptors(interceptors, interceptor_args, &amp;block)
+          if interceptors and not interceptors.empty?
+            interceptors.each do |interceptor|
+              next if method_exempted?(interceptor, interceptor_args[0].to_s)
+              result = case
+                when interceptor.is_a?(Symbol)
+                  self.send(interceptor, *interceptor_args)
+                when interceptor_block?(interceptor)
+                  interceptor.call(self, *interceptor_args)
+                when interceptor_class?(interceptor)
+                  interceptor.intercept(self, *interceptor_args)
+                else
+                  raise(
+                    InvocationError,
+                    &quot;Interceptors need to be either a symbol, proc/method, or a class implementing a static intercept method&quot;
+                  )
+              end
+              reason = nil
+              if result.is_a?(Array)
+                reason = result[1] if result[1]
+                result = result[0]
+              end
+              if result == false
+                block.call(reason) if block &amp;&amp; reason
+                return false
+              end
+            end
+          end
+        end
+
+        def interceptor_block?(interceptor)
+          interceptor.respond_to?(&quot;call&quot;) &amp;&amp; (interceptor.arity == 3 || interceptor.arity == -1)
+        end
+        
+        def interceptor_class?(interceptor)
+          interceptor.respond_to?(&quot;intercept&quot;)
+        end
+
+        def method_exempted?(interceptor, method_name)
+          case
+            when self.class.included_intercepted_methods[interceptor]
+              !self.class.included_intercepted_methods[interceptor].include?(method_name)
+            when self.class.excluded_intercepted_methods[interceptor] 
+              self.class.excluded_intercepted_methods[interceptor].include?(method_name)
+          end
+        end
+    end
+  end
+end
+</pre>
+    </div>

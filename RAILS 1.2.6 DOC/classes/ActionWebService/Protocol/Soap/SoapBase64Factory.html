@@ -1,0 +1,70 @@
+  <div id="C00000502">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />SoapBase64Factory<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler_rb.html');">actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb</a>
+
+Parent:&nbsp;
+SOAP::Mapping::Factory
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001586&name=obj2soap" >obj2soap</a></li>
+  <li><a href="index.html?a=M001587&name=soap2obj" >soap2obj</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001586" class="method">
+  <div id="M001586_title" class="title">
+    <b>obj2soap</b>(soap_class, obj, info, map)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001586_source')" id="l_M001586_source">show source</a> ]</p>
+  <div id="M001586_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 224</span>
+224:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">obj2soap</span>(<span class="ruby-identifier">soap_class</span>, <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">info</span>, <span class="ruby-identifier">map</span>)
+225:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ActionWebService</span><span class="ruby-operator">::</span><span class="ruby-constant">Base64</span>)
+226:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+227:           <span class="ruby-keyword kw">end</span>
+228:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">soap_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">obj</span>)
+229:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001587" class="method">
+  <div id="M001587_title" class="title">
+    <b>soap2obj</b>(obj_class, node, info, map)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001587_source')" id="l_M001587_source">show source</a> ]</p>
+  <div id="M001587_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 231</span>
+231:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">soap2obj</span>(<span class="ruby-identifier">obj_class</span>, <span class="ruby-identifier">node</span>, <span class="ruby-identifier">info</span>, <span class="ruby-identifier">map</span>)
+232:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">SOAP</span><span class="ruby-operator">::</span><span class="ruby-constant">SOAPBase64</span><span class="ruby-operator">::</span><span class="ruby-constant">Type</span>
+233:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+234:           <span class="ruby-keyword kw">end</span>
+235:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">obj_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">string</span>)
+236:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

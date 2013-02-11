@@ -1,0 +1,347 @@
+  <div id="C00000237">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />StringPort<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/port_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/port.rb</a>
+
+Parent:&nbsp;
+        <a href="#" onclick="jsHref('classes/TMail/Port.html');">
+Port
+         </a>
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+<a href="index.html?a=C00000237&name=StringPort">StringPort</a>
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000780&name===" >==</a></li>
+  <li><a href="index.html?a=M000787&name=aopen" >aopen</a></li>
+  <li><a href="index.html?a=M000790&name=copy_to" >copy_to</a></li>
+  <li><a href="index.html?a=M000791&name=cp" >cp</a></li>
+  <li><a href="index.html?a=M000781&name=eql?" >eql?</a></li>
+  <li><a href="index.html?a=M000782&name=hash" >hash</a></li>
+  <li><a href="index.html?a=M000783&name=inspect" >inspect</a></li>
+  <li><a href="index.html?a=M000792&name=move_to" >move_to</a></li>
+  <li><a href="index.html?a=M000775&name=new" >new</a></li>
+  <li><a href="index.html?a=M000778&name=read_all" >read_all</a></li>
+  <li><a href="index.html?a=M000788&name=remove" >remove</a></li>
+  <li><a href="index.html?a=M000784&name=reproducible?" >reproducible?</a></li>
+  <li><a href="index.html?a=M000789&name=rm" >rm</a></li>
+  <li><a href="index.html?a=M000785&name=ropen" >ropen</a></li>
+  <li><a href="index.html?a=M000779&name=size" >size</a></li>
+  <li><a href="index.html?a=M000776&name=string" >string</a></li>
+  <li><a href="index.html?a=M000777&name=to_s" >to_s</a></li>
+  <li><a href="index.html?a=M000786&name=wopen" >wopen</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M000775" class="method">
+  <div id="M000775_title" class="title">
+    <b>new</b>( str = '' )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000775_source')" id="l_M000775_source">show source</a> ]</p>
+  <div id="M000775_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 299</span>
+299:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">str</span> = <span class="ruby-value str">''</span> )
+300:       <span class="ruby-ivar">@buffer</span> = <span class="ruby-identifier">str</span>
+301:       <span class="ruby-keyword kw">super</span>()
+302:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000780" class="method">
+  <div id="M000780_title" class="title">
+    <b>==</b>( other )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000781&name=eql?">eql?</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000780_source')" id="l_M000780_source">show source</a> ]</p>
+  <div id="M000780_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 318</span>
+318:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>( <span class="ruby-identifier">other</span> )
+319:       <span class="ruby-constant">StringPort</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">other</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">equal?</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">string</span>
+320:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000787" class="method">
+  <div id="M000787_title" class="title">
+    <b>aopen</b>( &amp;block )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000787_source')" id="l_M000787_source">show source</a> ]</p>
+  <div id="M000787_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 346</span>
+346:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">aopen</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
+347:       <span class="ruby-ivar">@buffer</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">''</span>
+348:       <span class="ruby-constant">StringOutput</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@buffer</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+349:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000790" class="method">
+  <div id="M000790_title" class="title">
+    <b>copy_to</b>( port )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000791&name=cp">cp</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000790_source')" id="l_M000790_source">show source</a> ]</p>
+  <div id="M000790_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 357</span>
+357:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">copy_to</span>( <span class="ruby-identifier">port</span> )
+358:       <span class="ruby-identifier">port</span>.<span class="ruby-identifier">wopen</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+359:           <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span> <span class="ruby-ivar">@buffer</span>
+360:       }
+361:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000791" class="method">
+  <div id="M000791_title" class="title">
+    <b>cp</b>( port )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000790&name=copy_to">copy_to</a>
+</p>
+  </div>
+</div>
+<div id="M000781" class="method">
+  <div id="M000781_title" class="title">
+    <b>eql?</b>( other )
+  </div>
+  <div class="description">
+  <p>
+Alias for #==
+</p>
+  </div>
+</div>
+<div id="M000782" class="method">
+  <div id="M000782_title" class="title">
+    <b>hash</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000782_source')" id="l_M000782_source">show source</a> ]</p>
+  <div id="M000782_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 324</span>
+324:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hash</span>
+325:       <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">object_id</span>.<span class="ruby-identifier">hash</span>
+326:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000783" class="method">
+  <div id="M000783_title" class="title">
+    <b>inspect</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000783_source')" id="l_M000783_source">show source</a> ]</p>
+  <div id="M000783_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 328</span>
+328:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+329:       <span class="ruby-node">&quot;#&lt;#{self.class}:id=#{sprintf '0x%x', @buffer.object_id}&gt;&quot;</span>
+330:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000792" class="method">
+  <div id="M000792_title" class="title">
+    <b>move_to</b>( port )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000792_source')" id="l_M000792_source">show source</a> ]</p>
+  <div id="M000792_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 365</span>
+365:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">move_to</span>( <span class="ruby-identifier">port</span> )
+366:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">StringPort</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">port</span>
+367:         <span class="ruby-identifier">str</span> = <span class="ruby-ivar">@buffer</span>
+368:         <span class="ruby-identifier">port</span>.<span class="ruby-identifier">instance_eval</span> { <span class="ruby-ivar">@buffer</span> = <span class="ruby-identifier">str</span> }
+369:       <span class="ruby-keyword kw">else</span>
+370:         <span class="ruby-identifier">copy_to</span> <span class="ruby-identifier">port</span>
+371:       <span class="ruby-keyword kw">end</span>
+372:       <span class="ruby-identifier">remove</span>
+373:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000778" class="method">
+  <div id="M000778_title" class="title">
+    <b>read_all</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000777&name=to_s">to_s</a>
+</p>
+  </div>
+</div>
+<div id="M000788" class="method">
+  <div id="M000788_title" class="title">
+    <b>remove</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000789&name=rm">rm</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000788_source')" id="l_M000788_source">show source</a> ]</p>
+  <div id="M000788_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 351</span>
+351:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove</span>
+352:       <span class="ruby-ivar">@buffer</span> = <span class="ruby-keyword kw">nil</span>
+353:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000784" class="method">
+  <div id="M000784_title" class="title">
+    <b>reproducible?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000784_source')" id="l_M000784_source">show source</a> ]</p>
+  <div id="M000784_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 332</span>
+332:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reproducible?</span>
+333:       <span class="ruby-keyword kw">true</span>
+334:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000789" class="method">
+  <div id="M000789_title" class="title">
+    <b>rm</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000788&name=remove">remove</a>
+</p>
+  </div>
+</div>
+<div id="M000785" class="method">
+  <div id="M000785_title" class="title">
+    <b>ropen</b>( &amp;block )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000785_source')" id="l_M000785_source">show source</a> ]</p>
+  <div id="M000785_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 336</span>
+336:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ropen</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
+337:       <span class="ruby-ivar">@buffer</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>, <span class="ruby-node">&quot;#{inspect} is already removed&quot;</span>
+338:       <span class="ruby-constant">StringInput</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@buffer</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+339:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000779" class="method">
+  <div id="M000779_title" class="title">
+    <b>size</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000779_source')" id="l_M000779_source">show source</a> ]</p>
+  <div id="M000779_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 314</span>
+314:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
+315:       <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">size</span>
+316:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000776" class="method">
+  <div id="M000776_title" class="title">
+    <b>string</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000776_source')" id="l_M000776_source">show source</a> ]</p>
+  <div id="M000776_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 304</span>
+304:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">string</span>
+305:       <span class="ruby-ivar">@buffer</span>
+306:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000777" class="method">
+  <div id="M000777_title" class="title">
+    <b>to_s</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000778&name=read_all">read_all</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000777_source')" id="l_M000777_source">show source</a> ]</p>
+  <div id="M000777_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 308</span>
+308:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+309:       <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">dup</span>
+310:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000786" class="method">
+  <div id="M000786_title" class="title">
+    <b>wopen</b>( &amp;block )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000786_source')" id="l_M000786_source">show source</a> ]</p>
+  <div id="M000786_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/port.rb, line 341</span>
+341:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wopen</span>( <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> )
+342:       <span class="ruby-ivar">@buffer</span> = <span class="ruby-value str">''</span>
+343:       <span class="ruby-constant">StringOutput</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@buffer</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+344:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

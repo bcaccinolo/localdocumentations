@@ -1,0 +1,56 @@
+  <div id="fileHeader">
+    <h1>deprecated_helper.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionpack/lib/action_view/helpers/deprecated_helper.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Mar 27 07:04:38 -0700 2007</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module ActionView
+  module Helpers
+    module PrototypeHelper
+
+      # Method to execute an element update using Prototype.
+      # DEPRECATION WARNING: This helper has been depercated; use RJS instead.
+      # See ActionView::Helpers::PrototypeHelper::JavaScriptGenerator::GeneratorMethods for more information.
+      def update_element_function(element_id, options = {}, &amp;block)
+        content = escape_javascript(options[:content] || '')
+        content = escape_javascript(capture(&amp;block)) if block
+        
+        javascript_function = case (options[:action] || :update)
+          when :update
+            if options[:position]
+              &quot;new Insertion.#{options[:position].to_s.camelize}('#{element_id}','#{content}')&quot;
+            else
+              &quot;$('#{element_id}').innerHTML = '#{content}'&quot;
+            end
+          
+          when :empty
+            &quot;$('#{element_id}').innerHTML = ''&quot;
+          
+          when :remove
+            &quot;Element.remove('#{element_id}')&quot;
+          
+          else
+            raise ArgumentError, &quot;Invalid action, choose one of :update, :remove, :empty&quot;
+        end
+        
+        javascript_function &lt;&lt; &quot;;\n&quot;
+        options[:binding] ? concat(javascript_function, options[:binding]) : javascript_function
+      end
+      deprecate :update_element_function =&gt; &quot;use RJS instead&quot;
+      
+    end
+  end
+end</pre>
+    </div>

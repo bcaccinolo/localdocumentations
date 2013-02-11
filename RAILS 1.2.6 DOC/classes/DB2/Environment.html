@@ -1,0 +1,90 @@
+  <div id="C00000613">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />Environment<br/>
+  In:
+<a href="#" onclick="jsHref('files/activerecord/lib/active_record/vendor/db2_rb.html');">activerecord/lib/active_record/vendor/db2.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001840&name=data_sources" >data_sources</a></li>
+  <li><a href="index.html?a=M001839&name=new" >new</a></li>
+  </ul>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li><a href="#" onclick="jsHref('classes/DB2/DB2Util.html');">DB2Util</a></li>
+</ul>
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M001839" class="method">
+  <div id="M001839_title" class="title">
+    <b>new</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001839_source')" id="l_M001839_source">show source</a> ]</p>
+  <div id="M001839_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/db2.rb, line 28</span>
+28:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+29:       <span class="ruby-ivar">@handle_type</span> = <span class="ruby-constant">SQL_HANDLE_ENV</span>
+30:       <span class="ruby-identifier">rc</span>, <span class="ruby-ivar">@handle</span> = <span class="ruby-constant">SQLAllocHandle</span>(<span class="ruby-ivar">@handle_type</span>, <span class="ruby-constant">SQL_NULL_HANDLE</span>)
+31:       <span class="ruby-identifier">check_rc</span>(<span class="ruby-identifier">rc</span>)
+32:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001840" class="method">
+  <div id="M001840_title" class="title">
+    <b>data_sources</b>(buffer_length = 1024)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001840_source')" id="l_M001840_source">show source</a> ]</p>
+  <div id="M001840_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/db2.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_sources</span>(<span class="ruby-identifier">buffer_length</span> = <span class="ruby-value">1024</span>)
+35:       <span class="ruby-identifier">retval</span> = []
+36:       <span class="ruby-identifier">max_buffer_length</span> = <span class="ruby-identifier">buffer_length</span>
+37: 
+38:       <span class="ruby-identifier">a</span> = <span class="ruby-constant">SQLDataSources</span>(<span class="ruby-ivar">@handle</span>, <span class="ruby-constant">SQL_FETCH_FIRST</span>, <span class="ruby-constant">SQL_MAX_DSN_LENGTH</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">buffer_length</span>)
+39:       <span class="ruby-identifier">retval</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">a</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">a</span>[<span class="ruby-value">3</span>]]
+40:       <span class="ruby-identifier">max_buffer_length</span> = [<span class="ruby-identifier">max_buffer_length</span>, <span class="ruby-identifier">a</span>[<span class="ruby-value">4</span>]].<span class="ruby-identifier">max</span>
+41: 
+42:       <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+43:         <span class="ruby-identifier">a</span> = <span class="ruby-constant">SQLDataSources</span>(<span class="ruby-ivar">@handle</span>, <span class="ruby-constant">SQL_FETCH_NEXT</span>, <span class="ruby-constant">SQL_MAX_DSN_LENGTH</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">buffer_length</span>)
+44:         <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">SQL_NO_DATA_FOUND</span>
+45: 
+46:         <span class="ruby-identifier">retval</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">a</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">a</span>[<span class="ruby-value">3</span>]]
+47:         <span class="ruby-identifier">max_buffer_length</span> = [<span class="ruby-identifier">max_buffer_length</span>, <span class="ruby-identifier">a</span>[<span class="ruby-value">4</span>]].<span class="ruby-identifier">max</span>
+48:       <span class="ruby-keyword kw">end</span>
+49: 
+50:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">max_buffer_length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">buffer_length</span>
+51:         <span class="ruby-identifier">get_data_sources</span>(<span class="ruby-identifier">max_buffer_length</span>)
+52:       <span class="ruby-keyword kw">else</span>
+53:         <span class="ruby-identifier">retval</span>
+54:       <span class="ruby-keyword kw">end</span>
+55:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

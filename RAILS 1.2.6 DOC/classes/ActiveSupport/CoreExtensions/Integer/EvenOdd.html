@@ -1,0 +1,97 @@
+  <div id="C00000285">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />EvenOdd<br/>
+  In:
+<a href="#" onclick="jsHref('files/activesupport/lib/active_support/core_ext/integer/even_odd_rb.html');">activesupport/lib/active_support/core_ext/integer/even_odd.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+For checking if a fixnum is even or odd.
+</p>
+<ul>
+<li>1.even? # =&gt; false
+
+</li>
+<li>1.odd? # =&gt; true
+
+</li>
+<li>2.even? # =&gt; true
+
+</li>
+<li>2.odd? # =&gt; false
+
+</li>
+</ul>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000945&name=even?" >even?</a></li>
+  <li><a href="index.html?a=M000944&name=multiple_of?" >multiple_of?</a></li>
+  <li><a href="index.html?a=M000946&name=odd?" >odd?</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000945" class="method">
+  <div id="M000945_title" class="title">
+    <b>even?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000945_source')" id="l_M000945_source">show source</a> ]</p>
+  <div id="M000945_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/integer/even_odd.rb, line 14</span>
+14:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">even?</span>
+15:           <span class="ruby-identifier">multiple_of?</span> <span class="ruby-value">2</span>
+16:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000944" class="method">
+  <div id="M000944_title" class="title">
+    <b>multiple_of?</b>(number)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000944_source')" id="l_M000944_source">show source</a> ]</p>
+  <div id="M000944_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/integer/even_odd.rb, line 10</span>
+10:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">multiple_of?</span>(<span class="ruby-identifier">number</span>)
+11:           <span class="ruby-keyword kw">self</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">number</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+12:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000946" class="method">
+  <div id="M000946_title" class="title">
+    <b>odd?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000946_source')" id="l_M000946_source">show source</a> ]</p>
+  <div id="M000946_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/integer/even_odd.rb, line 18</span>
+18:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">odd?</span>
+19:           <span class="ruby-operator">!</span><span class="ruby-identifier">even?</span>
+20:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

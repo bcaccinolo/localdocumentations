@@ -1,0 +1,188 @@
+  <div id="C00000096">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />Rescue<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionpack/lib/action_controller/rescue_rb.html');">actionpack/lib/action_controller/rescue.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+Actions that fail to perform as expected throw exceptions. These exceptions
+can either be rescued for the public view (with a nice user-friendly
+explanation) or for the developers view (with tons of debugging
+information). The developers view is already implemented by the Action
+Controller, but the public view should be tailored to your specific
+application. So too could the decision on whether something is a public or
+a developer request.
+</p>
+<p>
+You can tailor the rescuing behavior and appearance by overwriting the
+following two stub methods.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000269&name=local_request?" >local_request?</a></li>
+  <li><a href="index.html?a=M000267&name=log_error" >log_error</a></li>
+  <li><a href="index.html?a=M000266&name=rescue_action" >rescue_action</a></li>
+  <li><a href="index.html?a=M000268&name=rescue_action_in_public" >rescue_action_in_public</a></li>
+  <li><a href="index.html?a=M000270&name=rescue_action_locally" >rescue_action_locally</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Protected Instance methods</div>
+<div id="M000269" class="method">
+  <div id="M000269_title" class="title">
+    <b>local_request?</b>(
+  </div>
+  <div class="description">
+  <p>
+Overwrite to expand the meaning of a local request in order to show local
+rescues on other occurrences than the remote IP being 127.0.0.1. For
+example, this could include the IP of the developer machine when debugging
+remotely.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000269_source')" id="l_M000269_source">show source</a> ]</p>
+  <div id="M000269_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionpack/lib/action_controller/rescue.rb, line 63</span>
+63:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">local_request?</span> <span class="ruby-comment cmt">#:doc:</span>
+64:         [<span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_addr</span>, <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>] <span class="ruby-operator">==</span> [<span class="ruby-value str">&quot;127.0.0.1&quot;</span>] <span class="ruby-operator">*</span> <span class="ruby-value">2</span>
+65:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000267" class="method">
+  <div id="M000267_title" class="title">
+    <b>log_error</b>(exception)
+  </div>
+  <div class="description">
+  <p>
+Overwrite to implement custom logging of errors. By default logs as fatal.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000267_source')" id="l_M000267_source">show source</a> ]</p>
+  <div id="M000267_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionpack/lib/action_controller/rescue.rb, line 36</span>
+36:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log_error</span>(<span class="ruby-identifier">exception</span>) <span class="ruby-comment cmt">#:doc:</span>
+37:         <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">silence</span> <span class="ruby-keyword kw">do</span>
+38:           <span class="ruby-keyword kw">if</span> <span class="ruby-constant">ActionView</span><span class="ruby-operator">::</span><span class="ruby-constant">TemplateError</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">exception</span>
+39:             <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">fatal</span>(<span class="ruby-identifier">exception</span>.<span class="ruby-identifier">to_s</span>)
+40:           <span class="ruby-keyword kw">else</span>
+41:             <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">fatal</span>(
+42:               <span class="ruby-node">&quot;\n\n#{exception.class} (#{exception.message}):\n    &quot;</span> <span class="ruby-operator">+</span>
+43:               <span class="ruby-identifier">clean_backtrace</span>(<span class="ruby-identifier">exception</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n    &quot;</span>) <span class="ruby-operator">+</span>
+44:               <span class="ruby-value str">&quot;\n\n&quot;</span>
+45:             )
+46:           <span class="ruby-keyword kw">end</span>
+47:         <span class="ruby-keyword kw">end</span>
+48:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000266" class="method">
+  <div id="M000266_title" class="title">
+    <b>rescue_action</b>(exception)
+  </div>
+  <div class="description">
+  <p>
+Exception handler called when the performance of an action raises an
+exception.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000266_source')" id="l_M000266_source">show source</a> ]</p>
+  <div id="M000266_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionpack/lib/action_controller/rescue.rb, line 24</span>
+24:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rescue_action</span>(<span class="ruby-identifier">exception</span>)
+25:         <span class="ruby-identifier">log_error</span>(<span class="ruby-identifier">exception</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">logger</span>
+26:         <span class="ruby-identifier">erase_results</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">performed?</span>
+27: 
+28:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">consider_all_requests_local</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">local_request?</span>
+29:           <span class="ruby-identifier">rescue_action_locally</span>(<span class="ruby-identifier">exception</span>)
+30:         <span class="ruby-keyword kw">else</span>
+31:           <span class="ruby-identifier">rescue_action_in_public</span>(<span class="ruby-identifier">exception</span>)
+32:         <span class="ruby-keyword kw">end</span>
+33:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000268" class="method">
+  <div id="M000268_title" class="title">
+    <b>rescue_action_in_public</b>(exception)
+  </div>
+  <div class="description">
+  <p>
+Overwrite to implement public exception handling (for requests answering
+false to <tt><a
+href="index.html?a=M000269&name=local_request?">local_request?</a></tt>).
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000268_source')" id="l_M000268_source">show source</a> ]</p>
+  <div id="M000268_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionpack/lib/action_controller/rescue.rb, line 51</span>
+51:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rescue_action_in_public</span>(<span class="ruby-identifier">exception</span>) <span class="ruby-comment cmt">#:doc:</span>
+52:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">exception</span>
+53:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">RoutingError</span>, <span class="ruby-constant">UnknownAction</span>
+54:             <span class="ruby-identifier">render_text</span>(<span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">RAILS_ROOT</span>, <span class="ruby-value str">'public'</span>, <span class="ruby-value str">'404.html'</span>)), <span class="ruby-value str">&quot;404 Not Found&quot;</span>)
+55:           <span class="ruby-keyword kw">else</span>
+56:             <span class="ruby-identifier">render_text</span>(<span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">RAILS_ROOT</span>, <span class="ruby-value str">'public'</span>, <span class="ruby-value str">'500.html'</span>)), <span class="ruby-value str">&quot;500 Internal Error&quot;</span>)
+57:         <span class="ruby-keyword kw">end</span>
+58:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000270" class="method">
+  <div id="M000270_title" class="title">
+    <b>rescue_action_locally</b>(exception)
+  </div>
+  <div class="description">
+  <p>
+Renders a detailed diagnostics screen on action exceptions.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000270_source')" id="l_M000270_source">show source</a> ]</p>
+  <div id="M000270_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionpack/lib/action_controller/rescue.rb, line 68</span>
+68:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rescue_action_locally</span>(<span class="ruby-identifier">exception</span>)
+69:         <span class="ruby-identifier">add_variables_to_assigns</span>
+70:         <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value str">&quot;@exception&quot;</span>, <span class="ruby-identifier">exception</span>)
+71:         <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value str">&quot;@rescues_path&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">rescues_path</span>(<span class="ruby-value str">&quot;stub&quot;</span>)))    
+72:         <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:assign_variables_from_controller</span>)
+73: 
+74:         <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value str">&quot;@contents&quot;</span>, <span class="ruby-ivar">@template</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-identifier">template_path_for_local_rescue</span>(<span class="ruby-identifier">exception</span>), <span class="ruby-keyword kw">false</span>))
+75:     
+76:         <span class="ruby-identifier">response</span>.<span class="ruby-identifier">content_type</span> = <span class="ruby-constant">Mime</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML</span>
+77:         <span class="ruby-identifier">render_file</span>(<span class="ruby-identifier">rescues_path</span>(<span class="ruby-value str">&quot;layout&quot;</span>), <span class="ruby-identifier">response_code_for_rescue</span>(<span class="ruby-identifier">exception</span>))
+78:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

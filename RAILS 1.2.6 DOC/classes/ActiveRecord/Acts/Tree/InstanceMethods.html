@@ -1,0 +1,129 @@
+  <div id="C00000382">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />InstanceMethods<br/>
+  In:
+<a href="#" onclick="jsHref('files/activerecord/lib/active_record/acts/tree_rb.html');">activerecord/lib/active_record/acts/tree.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001137&name=ancestors" >ancestors</a></li>
+  <li><a href="index.html?a=M001138&name=root" >root</a></li>
+  <li><a href="index.html?a=M001140&name=self_and_siblings" >self_and_siblings</a></li>
+  <li><a href="index.html?a=M001139&name=siblings" >siblings</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001137" class="method">
+  <div id="M001137_title" class="title">
+    <b>ancestors</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns list of ancestors, starting from parent until root.
+</p>
+<pre>
+  subchild1.ancestors # =&gt; [child1, root]
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001137_source')" id="l_M001137_source">show source</a> ]</p>
+  <div id="M001137_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/acts/tree.rb, line 68</span>
+68:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ancestors</span>
+69:           <span class="ruby-identifier">node</span>, <span class="ruby-identifier">nodes</span> = <span class="ruby-keyword kw">self</span>, []
+70:           <span class="ruby-identifier">nodes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">node</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span> <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span>
+71:           <span class="ruby-identifier">nodes</span>
+72:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001138" class="method">
+  <div id="M001138_title" class="title">
+    <b>root</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns the root node of the tree.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001138_source')" id="l_M001138_source">show source</a> ]</p>
+  <div id="M001138_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/acts/tree.rb, line 75</span>
+75:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">root</span>
+76:           <span class="ruby-identifier">node</span> = <span class="ruby-keyword kw">self</span>
+77:           <span class="ruby-identifier">node</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span> <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span>
+78:           <span class="ruby-identifier">node</span>
+79:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001140" class="method">
+  <div id="M001140_title" class="title">
+    <b>self_and_siblings</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns all siblings and a reference to the current node.
+</p>
+<pre>
+  subchild1.self_and_siblings # =&gt; [subchild1, subchild2]
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001140_source')" id="l_M001140_source">show source</a> ]</p>
+  <div id="M001140_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/acts/tree.rb, line 91</span>
+91:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">self_and_siblings</span>
+92:           <span class="ruby-identifier">parent</span> <span class="ruby-value">? </span><span class="ruby-identifier">parent</span>.<span class="ruby-identifier">children</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">roots</span>
+93:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001139" class="method">
+  <div id="M001139_title" class="title">
+    <b>siblings</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns all siblings of the current node.
+</p>
+<pre>
+  subchild1.siblings # =&gt; [subchild2]
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001139_source')" id="l_M001139_source">show source</a> ]</p>
+  <div id="M001139_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/acts/tree.rb, line 84</span>
+84:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">siblings</span>
+85:           <span class="ruby-identifier">self_and_siblings</span> <span class="ruby-operator">-</span> [<span class="ruby-keyword kw">self</span>]
+86:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

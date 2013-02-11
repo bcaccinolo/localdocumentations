@@ -1,0 +1,128 @@
+  <div id="fileHeader">
+    <h1>verification.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionpack/lib/action_controller/verification.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Mar 13 18:43:14 -0700 2007</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module ActionController #:nodoc:
+  module Verification #:nodoc:
+    def self.included(base) #:nodoc:
+      base.extend(ClassMethods)
+    end
+
+    # This module provides a class-level method for specifying that certain
+    # actions are guarded against being called without certain prerequisites
+    # being met. This is essentially a special kind of before_filter.
+    #
+    # An action may be guarded against being invoked without certain request
+    # parameters being set, or without certain session values existing.
+    #
+    # When a verification is violated, values may be inserted into the flash, and
+    # a specified redirection is triggered.
+    #
+    # Usage:
+    #
+    #   class GlobalController &lt; ActionController::Base
+    #     # Prevent the #update_settings action from being invoked unless
+    #     # the 'admin_privileges' request parameter exists. The
+    #     # settings action will be redirected to in current controller
+    #     # if verification fails.
+    #     verify :params =&gt; &quot;admin_privileges&quot;, :only =&gt; :update_post,
+    #            :redirect_to =&gt; { :action =&gt; &quot;settings&quot; }
+    #
+    #     # Disallow a post from being updated if there was no information
+    #     # submitted with the post, and if there is no active post in the
+    #     # session, and if there is no &quot;note&quot; key in the flash. The route
+    #     # named category_url will be redirected to if verification fails.
+    #
+    #     verify :params =&gt; &quot;post&quot;, :session =&gt; &quot;post&quot;, &quot;flash&quot; =&gt; &quot;note&quot;,
+    #            :only =&gt; :update_post,
+    #            :add_flash =&gt; { &quot;alert&quot; =&gt; &quot;Failed to create your message&quot; },
+    #            :redirect_to =&gt; :category_url
+    #
+    # Note that these prerequisites are not business rules. They do not examine 
+    # the content of the session or the parameters. That level of validation should
+    # be encapsulated by your domain model or helper methods in the controller.
+    module ClassMethods
+      # Verify the given actions so that if certain prerequisites are not met,
+      # the user is redirected to a different action. The +options+ parameter
+      # is a hash consisting of the following key/value pairs:
+      #
+      # * &lt;tt&gt;:params&lt;/tt&gt;: a single key or an array of keys that must
+      #   be in the &lt;tt&gt;params&lt;/tt&gt; hash in order for the action(s) to be safely
+      #   called.
+      # * &lt;tt&gt;:session&lt;/tt&gt;: a single key or an array of keys that must
+      #   be in the &lt;tt&gt;session&lt;/tt&gt; in order for the action(s) to be safely called.
+      # * &lt;tt&gt;:flash&lt;/tt&gt;: a single key or an array of keys that must
+      #   be in the flash in order for the action(s) to be safely called.
+      # * &lt;tt&gt;:method&lt;/tt&gt;: a single key or an array of keys--any one of which
+      #   must match the current request method in order for the action(s) to
+      #   be safely called. (The key should be a symbol: &lt;tt&gt;:get&lt;/tt&gt; or
+      #   &lt;tt&gt;:post&lt;/tt&gt;, for example.)
+      # * &lt;tt&gt;:xhr&lt;/tt&gt;: true/false option to ensure that the request is coming
+      #   from an Ajax call or not. 
+      # * &lt;tt&gt;:add_flash&lt;/tt&gt;: a hash of name/value pairs that should be merged
+      #   into the session's flash if the prerequisites cannot be satisfied.
+      # * &lt;tt&gt;:add_headers&lt;/tt&gt;: a hash of name/value pairs that should be
+      #   merged into the response's headers hash if the prerequisites cannot
+      #   be satisfied.
+      # * &lt;tt&gt;:redirect_to&lt;/tt&gt;: the redirection parameters to be used when
+      #   redirecting if the prerequisites cannot be satisfied. You can 
+      #   redirect either to named route or to the action in some controller.
+      # * &lt;tt&gt;:render&lt;/tt&gt;: the render parameters to be used when
+      #   the prerequisites cannot be satisfied.
+      # * &lt;tt&gt;:only&lt;/tt&gt;: only apply this verification to the actions specified
+      #   in the associated array (may also be a single value).
+      # * &lt;tt&gt;:except&lt;/tt&gt;: do not apply this verification to the actions
+      #   specified in the associated array (may also be a single value).
+      def verify(options={})
+        filter_opts = { :only =&gt; options[:only], :except =&gt; options[:except] }
+        before_filter(filter_opts) do |c|
+          c.send :verify_action, options
+        end
+      end
+    end
+
+    def verify_action(options) #:nodoc:
+      prereqs_invalid =
+        [*options[:params] ].find { |v| params[v].nil?  } ||
+        [*options[:session]].find { |v| session[v].nil? } ||
+        [*options[:flash]  ].find { |v| flash[v].nil?    }
+      
+      if !prereqs_invalid &amp;&amp; options[:method]
+        prereqs_invalid ||= 
+          [*options[:method]].all? { |v| request.method != v.to_sym }
+      end
+      
+      prereqs_invalid ||= (request.xhr? != options[:xhr]) unless options[:xhr].nil?
+      
+      if prereqs_invalid
+        flash.update(options[:add_flash]) if options[:add_flash]
+        response.headers.update(options[:add_headers]) if options[:add_headers]
+        unless performed?
+          render(options[:render]) if options[:render]
+          options[:redirect_to] = self.send(options[:redirect_to]) if options[:redirect_to].is_a? Symbol
+          redirect_to(options[:redirect_to]) if options[:redirect_to]
+        end
+        return false
+      end
+
+      true
+    end
+    private :verify_action
+  end
+end
+</pre>
+    </div>

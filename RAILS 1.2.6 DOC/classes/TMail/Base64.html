@@ -1,0 +1,162 @@
+  <div id="C00000209">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />Base64<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/base64_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/base64.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000489&name=decode" >decode</a></li>
+  <li><a href="index.html?a=M000486&name=decode" >decode</a></li>
+  <li><a href="index.html?a=M000488&name=encode" >encode</a></li>
+  <li><a href="index.html?a=M000485&name=encode" >encode</a></li>
+  <li><a href="index.html?a=M000484&name=folding_encode" >folding_encode</a></li>
+  <li><a href="index.html?a=M000487&name=folding_encode" >folding_encode</a></li>
+  <li><a href="index.html?a=M000483&name=rb_decode" >rb_decode</a></li>
+  <li><a href="index.html?a=M000482&name=rb_encode" >rb_encode</a></li>
+  <li><a href="index.html?a=M000481&name=rb_folding_encode" >rb_folding_encode</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000489" class="method">
+  <div id="M000489_title" class="title">
+    <b>decode</b>( str, strict = false )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000483&name=rb_decode">rb_decode</a>
+</p>
+  </div>
+</div>
+<div id="M000486" class="method">
+  <div id="M000486_title" class="title">
+    <b>decode</b>( str, strict = false )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000483&name=rb_decode">rb_decode</a>
+</p>
+  </div>
+</div>
+<div id="M000488" class="method">
+  <div id="M000488_title" class="title">
+    <b>encode</b>( str )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000482&name=rb_encode">rb_encode</a>
+</p>
+  </div>
+</div>
+<div id="M000485" class="method">
+  <div id="M000485_title" class="title">
+    <b>encode</b>( str )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000482&name=rb_encode">rb_encode</a>
+</p>
+  </div>
+</div>
+<div id="M000484" class="method">
+  <div id="M000484_title" class="title">
+    <b>folding_encode</b>( str, eol = &quot;\n&quot;, limit = 60 )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000481&name=rb_folding_encode">rb_folding_encode</a>
+</p>
+  </div>
+</div>
+<div id="M000487" class="method">
+  <div id="M000487_title" class="title">
+    <b>folding_encode</b>( str, eol = &quot;\n&quot;, limit = 60 )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000481&name=rb_folding_encode">rb_folding_encode</a>
+</p>
+  </div>
+</div>
+<div id="M000483" class="method">
+  <div id="M000483_title" class="title">
+    <b>rb_decode</b>( str, strict = false )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000486&name=decode">decode</a>
+  <a href="index.html?a=M000489&name=decode">decode</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000483_source')" id="l_M000483_source">show source</a> ]</p>
+  <div id="M000483_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/base64.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rb_decode</span>( <span class="ruby-identifier">str</span>, <span class="ruby-identifier">strict</span> = <span class="ruby-keyword kw">false</span> )
+45:       <span class="ruby-identifier">str</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'m'</span>)
+46:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000482" class="method">
+  <div id="M000482_title" class="title">
+    <b>rb_encode</b>( str )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000485&name=encode">encode</a>
+  <a href="index.html?a=M000488&name=encode">encode</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000482_source')" id="l_M000482_source">show source</a> ]</p>
+  <div id="M000482_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/base64.rb, line 40</span>
+40:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rb_encode</span>( <span class="ruby-identifier">str</span> )
+41:       [<span class="ruby-identifier">str</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'m'</span>).<span class="ruby-identifier">tr</span>( <span class="ruby-value str">&quot;\r\n&quot;</span>, <span class="ruby-value str">''</span> )
+42:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000481" class="method">
+  <div id="M000481_title" class="title">
+    <b>rb_folding_encode</b>( str, eol = &quot;\n&quot;, limit = 60 )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000484&name=folding_encode">folding_encode</a>
+  <a href="index.html?a=M000487&name=folding_encode">folding_encode</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000481_source')" id="l_M000481_source">show source</a> ]</p>
+  <div id="M000481_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/base64.rb, line 36</span>
+36:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rb_folding_encode</span>( <span class="ruby-identifier">str</span>, <span class="ruby-identifier">eol</span> = <span class="ruby-value str">&quot;\n&quot;</span>, <span class="ruby-identifier">limit</span> = <span class="ruby-value">60</span> )
+37:       [<span class="ruby-identifier">str</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'m'</span>)
+38:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

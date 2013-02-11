@@ -1,0 +1,85 @@
+  <div id="C00000220">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />MimeEncodeAuto<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/net_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/net.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000669&name=exec" >exec</a></li>
+  <li><a href="index.html?a=M000668&name=new" >new</a></li>
+  </ul>
+
+
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>multipart_composer</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>singlepart_composer</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M000668" class="method">
+  <div id="M000668_title" class="title">
+    <b>new</b>( s = nil, m = nil )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000668_source')" id="l_M000668_source">show source</a> ]</p>
+  <div id="M000668_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/net.rb, line 219</span>
+219:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">s</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">m</span> = <span class="ruby-keyword kw">nil</span> )
+220:       <span class="ruby-ivar">@singlepart_composer</span> = <span class="ruby-identifier">s</span> <span class="ruby-operator">||</span> <span class="ruby-constant">MimeEncodeSingle</span>.<span class="ruby-identifier">new</span>
+221:       <span class="ruby-ivar">@multipart_composer</span>  = <span class="ruby-identifier">m</span> <span class="ruby-operator">||</span> <span class="ruby-constant">MimeEncodeMulti</span>.<span class="ruby-identifier">new</span>
+222:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000669" class="method">
+  <div id="M000669_title" class="title">
+    <b>exec</b>( mail )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000669_source')" id="l_M000669_source">show source</a> ]</p>
+  <div id="M000669_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/net.rb, line 227</span>
+227:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec</span>( <span class="ruby-identifier">mail</span> )
+228:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">_builtin_multipart?</span>
+229:       <span class="ruby-keyword kw">then</span> <span class="ruby-ivar">@multipart_composer</span>
+230:       <span class="ruby-keyword kw">else</span> <span class="ruby-ivar">@singlepart_composer</span> <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">exec</span> <span class="ruby-identifier">mail</span>
+231:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

@@ -1,0 +1,91 @@
+  <div id="C00000239">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />MimeEncodeSingle<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/net_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/net.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000809&name=exec" >exec</a></li>
+  <li><a href="index.html?a=M000811&name=on_binary" >on_binary</a></li>
+  <li><a href="index.html?a=M000810&name=on_text" >on_text</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000809" class="method">
+  <div id="M000809_title" class="title">
+    <b>exec</b>( mail )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000809_source')" id="l_M000809_source">show source</a> ]</p>
+  <div id="M000809_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/net.rb, line 238</span>
+238:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec</span>( <span class="ruby-identifier">mail</span> )
+239:       <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">mime_version</span> = <span class="ruby-value str">'1.0'</span>
+240:       <span class="ruby-identifier">b</span> = <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">body</span>
+241:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">NKF</span>.<span class="ruby-identifier">guess</span>(<span class="ruby-identifier">b</span>) <span class="ruby-operator">!=</span> <span class="ruby-constant">NKF</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span>
+242:         <span class="ruby-identifier">on_text</span> <span class="ruby-identifier">b</span>
+243:       <span class="ruby-keyword kw">else</span>
+244:         <span class="ruby-identifier">on_binary</span> <span class="ruby-identifier">b</span>
+245:       <span class="ruby-keyword kw">end</span>
+246:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000811" class="method">
+  <div id="M000811_title" class="title">
+    <b>on_binary</b>( body )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000811_source')" id="l_M000811_source">show source</a> ]</p>
+  <div id="M000811_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/net.rb, line 254</span>
+254:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_binary</span>( <span class="ruby-identifier">body</span> )
+255:       <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">body</span> = [<span class="ruby-identifier">body</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'m'</span>)
+256:       <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">set_content_type</span> <span class="ruby-value str">'application'</span>, <span class="ruby-value str">'octet-stream'</span>
+257:       <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">encoding</span> = <span class="ruby-value str">'Base64'</span>
+258:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000810" class="method">
+  <div id="M000810_title" class="title">
+    <b>on_text</b>( body )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000810_source')" id="l_M000810_source">show source</a> ]</p>
+  <div id="M000810_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/net.rb, line 248</span>
+248:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_text</span>( <span class="ruby-identifier">body</span> )
+249:       <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">body</span> = <span class="ruby-constant">NKF</span>.<span class="ruby-identifier">nkf</span>(<span class="ruby-value str">'-j -m0'</span>, <span class="ruby-identifier">body</span>)
+250:       <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">set_content_type</span> <span class="ruby-value str">'text'</span>, <span class="ruby-value str">'plain'</span>, {<span class="ruby-value str">'charset'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'iso-2022-jp'</span>}
+251:       <span class="ruby-identifier">mail</span>.<span class="ruby-identifier">encoding</span> = <span class="ruby-value str">'7bit'</span>
+252:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

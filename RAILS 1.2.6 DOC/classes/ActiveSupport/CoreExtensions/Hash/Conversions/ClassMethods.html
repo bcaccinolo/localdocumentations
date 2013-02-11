@@ -1,0 +1,69 @@
+  <div id="C00000294">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />ClassMethods<br/>
+  In:
+<a href="#" onclick="jsHref('files/activesupport/lib/active_support/core_ext/hash/conversions_rb.html');">activesupport/lib/active_support/core_ext/hash/conversions.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000992&name=create_from_xml" >create_from_xml</a></li>
+  <li><a href="index.html?a=M000991&name=from_xml" >from_xml</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000992" class="method">
+  <div id="M000992_title" class="title">
+    <b>create_from_xml</b>(xml)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000992_source')" id="l_M000992_source">show source</a> ]</p>
+  <div id="M000992_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/conversions.rb, line 137</span>
+137:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_from_xml</span>(<span class="ruby-identifier">xml</span>)
+138:             <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-value str">&quot;Hash.create_from_xml has been renamed to Hash.from_xml&quot;</span>, <span class="ruby-identifier">caller</span>)
+139:             <span class="ruby-identifier">from_xml</span>(<span class="ruby-identifier">xml</span>)
+140:           <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000991" class="method">
+  <div id="M000991_title" class="title">
+    <b>from_xml</b>(xml)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000991_source')" id="l_M000991_source">show source</a> ]</p>
+  <div id="M000991_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/hash/conversions.rb, line 127</span>
+127:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">from_xml</span>(<span class="ruby-identifier">xml</span>)
+128:             <span class="ruby-comment cmt"># TODO: Refactor this into something much cleaner that doesn't rely on XmlSimple</span>
+129:             <span class="ruby-identifier">undasherize_keys</span>(<span class="ruby-identifier">typecast_xml_value</span>(<span class="ruby-constant">XmlSimple</span>.<span class="ruby-identifier">xml_in_string</span>(<span class="ruby-identifier">xml</span>,
+130:               <span class="ruby-value str">'forcearray'</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+131:               <span class="ruby-value str">'forcecontent'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+132:               <span class="ruby-value str">'keeproot'</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+133:               <span class="ruby-value str">'contentkey'</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'__content__'</span>)
+134:             ))
+135:           <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

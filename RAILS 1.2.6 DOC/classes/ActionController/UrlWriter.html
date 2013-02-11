@@ -1,0 +1,96 @@
+  <div id="C00000098">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />UrlWriter<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionpack/lib/action_controller/url_rewriter_rb.html');">actionpack/lib/action_controller/url_rewriter.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+Write URLs from arbitrary places in your codebase, such as your mailers.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  class MyMailer
+    include ActionController::UrlWriter
+    default_url_options[:host] = 'www.basecamphq.com'
+
+    def signup_url(token)
+      url_for(:controller =&gt; 'signup', action =&gt; 'index', :token =&gt; token)
+    end
+ end
+</pre>
+<p>
+In addition to providing <tt><a
+href="index.html?a=M000271&name=url_for">url_for</a></tt>, named routes are
+also accessible after including <a
+href="index.html?a=C00000098&name=UrlWriter">UrlWriter</a>.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000271&name=url_for" >url_for</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000271" class="method">
+  <div id="M000271_title" class="title">
+    <b>url_for</b>(options)
+  </div>
+  <div class="description">
+  <p>
+Generate a url with the provided options. The following special options may
+effect the constructed url:
+</p>
+<pre>
+  * :host Specifies the host the link should be targetted at. This option
+    must be provided either explicitly, or via default_url_options.
+  * :protocol The protocol to connect to. Defaults to 'http'
+  * :port Optionally specify the port to connect to.
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000271_source')" id="l_M000271_source">show source</a> ]</p>
+  <div id="M000271_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionpack/lib/action_controller/url_rewriter.rb, line 40</span>
+40:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">url_for</span>(<span class="ruby-identifier">options</span>)
+41:       <span class="ruby-identifier">options</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">default_url_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+42:       
+43:       <span class="ruby-identifier">url</span> = <span class="ruby-value str">''</span>
+44:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">:only_path</span>
+45:         <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:protocol</span>) <span class="ruby-operator">||</span> <span class="ruby-value str">'http'</span>)
+46:         <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'://'</span>
+47:         
+48:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Missing host to link to! Please provide :host parameter or set default_url_options[:host]&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:host</span>]
+49:         <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:host</span>)
+50:         <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;:#{options.delete(:port)}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">:port</span>)
+51:       <span class="ruby-keyword kw">else</span>
+52:         <span class="ruby-comment cmt"># Delete the unused options to prevent their appearance in the query string</span>
+53:         [<span class="ruby-identifier">:protocol</span>, <span class="ruby-identifier">:host</span>, <span class="ruby-identifier">:port</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">k</span> }
+54:       <span class="ruby-keyword kw">end</span>
+55:       <span class="ruby-identifier">anchor</span> = <span class="ruby-node">&quot;##{options.delete(:anchor)}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">:anchor</span>)
+56:       <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Routing</span><span class="ruby-operator">::</span><span class="ruby-constant">Routes</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-identifier">options</span>, {})
+57:       <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{url}#{anchor}&quot;</span>
+58:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

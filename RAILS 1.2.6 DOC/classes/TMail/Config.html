@@ -1,0 +1,165 @@
+  <div id="C00000219">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />Config<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/config_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/config.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000661&name=new" >new</a></li>
+  <li><a href="index.html?a=M000664&name=new_body_port" >new_body_port</a></li>
+  <li><a href="index.html?a=M000666&name=new_part_port" >new_part_port</a></li>
+  <li><a href="index.html?a=M000665&name=new_preamble_port" >new_preamble_port</a></li>
+  <li><a href="index.html?a=M000663&name=strict_base64decode?" >strict_base64decode?</a></li>
+  <li><a href="index.html?a=M000662&name=strict_parse?" >strict_parse?</a></li>
+  <li><a href="index.html?a=M000667&name=to_config" >to_config</a></li>
+  </ul>
+
+
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[W]
+    </td>
+    <td class='attr-name'>strict_base64decode</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[W]
+    </td>
+    <td class='attr-name'>strict_parse</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M000661" class="method">
+  <div id="M000661_title" class="title">
+    <b>new</b>( strict )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000661_source')" id="l_M000661_source">show source</a> ]</p>
+  <div id="M000661_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/config.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">strict</span> )
+35:       <span class="ruby-ivar">@strict_parse</span> = <span class="ruby-identifier">strict</span>
+36:       <span class="ruby-ivar">@strict_base64decode</span> = <span class="ruby-identifier">strict</span>
+37:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000667" class="method">
+  <div id="M000667_title" class="title">
+    <b>to_config</b>( arg )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000667_source')" id="l_M000667_source">show source</a> ]</p>
+  <div id="M000667_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/config.rb, line 63</span>
+63:   <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Config</span>.<span class="ruby-identifier">to_config</span>( <span class="ruby-identifier">arg</span> )
+64:     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">DEFAULT_STRICT_CONFIG</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span>
+65:     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">DEFAULT_CONFIG</span>        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span>
+66:     <span class="ruby-identifier">arg</span> <span class="ruby-keyword kw">or</span> <span class="ruby-constant">DEFAULT_CONFIG</span>
+67:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000664" class="method">
+  <div id="M000664_title" class="title">
+    <b>new_body_port</b>( mail )
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000665&name=new_preamble_port">new_preamble_port</a>
+  <a href="index.html?a=M000666&name=new_part_port">new_part_port</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000664_source')" id="l_M000664_source">show source</a> ]</p>
+  <div id="M000664_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/config.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_body_port</span>( <span class="ruby-identifier">mail</span> )
+52:       <span class="ruby-constant">StringPort</span>.<span class="ruby-identifier">new</span>
+53:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000666" class="method">
+  <div id="M000666_title" class="title">
+    <b>new_part_port</b>( mail )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000664&name=new_body_port">new_body_port</a>
+</p>
+  </div>
+</div>
+<div id="M000665" class="method">
+  <div id="M000665_title" class="title">
+    <b>new_preamble_port</b>( mail )
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000664&name=new_body_port">new_body_port</a>
+</p>
+  </div>
+</div>
+<div id="M000663" class="method">
+  <div id="M000663_title" class="title">
+    <b>strict_base64decode?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000663_source')" id="l_M000663_source">show source</a> ]</p>
+  <div id="M000663_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/config.rb, line 45</span>
+45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">strict_base64decode?</span>
+46:       <span class="ruby-ivar">@strict_base64decode</span>
+47:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000662" class="method">
+  <div id="M000662_title" class="title">
+    <b>strict_parse?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000662_source')" id="l_M000662_source">show source</a> ]</p>
+  <div id="M000662_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/config.rb, line 39</span>
+39:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">strict_parse?</span>
+40:       <span class="ruby-ivar">@strict_parse</span>
+41:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

@@ -1,0 +1,66 @@
+  <div id="C00000349">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />BlankSlate<br/>
+  In:
+<a href="#" onclick="jsHref('files/activesupport/lib/active_support/vendor/builder/blankslate_rb.html');">activesupport/lib/active_support/vendor/builder/blankslate.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+<a href="index.html?a=C00000349&name=BlankSlate">BlankSlate</a> provides an
+abstract base class with no predefined methods (except for
+<tt>__send__</tt> and <tt>__id__</tt>). <a
+href="index.html?a=C00000349&name=BlankSlate">BlankSlate</a> is useful as a
+base class when writing classes that depend upon <tt>method_missing</tt>
+(e.g. dynamic proxies).
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001113&name=hide" >hide</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M001113" class="method">
+  <div id="M001113_title" class="title">
+    <b>hide</b>(name)
+  </div>
+  <div class="description">
+  <p>
+Hide the method named <tt>name</tt> in the <a
+href="index.html?a=C00000349&name=BlankSlate">BlankSlate</a> class.
+Don&#8216;t hide <tt>instance_eval</tt> or any method beginning with
+&quot;__&quot;.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001113_source')" id="l_M001113_source">show source</a> ]</p>
+  <div id="M001113_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/vendor/builder/blankslate.rb, line 22</span>
+22:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hide</span>(<span class="ruby-identifier">name</span>)
+23:         <span class="ruby-identifier">undef_method</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword kw">if</span>
+24:           <span class="ruby-identifier">instance_methods</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword kw">and</span>
+25:           <span class="ruby-identifier">name</span> <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/^(__|instance_eval)/</span>
+26:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

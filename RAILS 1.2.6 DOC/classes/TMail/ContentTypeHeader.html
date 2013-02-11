@@ -1,0 +1,184 @@
+  <div id="C00000212">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />ContentTypeHeader<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/header_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/header.rb</a>
+
+Parent:&nbsp;
+        <a href="#" onclick="jsHref('classes/TMail/StructuredHeader.html');">
+StructuredHeader
+         </a>
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000507&name=[]" >[]</a></li>
+  <li><a href="index.html?a=M000508&name=[]=" >[]=</a></li>
+  <li><a href="index.html?a=M000505&name=content_type" >content_type</a></li>
+  <li><a href="index.html?a=M000501&name=main_type" >main_type</a></li>
+  <li><a href="index.html?a=M000502&name=main_type=" >main_type=</a></li>
+  <li><a href="index.html?a=M000506&name=params" >params</a></li>
+  <li><a href="index.html?a=M000503&name=sub_type" >sub_type</a></li>
+  <li><a href="index.html?a=M000504&name=sub_type=" >sub_type=</a></li>
+  </ul>
+
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">PARSE_TYPE</td>
+    <td>=</td>
+    <td class="attr-value">:CTYPE</td>
+  </tr>
+  </table>
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000507" class="method">
+  <div id="M000507_title" class="title">
+    <b>[]</b>( key )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000507_source')" id="l_M000507_source">show source</a> ]</p>
+  <div id="M000507_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/header.rb, line 745</span>
+745:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>( <span class="ruby-identifier">key</span> )
+746:       <span class="ruby-identifier">ensure_parsed</span>
+747:       <span class="ruby-ivar">@params</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@params</span>[<span class="ruby-identifier">key</span>]
+748:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000508" class="method">
+  <div id="M000508_title" class="title">
+    <b>[]=</b>( key, val )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000508_source')" id="l_M000508_source">show source</a> ]</p>
+  <div id="M000508_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/header.rb, line 750</span>
+750:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>( <span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span> )
+751:       <span class="ruby-identifier">ensure_parsed</span>
+752:       (<span class="ruby-ivar">@params</span> <span class="ruby-operator">||=</span> {})[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span>
+753:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000505" class="method">
+  <div id="M000505_title" class="title">
+    <b>content_type</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000505_source')" id="l_M000505_source">show source</a> ]</p>
+  <div id="M000505_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/header.rb, line 735</span>
+735:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">content_type</span>
+736:       <span class="ruby-identifier">ensure_parsed</span>
+737:       <span class="ruby-ivar">@sub</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-value str">'%s/%s'</span>, <span class="ruby-ivar">@main</span>, <span class="ruby-ivar">@sub</span>) <span class="ruby-operator">:</span> <span class="ruby-ivar">@main</span>
+738:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000501" class="method">
+  <div id="M000501_title" class="title">
+    <b>main_type</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000501_source')" id="l_M000501_source">show source</a> ]</p>
+  <div id="M000501_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/header.rb, line 715</span>
+715:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">main_type</span>
+716:       <span class="ruby-identifier">ensure_parsed</span>
+717:       <span class="ruby-ivar">@main</span>
+718:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000502" class="method">
+  <div id="M000502_title" class="title">
+    <b>main_type=</b>( arg )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000502_source')" id="l_M000502_source">show source</a> ]</p>
+  <div id="M000502_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/header.rb, line 720</span>
+720:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">main_type=</span>( <span class="ruby-identifier">arg</span> )
+721:       <span class="ruby-identifier">ensure_parsed</span>
+722:       <span class="ruby-ivar">@main</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">downcase</span>
+723:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000506" class="method">
+  <div id="M000506_title" class="title">
+    <b>params</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000506_source')" id="l_M000506_source">show source</a> ]</p>
+  <div id="M000506_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/header.rb, line 740</span>
+740:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">params</span>
+741:       <span class="ruby-identifier">ensure_parsed</span>
+742:       <span class="ruby-ivar">@params</span>
+743:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000503" class="method">
+  <div id="M000503_title" class="title">
+    <b>sub_type</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000503_source')" id="l_M000503_source">show source</a> ]</p>
+  <div id="M000503_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/header.rb, line 725</span>
+725:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sub_type</span>
+726:       <span class="ruby-identifier">ensure_parsed</span>
+727:       <span class="ruby-ivar">@sub</span>
+728:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000504" class="method">
+  <div id="M000504_title" class="title">
+    <b>sub_type=</b>( arg )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000504_source')" id="l_M000504_source">show source</a> ]</p>
+  <div id="M000504_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/header.rb, line 730</span>
+730:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sub_type=</span>( <span class="ruby-identifier">arg</span> )
+731:       <span class="ruby-identifier">ensure_parsed</span>
+732:       <span class="ruby-ivar">@sub</span> = <span class="ruby-identifier">arg</span>.<span class="ruby-identifier">downcase</span>
+733:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

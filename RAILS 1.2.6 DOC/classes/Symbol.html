@@ -1,0 +1,60 @@
+  <div id="C00000011">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />Symbol<br/>
+  In:
+<a href="#" onclick="jsHref('files/activesupport/lib/active_support/core_ext/symbol_rb.html');">activesupport/lib/active_support/core_ext/symbol.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000012&name=to_proc" >to_proc</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000012" class="method">
+  <div id="M000012_title" class="title">
+    <b>to_proc</b>()
+  </div>
+  <div class="description">
+  <p>
+Turns the symbol into a simple proc, which is especially useful for
+enumerations. Examples:
+</p>
+<pre>
+  # The same as people.collect { |p| p.name }
+  people.collect(&amp;:name)
+
+  # The same as people.select { |p| p.manager? }.collect { |p| p.salary }
+  people.select(&amp;:manager?).collect(&amp;:salary)
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show source</a> ]</p>
+  <div id="M000012_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/symbol.rb, line 9</span>
+ 9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_proc</span>
+10:     <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) }
+11:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

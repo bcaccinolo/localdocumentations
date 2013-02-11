@@ -1,0 +1,144 @@
+  <div id="C00000070">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />ConfigItem<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionwebservice/setup_rb.html');">actionwebservice/setup.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000242&name=eval" >eval</a></li>
+  <li><a href="index.html?a=M000240&name=help_opt" >help_opt</a></li>
+  <li><a href="index.html?a=M000239&name=new" >new</a></li>
+  <li><a href="index.html?a=M000243&name=set" >set</a></li>
+  <li><a href="index.html?a=M000241&name=value" >value</a></li>
+  </ul>
+
+
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>default</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>description</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>name</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M000239" class="method">
+  <div id="M000239_title" class="title">
+    <b>new</b>(name, template, default, desc)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000239_source')" id="l_M000239_source">show source</a> ]</p>
+  <div id="M000239_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 80</span>
+80:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">template</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">desc</span>)
+81:     <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">freeze</span>
+82:     <span class="ruby-ivar">@template</span> = <span class="ruby-identifier">template</span>
+83:     <span class="ruby-ivar">@value</span> = <span class="ruby-identifier">default</span>
+84:     <span class="ruby-ivar">@default</span> = <span class="ruby-identifier">default</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">freeze</span>
+85:     <span class="ruby-ivar">@description</span> = <span class="ruby-identifier">desc</span>
+86:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000242" class="method">
+  <div id="M000242_title" class="title">
+    <b>eval</b>(table)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000242_source')" id="l_M000242_source">show source</a> ]</p>
+  <div id="M000242_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 102</span>
+102:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eval</span>(<span class="ruby-identifier">table</span>)
+103:     <span class="ruby-ivar">@value</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">%r&lt;\$([^/]+)&gt;</span>) { <span class="ruby-identifier">table</span>[<span class="ruby-identifier">$1</span>] }
+104:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000240" class="method">
+  <div id="M000240_title" class="title">
+    <b>help_opt</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000240_source')" id="l_M000240_source">show source</a> ]</p>
+  <div id="M000240_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 94</span>
+94:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">help_opt</span>
+95:     <span class="ruby-node">&quot;--#{@name}=#{@template}&quot;</span>
+96:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000243" class="method">
+  <div id="M000243_title" class="title">
+    <b>set</b>(val)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000243_source')" id="l_M000243_source">show source</a> ]</p>
+  <div id="M000243_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 106</span>
+106:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">val</span>)
+107:     <span class="ruby-ivar">@value</span> = <span class="ruby-identifier">check</span>(<span class="ruby-identifier">val</span>)
+108:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000241" class="method">
+  <div id="M000241_title" class="title">
+    <b>value</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000241_source')" id="l_M000241_source">show source</a> ]</p>
+  <div id="M000241_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 98</span>
+ 98:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value</span>
+ 99:     <span class="ruby-ivar">@value</span>
+100:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

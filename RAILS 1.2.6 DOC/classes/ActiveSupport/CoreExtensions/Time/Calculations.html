@@ -1,0 +1,723 @@
+  <div id="C00000289">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />Calculations<br/>
+  In:
+<a href="#" onclick="jsHref('files/activesupport/lib/active_support/core_ext/time/calculations_rb.html');">activesupport/lib/active_support/core_ext/time/calculations.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+Enables the use of time calculations within Time itself
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000954&name=advance" >advance</a></li>
+  <li><a href="index.html?a=M000955&name=ago" >ago</a></li>
+  <li><a href="index.html?a=M000973&name=at_beginning_of_day" >at_beginning_of_day</a></li>
+  <li><a href="index.html?a=M000975&name=at_beginning_of_month" >at_beginning_of_month</a></li>
+  <li><a href="index.html?a=M000979&name=at_beginning_of_quarter" >at_beginning_of_quarter</a></li>
+  <li><a href="index.html?a=M000968&name=at_beginning_of_week" >at_beginning_of_week</a></li>
+  <li><a href="index.html?a=M000981&name=at_beginning_of_year" >at_beginning_of_year</a></li>
+  <li><a href="index.html?a=M000977&name=at_end_of_month" >at_end_of_month</a></li>
+  <li><a href="index.html?a=M000972&name=at_midnight" >at_midnight</a></li>
+  <li><a href="index.html?a=M000970&name=beginning_of_day" >beginning_of_day</a></li>
+  <li><a href="index.html?a=M000974&name=beginning_of_month" >beginning_of_month</a></li>
+  <li><a href="index.html?a=M000978&name=beginning_of_quarter" >beginning_of_quarter</a></li>
+  <li><a href="index.html?a=M000966&name=beginning_of_week" >beginning_of_week</a></li>
+  <li><a href="index.html?a=M000980&name=beginning_of_year" >beginning_of_year</a></li>
+  <li><a href="index.html?a=M000953&name=change" >change</a></li>
+  <li><a href="index.html?a=M000976&name=end_of_month" >end_of_month</a></li>
+  <li><a href="index.html?a=M000957&name=in" >in</a></li>
+  <li><a href="index.html?a=M000964&name=last_month" >last_month</a></li>
+  <li><a href="index.html?a=M000962&name=last_year" >last_year</a></li>
+  <li><a href="index.html?a=M000971&name=midnight" >midnight</a></li>
+  <li><a href="index.html?a=M000967&name=monday" >monday</a></li>
+  <li><a href="index.html?a=M000958&name=months_ago" >months_ago</a></li>
+  <li><a href="index.html?a=M000959&name=months_since" >months_since</a></li>
+  <li><a href="index.html?a=M000965&name=next_month" >next_month</a></li>
+  <li><a href="index.html?a=M000969&name=next_week" >next_week</a></li>
+  <li><a href="index.html?a=M000963&name=next_year" >next_year</a></li>
+  <li><a href="index.html?a=M000952&name=seconds_since_midnight" >seconds_since_midnight</a></li>
+  <li><a href="index.html?a=M000956&name=since" >since</a></li>
+  <li><a href="index.html?a=M000983&name=tomorrow" >tomorrow</a></li>
+  <li><a href="index.html?a=M000960&name=years_ago" >years_ago</a></li>
+  <li><a href="index.html?a=M000961&name=years_since" >years_since</a></li>
+  <li><a href="index.html?a=M000982&name=yesterday" >yesterday</a></li>
+  </ul>
+
+
+
+  <div class="sectiontitle">Classes and Modules</div>
+  Module "<a href="#" onclick="jsHref('classes/ActiveSupport/CoreExtensions/Time/Calculations/ClassMethods.html');" class="link">ActiveSupport::CoreExtensions::Time::Calculations::ClassMethods</a>"<br />
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000954" class="method">
+  <div id="M000954_title" class="title">
+    <b>advance</b>(options)
+  </div>
+  <div class="description">
+  <p>
+Uses Date to provide precise Time calculations for years, months, and days.
+The <tt>options</tt> parameter takes a hash with any of these keys:
+:months, :days, :years.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000954_source')" id="l_M000954_source">show source</a> ]</p>
+  <div id="M000954_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 49</span>
+49:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advance</span>(<span class="ruby-identifier">options</span>)
+50:           <span class="ruby-identifier">d</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">year</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:years</span>) <span class="ruby-operator">||</span> <span class="ruby-value">0</span>), <span class="ruby-identifier">month</span>, <span class="ruby-identifier">day</span>)
+51:           <span class="ruby-identifier">d</span> = <span class="ruby-identifier">d</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:months</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:months</span>]
+52:           <span class="ruby-identifier">d</span> = <span class="ruby-identifier">d</span> <span class="ruby-operator">+</span>  <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:days</span>)   <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:days</span>]
+53:           <span class="ruby-identifier">change</span>(<span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">month</span>, <span class="ruby-identifier">:mday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">day</span>))
+54:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000955" class="method">
+  <div id="M000955_title" class="title">
+    <b>ago</b>(seconds)
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the time a number of seconds ago, this is
+basically a wrapper around the Numeric extension Do not use this method in
+combination with x.months, use <a
+href="index.html?a=M000958&name=months_ago">months_ago</a> instead!
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000955_source')" id="l_M000955_source">show source</a> ]</p>
+  <div id="M000955_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 58</span>
+58:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ago</span>(<span class="ruby-identifier">seconds</span>)
+59:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">since</span>(<span class="ruby-operator">-</span><span class="ruby-identifier">seconds</span>)
+60:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000973" class="method">
+  <div id="M000973_title" class="title">
+    <b>at_beginning_of_day</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000970&name=beginning_of_day">beginning_of_day</a>
+</p>
+  </div>
+</div>
+<div id="M000975" class="method">
+  <div id="M000975_title" class="title">
+    <b>at_beginning_of_month</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000974&name=beginning_of_month">beginning_of_month</a>
+</p>
+  </div>
+</div>
+<div id="M000979" class="method">
+  <div id="M000979_title" class="title">
+    <b>at_beginning_of_quarter</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000978&name=beginning_of_quarter">beginning_of_quarter</a>
+</p>
+  </div>
+</div>
+<div id="M000968" class="method">
+  <div id="M000968_title" class="title">
+    <b>at_beginning_of_week</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000966&name=beginning_of_week">beginning_of_week</a>
+</p>
+  </div>
+</div>
+<div id="M000981" class="method">
+  <div id="M000981_title" class="title">
+    <b>at_beginning_of_year</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000980&name=beginning_of_year">beginning_of_year</a>
+</p>
+  </div>
+</div>
+<div id="M000977" class="method">
+  <div id="M000977_title" class="title">
+    <b>at_end_of_month</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000976&name=end_of_month">end_of_month</a>
+</p>
+  </div>
+</div>
+<div id="M000972" class="method">
+  <div id="M000972_title" class="title">
+    <b>at_midnight</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000970&name=beginning_of_day">beginning_of_day</a>
+</p>
+  </div>
+</div>
+<div id="M000970" class="method">
+  <div id="M000970_title" class="title">
+    <b>beginning_of_day</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the start of the day (0:00)
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000971&name=midnight">midnight</a>
+  <a href="index.html?a=M000972&name=at_midnight">at_midnight</a>
+  <a href="index.html?a=M000973&name=at_beginning_of_day">at_beginning_of_day</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000970_source')" id="l_M000970_source">show source</a> ]</p>
+  <div id="M000970_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 145</span>
+145:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">beginning_of_day</span>
+146:           (<span class="ruby-keyword kw">self</span> <span class="ruby-operator">-</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">seconds_since_midnight</span>).<span class="ruby-identifier">change</span>(<span class="ruby-identifier">:usec</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+147:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000974" class="method">
+  <div id="M000974_title" class="title">
+    <b>beginning_of_month</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the start of the month (1st of the month,
+0:00)
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000975&name=at_beginning_of_month">at_beginning_of_month</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000974_source')" id="l_M000974_source">show source</a> ]</p>
+  <div id="M000974_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 153</span>
+153:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">beginning_of_month</span>
+154:           <span class="ruby-comment cmt">#self - ((self.mday-1).days + self.seconds_since_midnight)</span>
+155:           <span class="ruby-identifier">change</span>(<span class="ruby-identifier">:mday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,<span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:min</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:sec</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:usec</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+156:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000978" class="method">
+  <div id="M000978_title" class="title">
+    <b>beginning_of_quarter</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the start of the quarter (1st of january,
+april, july, october, 0:00)
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000979&name=at_beginning_of_quarter">at_beginning_of_quarter</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000978_source')" id="l_M000978_source">show source</a> ]</p>
+  <div id="M000978_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 168</span>
+168:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">beginning_of_quarter</span>
+169:           <span class="ruby-identifier">beginning_of_month</span>.<span class="ruby-identifier">change</span>(<span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value">10</span>, <span class="ruby-value">7</span>, <span class="ruby-value">4</span>, <span class="ruby-value">1</span>].<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span> <span class="ruby-identifier">m</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">month</span> })
+170:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000966" class="method">
+  <div id="M000966_title" class="title">
+    <b>beginning_of_week</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the &quot;start&quot; of this week (Monday,
+0:00)
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000967&name=monday">monday</a>
+  <a href="index.html?a=M000968&name=at_beginning_of_week">at_beginning_of_week</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000966_source')" id="l_M000966_source">show source</a> ]</p>
+  <div id="M000966_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 131</span>
+131:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">beginning_of_week</span>
+132:           <span class="ruby-identifier">days_to_monday</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">wday!</span>=<span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">wday</span><span class="ruby-operator">-</span><span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-value">6</span>
+133:           (<span class="ruby-keyword kw">self</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">days_to_monday</span>.<span class="ruby-identifier">days</span>).<span class="ruby-identifier">midnight</span>
+134:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000980" class="method">
+  <div id="M000980_title" class="title">
+    <b>beginning_of_year</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the start of the year (1st of january,
+0:00)
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000981&name=at_beginning_of_year">at_beginning_of_year</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000980_source')" id="l_M000980_source">show source</a> ]</p>
+  <div id="M000980_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 174</span>
+174:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">beginning_of_year</span>
+175:           <span class="ruby-identifier">change</span>(<span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,<span class="ruby-identifier">:mday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,<span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:min</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:sec</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:usec</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+176:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000953" class="method">
+  <div id="M000953_title" class="title">
+    <b>change</b>(options)
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time where one or more of the elements have been changed
+according to the <tt>options</tt> parameter. The time options (hour,
+minute, sec, usec) reset cascadingly, so if only the hour is passed, then
+minute, sec, and usec is set to 0. If the hour and minute is passed, then
+sec and usec is set to 0.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000953_source')" id="l_M000953_source">show source</a> ]</p>
+  <div id="M000953_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 34</span>
+34:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">change</span>(<span class="ruby-identifier">options</span>)
+35:           <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">send</span>(
+36:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">utc?</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">utc</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:local</span>, 
+37:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:year</span>]  <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">year</span>, 
+38:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:month</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">month</span>, 
+39:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:mday</span>]  <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">mday</span>, 
+40:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:hour</span>]  <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hour</span>, 
+41:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:min</span>]   <span class="ruby-operator">||</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:hour</span>] <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">min</span>),
+42:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sec</span>]   <span class="ruby-operator">||</span> ((<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:hour</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:min</span>]) <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">sec</span>),
+43:             <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:usec</span>]  <span class="ruby-operator">||</span> ((<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:hour</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:min</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sec</span>]) <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">usec</span>)
+44:           )
+45:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000976" class="method">
+  <div id="M000976_title" class="title">
+    <b>end_of_month</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the end of the month (last day of the
+month, 0:00)
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000977&name=at_end_of_month">at_end_of_month</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000976_source')" id="l_M000976_source">show source</a> ]</p>
+  <div id="M000976_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 160</span>
+160:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">end_of_month</span>
+161:           <span class="ruby-comment cmt">#self - ((self.mday-1).days + self.seconds_since_midnight)</span>
+162:           <span class="ruby-identifier">last_day</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">days_in_month</span>( <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">month</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">year</span> )
+163:           <span class="ruby-identifier">change</span>(<span class="ruby-identifier">:mday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">last_day</span>,<span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:min</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:sec</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:usec</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+164:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000957" class="method">
+  <div id="M000957_title" class="title">
+    <b>in</b>(seconds)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M000956&name=since">since</a>
+</p>
+  </div>
+</div>
+<div id="M000964" class="method">
+  <div id="M000964_title" class="title">
+    <b>last_month</b>()
+  </div>
+  <div class="description">
+  <p>
+Short-hand for <a
+href="index.html?a=M000958&name=months_ago">months_ago</a>(1)
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000964_source')" id="l_M000964_source">show source</a> ]</p>
+  <div id="M000964_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 121</span>
+121:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_month</span>
+122:           <span class="ruby-identifier">months_ago</span>(<span class="ruby-value">1</span>)
+123:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000962" class="method">
+  <div id="M000962_title" class="title">
+    <b>last_year</b>()
+  </div>
+  <div class="description">
+  <p>
+Short-hand for <a
+href="index.html?a=M000960&name=years_ago">years_ago</a>(1)
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000962_source')" id="l_M000962_source">show source</a> ]</p>
+  <div id="M000962_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 110</span>
+110:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_year</span>
+111:           <span class="ruby-identifier">years_ago</span>(<span class="ruby-value">1</span>)
+112:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000971" class="method">
+  <div id="M000971_title" class="title">
+    <b>midnight</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000970&name=beginning_of_day">beginning_of_day</a>
+</p>
+  </div>
+</div>
+<div id="M000967" class="method">
+  <div id="M000967_title" class="title">
+    <b>monday</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a
+href="index.html?a=M000966&name=beginning_of_week">beginning_of_week</a>
+</p>
+  </div>
+</div>
+<div id="M000958" class="method">
+  <div id="M000958_title" class="title">
+    <b>months_ago</b>(months)
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the time a number of specified months ago
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000958_source')" id="l_M000958_source">show source</a> ]</p>
+  <div id="M000958_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 73</span>
+73:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">months_ago</span>(<span class="ruby-identifier">months</span>)
+74:           <span class="ruby-identifier">months_since</span>(<span class="ruby-operator">-</span><span class="ruby-identifier">months</span>)
+75:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000959" class="method">
+  <div id="M000959_title" class="title">
+    <b>months_since</b>(months)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000959_source')" id="l_M000959_source">show source</a> ]</p>
+  <div id="M000959_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 77</span>
+77:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">months_since</span>(<span class="ruby-identifier">months</span>)
+78:           <span class="ruby-identifier">year</span>, <span class="ruby-identifier">month</span>, <span class="ruby-identifier">mday</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">year</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">month</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">mday</span>
+79: 
+80:           <span class="ruby-identifier">month</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">months</span>
+81: 
+82:           <span class="ruby-comment cmt"># in case months is negative</span>
+83:           <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">month</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+84:             <span class="ruby-identifier">month</span> <span class="ruby-operator">+=</span> <span class="ruby-value">12</span>
+85:             <span class="ruby-identifier">year</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+86:           <span class="ruby-keyword kw">end</span>
+87: 
+88:           <span class="ruby-comment cmt"># in case months is positive</span>
+89:           <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">month</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">12</span>
+90:             <span class="ruby-identifier">month</span> <span class="ruby-operator">-=</span> <span class="ruby-value">12</span>
+91:             <span class="ruby-identifier">year</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+92:           <span class="ruby-keyword kw">end</span>
+93: 
+94:           <span class="ruby-identifier">max</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">days_in_month</span>(<span class="ruby-identifier">month</span>, <span class="ruby-identifier">year</span>)
+95:           <span class="ruby-identifier">mday</span> = <span class="ruby-identifier">max</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mday</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max</span>
+96: 
+97:           <span class="ruby-identifier">change</span>(<span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">year</span>, <span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">month</span>, <span class="ruby-identifier">:mday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">mday</span>)
+98:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000965" class="method">
+  <div id="M000965_title" class="title">
+    <b>next_month</b>()
+  </div>
+  <div class="description">
+  <p>
+Short-hand for <a
+href="index.html?a=M000959&name=months_since">months_since</a>(1)
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000965_source')" id="l_M000965_source">show source</a> ]</p>
+  <div id="M000965_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 126</span>
+126:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_month</span>
+127:           <span class="ruby-identifier">months_since</span>(<span class="ruby-value">1</span>)
+128:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000969" class="method">
+  <div id="M000969_title" class="title">
+    <b>next_week</b>(day = :monday)
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the start of the given day in next week
+(default is Monday).
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000969_source')" id="l_M000969_source">show source</a> ]</p>
+  <div id="M000969_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 139</span>
+139:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_week</span>(<span class="ruby-identifier">day</span> = <span class="ruby-identifier">:monday</span>)
+140:           <span class="ruby-identifier">days_into_week</span> = { <span class="ruby-identifier">:monday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">:tuesday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">:wednesday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">:thursday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">:friday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span>, <span class="ruby-identifier">:saturday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>, <span class="ruby-identifier">:sunday</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span>}
+141:           <span class="ruby-identifier">since</span>(<span class="ruby-value">1</span>.<span class="ruby-identifier">week</span>).<span class="ruby-identifier">beginning_of_week</span>.<span class="ruby-identifier">since</span>(<span class="ruby-identifier">days_into_week</span>[<span class="ruby-identifier">day</span>].<span class="ruby-identifier">day</span>).<span class="ruby-identifier">change</span>(<span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+142:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000963" class="method">
+  <div id="M000963_title" class="title">
+    <b>next_year</b>()
+  </div>
+  <div class="description">
+  <p>
+Short-hand for <a
+href="index.html?a=M000961&name=years_since">years_since</a>(1)
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000963_source')" id="l_M000963_source">show source</a> ]</p>
+  <div id="M000963_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 115</span>
+115:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_year</span>
+116:           <span class="ruby-identifier">years_since</span>(<span class="ruby-value">1</span>)
+117:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000952" class="method">
+  <div id="M000952_title" class="title">
+    <b>seconds_since_midnight</b>()
+  </div>
+  <div class="description">
+  <p>
+Seconds since midnight: Time.now.<a
+href="index.html?a=M000952&name=seconds_since_midnight">seconds_since_midnight</a>
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000952_source')" id="l_M000952_source">show source</a> ]</p>
+  <div id="M000952_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 27</span>
+27:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">seconds_since_midnight</span>
+28:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">change</span>(<span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">usec</span><span class="ruby-operator">/</span><span class="ruby-value">1.0e+6</span>)
+29:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000956" class="method">
+  <div id="M000956_title" class="title">
+    <b>since</b>(seconds)
+  </div>
+  <div class="description">
+  <pre>
+ Returns a new Time representing the time a number of seconds since the instance time, this is basically a wrapper around
+</pre>
+<p>
+the Numeric extension. Do not use this method in combination with x.months,
+use <a href="index.html?a=M000959&name=months_since">months_since</a>
+instead!
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M000957&name=in">in</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000956_source')" id="l_M000956_source">show source</a> ]</p>
+  <div id="M000956_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 64</span>
+64:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">since</span>(<span class="ruby-identifier">seconds</span>)
+65:           <span class="ruby-identifier">initial_dst</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dst?</span> <span class="ruby-value">? </span><span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
+66:           <span class="ruby-identifier">f</span> = <span class="ruby-identifier">seconds</span>.<span class="ruby-identifier">since</span>(<span class="ruby-keyword kw">self</span>)
+67:           <span class="ruby-identifier">final_dst</span>   = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">dst?</span> <span class="ruby-value">? </span><span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>
+68:           (<span class="ruby-identifier">seconds</span>.<span class="ruby-identifier">abs</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">86400</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">initial_dst</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">final_dst</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">initial_dst</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">final_dst</span>).<span class="ruby-identifier">hours</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">f</span>
+69:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000983" class="method">
+  <div id="M000983_title" class="title">
+    <b>tomorrow</b>()
+  </div>
+  <div class="description">
+  <p>
+Convenience method which returns a new Time representing the time 1 day
+since the instance time
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000983_source')" id="l_M000983_source">show source</a> ]</p>
+  <div id="M000983_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 185</span>
+185:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tomorrow</span>
+186:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">since</span>(<span class="ruby-value">1</span>.<span class="ruby-identifier">day</span>)
+187:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000960" class="method">
+  <div id="M000960_title" class="title">
+    <b>years_ago</b>(years)
+  </div>
+  <div class="description">
+  <p>
+Returns a new Time representing the time a number of specified years ago
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000960_source')" id="l_M000960_source">show source</a> ]</p>
+  <div id="M000960_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 101</span>
+101:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">years_ago</span>(<span class="ruby-identifier">years</span>)
+102:           <span class="ruby-identifier">change</span>(<span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">years</span>)
+103:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000961" class="method">
+  <div id="M000961_title" class="title">
+    <b>years_since</b>(years)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000961_source')" id="l_M000961_source">show source</a> ]</p>
+  <div id="M000961_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 105</span>
+105:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">years_since</span>(<span class="ruby-identifier">years</span>)
+106:           <span class="ruby-identifier">change</span>(<span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">years</span>)
+107:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000982" class="method">
+  <div id="M000982_title" class="title">
+    <b>yesterday</b>()
+  </div>
+  <div class="description">
+  <p>
+Convenience method which returns a new Time representing the time 1 day ago
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000982_source')" id="l_M000982_source">show source</a> ]</p>
+  <div id="M000982_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activesupport/lib/active_support/core_ext/time/calculations.rb, line 180</span>
+180:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">yesterday</span>
+181:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">ago</span>(<span class="ruby-value">1</span>.<span class="ruby-identifier">day</span>)
+182:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

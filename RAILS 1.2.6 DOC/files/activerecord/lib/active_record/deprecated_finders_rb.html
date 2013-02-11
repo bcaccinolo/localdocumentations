@@ -1,0 +1,64 @@
+  <div id="fileHeader">
+    <h1>deprecated_finders.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>activerecord/lib/active_record/deprecated_finders.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Mar 27 07:04:38 -0700 2007</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module ActiveRecord
+  class Base
+    class &lt;&lt; self
+      # DEPRECATION NOTICE: This method is deprecated in favor of find with the :conditions option.
+      #
+      # Works like find, but the record matching +id+ must also meet the +conditions+.
+      # +RecordNotFound+ is raised if no record can be found matching the +id+ or meeting the condition.
+      # Example:
+      #   Person.find_on_conditions 5, &quot;first_name LIKE '%dav%' AND last_name = 'heinemeier'&quot;
+      def find_on_conditions(ids, conditions) # :nodoc:
+        find(ids, :conditions =&gt; conditions)
+      end
+      deprecate :find_on_conditions =&gt; &quot;use find(ids, :conditions =&gt; conditions)&quot;
+
+      # DEPRECATION NOTICE: This method is deprecated in favor of find(:first, options).
+      #
+      # Returns the object for the first record responding to the conditions in +conditions+, 
+      # such as &quot;group = 'master'&quot;. If more than one record is returned from the query, it's the first that'll
+      # be used to create the object. In such cases, it might be beneficial to also specify 
+      # +orderings+, like &quot;income DESC, name&quot;, to control exactly which record is to be used. Example: 
+      #   Employee.find_first &quot;income &gt; 50000&quot;, &quot;income DESC, name&quot;
+      def find_first(conditions = nil, orderings = nil, joins = nil) # :nodoc:
+        find(:first, :conditions =&gt; conditions, :order =&gt; orderings, :joins =&gt; joins)
+      end
+      deprecate :find_first =&gt; &quot;use find(:first, ...)&quot;
+
+      # DEPRECATION NOTICE: This method is deprecated in favor of find(:all, options).
+      #
+      # Returns an array of all the objects that could be instantiated from the associated
+      # table in the database. The +conditions+ can be used to narrow the selection of objects (WHERE-part),
+      # such as by &quot;color = 'red'&quot;, and arrangement of the selection can be done through +orderings+ (ORDER BY-part),
+      # such as by &quot;last_name, first_name DESC&quot;. A maximum of returned objects and their offset can be specified in 
+      # +limit+ with either just a single integer as the limit or as an array with the first element as the limit, 
+      # the second as the offset. Examples:
+      #   Project.find_all &quot;category = 'accounts'&quot;, &quot;last_accessed DESC&quot;, 15
+      #   Project.find_all [&quot;category = ?&quot;, category_name], &quot;created ASC&quot;, [15, 20]
+      def find_all(conditions = nil, orderings = nil, limit = nil, joins = nil) # :nodoc:
+        limit, offset = limit.is_a?(Array) ? limit : [ limit, nil ]
+        find(:all, :conditions =&gt; conditions, :order =&gt; orderings, :joins =&gt; joins, :limit =&gt; limit, :offset =&gt; offset)
+      end
+      deprecate :find_all =&gt; &quot;use find(:all, ...)&quot;
+    end
+  end
+end
+</pre>
+    </div>

@@ -1,0 +1,283 @@
+  <div id="fileHeader">
+    <h1>has_many_through_association.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>activerecord/lib/active_record/associations/has_many_through_association.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sat Oct 27 11:49:52 -0700 2007</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module ActiveRecord
+  module Associations
+    class HasManyThroughAssociation &lt; AssociationProxy #:nodoc:
+      def initialize(owner, reflection)
+        super
+        reflection.check_validity!
+        @finder_sql = construct_conditions
+        construct_sql
+      end
+
+      def find(*args)
+        options = Base.send(:extract_options_from_args!, args)
+
+        conditions = &quot;#{@finder_sql}&quot;
+        if sanitized_conditions = sanitize_sql(options[:conditions])
+          conditions &lt;&lt; &quot; AND (#{sanitized_conditions})&quot;
+        end
+        options[:conditions] = conditions
+
+        if options[:order] &amp;&amp; @reflection.options[:order]
+          options[:order] = &quot;#{options[:order]}, #{@reflection.options[:order]}&quot;
+        elsif @reflection.options[:order]
+          options[:order] = @reflection.options[:order]
+        end
+
+        options[:select]  = construct_select(options[:select])
+        options[:from]  ||= construct_from
+        options[:joins]   = construct_joins(options[:joins])
+        options[:include] = @reflection.source_reflection.options[:include] if options[:include].nil?
+
+        merge_options_from_reflection!(options)
+
+        # Pass through args exactly as we received them.
+        args &lt;&lt; options
+        @reflection.klass.find(*args)
+      end
+
+      def reset
+        @target = []
+        @loaded = false
+      end
+
+      # Adds records to the association. The source record and its associates
+      # must have ids in order to create records associating them, so this
+      # will raise ActiveRecord::HasManyThroughCantAssociateNewRecords if
+      # either is a new record.  Calls create! so you can rescue errors.
+      #
+      # The :before_add and :after_add callbacks are not yet supported.
+      def &lt;&lt;(*records)
+        return if records.empty?
+        through = @reflection.through_reflection
+        raise ActiveRecord::HasManyThroughCantAssociateNewRecords.new(@owner, through) if @owner.new_record?
+
+        load_target
+
+        klass = through.klass
+        klass.transaction do
+          flatten_deeper(records).each do |associate|
+            raise_on_type_mismatch(associate)
+            raise ActiveRecord::HasManyThroughCantAssociateNewRecords.new(@owner, through) unless associate.respond_to?(:new_record?) &amp;&amp; !associate.new_record?
+
+            @owner.send(@reflection.through_reflection.name).proxy_target &lt;&lt; klass.with_scope(:create =&gt; construct_join_attributes(associate)) { klass.create! }
+            @target &lt;&lt; associate
+          end
+        end
+
+        self
+      end
+
+      [:push, :concat].each { |method| alias_method method, :&lt;&lt; }
+
+      # Remove +records+ from this association.  Does not destroy +records+.
+      def delete(*records)
+        return if records.empty?
+        records.each { |associate| raise_on_type_mismatch(associate) }
+
+        through = @reflection.through_reflection
+        raise ActiveRecord::HasManyThroughCantDissociateNewRecords.new(@owner, through) if @owner.new_record?
+
+        load_target
+
+        klass = through.klass
+        klass.transaction do
+          flatten_deeper(records).each do |associate|
+            raise_on_type_mismatch(associate)
+            raise ActiveRecord::HasManyThroughCantDissociateNewRecords.new(@owner, through) unless associate.respond_to?(:new_record?) &amp;&amp; !associate.new_record?
+
+            @owner.send(@reflection.through_reflection.name).proxy_target.delete(klass.delete_all(construct_join_attributes(associate)))
+            @target.delete(associate)
+          end
+        end
+
+        self
+      end
+
+      def build(attrs = nil)
+        raise ActiveRecord::HasManyThroughCantAssociateNewRecords.new(@owner, @reflection.through_reflection)
+      end
+
+      def create!(attrs = nil)
+        @reflection.klass.transaction do
+          self &lt;&lt; @reflection.klass.with_scope(:create =&gt; attrs) { @reflection.klass.create! }
+        end
+      end
+
+      # Calculate sum using SQL, not Enumerable
+      def sum(*args, &amp;block)
+        calculate(:sum, *args, &amp;block)
+      end
+      
+      def count(*args)
+        column_name, options = @reflection.klass.send(:construct_count_options_from_legacy_args, *args)
+        if @reflection.options[:uniq]
+          # This is needed becase 'SELECT count(DISTINCT *)..' is not valid sql statement.
+          column_name = &quot;#{@reflection.klass.table_name}.#{@reflection.klass.primary_key}&quot; if column_name == :all
+          options.merge!(:distinct =&gt; true) 
+        end
+        @reflection.klass.send(:with_scope, construct_scope) { @reflection.klass.count(column_name, options) } 
+      end
+
+      protected
+        def method_missing(method, *args, &amp;block)
+          if @target.respond_to?(method) || (!@reflection.klass.respond_to?(method) &amp;&amp; Class.respond_to?(method))
+            super
+          else
+            @reflection.klass.with_scope(construct_scope) { @reflection.klass.send(method, *args, &amp;block) }
+          end
+        end
+
+        def find_target
+          records = @reflection.klass.find(:all,
+            :select     =&gt; construct_select,
+            :conditions =&gt; construct_conditions,
+            :from       =&gt; construct_from,
+            :joins      =&gt; construct_joins,
+            :order      =&gt; @reflection.options[:order],
+            :limit      =&gt; @reflection.options[:limit],
+            :group      =&gt; @reflection.options[:group],
+            :include    =&gt; @reflection.options[:include] || @reflection.source_reflection.options[:include]
+          )
+
+          @reflection.options[:uniq] ? records.to_set.to_a : records
+        end
+
+        # Construct attributes for associate pointing to owner.
+        def construct_owner_attributes(reflection)
+          if as = reflection.options[:as]
+            { &quot;#{as}_id&quot; =&gt; @owner.id,
+              &quot;#{as}_type&quot; =&gt; @owner.class.base_class.name.to_s }
+          else
+            { reflection.primary_key_name =&gt; @owner.id }
+          end
+        end
+
+        # Construct attributes for :through pointing to owner and associate.
+        def construct_join_attributes(associate)
+          returning construct_owner_attributes(@reflection.through_reflection).merge(@reflection.source_reflection.primary_key_name =&gt; associate.id) do |join_attributes|
+            if @reflection.options[:source_type]
+              join_attributes.merge!(@reflection.source_reflection.options[:foreign_type] =&gt; associate.class.base_class.name.to_s)
+            end
+          end
+        end
+
+        # Associate attributes pointing to owner, quoted.
+        def construct_quoted_owner_attributes(reflection)
+          if as = reflection.options[:as]
+            { &quot;#{as}_id&quot; =&gt; @owner.quoted_id,
+              &quot;#{as}_type&quot; =&gt; reflection.klass.quote_value(
+                @owner.class.base_class.name.to_s,
+                reflection.klass.columns_hash[&quot;#{as}_type&quot;]) }
+          else
+            { reflection.primary_key_name =&gt; @owner.quoted_id }
+          end
+        end
+
+        # Build SQL conditions from attributes, qualified by table name.
+        def construct_conditions
+          table_name = @reflection.through_reflection.table_name
+          conditions = construct_quoted_owner_attributes(@reflection.through_reflection).map do |attr, value|
+            &quot;#{table_name}.#{attr} = #{value}&quot;
+          end
+          conditions &lt;&lt; sql_conditions if sql_conditions
+          &quot;(&quot; + conditions.join(') AND (') + &quot;)&quot;
+        end
+
+        def construct_from
+          @reflection.table_name
+        end
+
+        def construct_select(custom_select = nil)
+          selected = custom_select || @reflection.options[:select] || &quot;#{@reflection.table_name}.*&quot;
+        end
+
+        def construct_joins(custom_joins = nil)
+          polymorphic_join = nil
+          if @reflection.through_reflection.options[:as] || @reflection.source_reflection.macro == :belongs_to
+            reflection_primary_key = @reflection.klass.primary_key
+            source_primary_key     = @reflection.source_reflection.primary_key_name
+            if @reflection.options[:source_type]
+              polymorphic_join = &quot;AND %s.%s = %s&quot; % [
+                @reflection.through_reflection.table_name, &quot;#{@reflection.source_reflection.options[:foreign_type]}&quot;,
+                @owner.class.quote_value(@reflection.options[:source_type])
+              ]
+            end
+          else
+            reflection_primary_key = @reflection.source_reflection.primary_key_name
+            source_primary_key     = @reflection.klass.primary_key
+            if @reflection.source_reflection.options[:as]
+              polymorphic_join = &quot;AND %s.%s = %s&quot; % [
+                @reflection.table_name, &quot;#{@reflection.source_reflection.options[:as]}_type&quot;,
+                @owner.class.quote_value(@reflection.through_reflection.klass.name)
+              ]
+            end
+          end
+
+          &quot;INNER JOIN %s ON %s.%s = %s.%s %s #{@reflection.options[:joins]} #{custom_joins}&quot; % [
+            @reflection.through_reflection.table_name,
+            @reflection.table_name, reflection_primary_key,
+            @reflection.through_reflection.table_name, source_primary_key,
+            polymorphic_join
+          ]
+        end
+
+        def construct_scope
+          { :create =&gt; construct_owner_attributes(@reflection),
+            :find   =&gt; { :from        =&gt; construct_from,
+                         :conditions  =&gt; construct_conditions,
+                         :joins       =&gt; construct_joins,
+                         :select      =&gt; construct_select } }
+        end
+
+        def construct_sql
+          case
+            when @reflection.options[:finder_sql]
+              @finder_sql = interpolate_sql(@reflection.options[:finder_sql])
+
+              @finder_sql = &quot;#{@reflection.klass.table_name}.#{@reflection.primary_key_name} = #{@owner.quoted_id}&quot;
+              @finder_sql &lt;&lt; &quot; AND (#{conditions})&quot; if conditions
+          end
+
+          if @reflection.options[:counter_sql]
+            @counter_sql = interpolate_sql(@reflection.options[:counter_sql])
+          elsif @reflection.options[:finder_sql]
+            # replace the SELECT clause with COUNT(*), preserving any hints within /* ... */
+            @reflection.options[:counter_sql] = @reflection.options[:finder_sql].sub(/SELECT (\/\*.*?\*\/ )?(.*)\bFROM\b/im) { &quot;SELECT #{$1}COUNT(*) FROM&quot; }
+            @counter_sql = interpolate_sql(@reflection.options[:counter_sql])
+          else
+            @counter_sql = @finder_sql
+          end
+        end
+
+        def conditions
+          @conditions ||= [
+            (interpolate_sql(@reflection.klass.send(:sanitize_sql, @reflection.options[:conditions])) if @reflection.options[:conditions]),
+            (interpolate_sql(@reflection.active_record.send(:sanitize_sql, @reflection.through_reflection.options[:conditions])) if @reflection.through_reflection.options[:conditions]),
+            (&quot;#{@reflection.through_reflection.table_name}.#{@reflection.through_reflection.klass.inheritance_column} = #{@reflection.klass.quote_value(@reflection.through_reflection.klass.name.demodulize)}&quot; unless @reflection.through_reflection.klass.descends_from_active_record?)
+          ].compact.collect { |condition| &quot;(#{condition})&quot; }.join(' AND ') unless (!@reflection.options[:conditions] &amp;&amp; !@reflection.through_reflection.options[:conditions] &amp;&amp; @reflection.through_reflection.klass.descends_from_active_record?)
+        end
+
+        alias_method :sql_conditions, :conditions
+    end
+  end
+end
+</pre>
+    </div>

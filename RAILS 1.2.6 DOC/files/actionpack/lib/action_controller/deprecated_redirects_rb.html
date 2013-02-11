@@ -1,0 +1,37 @@
+  <div id="fileHeader">
+    <h1>deprecated_redirects.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionpack/lib/action_controller/deprecated_redirects.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Mar 27 19:19:27 -0800 2006</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module ActionController
+  class Base
+    protected
+      # Deprecated in favor of calling redirect_to directly with the path.
+      def redirect_to_path(path) #:nodoc:
+        redirect_to(path)
+      end
+
+      # Deprecated in favor of calling redirect_to directly with the url. If the resource has moved permanently, it's possible to pass
+      # true as the second parameter and the browser will get &quot;301 Moved Permanently&quot; instead of &quot;302 Found&quot;. This can also be done through
+      # just setting the headers[&quot;Status&quot;] to &quot;301 Moved Permanently&quot; before using the redirect_to.
+      def redirect_to_url(url, permanently = false) #:nodoc:
+        headers[&quot;Status&quot;] = &quot;301 Moved Permanently&quot; if permanently
+        redirect_to(url)
+      end
+  end
+end
+</pre>
+    </div>

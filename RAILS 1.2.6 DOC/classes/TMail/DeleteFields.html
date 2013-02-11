@@ -1,0 +1,94 @@
+  <div id="C00000243">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />DeleteFields<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionmailer/lib/action_mailer/vendor/tmail/net_rb.html');">actionmailer/lib/action_mailer/vendor/tmail/net.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000827&name=exec" >exec</a></li>
+  <li><a href="index.html?a=M000826&name=new" >new</a></li>
+  </ul>
+
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">NOSEND_FIELDS</td>
+    <td>=</td>
+    <td class="attr-value">%w(       received       bcc     )</td>
+  </tr>
+  </table>
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>delete_empty_fields</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>no_send_fields</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M000826" class="method">
+  <div id="M000826_title" class="title">
+    <b>new</b>( nosend = nil, delempty = true )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000826_source')" id="l_M000826_source">show source</a> ]</p>
+  <div id="M000826_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/net.rb, line 175</span>
+175:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">nosend</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">delempty</span> = <span class="ruby-keyword kw">true</span> )
+176:       <span class="ruby-ivar">@no_send_fields</span> = <span class="ruby-identifier">nosend</span> <span class="ruby-operator">||</span> <span class="ruby-constant">NOSEND_FIELDS</span>.<span class="ruby-identifier">dup</span>
+177:       <span class="ruby-ivar">@delete_empty_fields</span> = <span class="ruby-identifier">delempty</span>
+178:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000827" class="method">
+  <div id="M000827_title" class="title">
+    <b>exec</b>( mail )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000827_source')" id="l_M000827_source">show source</a> ]</p>
+  <div id="M000827_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionmailer/lib/action_mailer/vendor/tmail/net.rb, line 183</span>
+183:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec</span>( <span class="ruby-identifier">mail</span> )
+184:       <span class="ruby-ivar">@no_send_fields</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">nm</span><span class="ruby-operator">|</span>
+185:         <span class="ruby-identifier">delete</span> <span class="ruby-identifier">nm</span>
+186:       <span class="ruby-keyword kw">end</span>
+187:       <span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">n</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span> } <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@delete_empty_fields</span>
+188:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

@@ -1,0 +1,46 @@
+  <div id="fileHeader">
+    <h1>class_inheritable_options.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionwebservice/lib/action_web_service/support/class_inheritable_options.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Feb 18 02:35:25 -0800 2005</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>class Class # :nodoc:
+  def class_inheritable_option(sym, default_value=nil)
+    write_inheritable_attribute sym, default_value
+    class_eval &lt;&lt;-EOS
+      def self.#{sym}(value=nil)
+        if !value.nil?
+          write_inheritable_attribute(:#{sym}, value)
+        else
+          read_inheritable_attribute(:#{sym})
+        end
+      end
+      
+      def self.#{sym}=(value)
+        write_inheritable_attribute(:#{sym}, value)
+      end
+
+      def #{sym}
+        self.class.#{sym}
+      end
+
+      def #{sym}=(value)
+        self.class.#{sym} = value
+      end
+    EOS
+  end
+end
+</pre>
+    </div>

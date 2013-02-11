@@ -1,0 +1,152 @@
+  <div id="C00000387">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />ClassMethods<br/>
+  In:
+<a href="#" onclick="jsHref('files/activerecord/lib/active_record/transactions_rb.html');">activerecord/lib/active_record/transactions.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+Transactions are protective blocks where SQL statements are only permanent
+if they can all succeed as one atomic action. The classic example is a
+transfer between two accounts where you can only have a deposit if the
+withdrawal succeeded and vice versa. Transactions enforce the integrity of
+the database and guard the data against program errors or database
+break-downs. So basically you should use transaction blocks whenever you
+have a number of statements that must be executed together or not at all.
+Example:
+</p>
+<pre>
+  transaction do
+    david.withdrawal(100)
+    mary.deposit(100)
+  end
+</pre>
+<p>
+This example will only take money from David and give to Mary if neither
+<tt>withdrawal</tt> nor <tt>deposit</tt> raises an exception. Exceptions
+will force a ROLLBACK that returns the database to the state before the
+transaction was begun. Be aware, though, that the objects by default will
+<em>not</em> have their instance data returned to their pre-transactional
+state.
+</p>
+<h2>Transactions are not distributed across database connections</h2>
+<p>
+A transaction acts on a single database connection. If you have multiple
+class-specific databases, the transaction will not protect interaction
+among them. One workaround is to begin a transaction on each class whose
+models you alter:
+</p>
+<pre>
+  Student.transaction do
+    Course.transaction do
+      course.enroll(student)
+      student.units += course.units
+    end
+  end
+</pre>
+<p>
+This is a poor solution, but full distributed transactions are beyond the
+scope of Active Record.
+</p>
+<h2>Save and destroy are automatically wrapped in a transaction</h2>
+<p>
+Both <a href="index.html?a=M001513&name=Base#save">Base#save</a> and <a
+href="index.html?a=M001472&name=Base#destroy">Base#destroy</a> come wrapped
+in a transaction that ensures that whatever you do in validations or
+callbacks will happen under the protected cover of a transaction. So you
+can use validations to check for values that the transaction depend on or
+you can raise exceptions in the callbacks to rollback.
+</p>
+<h2>Object-level transactions (deprecated)</h2>
+<p>
+You can enable object-level transactions for Active Record objects, though.
+You do this by naming each of the Active Records that you want to enable
+object-level transactions for, like this:
+</p>
+<pre>
+  Account.transaction(david, mary) do
+    david.withdrawal(100)
+    mary.deposit(100)
+  end
+</pre>
+<p>
+If the transaction fails, David and Mary will be returned to their
+pre-transactional state. No money will have changed hands in neither object
+nor database.
+</p>
+<p>
+However, useful state such as validation errors are also rolled back,
+limiting the usefulness of this feature. As such it is deprecated in Rails
+1.2 and will be removed in the next release. Install the
+object_transactions plugin if you wish to continue using it.
+</p>
+<h2>Exception handling</h2>
+<p>
+Also have in mind that exceptions thrown within a transaction block will be
+propagated (after triggering the ROLLBACK), so you should be ready to catch
+those in your application code.
+</p>
+<p>
+Tribute: Object-level transactions are implemented by <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+by Austin Ziegler.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001155&name=transaction" >transaction</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001155" class="method">
+  <div id="M001155_title" class="title">
+    <b>transaction</b>(*objects, &amp;block)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001155_source')" id="l_M001155_source">show source</a> ]</p>
+  <div id="M001155_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/transactions.rb, line 84</span>
+ 84:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transaction</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">objects</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+ 85:         <span class="ruby-identifier">previous_handler</span> = <span class="ruby-identifier">trap</span>(<span class="ruby-value str">'TERM'</span>) { <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-value str">&quot;Transaction aborted&quot;</span> }
+ 86:         <span class="ruby-identifier">increment_open_transactions</span>
+ 87: 
+ 88:         <span class="ruby-keyword kw">begin</span>
+ 89:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">empty?</span>
+ 90:             <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span> <span class="ruby-value str">&quot;Object transactions are deprecated and will be removed from Rails 2.0.  See http://www.rubyonrails.org/deprecation for details.&quot;</span>, <span class="ruby-identifier">caller</span>
+ 91:             <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>) }
+ 92:             <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">start_transaction</span> }
+ 93:           <span class="ruby-keyword kw">end</span>
+ 94: 
+ 95:           <span class="ruby-identifier">result</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">transaction</span>(<span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>[<span class="ruby-value str">'start_db_transaction'</span>], <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+ 96: 
+ 97:           <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">commit_transaction</span> }
+ 98:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>
+ 99:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">object_transaction_rollback</span>
+100:           <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">abort_transaction</span> }
+101:           <span class="ruby-identifier">raise</span>
+102:         <span class="ruby-keyword kw">ensure</span>
+103:           <span class="ruby-identifier">decrement_open_transactions</span>
+104:           <span class="ruby-identifier">trap</span>(<span class="ruby-value str">'TERM'</span>, <span class="ruby-identifier">previous_handler</span>)
+105:         <span class="ruby-keyword kw">end</span>
+106:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

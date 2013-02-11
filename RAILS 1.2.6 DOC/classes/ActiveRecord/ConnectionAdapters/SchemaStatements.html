@@ -1,0 +1,668 @@
+  <div id="C00000399">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />SchemaStatements<br/>
+  In:
+<a href="#" onclick="jsHref('files/activerecord/lib/active_record/connection_adapters/abstract/schema_statements_rb.html');">activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001180&name=add_column" >add_column</a></li>
+  <li><a href="index.html?a=M001185&name=add_index" >add_index</a></li>
+  <li><a href="index.html?a=M001190&name=add_order_by_for_association_limiting!" >add_order_by_for_association_limiting!</a></li>
+  <li><a href="index.html?a=M001182&name=change_column" >change_column</a></li>
+  <li><a href="index.html?a=M001183&name=change_column_default" >change_column_default</a></li>
+  <li><a href="index.html?a=M001176&name=columns" >columns</a></li>
+  <li><a href="index.html?a=M001177&name=create_table" >create_table</a></li>
+  <li><a href="index.html?a=M001189&name=distinct" >distinct</a></li>
+  <li><a href="index.html?a=M001179&name=drop_table" >drop_table</a></li>
+  <li><a href="index.html?a=M001188&name=initialize_schema_information" >initialize_schema_information</a></li>
+  <li><a href="index.html?a=M001173&name=native_database_types" >native_database_types</a></li>
+  <li><a href="index.html?a=M001191&name=options_include_default?" >options_include_default?</a></li>
+  <li><a href="index.html?a=M001181&name=remove_column" >remove_column</a></li>
+  <li><a href="index.html?a=M001186&name=remove_index" >remove_index</a></li>
+  <li><a href="index.html?a=M001184&name=rename_column" >rename_column</a></li>
+  <li><a href="index.html?a=M001178&name=rename_table" >rename_table</a></li>
+  <li><a href="index.html?a=M001187&name=structure_dump" >structure_dump</a></li>
+  <li><a href="index.html?a=M001175&name=table_alias_for" >table_alias_for</a></li>
+  <li><a href="index.html?a=M001174&name=table_alias_length" >table_alias_length</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001180" class="method">
+  <div id="M001180_title" class="title">
+    <b>add_column</b>(table_name, column_name, type, options = {})
+  </div>
+  <div class="description">
+  <p>
+Adds a new column to the named table. See <a
+href="index.html?a=M001267&name=TableDefinition#column">TableDefinition#column</a>
+for details of the options you can use.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001180_source')" id="l_M001180_source">show source</a> ]</p>
+  <div id="M001180_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 121</span>
+121:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_column</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">column_name</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">options</span> = {})
+122:         <span class="ruby-identifier">add_column_sql</span> = <span class="ruby-node">&quot;ALTER TABLE #{table_name} ADD #{quote_column_name(column_name)} #{type_to_sql(type, options[:limit], options[:precision], options[:scale])}&quot;</span>
+123:         <span class="ruby-identifier">add_column_options!</span>(<span class="ruby-identifier">add_column_sql</span>, <span class="ruby-identifier">options</span>)
+124:         <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">add_column_sql</span>)
+125:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001185" class="method">
+  <div id="M001185_title" class="title">
+    <b>add_index</b>(table_name, column_name, options = {})
+  </div>
+  <div class="description">
+  <p>
+Adds a new index to the table. <tt>column_name</tt> can be a single <a
+href="index.html?a=C00000011&name=Symbol">Symbol</a>, or an Array of
+Symbols.
+</p>
+<p>
+The index will be named after the table and the first column names, unless
+you pass +:name+ as an option.
+</p>
+<p>
+When creating an index on multiple columns, the first column is used as a
+name for the index. For example, when you specify an index on two columns
+[+:first+, +:last+], the DBMS creates an index for both columns as well as
+an index for the first colum +:first+. Using just the first name for this
+index makes sense, because you will never have to create a singular index
+with this name.
+</p>
+<h5>Examples</h5>
+<h6>Creating a simple index</h6>
+<pre>
+ add_index(:suppliers, :name)
+</pre>
+<p>
+generates
+</p>
+<pre>
+ CREATE INDEX suppliers_name_index ON suppliers(name)
+</pre>
+<h6>Creating a unique index</h6>
+<pre>
+ add_index(:accounts, [:branch_id, :party_id], :unique =&gt; true)
+</pre>
+<p>
+generates
+</p>
+<pre>
+ CREATE UNIQUE INDEX accounts_branch_id_party_id_index ON accounts(branch_id, party_id)
+</pre>
+<h6>Creating a named index</h6>
+<pre>
+ add_index(:accounts, [:branch_id, :party_id], :unique =&gt; true, :name =&gt; 'by_branch_party')
+</pre>
+<p>
+generates
+</p>
+<pre>
+ CREATE UNIQUE INDEX by_branch_party ON accounts(branch_id, party_id)
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001185_source')" id="l_M001185_source">show source</a> ]</p>
+  <div id="M001185_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 186</span>
+186:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_index</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">column_name</span>, <span class="ruby-identifier">options</span> = {})
+187:         <span class="ruby-identifier">column_names</span> = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">column_name</span>)
+188:         <span class="ruby-identifier">index_name</span>   = <span class="ruby-identifier">index_name</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">:column</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">column_names</span>)
+189: 
+190:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span> <span class="ruby-comment cmt"># legacy support, since this param was a string</span>
+191:           <span class="ruby-identifier">index_type</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:unique</span>] <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;UNIQUE&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>
+192:           <span class="ruby-identifier">index_name</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">index_name</span>
+193:         <span class="ruby-keyword kw">else</span>
+194:           <span class="ruby-identifier">index_type</span> = <span class="ruby-identifier">options</span>
+195:         <span class="ruby-keyword kw">end</span>
+196:         <span class="ruby-identifier">quoted_column_names</span> = <span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">quote_column_name</span>(<span class="ruby-identifier">e</span>) }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>)
+197:         <span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;CREATE #{index_type} INDEX #{quote_column_name(index_name)} ON #{table_name} (#{quoted_column_names})&quot;</span>
+198:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001190" class="method">
+  <div id="M001190_title" class="title">
+    <b>add_order_by_for_association_limiting!</b>(sql, options)
+  </div>
+  <div class="description">
+  <p>
+ORDER BY clause for the passed order option. PostgreSQL overrides this due
+to its stricter standards compliance.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001190_source')" id="l_M001190_source">show source</a> ]</p>
+  <div id="M001190_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 293</span>
+293:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_order_by_for_association_limiting!</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">options</span>)
+294:         <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;ORDER BY #{options[:order]}&quot;</span>
+295:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001182" class="method">
+  <div id="M001182_title" class="title">
+    <b>change_column</b>(table_name, column_name, type, options = {})
+  </div>
+  <div class="description">
+  <p>
+Changes the column&#8217;s definition according to the new options. See <a
+href="index.html?a=M001267&name=TableDefinition#column">TableDefinition#column</a>
+for details of the options you can use.
+</p>
+<h5>Examples</h5>
+<pre>
+ change_column(:suppliers, :name, :string, :limit =&gt; 80)
+ change_column(:accounts, :description, :text)
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001182_source')" id="l_M001182_source">show source</a> ]</p>
+  <div id="M001182_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 139</span>
+139:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">change_column</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">column_name</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">options</span> = {})
+140:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-value str">&quot;change_column is not implemented&quot;</span>
+141:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001183" class="method">
+  <div id="M001183_title" class="title">
+    <b>change_column_default</b>(table_name, column_name, default)
+  </div>
+  <div class="description">
+  <p>
+Sets a new default value for a column. If you want to set the default value
+to <tt>NULL</tt>, you are out of luck. You need to <a
+href="index.html?a=M001202&name=DatabaseStatements#execute">DatabaseStatements#execute</a>
+the apppropriate SQL statement yourself.
+</p>
+<h5>Examples</h5>
+<pre>
+ change_column_default(:suppliers, :qualification, 'new')
+ change_column_default(:accounts, :authorized, 1)
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001183_source')" id="l_M001183_source">show source</a> ]</p>
+  <div id="M001183_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 149</span>
+149:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">change_column_default</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">column_name</span>, <span class="ruby-identifier">default</span>)
+150:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-value str">&quot;change_column_default is not implemented&quot;</span>
+151:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001176" class="method">
+  <div id="M001176_title" class="title">
+    <b>columns</b>(table_name, name = nil)
+  </div>
+  <div class="description">
+  <p>
+Returns an array of <a href="index.html?a=C00000404&name=Column">Column</a>
+objects for the table specified by <tt>table_name</tt>. See the concrete
+implementation for details on the expected parameter values.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001176_source')" id="l_M001176_source">show source</a> ]</p>
+  <div id="M001176_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 28</span>
+28:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">columns</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>) <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001177" class="method">
+  <div id="M001177_title" class="title">
+    <b>create_table</b>(name, options = {}) {|table_definition| ...}
+  </div>
+  <div class="description">
+  <p>
+Creates a new table There are two ways to work with <a
+href="index.html?a=M001177&name=create_table">create_table</a>. You can use
+the block form or the regular form, like this:
+</p>
+<h3>Block form</h3>
+<pre>
+ # create_table() yields a TableDefinition instance
+ create_table(:suppliers) do |t|
+   t.column :name, :string, :limit =&gt; 60
+   # Other fields here
+ end
+</pre>
+<h3>Regular form</h3>
+<pre>
+ create_table(:suppliers)
+ add_column(:suppliers, :name, :string, {:limit =&gt; 60})
+</pre>
+<p>
+The <tt>options</tt> hash can include the following keys:
+</p>
+<dl>
+<dt><tt>:id</tt></dt><dd>Whether to automatically add a primary key column. Defaults to true. Join
+tables for has_and_belongs_to_many should set :id =&gt; false.
+
+</dd>
+<dt><tt>:primary_key</tt></dt><dd>The name of the primary key, if one is to be added automatically. Defaults
+to <tt>id</tt>.
+
+</dd>
+<dt><tt>:options</tt></dt><dd>Any extra options you want appended to the table definition.
+
+</dd>
+<dt><tt>:temporary</tt></dt><dd>Make a temporary table.
+
+</dd>
+<dt><tt>:force</tt></dt><dd>Set to true or false to drop the table before creating it. Defaults to
+false.
+
+</dd>
+</dl>
+<h5>Examples</h5>
+<h6>Add a backend specific option to the generated SQL (MySQL)</h6>
+<pre>
+ create_table(:suppliers, :options =&gt; 'ENGINE=InnoDB DEFAULT CHARSET=utf8')
+</pre>
+<p>
+generates:
+</p>
+<pre>
+ CREATE TABLE suppliers (
+   id int(11) DEFAULT NULL auto_increment PRIMARY KEY
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+</pre>
+<h6>Rename the primary key column</h6>
+<pre>
+ create_table(:objects, :primary_key =&gt; 'guid') do |t|
+   t.column :name, :string, :limit =&gt; 80
+ end
+</pre>
+<p>
+generates:
+</p>
+<pre>
+ CREATE TABLE objects (
+   guid int(11) DEFAULT NULL auto_increment PRIMARY KEY,
+   name varchar(80)
+ )
+</pre>
+<h6>Do not add a primary key column</h6>
+<pre>
+ create_table(:categories_suppliers, :id =&gt; false) do |t|
+   t.column :category_id, :integer
+   t.column :supplier_id, :integer
+ end
+</pre>
+<p>
+generates:
+</p>
+<pre>
+ CREATE TABLE categories_suppliers_join (
+   category_id int,
+   supplier_id int
+ )
+</pre>
+<p>
+See also <a
+href="index.html?a=M001267&name=TableDefinition#column">TableDefinition#column</a>
+for details on how to create columns.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001177_source')" id="l_M001177_source">show source</a> ]</p>
+  <div id="M001177_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 90</span>
+ 90:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_table</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {})
+ 91:         <span class="ruby-identifier">table_definition</span> = <span class="ruby-constant">TableDefinition</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+ 92:         <span class="ruby-identifier">table_definition</span>.<span class="ruby-identifier">primary_key</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:primary_key</span>] <span class="ruby-operator">||</span> <span class="ruby-value str">&quot;id&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span>
+ 93: 
+ 94:         <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">table_definition</span>
+ 95: 
+ 96:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:force</span>]
+ 97:           <span class="ruby-identifier">drop_table</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
+ 98:         <span class="ruby-keyword kw">end</span>
+ 99: 
+100:         <span class="ruby-identifier">create_sql</span> = <span class="ruby-node">&quot;CREATE#{' TEMPORARY' if options[:temporary]} TABLE &quot;</span>
+101:         <span class="ruby-identifier">create_sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{name} (&quot;</span>
+102:         <span class="ruby-identifier">create_sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">table_definition</span>.<span class="ruby-identifier">to_sql</span>
+103:         <span class="ruby-identifier">create_sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;) #{options[:options]}&quot;</span>
+104:         <span class="ruby-identifier">execute</span> <span class="ruby-identifier">create_sql</span>
+105:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001189" class="method">
+  <div id="M001189_title" class="title">
+    <b>distinct</b>(columns, order_by)
+  </div>
+  <div class="description">
+  <p>
+SELECT DISTINCT clause for a given set of columns and a given ORDER BY
+clause. Both PostgreSQL and Oracle overrides this for custom DISTINCT
+syntax.
+</p>
+<pre>
+  distinct(&quot;posts.id&quot;, &quot;posts.created_at desc&quot;)
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001189_source')" id="l_M001189_source">show source</a> ]</p>
+  <div id="M001189_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 287</span>
+287:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">distinct</span>(<span class="ruby-identifier">columns</span>, <span class="ruby-identifier">order_by</span>)
+288:         <span class="ruby-node">&quot;DISTINCT #{columns}&quot;</span>
+289:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001179" class="method">
+  <div id="M001179_title" class="title">
+    <b>drop_table</b>(name, options = {})
+  </div>
+  <div class="description">
+  <p>
+Drops a table from the database.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001179_source')" id="l_M001179_source">show source</a> ]</p>
+  <div id="M001179_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 115</span>
+115:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">drop_table</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {})
+116:         <span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;DROP TABLE #{name}&quot;</span>
+117:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001188" class="method">
+  <div id="M001188_title" class="title">
+    <b>initialize_schema_information</b>()
+  </div>
+  <div class="description">
+  <p>
+Should not be called normally, but this operation is non-destructive. The
+migrations module handles this automatically.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001188_source')" id="l_M001188_source">show source</a> ]</p>
+  <div id="M001188_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 235</span>
+235:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_schema_information</span>
+236:         <span class="ruby-keyword kw">begin</span>
+237:           <span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;CREATE TABLE #{ActiveRecord::Migrator.schema_info_table_name} (version #{type_to_sql(:integer)})&quot;</span>
+238:           <span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;INSERT INTO #{ActiveRecord::Migrator.schema_info_table_name} (version) VALUES(0)&quot;</span>
+239:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">StatementInvalid</span>
+240:           <span class="ruby-comment cmt"># Schema has been intialized</span>
+241:         <span class="ruby-keyword kw">end</span>
+242:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001173" class="method">
+  <div id="M001173_title" class="title">
+    <b>native_database_types</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a Hash of mappings from the abstract data types to the native
+database types. See <a
+href="index.html?a=M001267&name=TableDefinition#column">TableDefinition#column</a>
+for details on the recognized abstract data types.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001173_source')" id="l_M001173_source">show source</a> ]</p>
+  <div id="M001173_source" class="dyn-source">
+<pre>
+   <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 7</span>
+7:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">native_database_types</span>
+8:         {}
+9:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001181" class="method">
+  <div id="M001181_title" class="title">
+    <b>remove_column</b>(table_name, column_name)
+  </div>
+  <div class="description">
+  <p>
+Removes the column from the table definition.
+</p>
+<h5>Examples</h5>
+<pre>
+ remove_column(:suppliers, :qualification)
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001181_source')" id="l_M001181_source">show source</a> ]</p>
+  <div id="M001181_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 130</span>
+130:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_column</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">column_name</span>)
+131:         <span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;ALTER TABLE #{table_name} DROP #{quote_column_name(column_name)}&quot;</span>
+132:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001186" class="method">
+  <div id="M001186_title" class="title">
+    <b>remove_index</b>(table_name, options = {})
+  </div>
+  <div class="description">
+  <p>
+Remove the given index from the table.
+</p>
+<p>
+Remove the suppliers_name_index in the suppliers table.
+</p>
+<pre>
+  remove_index :suppliers, :name
+</pre>
+<p>
+Remove the index named accounts_branch_id_index in the accounts table.
+</p>
+<pre>
+  remove_index :accounts, :column =&gt; :branch_id
+</pre>
+<p>
+Remove the index named accounts_branch_id_party_id_index in the accounts
+table.
+</p>
+<pre>
+  remove_index :accounts, :column =&gt; [:branch_id, :party_id]
+</pre>
+<p>
+Remove the index named by_branch_party in the accounts table.
+</p>
+<pre>
+  remove_index :accounts, :name =&gt; :by_branch_party
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001186_source')" id="l_M001186_source">show source</a> ]</p>
+  <div id="M001186_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 210</span>
+210:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_index</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">options</span> = {})
+211:         <span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;DROP INDEX #{quote_column_name(index_name(table_name, options))} ON #{table_name}&quot;</span>
+212:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001184" class="method">
+  <div id="M001184_title" class="title">
+    <b>rename_column</b>(table_name, column_name, new_column_name)
+  </div>
+  <div class="description">
+  <p>
+Renames a column.
+</p>
+<h5>Example</h5>
+<pre>
+ rename_column(:suppliers, :description, :name)
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001184_source')" id="l_M001184_source">show source</a> ]</p>
+  <div id="M001184_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 156</span>
+156:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rename_column</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">column_name</span>, <span class="ruby-identifier">new_column_name</span>)
+157:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-value str">&quot;rename_column is not implemented&quot;</span>
+158:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001178" class="method">
+  <div id="M001178_title" class="title">
+    <b>rename_table</b>(name, new_name)
+  </div>
+  <div class="description">
+  <p>
+Renames a table.
+</p>
+<h5>Example</h5>
+<pre>
+ rename_table('octopuses', 'octopi')
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001178_source')" id="l_M001178_source">show source</a> ]</p>
+  <div id="M001178_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 110</span>
+110:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rename_table</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">new_name</span>)
+111:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-value str">&quot;rename_table is not implemented&quot;</span>
+112:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001187" class="method">
+  <div id="M001187_title" class="title">
+    <b>structure_dump</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a string of <tt>CREATE TABLE</tt> SQL statement(s) for recreating
+the entire structure of the database.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001187_source')" id="l_M001187_source">show source</a> ]</p>
+  <div id="M001187_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 230</span>
+230:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">structure_dump</span>
+231:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001175" class="method">
+  <div id="M001175_title" class="title">
+    <b>table_alias_for</b>(table_name)
+  </div>
+  <div class="description">
+  <p>
+Truncates a table alias according to the limits of the current adapter.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001175_source')" id="l_M001175_source">show source</a> ]</p>
+  <div id="M001175_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 17</span>
+17:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_alias_for</span>(<span class="ruby-identifier">table_name</span>)
+18:         <span class="ruby-identifier">table_name</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">table_alias_length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\./</span>, <span class="ruby-value str">'_'</span>)
+19:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001174" class="method">
+  <div id="M001174_title" class="title">
+    <b>table_alias_length</b>()
+  </div>
+  <div class="description">
+  <p>
+This is the maximum length a table alias can be
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001174_source')" id="l_M001174_source">show source</a> ]</p>
+  <div id="M001174_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 12</span>
+12:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_alias_length</span>
+13:         <span class="ruby-value">255</span>
+14:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Protected Instance methods</div>
+<div id="M001191" class="method">
+  <div id="M001191_title" class="title">
+    <b>options_include_default?</b>(options)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001191_source')" id="l_M001191_source">show source</a> ]</p>
+  <div id="M001191_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/connection_adapters/abstract/schema_statements.rb, line 298</span>
+298:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">options_include_default?</span>(<span class="ruby-identifier">options</span>)
+299:           <span class="ruby-identifier">options</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:default</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:null</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:default</span>].<span class="ruby-identifier">nil?</span>)
+300:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

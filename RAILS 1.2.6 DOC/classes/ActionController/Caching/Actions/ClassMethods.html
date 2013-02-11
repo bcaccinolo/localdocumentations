@@ -1,0 +1,55 @@
+  <div id="C00000121">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />ClassMethods<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionpack/lib/action_controller/caching_rb.html');">actionpack/lib/action_controller/caching.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000304&name=caches_action" >caches_action</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000304" class="method">
+  <div id="M000304_title" class="title">
+    <b>caches_action</b>(*actions)
+  </div>
+  <div class="description">
+  <p>
+Declares that <tt>actions</tt> should be cached. See <a
+href="index.html?a=C00000120&name=ActionController::Caching::Actions">ActionController::Caching::Actions</a>
+for details.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000304_source')" id="l_M000304_source">show source</a> ]</p>
+  <div id="M000304_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionpack/lib/action_controller/caching.rb, line 180</span>
+180:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">caches_action</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">actions</span>)
+181:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">perform_caching</span>
+182:           <span class="ruby-identifier">action_cache_filter</span> = <span class="ruby-constant">ActionCacheFilter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">actions</span>)
+183:           <span class="ruby-identifier">before_filter</span> <span class="ruby-identifier">action_cache_filter</span>
+184:           <span class="ruby-identifier">after_filter</span> <span class="ruby-identifier">action_cache_filter</span>
+185:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

@@ -1,0 +1,791 @@
+  <div id="C00000253">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />Simple<br/>
+  In:
+<a href="#" onclick="jsHref('files/activerecord/lib/active_record/vendor/simple_rb.html');">activerecord/lib/active_record/vendor/simple.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><h1><a href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a> for Ruby</h1>
+<p>
+<a href="index.html?a=C00000253&name=Simple">Simple</a> object transaction
+support for Ruby
+</p>
+<h2>Introduction</h2>
+<p>
+<a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+provides a generic way to add active transaction support to objects. The
+transaction methods added by this module will work with most objects,
+excluding those that cannot be <em>Marshal</em>ed (bindings, procedure
+objects, IO instances, or singleton objects).
+</p>
+<p>
+The transactions supported by <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+are not backed transactions; they are not associated with any sort of data
+store. They are &quot;live&quot; transactions occurring in memory and in
+the object itself. This is to allow &quot;test&quot; changes to be made to
+an object before making the changes permanent.
+</p>
+<p>
+<a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+can handle an &quot;infinite&quot; number of transaction levels (limited
+only by memory). If I open two transactions, commit the second, but abort
+the first, the object will revert to the original version.
+</p>
+<p>
+<a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+supports &quot;named&quot; transactions, so that multiple levels of
+transactions can be committed, aborted, or rewound by referring to the
+appropriate name of the transaction. Names may be any object <b>except</b>
+<tt>nil</tt>. As with Hash keys, String names will be duplicated and frozen
+before using.
+</p>
+<table>
+<tr><td valign="top">Copyright:</td><td>Copyright © 2003 - 2005 by Austin Ziegler
+
+</td></tr>
+<tr><td valign="top">Version:</td><td>1.3.0
+
+</td></tr>
+<tr><td valign="top">Licence:</td><td>MIT-Style
+
+</td></tr>
+</table>
+<p>
+Thanks to David Black for help with the initial concept that led to this
+library.
+</p>
+<h2>Usage</h2>
+<pre>
+  include 'transaction/simple'
+
+  v = &quot;Hello, you.&quot;               # -&gt; &quot;Hello, you.&quot;
+  v.extend(Transaction::Simple)   # -&gt; &quot;Hello, you.&quot;
+
+  v.start_transaction             # -&gt; ... (a Marshal string)
+  v.transaction_open?             # -&gt; true
+  v.gsub!(/you/, &quot;world&quot;)         # -&gt; &quot;Hello, world.&quot;
+
+  v.rewind_transaction            # -&gt; &quot;Hello, you.&quot;
+  v.transaction_open?             # -&gt; true
+
+  v.gsub!(/you/, &quot;HAL&quot;)           # -&gt; &quot;Hello, HAL.&quot;
+  v.abort_transaction             # -&gt; &quot;Hello, you.&quot;
+  v.transaction_open?             # -&gt; false
+
+  v.start_transaction             # -&gt; ... (a Marshal string)
+  v.start_transaction             # -&gt; ... (a Marshal string)
+
+  v.transaction_open?             # -&gt; true
+  v.gsub!(/you/, &quot;HAL&quot;)           # -&gt; &quot;Hello, HAL.&quot;
+
+  v.commit_transaction            # -&gt; &quot;Hello, HAL.&quot;
+  v.transaction_open?             # -&gt; true
+  v.abort_transaction             # -&gt; &quot;Hello, you.&quot;
+  v.transaction_open?             # -&gt; false
+</pre>
+<h2>Named <a href="index.html?a=C00000252&name=Transaction">Transaction</a> Usage</h2>
+<pre>
+  v = &quot;Hello, you.&quot;               # -&gt; &quot;Hello, you.&quot;
+  v.extend(Transaction::Simple)   # -&gt; &quot;Hello, you.&quot;
+
+  v.start_transaction(:first)     # -&gt; ... (a Marshal string)
+  v.transaction_open?             # -&gt; true
+  v.transaction_open?(:first)     # -&gt; true
+  v.transaction_open?(:second)    # -&gt; false
+  v.gsub!(/you/, &quot;world&quot;)         # -&gt; &quot;Hello, world.&quot;
+
+  v.start_transaction(:second)    # -&gt; ... (a Marshal string)
+  v.gsub!(/world/, &quot;HAL&quot;)         # -&gt; &quot;Hello, HAL.&quot;
+  v.rewind_transaction(:first)    # -&gt; &quot;Hello, you.&quot;
+  v.transaction_open?             # -&gt; true
+  v.transaction_open?(:first)     # -&gt; true
+  v.transaction_open?(:second)    # -&gt; false
+
+  v.gsub!(/you/, &quot;world&quot;)         # -&gt; &quot;Hello, world.&quot;
+  v.start_transaction(:second)    # -&gt; ... (a Marshal string)
+  v.gsub!(/world/, &quot;HAL&quot;)         # -&gt; &quot;Hello, HAL.&quot;
+  v.transaction_name              # -&gt; :second
+  v.abort_transaction(:first)     # -&gt; &quot;Hello, you.&quot;
+  v.transaction_open?             # -&gt; false
+
+  v.start_transaction(:first)     # -&gt; ... (a Marshal string)
+  v.gsub!(/you/, &quot;world&quot;)         # -&gt; &quot;Hello, world.&quot;
+  v.start_transaction(:second)    # -&gt; ... (a Marshal string)
+  v.gsub!(/world/, &quot;HAL&quot;)         # -&gt; &quot;Hello, HAL.&quot;
+
+  v.commit_transaction(:first)    # -&gt; &quot;Hello, HAL.&quot;
+  v.transaction_open?             # -&gt; false
+</pre>
+<h2>Block Usage</h2>
+<pre>
+  v = &quot;Hello, you.&quot;               # -&gt; &quot;Hello, you.&quot;
+  Transaction::Simple.start(v) do |tv|
+      # v has been extended with Transaction::Simple and an unnamed
+      # transaction has been started.
+    tv.transaction_open?          # -&gt; true
+    tv.gsub!(/you/, &quot;world&quot;)      # -&gt; &quot;Hello, world.&quot;
+
+    tv.rewind_transaction         # -&gt; &quot;Hello, you.&quot;
+    tv.transaction_open?          # -&gt; true
+
+    tv.gsub!(/you/, &quot;HAL&quot;)        # -&gt; &quot;Hello, HAL.&quot;
+      # The following breaks out of the transaction block after
+      # aborting the transaction.
+    tv.abort_transaction          # -&gt; &quot;Hello, you.&quot;
+  end
+    # v still has Transaction::Simple applied from here on out.
+  v.transaction_open?             # -&gt; false
+
+  Transaction::Simple.start(v) do |tv|
+    tv.start_transaction          # -&gt; ... (a Marshal string)
+
+    tv.transaction_open?          # -&gt; true
+    tv.gsub!(/you/, &quot;HAL&quot;)        # -&gt; &quot;Hello, HAL.&quot;
+
+      # If #commit_transaction were called without having started a
+      # second transaction, then it would break out of the transaction
+      # block after committing the transaction.
+    tv.commit_transaction         # -&gt; &quot;Hello, HAL.&quot;
+    tv.transaction_open?          # -&gt; true
+    tv.abort_transaction          # -&gt; &quot;Hello, you.&quot;
+  end
+  v.transaction_open?             # -&gt; false
+</pre>
+<h2>Named <a href="index.html?a=C00000252&name=Transaction">Transaction</a> Usage</h2>
+<pre>
+  v = &quot;Hello, you.&quot;               # -&gt; &quot;Hello, you.&quot;
+  v.extend(Transaction::Simple)   # -&gt; &quot;Hello, you.&quot;
+
+  v.start_transaction(:first)     # -&gt; ... (a Marshal string)
+  v.transaction_open?             # -&gt; true
+  v.transaction_open?(:first)     # -&gt; true
+  v.transaction_open?(:second)    # -&gt; false
+  v.gsub!(/you/, &quot;world&quot;)         # -&gt; &quot;Hello, world.&quot;
+
+  v.start_transaction(:second)    # -&gt; ... (a Marshal string)
+  v.gsub!(/world/, &quot;HAL&quot;)         # -&gt; &quot;Hello, HAL.&quot;
+  v.rewind_transaction(:first)    # -&gt; &quot;Hello, you.&quot;
+  v.transaction_open?             # -&gt; true
+  v.transaction_open?(:first)     # -&gt; true
+  v.transaction_open?(:second)    # -&gt; false
+
+  v.gsub!(/you/, &quot;world&quot;)         # -&gt; &quot;Hello, world.&quot;
+  v.start_transaction(:second)    # -&gt; ... (a Marshal string)
+  v.gsub!(/world/, &quot;HAL&quot;)         # -&gt; &quot;Hello, HAL.&quot;
+  v.transaction_name              # -&gt; :second
+  v.abort_transaction(:first)     # -&gt; &quot;Hello, you.&quot;
+  v.transaction_open?             # -&gt; false
+
+  v.start_transaction(:first)     # -&gt; ... (a Marshal string)
+  v.gsub!(/you/, &quot;world&quot;)         # -&gt; &quot;Hello, world.&quot;
+  v.start_transaction(:second)    # -&gt; ... (a Marshal string)
+  v.gsub!(/world/, &quot;HAL&quot;)         # -&gt; &quot;Hello, HAL.&quot;
+
+  v.commit_transaction(:first)    # -&gt; &quot;Hello, HAL.&quot;
+  v.transaction_open?             # -&gt; false
+</pre>
+<h2>Thread Safety</h2>
+<p>
+Threadsafe version of <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+and Transaction::Simple::Group exist; these are loaded from
+&#8216;transaction/simple/threadsafe&#8217; and
+&#8216;transaction/simple/threadsafe/group&#8217;, respectively, and are
+represented in Ruby code as Transaction::Simple::ThreadSafe and
+Transaction::Simple::ThreadSafe::Group, respectively.
+</p>
+<h2>Contraindications</h2>
+<p>
+While <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+is very useful, it has some severe limitations that must be understood. <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>:
+</p>
+<ul>
+<li>uses Marshal. Thus, any object which cannot be <em>Marshal</em>ed cannot
+use <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>.
+In my experience, this affects singleton objects more often than any other
+object. It may be that Ruby 2.0 will solve this problem.
+
+</li>
+<li>does not manage resources. Resources external to the object and its
+instance variables are not managed at all. However, all instance variables
+and objects &quot;belonging&quot; to those instance variables are managed.
+If there are object reference counts to be handled, <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+will probably cause problems.
+
+</li>
+<li>is not inherently thread-safe. In the ACID (&quot;atomic, consistent,
+isolated, durable&quot;) test, <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+provides CD, but it is up to the user of <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+to provide isolation and atomicity. Transactions should be considered
+&quot;critical sections&quot; in multi-threaded applications. If thread
+safety and atomicity is absolutely required, use
+Transaction::Simple::ThreadSafe, which uses a Mutex object to synchronize
+the accesses on the object during the transaction operations.
+
+</li>
+<li>does not necessarily maintain Object#<em>id</em> values on rewind or abort.
+This may change for future versions that will be Ruby 1.8 or better
+<b>only</b>. Certain objects that support replace will maintain
+Object#<em>id</em>.
+
+</li>
+<li>Can be a memory hog if you use many levels of transactions on many objects.
+
+</li>
+</ul>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M000890&name=abort_transaction" >abort_transaction</a></li>
+  <li><a href="index.html?a=M000891&name=commit_transaction" >commit_transaction</a></li>
+  <li><a href="index.html?a=M000885&name=debug_io" >debug_io</a></li>
+  <li><a href="index.html?a=M000883&name=debug_io=" >debug_io=</a></li>
+  <li><a href="index.html?a=M000884&name=debugging?" >debugging?</a></li>
+  <li><a href="index.html?a=M000889&name=rewind_transaction" >rewind_transaction</a></li>
+  <li><a href="index.html?a=M000895&name=start" >start</a></li>
+  <li><a href="index.html?a=M000894&name=start_named" >start_named</a></li>
+  <li><a href="index.html?a=M000888&name=start_transaction" >start_transaction</a></li>
+  <li><a href="index.html?a=M000892&name=transaction" >transaction</a></li>
+  <li><a href="index.html?a=M000893&name=transaction_exclusions" >transaction_exclusions</a></li>
+  <li><a href="index.html?a=M000887&name=transaction_name" >transaction_name</a></li>
+  <li><a href="index.html?a=M000886&name=transaction_open?" >transaction_open?</a></li>
+  </ul>
+
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">TRANSACTION_SIMPLE_VERSION</td>
+    <td>=</td>
+    <td class="attr-value">'1.3.0'</td>
+  </tr>
+  </table>
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M000885" class="method">
+  <div id="M000885_title" class="title">
+    <b>debug_io</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns the <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+debug object. It must respond to #&lt;&lt;.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000885_source')" id="l_M000885_source">show source</a> ]</p>
+  <div id="M000885_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 300</span>
+300:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">debug_io</span>
+301:       <span class="ruby-ivar">@tdi</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">&quot;&quot;</span>
+302:       <span class="ruby-ivar">@tdi</span>
+303:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000883" class="method">
+  <div id="M000883_title" class="title">
+    <b>debug_io=</b>(io)
+  </div>
+  <div class="description">
+  <p>
+Sets the <a
+href="index.html?a=C00000253&name=Transaction::Simple">Transaction::Simple</a>
+debug object. It must respond to #&lt;&lt;. Sets the transaction debug
+object. Debugging will be performed automatically if there&#8217;s a debug
+object. The generic transaction error class.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000883_source')" id="l_M000883_source">show source</a> ]</p>
+  <div id="M000883_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 280</span>
+280:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">debug_io=</span>(<span class="ruby-identifier">io</span>)
+281:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">nil?</span>
+282:         <span class="ruby-ivar">@tdi</span>        = <span class="ruby-keyword kw">nil</span>
+283:         <span class="ruby-ivar">@debugging</span>  = <span class="ruby-keyword kw">false</span>
+284:       <span class="ruby-keyword kw">else</span>
+285:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:&lt;&lt;</span>)
+286:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:bad_debug_object</span>]
+287:         <span class="ruby-keyword kw">end</span>
+288:         <span class="ruby-ivar">@tdi</span> = <span class="ruby-identifier">io</span>
+289:         <span class="ruby-ivar">@debugging</span> = <span class="ruby-keyword kw">true</span>
+290:       <span class="ruby-keyword kw">end</span>
+291:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000884" class="method">
+  <div id="M000884_title" class="title">
+    <b>debugging?</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns <tt>true</tt> if we are debugging.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000884_source')" id="l_M000884_source">show source</a> ]</p>
+  <div id="M000884_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 294</span>
+294:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">debugging?</span>
+295:       <span class="ruby-ivar">@debugging</span>
+296:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000895" class="method">
+  <div id="M000895_title" class="title">
+    <b>start</b>(*vars, &amp;block)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000895_source')" id="l_M000895_source">show source</a> ]</p>
+  <div id="M000895_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 609</span>
+609:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">vars</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+610:         <span class="ruby-identifier">__common_start</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+611:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000894" class="method">
+  <div id="M000894_title" class="title">
+    <b>start_named</b>(name, *vars, &amp;block)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000894_source')" id="l_M000894_source">show source</a> ]</p>
+  <div id="M000894_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 605</span>
+605:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start_named</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">vars</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+606:         <span class="ruby-identifier">__common_start</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">vars</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+607:       <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M000890" class="method">
+  <div id="M000890_title" class="title">
+    <b>abort_transaction</b>(name = nil)
+  </div>
+  <div class="description">
+  <p>
+Aborts the transaction. Resets the object state to what it was before the
+transaction was started and closes the transaction. If <tt>name</tt> is
+specified, then the intervening transactions and the named transaction will
+be aborted. Otherwise, only the current transaction is aborted.
+</p>
+<p>
+If the current or named transaction has been started by a block (<a
+href="index.html?a=M000895&name=Transaction::Simple.start">Transaction::Simple.start</a>),
+then the execution of the block will be halted with <tt>break</tt>
+<tt>self</tt>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000890_source')" id="l_M000890_source">show source</a> ]</p>
+  <div id="M000890_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 426</span>
+426:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">abort_transaction</span>(<span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>)
+427:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_checkpoint__</span>.<span class="ruby-identifier">nil?</span>
+428:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_abort_no_transaction</span>]
+429:       <span class="ruby-keyword kw">end</span>
+430: 
+431:         <span class="ruby-comment cmt"># Check to see if we are trying to abort a transaction that is</span>
+432:         <span class="ruby-comment cmt"># outside of the current transaction block. Otherwise, raise</span>
+433:         <span class="ruby-comment cmt"># TransactionAborted if they are the same.</span>
+434:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_block__</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">name</span>
+435:         <span class="ruby-identifier">nix</span> = <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+436:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">nix</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@__transaction_block__</span>
+437:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_abort_transaction_before_block</span>]
+438:         <span class="ruby-keyword kw">end</span>
+439: 
+440:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionAborted</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_block__</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">nix</span>
+441:       <span class="ruby-keyword kw">end</span>
+442: 
+443:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionAborted</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_block__</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@__transaction_level__</span>
+444: 
+445:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+446:         <span class="ruby-identifier">__abort_transaction</span>(<span class="ruby-identifier">name</span>)
+447:       <span class="ruby-keyword kw">else</span>
+448:         <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+449:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_abort_named_transaction</span>] <span class="ruby-operator">%</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">inspect</span>
+450:         <span class="ruby-keyword kw">end</span>
+451:         <span class="ruby-identifier">__abort_transaction</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword kw">while</span> <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+452:       <span class="ruby-keyword kw">end</span>
+453:       <span class="ruby-keyword kw">self</span>
+454:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000891" class="method">
+  <div id="M000891_title" class="title">
+    <b>commit_transaction</b>(name = nil)
+  </div>
+  <div class="description">
+  <p>
+If <tt>name</tt> is <tt>nil</tt> (default), the current transaction level
+is closed out and the changes are committed.
+</p>
+<p>
+If <tt>name</tt> is specified and <tt>name</tt> is in the list of named
+transactions, then all transactions are closed and committed until the
+named transaction is reached.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000891_source')" id="l_M000891_source">show source</a> ]</p>
+  <div id="M000891_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 462</span>
+462:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">commit_transaction</span>(<span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>)
+463:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_checkpoint__</span>.<span class="ruby-identifier">nil?</span>
+464:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_commit_no_transaction</span>]
+465:       <span class="ruby-keyword kw">end</span>
+466:       <span class="ruby-ivar">@__transaction_block__</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">nil</span>
+467: 
+468:         <span class="ruby-comment cmt"># Check to see if we are trying to commit a transaction that is</span>
+469:         <span class="ruby-comment cmt"># outside of the current transaction block. Otherwise, raise</span>
+470:         <span class="ruby-comment cmt"># TransactionCommitted if they are the same.</span>
+471:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_block__</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">name</span>
+472:         <span class="ruby-identifier">nix</span> = <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+473:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">nix</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@__transaction_block__</span>
+474:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_commit_transaction_before_block</span>]
+475:         <span class="ruby-keyword kw">end</span>
+476: 
+477:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionCommitted</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_block__</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">nix</span>
+478:       <span class="ruby-keyword kw">end</span>
+479: 
+480:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionCommitted</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_block__</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@__transaction_level__</span>
+481: 
+482:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+483:         <span class="ruby-identifier">ss</span> = <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+484:         <span class="ruby-identifier">__commit_transaction</span>
+485:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+486:           <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{'&lt;' * @__transaction_level__} &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+487:             <span class="ruby-node">&quot;Commit Transaction#{ss}\n&quot;</span>
+488:         <span class="ruby-keyword kw">end</span>
+489:       <span class="ruby-keyword kw">else</span>
+490:         <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+491:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_commit_named_transaction</span>] <span class="ruby-operator">%</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">inspect</span>
+492:         <span class="ruby-keyword kw">end</span>
+493:         <span class="ruby-identifier">ss</span> = <span class="ruby-node">&quot;(#{name})&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+494: 
+495:         <span class="ruby-keyword kw">while</span> <span class="ruby-ivar">@__transaction_names__</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">name</span>
+496:           <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+497:             <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{'&lt;' * @__transaction_level__} &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+498:               <span class="ruby-node">&quot;Commit Transaction#{ss}\n&quot;</span>
+499:           <span class="ruby-keyword kw">end</span>
+500:           <span class="ruby-identifier">__commit_transaction</span>
+501:         <span class="ruby-keyword kw">end</span>
+502:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+503:           <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{'&lt;' * @__transaction_level__} &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+504:             <span class="ruby-node">&quot;Commit Transaction#{ss}\n&quot;</span>
+505:         <span class="ruby-keyword kw">end</span>
+506:         <span class="ruby-identifier">__commit_transaction</span>
+507:       <span class="ruby-keyword kw">end</span>
+508: 
+509:       <span class="ruby-keyword kw">self</span>
+510:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000889" class="method">
+  <div id="M000889_title" class="title">
+    <b>rewind_transaction</b>(name = nil)
+  </div>
+  <div class="description">
+  <p>
+Rewinds the transaction. If <tt>name</tt> is specified, then the
+intervening transactions will be aborted and the named transaction will be
+rewound. Otherwise, only the current transaction is rewound.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000889_source')" id="l_M000889_source">show source</a> ]</p>
+  <div id="M000889_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 376</span>
+376:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rewind_transaction</span>(<span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>)
+377:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_checkpoint__</span>.<span class="ruby-identifier">nil?</span>
+378:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_rewind_no_transaction</span>]
+379:       <span class="ruby-keyword kw">end</span>
+380: 
+381:         <span class="ruby-comment cmt"># Check to see if we are trying to rewind a transaction that is</span>
+382:         <span class="ruby-comment cmt"># outside of the current transaction block.</span>
+383:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_block__</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">name</span>
+384:         <span class="ruby-identifier">nix</span> = <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">index</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+385:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">nix</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@__transaction_block__</span>
+386:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_rewind_transaction_before_block</span>]
+387:         <span class="ruby-keyword kw">end</span>
+388:       <span class="ruby-keyword kw">end</span>
+389: 
+390:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+391:         <span class="ruby-identifier">__rewind_this_transaction</span>
+392:         <span class="ruby-identifier">ss</span> = <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+393:       <span class="ruby-keyword kw">else</span>
+394:         <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+395:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:cannot_rewind_named_transaction</span>] <span class="ruby-operator">%</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">inspect</span>
+396:         <span class="ruby-keyword kw">end</span>
+397:         <span class="ruby-identifier">ss</span> = <span class="ruby-node">&quot;(#{name})&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+398: 
+399:         <span class="ruby-keyword kw">while</span> <span class="ruby-ivar">@__transaction_names__</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">name</span>
+400:           <span class="ruby-ivar">@__transaction_checkpoint__</span> = <span class="ruby-identifier">__rewind_this_transaction</span>
+401:           <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+402:             <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{'|' * @__transaction_level__} &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+403:               <span class="ruby-node">&quot;Rewind Transaction#{ss}\n&quot;</span>
+404:           <span class="ruby-keyword kw">end</span>
+405:           <span class="ruby-ivar">@__transaction_level__</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+406:           <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">pop</span>
+407:         <span class="ruby-keyword kw">end</span>
+408:         <span class="ruby-identifier">__rewind_this_transaction</span>
+409:       <span class="ruby-keyword kw">end</span>
+410:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+411:         <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{'|' * @__transaction_level__} &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+412:           <span class="ruby-node">&quot;Rewind Transaction#{ss}\n&quot;</span>
+413:       <span class="ruby-keyword kw">end</span>
+414:       <span class="ruby-keyword kw">self</span>
+415:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000888" class="method">
+  <div id="M000888_title" class="title">
+    <b>start_transaction</b>(name = nil)
+  </div>
+  <div class="description">
+  <p>
+Starts a transaction. Stores the current object state. If a transaction
+name is specified, the transaction will be named. <a
+href="index.html?a=C00000252&name=Transaction">Transaction</a> names must
+be unique. <a
+href="index.html?a=C00000252&name=Transaction">Transaction</a> names of
+<tt>nil</tt> will be treated as unnamed transactions.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000888_source')" id="l_M000888_source">show source</a> ]</p>
+  <div id="M000888_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 347</span>
+347:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start_transaction</span>(<span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>)
+348:       <span class="ruby-ivar">@__transaction_level__</span> <span class="ruby-operator">||=</span> <span class="ruby-value">0</span>
+349:       <span class="ruby-ivar">@__transaction_names__</span> <span class="ruby-operator">||=</span> []
+350: 
+351:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+352:         <span class="ruby-ivar">@__transaction_names__</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">nil</span>
+353:         <span class="ruby-identifier">ss</span> = <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+354:       <span class="ruby-keyword kw">else</span>
+355:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+356:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:unique_names</span>]
+357:         <span class="ruby-keyword kw">end</span>
+358:         <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">freeze</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
+359:         <span class="ruby-ivar">@__transaction_names__</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
+360:         <span class="ruby-identifier">ss</span> = <span class="ruby-node">&quot;(#{name.inspect})&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+361:       <span class="ruby-keyword kw">end</span>
+362: 
+363:       <span class="ruby-ivar">@__transaction_level__</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+364: 
+365:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+366:         <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{'&gt;' * @__transaction_level__} &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+367:           <span class="ruby-node">&quot;Start Transaction#{ss}\n&quot;</span>
+368:       <span class="ruby-keyword kw">end</span>
+369: 
+370:       <span class="ruby-ivar">@__transaction_checkpoint__</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-keyword kw">self</span>)
+371:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000892" class="method">
+  <div id="M000892_title" class="title">
+    <b>transaction</b>(action = nil, name = nil)
+  </div>
+  <div class="description">
+  <p>
+Alternative method for calling the transaction methods. An optional name
+can be specified for named transaction support.
+</p>
+<table>
+<tr><td valign="top"><a href="index.html?a=M000892&name=transaction">transaction</a>(:start):</td><td><a href="index.html?a=M000888&name=start_transaction">start_transaction</a>
+
+</td></tr>
+<tr><td valign="top"><a href="index.html?a=M000892&name=transaction">transaction</a>(:rewind):</td><td><a
+href="index.html?a=M000889&name=rewind_transaction">rewind_transaction</a>
+
+</td></tr>
+<tr><td valign="top"><a href="index.html?a=M000892&name=transaction">transaction</a>(:abort):</td><td><a href="index.html?a=M000890&name=abort_transaction">abort_transaction</a>
+
+</td></tr>
+<tr><td valign="top"><a href="index.html?a=M000892&name=transaction">transaction</a>(:commit):</td><td><a
+href="index.html?a=M000891&name=commit_transaction">commit_transaction</a>
+
+</td></tr>
+<tr><td valign="top"><a href="index.html?a=M000892&name=transaction">transaction</a>(:name):</td><td><a href="index.html?a=M000887&name=transaction_name">transaction_name</a>
+
+</td></tr>
+<tr><td valign="top"><a href="index.html?a=M000892&name=transaction">transaction</a>:</td><td><a href="index.html?a=M000886&name=transaction_open?">transaction_open?</a>
+
+</td></tr>
+</table>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000892_source')" id="l_M000892_source">show source</a> ]</p>
+  <div id="M000892_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 521</span>
+521:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transaction</span>(<span class="ruby-identifier">action</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>)
+522:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">action</span>
+523:       <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:start</span>
+524:         <span class="ruby-identifier">start_transaction</span>(<span class="ruby-identifier">name</span>)
+525:       <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:rewind</span>
+526:         <span class="ruby-identifier">rewind_transaction</span>(<span class="ruby-identifier">name</span>)
+527:       <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:abort</span>
+528:         <span class="ruby-identifier">abort_transaction</span>(<span class="ruby-identifier">name</span>)
+529:       <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:commit</span>
+530:         <span class="ruby-identifier">commit_transaction</span>(<span class="ruby-identifier">name</span>)
+531:       <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:name</span>
+532:         <span class="ruby-identifier">transaction_name</span>
+533:       <span class="ruby-keyword kw">when</span> <span class="ruby-keyword kw">nil</span>
+534:         <span class="ruby-identifier">transaction_open?</span>(<span class="ruby-identifier">name</span>)
+535:       <span class="ruby-keyword kw">end</span>
+536:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000893" class="method">
+  <div id="M000893_title" class="title">
+    <b>transaction_exclusions</b>()
+  </div>
+  <div class="description">
+  <p>
+Allows specific variables to be excluded from transaction support. Must be
+done after extending the object but before starting the first transaction
+on the object.
+</p>
+<pre>
+  vv.transaction_exclusions &lt;&lt; &quot;@io&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000893_source')" id="l_M000893_source">show source</a> ]</p>
+  <div id="M000893_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 543</span>
+543:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transaction_exclusions</span>
+544:       <span class="ruby-ivar">@transaction_exclusions</span> <span class="ruby-operator">||=</span> []
+545:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000887" class="method">
+  <div id="M000887_title" class="title">
+    <b>transaction_name</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns the current name of the transaction. Transactions not explicitly
+named are named <tt>nil</tt>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000887_source')" id="l_M000887_source">show source</a> ]</p>
+  <div id="M000887_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 328</span>
+328:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transaction_name</span>
+329:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_checkpoint__</span>.<span class="ruby-identifier">nil?</span>
+330:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">TransactionError</span>, <span class="ruby-constant">Messages</span>[<span class="ruby-identifier">:no_transaction_open</span>]
+331:       <span class="ruby-keyword kw">end</span>
+332:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+333:         <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{'|' * @__transaction_level__} &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+334:           <span class="ruby-node">&quot;Transaction Name: #{@__transaction_names__[-1].inspect}\n&quot;</span>
+335:       <span class="ruby-keyword kw">end</span>
+336:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@__transaction_names__</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
+337:         <span class="ruby-ivar">@__transaction_names__</span>[<span class="ruby-value">-1</span>].<span class="ruby-identifier">dup</span>
+338:       <span class="ruby-keyword kw">else</span>
+339:         <span class="ruby-ivar">@__transaction_names__</span>[<span class="ruby-value">-1</span>]
+340:       <span class="ruby-keyword kw">end</span>
+341:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M000886" class="method">
+  <div id="M000886_title" class="title">
+    <b>transaction_open?</b>(name = nil)
+  </div>
+  <div class="description">
+  <p>
+If <tt>name</tt> is <tt>nil</tt> (default), then returns <tt>true</tt> if
+there is currently a transaction open.
+</p>
+<p>
+If <tt>name</tt> is specified, then returns <tt>true</tt> if there is
+currently a transaction that responds to <tt>name</tt> open.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000886_source')" id="l_M000886_source">show source</a> ]</p>
+  <div id="M000886_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File activerecord/lib/active_record/vendor/simple.rb, line 310</span>
+310:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">transaction_open?</span>(<span class="ruby-identifier">name</span> = <span class="ruby-keyword kw">nil</span>)
+311:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+312:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+313:           <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;Transaction &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+314:             <span class="ruby-node">&quot;[#{(@__transaction_checkpoint__.nil?) ? 'closed' : 'open'}]\n&quot;</span>
+315:         <span class="ruby-keyword kw">end</span>
+316:         <span class="ruby-keyword kw">return</span> (<span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@__transaction_checkpoint__</span>.<span class="ruby-identifier">nil?</span>)
+317:       <span class="ruby-keyword kw">else</span>
+318:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debugging?</span>
+319:           <span class="ruby-constant">Transaction</span><span class="ruby-operator">::</span><span class="ruby-constant">Simple</span>.<span class="ruby-identifier">debug_io</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Transaction(#{name.inspect}) &quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+320:             <span class="ruby-node">&quot;[#{(@__transaction_checkpoint__.nil?) ? 'closed' : 'open'}]\n&quot;</span>
+321:         <span class="ruby-keyword kw">end</span>
+322:         <span class="ruby-keyword kw">return</span> ((<span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@__transaction_checkpoint__</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@__transaction_names__</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>))
+323:       <span class="ruby-keyword kw">end</span>
+324:     <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

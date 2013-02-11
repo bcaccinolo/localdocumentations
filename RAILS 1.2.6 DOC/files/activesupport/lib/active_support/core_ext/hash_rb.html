@@ -1,0 +1,33 @@
+  <div id="fileHeader">
+    <h1>hash.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>activesupport/lib/active_support/core_ext/hash.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sat Mar 18 19:50:14 -0800 2006</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>require File.dirname(__FILE__) + '/hash/keys'
+require File.dirname(__FILE__) + '/hash/indifferent_access'
+require File.dirname(__FILE__) + '/hash/reverse_merge'
+require File.dirname(__FILE__) + '/hash/conversions'
+require File.dirname(__FILE__) + '/hash/diff'
+
+class Hash #:nodoc:
+  include ActiveSupport::CoreExtensions::Hash::Keys
+  include ActiveSupport::CoreExtensions::Hash::IndifferentAccess
+  include ActiveSupport::CoreExtensions::Hash::ReverseMerge
+  include ActiveSupport::CoreExtensions::Hash::Conversions
+  include ActiveSupport::CoreExtensions::Hash::Diff
+end
+</pre>
+    </div>

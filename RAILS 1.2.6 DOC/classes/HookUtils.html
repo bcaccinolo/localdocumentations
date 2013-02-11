@@ -1,0 +1,73 @@
+  <div id="C00000329">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />HookUtils<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionwebservice/setup_rb.html');">actionwebservice/setup.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+Main <a href="index.html?a=C00000057&name=Installer">Installer</a>
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001093&name=run_hook" >run_hook</a></li>
+  <li><a href="index.html?a=M001094&name=try_run_hook" >try_run_hook</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001093" class="method">
+  <div id="M001093_title" class="title">
+    <b>run_hook</b>(name)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001093_source')" id="l_M001093_source">show source</a> ]</p>
+  <div id="M001093_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 594</span>
+594:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_hook</span>(<span class="ruby-identifier">name</span>)
+595:     <span class="ruby-identifier">try_run_hook</span> <span class="ruby-node">&quot;#{curr_srcdir()}/#{name}&quot;</span> <span class="ruby-keyword kw">or</span>
+596:     <span class="ruby-identifier">try_run_hook</span> <span class="ruby-node">&quot;#{curr_srcdir()}/#{name}.rb&quot;</span>
+597:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001094" class="method">
+  <div id="M001094_title" class="title">
+    <b>try_run_hook</b>(fname)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001094_source')" id="l_M001094_source">show source</a> ]</p>
+  <div id="M001094_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 599</span>
+599:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">try_run_hook</span>(<span class="ruby-identifier">fname</span>)
+600:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">fname</span>)
+601:     <span class="ruby-keyword kw">begin</span>
+602:       <span class="ruby-identifier">instance_eval</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">fname</span>), <span class="ruby-identifier">fname</span>, <span class="ruby-value">1</span>
+603:     <span class="ruby-keyword kw">rescue</span>
+604:       <span class="ruby-identifier">setup_rb_error</span> <span class="ruby-node">&quot;hook #{fname} failed:\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">message</span>
+605:     <span class="ruby-keyword kw">end</span>
+606:     <span class="ruby-keyword kw">true</span>
+607:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

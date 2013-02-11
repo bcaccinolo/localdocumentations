@@ -1,0 +1,85 @@
+  <div id="fileHeader">
+    <h1>deprecated_dependencies.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>actionpack/lib/action_controller/deprecated_dependencies.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sun Sep 03 16:08:43 -0700 2006</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module ActionController #:nodoc:
+  module Dependencies #:nodoc:
+    def self.included(base)
+      base.extend(ClassMethods)
+    end
+
+    # Deprecated module. The responsibility of loading dependencies belong with Active Support now.
+    module ClassMethods #:nodoc:
+      # Specifies a variable number of models that this controller depends on. Models are normally Active Record classes or a similar
+      # backend for modelling entity classes.
+      def model(*models)
+        require_dependencies(:model, models)
+        depend_on(:model, models)
+      end
+      deprecate :model
+
+      # Specifies a variable number of services that this controller depends on. Services are normally singletons or factories, like
+      # Action Mailer service or a Payment Gateway service.
+      def service(*services)
+        require_dependencies(:service, services)
+        depend_on(:service, services)
+      end
+      deprecate :service
+      
+      # Specifies a variable number of observers that are to govern when this controller is handling actions. The observers will
+      # automatically have .instance called on them to make them active on assignment.
+      def observer(*observers)
+        require_dependencies(:observer, observers)
+        depend_on(:observer, observers)
+        instantiate_observers(observers)
+      end
+      deprecate :observer
+
+      # Returns an array of symbols that specify the dependencies on a given layer. For the example at the top, calling
+      # &lt;tt&gt;ApplicationController.dependencies_on(:model)&lt;/tt&gt; would return &lt;tt&gt;[:account, :company, :person, :project, :category]&lt;/tt&gt;
+      def dependencies_on(layer)
+        read_inheritable_attribute(&quot;#{layer}_dependencies&quot;)
+      end
+      deprecate :dependencies_on
+
+      def depend_on(layer, dependencies) #:nodoc:
+        write_inheritable_array(&quot;#{layer}_dependencies&quot;, dependencies)
+      end
+      deprecate :depend_on
+
+      private
+        def instantiate_observers(observers)
+          observers.flatten.each { |observer| Object.const_get(Inflector.classify(observer.to_s)).instance }
+        end
+        
+        def require_dependencies(layer, dependencies)
+          dependencies.flatten.each do |dependency|
+            begin
+              require_dependency(dependency.to_s)
+            rescue LoadError =&gt; e
+              raise LoadError.new(&quot;Missing #{layer} #{dependency}.rb&quot;).copy_blame!(e)
+            rescue Exception =&gt; exception  # error from loaded file
+              exception.blame_file! &quot;=&gt; #{layer} #{dependency}.rb&quot;
+              raise
+            end
+          end
+        end
+    end
+  end
+end
+</pre>
+    </div>

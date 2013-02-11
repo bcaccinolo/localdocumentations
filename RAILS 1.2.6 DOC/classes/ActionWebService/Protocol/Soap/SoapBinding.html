@@ -1,0 +1,175 @@
+  <div id="C00000499">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />SoapBinding<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler_rb.html');">actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb</a>
+
+Parent:&nbsp;
+Object
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001576&name===" >==</a></li>
+  <li><a href="index.html?a=M001575&name=eql?" >eql?</a></li>
+  <li><a href="index.html?a=M001577&name=hash" >hash</a></li>
+  <li><a href="index.html?a=M001572&name=new" >new</a></li>
+  <li><a href="index.html?a=M001574&name=qualified_type_name" >qualified_type_name</a></li>
+  <li><a href="index.html?a=M001573&name=type_name" >type_name</a></li>
+  </ul>
+
+
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>element_binding</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>mapping</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>qname</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>type</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div id="M001572" class="method">
+  <div id="M001572_title" class="title">
+    <b>new</b>(marshaler, qname, type, mapping, element_binding=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001572_source')" id="l_M001572_source">show source</a> ]</p>
+  <div id="M001572_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 142</span>
+142:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">marshaler</span>, <span class="ruby-identifier">qname</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">mapping</span>, <span class="ruby-identifier">element_binding</span>=<span class="ruby-keyword kw">nil</span>)
+143:           <span class="ruby-ivar">@marshaler</span> = <span class="ruby-identifier">marshaler</span>
+144:           <span class="ruby-ivar">@qname</span> = <span class="ruby-identifier">qname</span>
+145:           <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">type</span>
+146:           <span class="ruby-ivar">@mapping</span> = <span class="ruby-identifier">mapping</span>
+147:           <span class="ruby-ivar">@element_binding</span> = <span class="ruby-identifier">element_binding</span>
+148:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001576" class="method">
+  <div id="M001576_title" class="title">
+    <b>==</b>(other)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M001575&name=eql?">eql?</a>
+</p>
+  </div>
+</div>
+<div id="M001575" class="method">
+  <div id="M001575_title" class="title">
+    <b>eql?</b>(other)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M001576&name===">==</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001575_source')" id="l_M001575_source">show source</a> ]</p>
+  <div id="M001575_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 167</span>
+167:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">other</span>)
+168:           <span class="ruby-ivar">@qname</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">qname</span>
+169:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001577" class="method">
+  <div id="M001577_title" class="title">
+    <b>hash</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001577_source')" id="l_M001577_source">show source</a> ]</p>
+  <div id="M001577_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 172</span>
+172:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hash</span>
+173:           <span class="ruby-ivar">@qname</span>.<span class="ruby-identifier">hash</span>
+174:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001574" class="method">
+  <div id="M001574_title" class="title">
+    <b>qualified_type_name</b>(ns=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001574_source')" id="l_M001574_source">show source</a> ]</p>
+  <div id="M001574_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 154</span>
+154:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">qualified_type_name</span>(<span class="ruby-identifier">ns</span>=<span class="ruby-keyword kw">nil</span>)
+155:           <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">custom?</span>
+156:             <span class="ruby-node">&quot;#{ns ? ns : @qname.namespace}:#{@qname.name}&quot;</span>
+157:           <span class="ruby-keyword kw">else</span>
+158:             <span class="ruby-identifier">ns</span> = <span class="ruby-constant">XSD</span><span class="ruby-operator">::</span><span class="ruby-constant">NS</span>.<span class="ruby-identifier">new</span>
+159:             <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">assign</span>(<span class="ruby-constant">XSD</span><span class="ruby-operator">::</span><span class="ruby-constant">Namespace</span>, <span class="ruby-constant">SOAP</span><span class="ruby-operator">::</span><span class="ruby-constant">XSDNamespaceTag</span>)
+160:             <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">assign</span>(<span class="ruby-constant">SOAP</span><span class="ruby-operator">::</span><span class="ruby-constant">EncodingNamespace</span>, <span class="ruby-value str">&quot;soapenc&quot;</span>)
+161:             <span class="ruby-identifier">xsd_klass</span> = <span class="ruby-identifier">mapping</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">find</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value str">'Type'</span>)}
+162:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">name</span>(<span class="ruby-constant">XSD</span><span class="ruby-operator">::</span><span class="ruby-constant">AnyTypeName</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">xsd_klass</span>
+163:             <span class="ruby-identifier">ns</span>.<span class="ruby-identifier">name</span>(<span class="ruby-identifier">xsd_klass</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-value str">'Type'</span>))
+164:           <span class="ruby-keyword kw">end</span>
+165:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001573" class="method">
+  <div id="M001573_title" class="title">
+    <b>type_name</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001573_source')" id="l_M001573_source">show source</a> ]</p>
+  <div id="M001573_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 150</span>
+150:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">type_name</span>
+151:           <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">custom?</span> <span class="ruby-value">? </span><span class="ruby-ivar">@qname</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+152:         <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

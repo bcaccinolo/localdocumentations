@@ -1,0 +1,53 @@
+  <div id="fileHeader">
+    <h1>conversions.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>activesupport/lib/active_support/core_ext/time/conversions.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Mar 02 03:08:52 -0800 2007</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>module ActiveSupport #:nodoc:
+  module CoreExtensions #:nodoc:
+    module Time #:nodoc:
+      # Getting times in different convenient string representations and other objects
+      module Conversions
+        DATE_FORMATS = {
+          :db     =&gt; &quot;%Y-%m-%d %H:%M:%S&quot;,
+          :short  =&gt; &quot;%d %b %H:%M&quot;,
+          :long   =&gt; &quot;%B %d, %Y %H:%M&quot;,
+          :rfc822 =&gt; &quot;%a, %d %b %Y %H:%M:%S %z&quot;
+        }
+
+        def self.included(klass)
+          klass.send(:alias_method, :to_default_s, :to_s)
+          klass.send(:alias_method, :to_s, :to_formatted_s)
+        end
+        
+        def to_formatted_s(format = :default)
+          DATE_FORMATS[format] ? strftime(DATE_FORMATS[format]).strip : to_default_s          
+        end
+
+        def to_date
+          ::Date.new(year, month, day)
+        end
+
+        # To be able to keep Dates and Times interchangeable on conversions
+        def to_time
+          self
+        end
+      end
+    end
+  end
+end
+</pre>
+    </div>

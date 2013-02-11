@@ -1,0 +1,68 @@
+  <div id="C00000496">
+<div class='banner'>
+  <span class="file-title-prefix">Class</span><br />Registry<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler_rb.html');">actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb</a>
+
+Parent:&nbsp;
+SOAP::Mapping::Registry
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+  <div class="description"><p>
+Workaround for SOAP4R return values changing
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001569&name=find_mapped_obj_class" >find_mapped_obj_class</a></li>
+  <li><a href="index.html?a=M001568&name=find_mapped_soap_class" >find_mapped_soap_class</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001569" class="method">
+  <div id="M001569_title" class="title">
+    <b>find_mapped_obj_class</b>(soap_class)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001569_source')" id="l_M001569_source">show source</a> ]</p>
+  <div id="M001569_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 13</span>
+13:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_mapped_obj_class</span>(<span class="ruby-identifier">soap_class</span>)
+14:             <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">instance_eval</span> { <span class="ruby-ivar">@soap2obj</span>[<span class="ruby-identifier">soap_class</span>][<span class="ruby-value">0</span>] }
+15:           <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001568" class="method">
+  <div id="M001568_title" class="title">
+    <b>find_mapped_soap_class</b>(obj_class)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001568_source')" id="l_M001568_source">show source</a> ]</p>
+  <div id="M001568_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File actionwebservice/lib/action_web_service/protocol/soap_protocol/marshaler.rb, line 9</span>
+ 9:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_mapped_soap_class</span>(<span class="ruby-identifier">obj_class</span>)
+10:             <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@map</span>.<span class="ruby-identifier">instance_eval</span> { <span class="ruby-ivar">@obj2soap</span>[<span class="ruby-identifier">obj_class</span>][<span class="ruby-value">0</span>] }
+11:           <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

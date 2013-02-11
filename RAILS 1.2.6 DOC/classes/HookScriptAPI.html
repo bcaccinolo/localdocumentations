@@ -1,0 +1,241 @@
+  <div id="C00000481">
+<div class='banner'>
+  <span class="file-title-prefix">Module</span><br />HookScriptAPI<br/>
+  In:
+<a href="#" onclick="jsHref('files/actionwebservice/setup_rb.html');">actionwebservice/setup.rb</a>
+
+</div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="index.html?a=M001553&name=config" >config</a></li>
+  <li><a href="index.html?a=M001556&name=curr_objdir" >curr_objdir</a></li>
+  <li><a href="index.html?a=M001555&name=curr_srcdir" >curr_srcdir</a></li>
+  <li><a href="index.html?a=M001552&name=get_config" >get_config</a></li>
+  <li><a href="index.html?a=M001554&name=set_config" >set_config</a></li>
+  <li><a href="index.html?a=M001563&name=srcdirectories" >srcdirectories</a></li>
+  <li><a href="index.html?a=M001559&name=srcdirectory?" >srcdirectory?</a></li>
+  <li><a href="index.html?a=M001561&name=srcentries" >srcentries</a></li>
+  <li><a href="index.html?a=M001558&name=srcexist?" >srcexist?</a></li>
+  <li><a href="index.html?a=M001557&name=srcfile" >srcfile</a></li>
+  <li><a href="index.html?a=M001560&name=srcfile?" >srcfile?</a></li>
+  <li><a href="index.html?a=M001562&name=srcfiles" >srcfiles</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div id="M001553" class="method">
+  <div id="M001553_title" class="title">
+    <b>config</b>(key)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="index.html?a=M001552&name=get_config">get_config</a>
+</p>
+  </div>
+</div>
+<div id="M001556" class="method">
+  <div id="M001556_title" class="title">
+    <b>curr_objdir</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001556_source')" id="l_M001556_source">show source</a> ]</p>
+  <div id="M001556_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 636</span>
+636:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">curr_objdir</span>
+637:     <span class="ruby-node">&quot;#{objdir_root()}/#{relpath()}&quot;</span>
+638:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001555" class="method">
+  <div id="M001555_title" class="title">
+    <b>curr_srcdir</b>()
+  </div>
+  <div class="description">
+  <p>
+abstract srcdir_root abstract objdir_root abstract relpath
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001555_source')" id="l_M001555_source">show source</a> ]</p>
+  <div id="M001555_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 632</span>
+632:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">curr_srcdir</span>
+633:     <span class="ruby-node">&quot;#{srcdir_root()}/#{relpath()}&quot;</span>
+634:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001552" class="method">
+  <div id="M001552_title" class="title">
+    <b>get_config</b>(key)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="index.html?a=M001553&name=config">config</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001552_source')" id="l_M001552_source">show source</a> ]</p>
+  <div id="M001552_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 614</span>
+614:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_config</span>(<span class="ruby-identifier">key</span>)
+615:     <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">key</span>]
+616:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001554" class="method">
+  <div id="M001554_title" class="title">
+    <b>set_config</b>(key, val)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001554_source')" id="l_M001554_source">show source</a> ]</p>
+  <div id="M001554_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 620</span>
+620:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_config</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
+621:     <span class="ruby-ivar">@config</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span>
+622:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001563" class="method">
+  <div id="M001563_title" class="title">
+    <b>srcdirectories</b>(path = '.')
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001563_source')" id="l_M001563_source">show source</a> ]</p>
+  <div id="M001563_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 668</span>
+668:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">srcdirectories</span>(<span class="ruby-identifier">path</span> = <span class="ruby-value str">'.'</span>)
+669:     <span class="ruby-identifier">srcentries</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>
+670:       <span class="ruby-constant">File</span>.<span class="ruby-identifier">dir?</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">curr_srcdir</span>(), <span class="ruby-identifier">path</span>, <span class="ruby-identifier">fname</span>))
+671:     }
+672:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001559" class="method">
+  <div id="M001559_title" class="title">
+    <b>srcdirectory?</b>(path)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001559_source')" id="l_M001559_source">show source</a> ]</p>
+  <div id="M001559_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 648</span>
+648:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">srcdirectory?</span>(<span class="ruby-identifier">path</span>)
+649:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">dir?</span>(<span class="ruby-identifier">srcfile</span>(<span class="ruby-identifier">path</span>))
+650:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001561" class="method">
+  <div id="M001561_title" class="title">
+    <b>srcentries</b>(path = '.')
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001561_source')" id="l_M001561_source">show source</a> ]</p>
+  <div id="M001561_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 656</span>
+656:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">srcentries</span>(<span class="ruby-identifier">path</span> = <span class="ruby-value str">'.'</span>)
+657:     <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{curr_srcdir()}/#{path}&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+658:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-operator">-</span> <span class="ruby-node">%w(. ..)</span>
+659:     }
+660:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001558" class="method">
+  <div id="M001558_title" class="title">
+    <b>srcexist?</b>(path)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001558_source')" id="l_M001558_source">show source</a> ]</p>
+  <div id="M001558_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 644</span>
+644:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">srcexist?</span>(<span class="ruby-identifier">path</span>)
+645:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">srcfile</span>(<span class="ruby-identifier">path</span>))
+646:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001557" class="method">
+  <div id="M001557_title" class="title">
+    <b>srcfile</b>(path)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001557_source')" id="l_M001557_source">show source</a> ]</p>
+  <div id="M001557_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 640</span>
+640:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">srcfile</span>(<span class="ruby-identifier">path</span>)
+641:     <span class="ruby-node">&quot;#{curr_srcdir()}/#{path}&quot;</span>
+642:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001560" class="method">
+  <div id="M001560_title" class="title">
+    <b>srcfile?</b>(path)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001560_source')" id="l_M001560_source">show source</a> ]</p>
+  <div id="M001560_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 652</span>
+652:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">srcfile?</span>(<span class="ruby-identifier">path</span>)
+653:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span> <span class="ruby-identifier">srcfile</span>(<span class="ruby-identifier">path</span>)
+654:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div id="M001562" class="method">
+  <div id="M001562_title" class="title">
+    <b>srcfiles</b>(path = '.')
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001562_source')" id="l_M001562_source">show source</a> ]</p>
+  <div id="M001562_source" class="dyn-source">
+<pre>
+     <span class="ruby-comment cmt"># File actionwebservice/setup.rb, line 662</span>
+662:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">srcfiles</span>(<span class="ruby-identifier">path</span> = <span class="ruby-value str">'.'</span>)
+663:     <span class="ruby-identifier">srcentries</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>
+664:       <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">curr_srcdir</span>(), <span class="ruby-identifier">path</span>, <span class="ruby-identifier">fname</span>))
+665:     }
+666:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>

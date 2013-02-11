@@ -1,0 +1,35 @@
+  <div id="fileHeader">
+    <h1>string.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>activesupport/lib/active_support/core_ext/string.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Oct 03 16:45:32 -0700 2006</td>
+    </tr>
+    </table>
+  </div>
+ <!-- banner header -->
+
+  <div id="bodyContent" >
+    <h2>Source Code</h2>
+    <pre>require File.dirname(__FILE__) + '/string/inflections'
+require File.dirname(__FILE__) + '/string/conversions'
+require File.dirname(__FILE__) + '/string/access'
+require File.dirname(__FILE__) + '/string/starts_ends_with'
+require File.dirname(__FILE__) + '/string/iterators'
+require File.dirname(__FILE__) + '/string/unicode'
+
+class String #:nodoc:
+  include ActiveSupport::CoreExtensions::String::Access
+  include ActiveSupport::CoreExtensions::String::Conversions
+  include ActiveSupport::CoreExtensions::String::Inflections
+  include ActiveSupport::CoreExtensions::String::StartsEndsWith
+  include ActiveSupport::CoreExtensions::String::Iterators
+  include ActiveSupport::CoreExtensions::String::Unicode
+end
+</pre>
+    </div>
