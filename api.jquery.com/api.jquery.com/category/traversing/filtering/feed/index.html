@@ -1,0 +1,2638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jQuery API Documentation &#187; Filtering</title>
+	<atom:link href="http://api.jquery.com/category/traversing/filtering/feed/" rel="self" type="application/rss+xml" />
+	<link>http://api.jquery.com</link>
+	<description></description>
+	<lastBuildDate>Wed, 13 Feb 2013 22:57:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.5.1</generator>
+		<item>
+		<title>.eq()</title>
+		<link>http://api.jquery.com/eq/</link>
+		<comments>http://api.jquery.com/eq/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:23 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Version 1.1.2]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=175</guid>
+		<description><![CDATA[Reduce the set of matched elements to the one at the specified index.]]></description>
+				<content:encoded><![CDATA[<article id="eq1" class="entry method"><h2 class="section-title">
+<span class="name">.eq( index )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Reduce the set of matched elements to the one at the specified index.</p>
+<ul class="signatures">
+<li class="signature" id="eq-index">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.1.2/">1.1.2</a></span>.eq( index )</h4>
+<ul><li>
+<div><strong>index</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Integer">Integer</a>
+</div>
+<div>An integer indicating the 0-based position of the element. </div>
+</li></ul>
+</li>
+<li class="signature" id="eq--index">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.eq( -index )</h4>
+<ul><li>
+<div><strong>-index</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Integer">Integer</a>
+</div>
+<div>An integer indicating the position of the element, counting backwards  from the last element in the set. </div>
+</li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Given a jQuery object that represents a set of DOM elements, the <code>.eq()</code> method constructs a new jQuery object from one element within that set. The supplied index identifies the position of this element in the set. </p>
+    <p>Consider a page with a simple list on it:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>We can apply this method to the set of list items:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>  $(<span class="string">'li'</span>).eq(<span class="number">2</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The result of this call is a red background for item 3. Note that the supplied index is zero-based, and refers to the position of the element within the jQuery object, not within the DOM tree.</p>
+    <p>Providing a negative number indicates a position starting from the end of the set, rather than the beginning. For example:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>  $(<span class="string">'li'</span>).eq(-<span class="number">2</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>This time list item 4 is turned red, since it is two from the end of the set.</p>
+    <p>If an element cannot be found at the specified zero-based index, the method constructs a new jQuery object with an empty set and a <code>length</code> property of 0. </p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>  $(<span class="string">'li'</span>).eq(<span class="number">5</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Here, none of the list items is turned red, since <code>.eq(5)</code> indicates the sixth of five list items.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Turn the div with index 2 blue by adding an appropriate class.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">60</span>px;</span></span> <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">60</span>px;</span></span> <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">10</span>px;</span></span> <span class="rule"><span class="attribute">float</span>:<span class="value">left;</span></span></span></code></div></div><div class="container"><div class="line"><code>        <span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">2</span>px solid blue;</span></span> <span class="rule">}</span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.blue</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$(<span class="string">"body"</span>).find(<span class="string">"div"</span>).eq(<span class="number">2</span>).addClass(<span class="string">"blue"</span>);</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/eq/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.filter()</title>
+		<link>http://api.jquery.com/filter/</link>
+		<comments>http://api.jquery.com/filter/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:40 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=229</guid>
+		<description><![CDATA[Reduce the set of matched elements to those that match the selector or pass the function's test.]]></description>
+				<content:encoded><![CDATA[<article id="filter1" class="entry method"><h2 class="section-title">
+<span class="name">.filter( selector )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Reduce the set of matched elements to those that match the selector or pass the function's test. </p>
+<ul class="signatures">
+<li class="signature" id="filter-selector">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.filter( selector )</h4>
+<ul><li>
+<div><strong>selector</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Selector">Selector</a>
+</div>
+<div>A string containing a selector expression to match the current set of elements against.</div>
+</li></ul>
+</li>
+<li class="signature" id="filter-functionindex">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.filter( function(index) )</h4>
+<ul><li>
+<div><strong>function(index)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function used as a test for each element in the set. <code>this</code> is the current DOM element.</div>
+</li></ul>
+</li>
+<li class="signature" id="filter-element">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.filter( element )</h4>
+<ul><li>
+<div><strong>element</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Element">Element</a>
+</div>
+<div>An element to match the current set of elements against.</div>
+</li></ul>
+</li>
+<li class="signature" id="filter-jQuery-object">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.filter( jQuery object )</h4>
+<ul><li>
+<div><strong>jQuery object</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>An existing jQuery object to match the current set of elements against.</div>
+</li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+<p>Given a jQuery object that represents a set of DOM elements, the <code>.filter()</code> method constructs a new jQuery object from a subset of the matching elements. The supplied selector is tested against each element; all elements matching the selector will be included in the result.</p>
+<p>Consider a page with a simple list on it:</p>
+<div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 6<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p>We can apply this method to the set of list items:</p>
+<div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>  $(<span class="string">'li'</span>).filter(<span class="string">':even'</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p>The result of this call is a red background for items 1, 3, and 5, as they match the selector (recall that <code>:even</code> and <code>:odd</code> use 0-based indexing).</p>
+<h4 id="using-filter-function">Using a Filter Function</h4>
+<p>The second form of this method allows us to filter elements against a function rather than a selector. For each element, if the function returns <code>true</code> (or a "truthy" value), the element will be included in the filtered set; otherwise, it will be excluded. Suppose we have a somewhat more involved HTML snippet:</p>
+<div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">strong</span>&gt;</span>list<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> item 1 -</code></div></div><div class="container"><div class="line"><code>    one strong tag<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">strong</span>&gt;</span>list<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> item <span class="tag">&lt;<span class="title">strong</span>&gt;</span>2<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> -</code></div></div><div class="container"><div class="line"><code>    two <span class="tag">&lt;<span class="title">span</span>&gt;</span>strong tags<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 6<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p>We can select the list items, then filter them based on their contents:</p>
+<div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).filter(<span class="keyword">function</span>(index) {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> $(<span class="string">'strong'</span>, <span class="keyword">this</span>).length == <span class="number">1</span>;</code></div></div><div class="container"><div class="line"><code>}).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p>This code will alter the first list item only, as it contains exactly one <code>&lt;strong&gt;</code> tag. Within the filter function, <code>this</code> refers to each DOM element in turn. The parameter passed to the function tells us the index of that DOM element within the set matched by the jQuery object.</p>
+<p>We can also take advantage of the <code>index</code> passed through the function, which indicates the 0-based position of the element within the unfiltered set of matched elements:</p>
+<div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).filter(<span class="keyword">function</span>(index) {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> index % <span class="number">3</span> == <span class="number">2</span>;</code></div></div><div class="container"><div class="line"><code>}).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p>This alteration to the code will cause the third and sixth list items to be highlighted, as it uses the modulus operator (<code>%</code>) to select every item with an <code>index</code> value that, when divided by 3, has a remainder of <code>2</code>.</p>
+</div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Change the color of all divs; then add a border to those with a "middle" class.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">60</span>px;</span></span> <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">60</span>px;</span></span> <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">5</span>px;</span></span> <span class="rule"><span class="attribute">float</span>:<span class="value">left;</span></span></span></code></div></div><div class="container"><div class="line"><code>        <span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">2</span>px white solid;</span></span><span class="rule">}</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"middle"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"middle"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"middle"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"middle"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"div"</span>).css(<span class="string">"background"</span>, <span class="string">"#c8ebcc"</span>)</code></div></div><div class="container"><div class="line"><code>            .filter(<span class="string">".middle"</span>)</code></div></div><div class="container"><div class="line"><code>            .css(<span class="string">"border-color"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Change the color of all divs; then add a border to the second one (index == 1) and the div with an id of "fourth."</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">60</span>px;</span></span> <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">60</span>px;</span></span> <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">5</span>px;</span></span> <span class="rule"><span class="attribute">float</span>:<span class="value">left;</span></span></span></code></div></div><div class="container"><div class="line"><code>        <span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">3</span>px white solid;</span></span> <span class="rule">}</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"first"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"second"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"third"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"fourth"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"fifth"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"sixth"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"div"</span>).css(<span class="string">"background"</span>, <span class="string">"#b4b0da"</span>)</code></div></div><div class="container"><div class="line"><code>            .filter(<span class="function"><span class="keyword">function</span> <span class="params">(index)</span> {</span></code></div></div><div class="container"><div class="line"><code>                  <span class="keyword">return</span> index == <span class="number">1</span> || $(<span class="keyword">this</span>).attr(<span class="string">"id"</span>) == <span class="string">"fourth"</span>;</code></div></div><div class="container"><div class="line"><code>                })</code></div></div><div class="container"><div class="line"><code>            .css(<span class="string">"border"</span>, <span class="string">"3px double red"</span>);</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Select all divs and filter the selection with a DOM element, keeping only the one with an id of "unique".</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"div"</span>).filter( document.getElementById(<span class="string">"unique"</span>) )</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-3">
+<h4>Example: <span class="desc">Select all divs and filter the selection with a jQuery object, keeping only the one with an id of "unique".</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"div"</span>).filter( $(<span class="string">"#unique"</span>) )</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/filter/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.first()</title>
+		<link>http://api.jquery.com/first/</link>
+		<comments>http://api.jquery.com/first/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:42 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Version 1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=237</guid>
+		<description><![CDATA[Reduce the set of matched elements to the first in the set.]]></description>
+				<content:encoded><![CDATA[<article id="first1" class="entry method"><h2 class="section-title">
+<span class="name">.first()</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Reduce the set of matched elements to the first in the set.</p>
+<ul class="signatures"><li class="signature" id="first">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.first()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+<p>Given a jQuery object that represents a set of DOM elements, the <code>.first()</code> method constructs a new jQuery object from the first element in that set.</p>
+<p>Consider a page with a simple list on it:</p>
+<div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p>We can apply this method to the set of list items:</p>
+<div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).first().css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<p>The result of this call is a red background for the first item.</p>
+</div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Highlight the first span in a paragraph.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="class">.highlight</span><span class="rules">{<span class="rule"><span class="attribute">background-color</span>:<span class="value"> yellow}</span></span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>Look:<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;<span class="title">span</span>&gt;</span>This is some text in a paragraph.<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;<span class="title">span</span>&gt;</span>This is a note about it.<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">$(<span class="string">"p span"</span>).first().addClass(<span class="string">'highlight'</span>);</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/first/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.has()</title>
+		<link>http://api.jquery.com/has/</link>
+		<comments>http://api.jquery.com/has/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:48 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Version 1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=255</guid>
+		<description><![CDATA[Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.]]></description>
+				<content:encoded><![CDATA[<article id="has1" class="entry method"><h2 class="section-title">
+<span class="name">.has( selector )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element.</p>
+<ul class="signatures">
+<li class="signature" id="has-selector">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.has( selector )</h4>
+<ul><li>
+<div><strong>selector</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#String">String</a>
+</div>
+<div>A string containing a selector expression to match elements against.</div>
+</li></ul>
+</li>
+<li class="signature" id="has-contained">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.has( contained )</h4>
+<ul><li>
+<div><strong>contained</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Element">Element</a>
+</div>
+<div>A DOM element to match elements against.</div>
+</li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Given a jQuery object that represents a set of DOM elements, the <code>.has()</code> method constructs a new jQuery object from a subset of the matching elements. The supplied selector is tested against the descendants of the matching elements; the element will be included in the result if any of its descendant elements matches the selector.</p>
+    <p>Consider a page with a nested list as follows:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code> <span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2</code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2-a<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2-b<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>We can apply this method to the set of list items as follows:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).has(<span class="string">'ul'</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The result of this call is a red background for item 2, as it is the only <code>&lt;li&gt;</code> that has a <code>&lt;ul&gt;</code> among its descendants.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Check if an element is inside another.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.full</span> <span class="rules">{ <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1</span>px solid red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span><span class="tag">&lt;<span class="title">li</span>&gt;</span>Does the UL contain an LI?<span class="tag">&lt;/<span class="title">li</span>&gt;</span><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"ul"</span>).append(<span class="string">"&lt;li&gt;"</span> + ($(<span class="string">"ul"</span>).has(<span class="string">"li"</span>).length ? <span class="string">"Yes"</span> : <span class="string">"No"</span>) + <span class="string">"&lt;/li&gt;"</span>);</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"ul"</span>).has(<span class="string">"li"</span>).addClass(<span class="string">"full"</span>);</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/has/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.is()</title>
+		<link>http://api.jquery.com/is/</link>
+		<comments>http://api.jquery.com/is/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:59 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.6]]></category>
+		<category><![CDATA[Version 1.7]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=287</guid>
+		<description><![CDATA[Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.]]></description>
+				<content:encoded><![CDATA[<article id="is1" class="entry method"><h2 class="section-title">
+<span class="name">.is( selector )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Boolean">Boolean</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Check the current matched set of elements against a selector, element, or jQuery object and return <code>true</code> if at least one of these elements matches the given arguments.</p>
+<ul class="signatures">
+<li class="signature" id="is-selector">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.is( selector )</h4>
+<ul><li>
+<div><strong>selector</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Selector">Selector</a>
+</div>
+<div>A string containing a selector expression to match elements against.</div>
+</li></ul>
+</li>
+<li class="signature" id="is-functionindex">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.6/">1.6</a></span>.is( function(index) )</h4>
+<ul><li>
+<div><strong>function(index)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function used as a test for the set of elements. It accepts one argument, <code>index</code>, which is the element's index in the jQuery collection.Within the function, <code>this</code> refers to the current DOM element. </div>
+</li></ul>
+</li>
+<li class="signature" id="is-jQuery-object">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.6/">1.6</a></span>.is( jQuery object )</h4>
+<ul><li>
+<div><strong>jQuery object</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>An existing jQuery object to match the current set of elements against.</div>
+</li></ul>
+</li>
+<li class="signature" id="is-element">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.6/">1.6</a></span>.is( element )</h4>
+<ul><li>
+<div><strong>element</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Element">Element</a>
+</div>
+<div>An element to match the current set of elements against.</div>
+</li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Unlike other filtering methods, <code>.is()</code> does not create a new jQuery object. Instead, it allows you to test the contents of a jQuery object without modification. This is often useful inside callbacks, such as event handlers.</p>
+    <p>Suppose you have a list, with two of its items containing a child element:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list <span class="tag">&lt;<span class="title">strong</span>&gt;</span>item 1<span class="tag">&lt;/<span class="title">strong</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>You can attach a click handler to the &lt;ul&gt; element, and then limit the code to be triggered only when a list item itself, not one of its children, is clicked:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"ul"</span>).click(<span class="keyword">function</span>(event) {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> $target = $(event.target);</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">if</span> ( $target.is(<span class="string">"li"</span>) ) {</code></div></div><div class="container"><div class="line"><code>    $target.css(<span class="string">"background-color"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code>  }</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Now, when the user clicks on the word "list" in the first item or anywhere in the third item, the clicked list item will be given a red background. However, when the user clicks on item 1 in the first item or anywhere in the second item, nothing will occur, because in those cases the target of the event would be <code>&lt;strong&gt;</code> or <code>&lt;span&gt;</code>, respectively.
+</p>
+    <p>Prior to jQuery 1.7, in selector strings with positional selectors such as <code>:first</code>, <code>:gt()</code>, or <code>:even</code>, the positional filtering is done against the jQuery object passed to <code>.is()</code>, <em>not</em> against the containing document. So for the HTML shown above, an expression such as <code>$("li:first").is("li:last")</code> returns <code>true</code>, but <code>$("li:first-child").is("li:last-child")</code> returns <code>false</code>. In addition, a bug in Sizzle prevented many positional selectors from working properly. These two factors made positional selectors almost unusable in filters.</p>
+    <p>Starting with jQuery 1.7, selector strings with positional selectors apply the selector against the document, and then determine whether the first element of the current jQuery set matches any of the resulting elements. So for the HTML shown above, an expression such as <code>$("li:first").is("li:last")</code> returns <code>false</code>. Note that since positional selectors are jQuery additions and not W3C standard, we recommend using the W3C selectors whenever feasible.</p>
+    <h4>Using a Function</h4>
+    <p>The second form of this method evaluates expressions related to elements based on a function rather than a selector. For each element, if the function returns <code>true</code>, <code>.is()</code> returns <code>true</code> as well. For example, given a somewhat more involved HTML snippet:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">strong</span>&gt;</span>list<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> item 1 - one strong tag<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">strong</span>&gt;</span>list<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> item <span class="tag">&lt;<span class="title">strong</span>&gt;</span>2<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> -</code></div></div><div class="container"><div class="line"><code>    two <span class="tag">&lt;<span class="title">span</span>&gt;</span>strong tags<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>You can attach a click handler to every <code>&lt;li&gt;</code> that evaluates the number of <code>&lt;strong&gt;</code> elements within the clicked <code>&lt;li&gt;</code> at that time like so:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"li"</span>).click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> $li = $(<span class="keyword">this</span>),</code></div></div><div class="container"><div class="line"><code>    isWithTwo = $li.is(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>      <span class="keyword">return</span> $(<span class="string">'strong'</span>, <span class="keyword">this</span>).length === <span class="number">2</span>;</code></div></div><div class="container"><div class="line"><code>    });</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">if</span> ( isWithTwo ) {</code></div></div><div class="container"><div class="line"><code>    $li.css(<span class="string">"background-color"</span>, <span class="string">"green"</span>);</code></div></div><div class="container"><div class="line"><code>  } <span class="keyword">else</span> {</code></div></div><div class="container"><div class="line"><code>    $li.css(<span class="string">"background-color"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code>  }</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Shows a few ways is() can be used inside an event handler.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+						<div class="line n42">42</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">60</span>px;</span></span> <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">60</span>px;</span></span> <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">5</span>px;</span></span> <span class="rule"><span class="attribute">float</span>:<span class="value">left;</span></span></span></code></div></div><div class="container"><div class="line"><code>      <span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">4</span>px outset;</span></span> <span class="rule"><span class="attribute">background</span>:<span class="value">green;</span></span> <span class="rule"><span class="attribute">text-align</span>:<span class="value">center;</span></span></code></div></div><div class="container"><div class="line"><code>      <span class="rule"><span class="attribute">font-weight</span>:<span class="value">bolder;</span></span> <span class="rule"><span class="attribute">cursor</span>:<span class="value">pointer;</span></span> <span class="rule">}</span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.blue</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.red</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">span</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">white;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule"><span class="attribute">font-weight</span>:<span class="value">bolder;</span></span> <span class="rule"><span class="attribute">background</span>:<span class="value">yellow;</span></span></span></code></div></div><div class="container"><div class="line"><code>      <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">3</span>px;</span></span> <span class="rule"><span class="attribute">clear</span>:<span class="value">left;</span></span> <span class="rule"><span class="attribute">display</span>:<span class="value">none;</span></span> <span class="rule">}</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"blue"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"red"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;<span class="title">br</span>/&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>Peter<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"blue"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">p</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"div"</span>).one(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>    <span class="keyword">if</span> ($(<span class="keyword">this</span>).is(<span class="string">":first-child"</span>)) {</code></div></div><div class="container"><div class="line"><code>      $(<span class="string">"p"</span>).text(<span class="string">"It's the first div."</span>);</code></div></div><div class="container"><div class="line"><code>    } <span class="keyword">else</span> <span class="keyword">if</span> ($(<span class="keyword">this</span>).is(<span class="string">".blue,.red"</span>)) {</code></div></div><div class="container"><div class="line"><code>      $(<span class="string">"p"</span>).text(<span class="string">"It's a blue or red div."</span>);</code></div></div><div class="container"><div class="line"><code>    } <span class="keyword">else</span> <span class="keyword">if</span> ($(<span class="keyword">this</span>).is(<span class="string">":contains('Peter')"</span>)) {</code></div></div><div class="container"><div class="line"><code>      $(<span class="string">"p"</span>).text(<span class="string">"It's Peter!"</span>);</code></div></div><div class="container"><div class="line"><code>    } <span class="keyword">else</span> {</code></div></div><div class="container"><div class="line"><code>      $(<span class="string">"p"</span>).html(<span class="string">"It's nothing &lt;em&gt;special&lt;/em&gt;."</span>);</code></div></div><div class="container"><div class="line"><code>    }</code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"p"</span>).hide().slideDown(<span class="string">"slow"</span>);</code></div></div><div class="container"><div class="line"><code>    $(<span class="keyword">this</span>).css({<span class="string">"border-style"</span>: <span class="string">"inset"</span>, cursor:<span class="string">"default"</span>});</code></div></div><div class="container"><div class="line"><code>  });</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Returns true, because the parent of the input is a form element.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> isFormParent = $(<span class="string">"input[type='checkbox']"</span>).parent().is(<span class="string">"form"</span>);</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"div"</span>).text(<span class="string">"isFormParent = "</span> + isFormParent);</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Returns false, because the parent of the input is a p element.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span><span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> isFormParent = $(<span class="string">"input[type='checkbox']"</span>).parent().is(<span class="string">"form"</span>);</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"div"</span>).text(<span class="string">"isFormParent = "</span> + isFormParent);</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-3">
+<h4>Example: <span class="desc">Checks against an existing collection of alternating list elements. Blue, alternating list elements slide up while others turn red.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="tag">li</span> <span class="rules">{ <span class="rule"><span class="attribute">cursor</span>:<span class="value">pointer;</span></span> <span class="rule">}</span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"browsers"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Chrome<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Safari<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Firefox<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Opera<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> $alt = $(<span class="string">"#browsers li:nth-child(2n)"</span>).css(<span class="string">"background"</span>, <span class="string">"#00FFFF"</span>);</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">'li'</span>).click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">var</span> $li = $(<span class="keyword">this</span>);</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">if</span> ( $li.is( $alt ) ) {</code></div></div><div class="container"><div class="line"><code>      $li.slideUp();</code></div></div><div class="container"><div class="line"><code>    } <span class="keyword">else</span> {</code></div></div><div class="container"><div class="line"><code>      $li.css(<span class="string">"background"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code>    }</code></div></div><div class="container"><div class="line"><code>  });</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-4">
+<h4>Example: <span class="desc">An alternate way to achieve the above example using an element rather than a jQuery object. Checks against an existing collection of alternating list elements. Blue, alternating list elements slide up while others turn red.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="tag">li</span> <span class="rules">{ <span class="rule"><span class="attribute">cursor</span>:<span class="value">pointer;</span></span> <span class="rule">}</span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"browsers"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Chrome<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Safari<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Firefox<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>Opera<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> $alt = $(<span class="string">"#browsers li:nth-child(2n)"</span>).css(<span class="string">"background"</span>, <span class="string">"#00FFFF"</span>);</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">'li'</span>).click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">if</span> ( $alt.is( <span class="keyword">this</span> ) ) {</code></div></div><div class="container"><div class="line"><code>      $(<span class="keyword">this</span>).slideUp();</code></div></div><div class="container"><div class="line"><code>    } <span class="keyword">else</span> {</code></div></div><div class="container"><div class="line"><code>      $(<span class="keyword">this</span>).css(<span class="string">"background"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code>    }</code></div></div><div class="container"><div class="line"><code>  });</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/is/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.last()</title>
+		<link>http://api.jquery.com/last/</link>
+		<comments>http://api.jquery.com/last/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:13:34 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Version 1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=405</guid>
+		<description><![CDATA[Reduce the set of matched elements to the final one in the set.]]></description>
+				<content:encoded><![CDATA[<article id="last1" class="entry method"><h2 class="section-title">
+<span class="name">.last()</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Reduce the set of matched elements to the final one in the set.</p>
+<ul class="signatures"><li class="signature" id="last">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.last()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Given a jQuery object that represents a set of DOM elements, the <code>.last()</code> method constructs a new jQuery object from the last element in that set.</p>
+    <p>Consider a page with a simple list on it:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>We can apply this method to the set of list items:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).last().css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The result of this call is a red background for the final item.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Highlight the last span in a paragraph.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="class">.highlight</span><span class="rules">{<span class="rule"><span class="attribute">background-color</span>:<span class="value"> yellow}</span></span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>Look:<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;<span class="title">span</span>&gt;</span>This is some text in a paragraph.<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;<span class="title">span</span>&gt;</span>This is a note about it.<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">$(<span class="string">"p span"</span>).last().addClass(<span class="string">'highlight'</span>);</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/last/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.map()</title>
+		<link>http://api.jquery.com/map/</link>
+		<comments>http://api.jquery.com/map/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:13:38 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Version 1.2]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=417</guid>
+		<description><![CDATA[Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.]]></description>
+				<content:encoded><![CDATA[<article id="map1" class="entry method"><h2 class="section-title">
+<span class="name">.map( callback(index, domElement) )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Pass each element in the current matched set through a function, producing a new jQuery object containing the return values.</p>
+<ul class="signatures"><li class="signature" id="map-callbackindex--domElement">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.2/">1.2</a></span>.map( callback(index, domElement) )</h4>
+<ul><li>
+<div><strong>callback(index, domElement)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function object that will be invoked for each element in the current set.</div>
+</li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>If you wish to process a plain array or object, use the <a href="/jQuery.map/">jQuery.map()</a> instead. </p>
+    <p>As the return value is a jQuery object, which contains an array, it's very common to call <code>.get()</code> on the result to work with a basic array.</p>
+    <p>The <code>.map()</code> method is particularly useful for getting or setting the value of a collection of elements. Consider a form with a set of checkboxes in it:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">form</span> <span class="attribute">method</span>=<span class="value">"post"</span> <span class="attribute">action</span>=<span class="value">""</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">fieldset</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"two"</span>&gt;</span>2<span class="tag">&lt;/<span class="title">label</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">value</span>=<span class="value">"2"</span> <span class="attribute">id</span>=<span class="value">"two"</span> <span class="attribute">name</span>=<span class="value">"number[]"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"four"</span>&gt;</span>4<span class="tag">&lt;/<span class="title">label</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">value</span>=<span class="value">"4"</span> <span class="attribute">id</span>=<span class="value">"four"</span> <span class="attribute">name</span>=<span class="value">"number[]"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"six"</span>&gt;</span>6<span class="tag">&lt;/<span class="title">label</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">value</span>=<span class="value">"6"</span> <span class="attribute">id</span>=<span class="value">"six"</span> <span class="attribute">name</span>=<span class="value">"number[]"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"eight"</span>&gt;</span>8<span class="tag">&lt;/<span class="title">label</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">value</span>=<span class="value">"8"</span> <span class="attribute">id</span>=<span class="value">"eight"</span> <span class="attribute">name</span>=<span class="value">"number[]"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">fieldset</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>To get a comma-separated list of checkbox <code>ID</code>s:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">':checkbox'</span>).map(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>      <span class="keyword">return</span> <span class="keyword">this</span>.id;</code></div></div><div class="container"><div class="line"><code>    }).get().join();</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The result of this call is the string, <code>"two,four,six,eight"</code>.</p>
+    <p>Within the callback function, <code>this</code> refers to the current DOM element for each iteration. The function can return an individual data item or an array of data items to be inserted into the resulting set. If an array is returned, the elements inside the array are inserted into the set. If the function returns <code>null</code> or <code>undefined</code>, no element will be inserted.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Build a list of all the values within a form.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span>Values: <span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"name"</span> <span class="attribute">value</span>=<span class="value">"John"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"password"</span> <span class="attribute">value</span>=<span class="value">"password"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"url"</span> <span class="attribute">value</span>=<span class="value">"http://ejohn.org/"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"p"</span>).append( $(<span class="string">"input"</span>).map(<span class="keyword">function</span>(){</code></div></div><div class="container"><div class="line"><code>      <span class="keyword">return</span> $(<span class="keyword">this</span>).val();</code></div></div><div class="container"><div class="line"><code>    }).get().join(<span class="string">", "</span>) );</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">A contrived example to show some functionality.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+						<div class="line n42">42</div>
+					
+						<div class="line n43">43</div>
+					
+						<div class="line n44">44</div>
+					
+						<div class="line n45">45</div>
+					
+						<div class="line n46">46</div>
+					
+						<div class="line n47">47</div>
+					
+						<div class="line n48">48</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">body</span> <span class="rules">{ <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">ul</span> <span class="rules">{ <span class="rule"><span class="attribute">float</span>:<span class="value">left;</span></span> <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">0</span> <span class="number">30</span>px;</span></span> <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="id">#results</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>First<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>Second<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>Third<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>Fourth<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">li</span>&gt;</span>Fifth<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"results"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> mappedItems = $(<span class="string">"li"</span>).map(<span class="function"><span class="keyword">function</span> <span class="params">(index)</span> {</span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> replacement = $(<span class="string">"&lt;li&gt;"</span>).text($(<span class="keyword">this</span>).text()).get(<span class="number">0</span>);</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">if</span> (index == <span class="number">0</span>) {</code></div></div><div class="container"><div class="line"><code>    <span class="comment">/* make the first item all caps */</span></code></div></div><div class="container"><div class="line"><code>    $(replacement).text($(replacement).text().toUpperCase());</code></div></div><div class="container"><div class="line"><code>  } <span class="keyword">else</span> <span class="keyword">if</span> (index == <span class="number">1</span> || index == <span class="number">3</span>) {</code></div></div><div class="container"><div class="line"><code>    <span class="comment">/* delete the second and fourth items */</span></code></div></div><div class="container"><div class="line"><code>    replacement = <span class="literal">null</span>;</code></div></div><div class="container"><div class="line"><code>  } <span class="keyword">else</span> <span class="keyword">if</span> (index == <span class="number">2</span>) {</code></div></div><div class="container"><div class="line"><code>    <span class="comment">/* make two of the third item and add some text */</span></code></div></div><div class="container"><div class="line"><code>    replacement = [replacement,$(<span class="string">"&lt;li&gt;"</span>).get(<span class="number">0</span>)];</code></div></div><div class="container"><div class="line"><code>    $(replacement[<span class="number">0</span>]).append(<span class="string">"&lt;b&gt; - A&lt;/b&gt;"</span>);</code></div></div><div class="container"><div class="line"><code>    $(replacement[<span class="number">1</span>]).append(<span class="string">"Extra &lt;b&gt; - B&lt;/b&gt;"</span>);</code></div></div><div class="container"><div class="line"><code>  }</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="comment">/* replacement will be a dom element, null,</span></code></div></div><div class="container"><div class="line"><code>     or an array of dom elements */</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> replacement;</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"#results"</span>).append(mappedItems);</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Equalize the heights of the divs.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code><span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">40</span>px;</span></span> <span class="rule"><span class="attribute">float</span>:<span class="value">left;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code><span class="tag">input</span> <span class="rules">{ <span class="rule"><span class="attribute">clear</span>:<span class="value">left}</span></span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"equalize div heights"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"background:red; height: 40px; "</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"background:green; height: 70px;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"background:blue; height: 50px; "</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$.fn.equalizeHeights = <span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> maxHeight = <span class="keyword">this</span>.map(<span class="keyword">function</span>(i,e) {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">return</span> $(e).height();</code></div></div><div class="container"><div class="line"><code>  }).get();</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> <span class="keyword">this</span>.height( Math.max.apply(<span class="keyword">this</span>, maxHeight) );</code></div></div><div class="container"><div class="line"><code>};</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$(<span class="string">'input'</span>).click(<span class="keyword">function</span>(){</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">'div'</span>).equalizeHeights();</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/map/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.not()</title>
+		<link>http://api.jquery.com/not/</link>
+		<comments>http://api.jquery.com/not/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:13:48 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Miscellaneous Traversing]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=449</guid>
+		<description><![CDATA[Remove elements from the set of matched elements.]]></description>
+				<content:encoded><![CDATA[<article id="not1" class="entry method"><h2 class="section-title">
+<span class="name">.not( selector )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Remove elements from the set of matched elements.</p>
+<ul class="signatures">
+<li class="signature" id="not-selector">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.not( selector )</h4>
+<ul><li>
+<div><strong>selector</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Selector">Selector</a>
+</div>
+<div>A string containing a selector expression to match elements against.</div>
+</li></ul>
+</li>
+<li class="signature" id="not-elements">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.not( elements )</h4>
+<ul><li>
+<div><strong>elements</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Elements">Elements</a>
+</div>
+<div>One or more DOM elements to remove from the matched set.</div>
+</li></ul>
+</li>
+<li class="signature" id="not-functionindex">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.not( function(index) )</h4>
+<ul><li>
+<div><strong>function(index)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function used as a test for each element in the set. <code>this</code> is the current DOM element.</div>
+</li></ul>
+</li>
+<li class="signature" id="not-jQuery-object">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.not( jQuery object )</h4>
+<ul><li>
+<div><strong>jQuery object</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#PlainObject">PlainObject</a>
+</div>
+<div>An existing jQuery object to match the current set of elements against.</div>
+</li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Given a jQuery object that represents a set of DOM elements, the <code>.not()</code> method constructs a new jQuery object from a subset of the matching elements. The supplied selector is tested against each element; the elements that don't match the selector will be included in the result.</p>
+    <p>Consider a page with a simple list on it:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>We can apply this method to the set of list items:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).not(<span class="string">':even'</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The result of this call is a red background for items 2 and 4, as they do not match the selector (recall that :even and :odd use 0-based indexing).</p>
+    <h4>Removing Specific Elements</h4>
+    <p>The second version of the <code>.not()</code> method allows us to remove elements from the matched set, assuming we have found those elements previously by some other means. For example, suppose our list had an id applied to one of its items:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">id</span>=<span class="value">"notli"</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>We can fetch the third list item using the native JavaScript <code>getElementById()</code> function, then remove it from a jQuery object:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).not(document.getElementById(<span class="string">'notli'</span>))</code></div></div><div class="container"><div class="line"><code>  .css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>This statement changes the color of items 1, 2, 4, and 5. We could have accomplished the same thing with a simpler jQuery expression, but this technique can be useful when, for example, other libraries provide references to plain DOM nodes.</p>
+    <p>As of jQuery 1.4, the <code>.not()</code> method can take a function as its argument in the same way that <code>.filter()</code> does. Elements for which the function returns <code>true</code> are excluded from the filtered set; all other elements are included.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Adds a border to divs that are not green or blue.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code><span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">50</span>px;</span></span> <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">50</span>px;</span></span> <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">10</span>px;</span></span> <span class="rule"><span class="attribute">float</span>:<span class="value">left;</span></span></span></code></div></div><div class="container"><div class="line"><code>      <span class="rule"><span class="attribute">background</span>:<span class="value">yellow;</span></span> <span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">2</span>px solid white;</span></span> <span class="rule">}</span></code></div></div><div class="container"><div class="line"><code><span class="class">.green</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#8f8</span>;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code><span class="class">.gray</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#ccc</span>;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code><span class="id">#blueone</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#99f</span>;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"blueone"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"green"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"green"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"gray"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$(<span class="string">"div"</span>).not(<span class="string">".green, #blueone"</span>)</code></div></div><div class="container"><div class="line"><code>        .css(<span class="string">"border-color"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Removes the element with the ID "selected" from the set of all paragraphs.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).not( $(<span class="string">"#selected"</span>)[<span class="number">0</span>] )</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Removes the element with the ID "selected" from the set of all paragraphs.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).not(<span class="string">"#selected"</span>)</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-3">
+<h4>Example: <span class="desc">Removes all elements that match "div p.selected" from the total set of all paragraphs.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).not($(<span class="string">"div p.selected"</span>))</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/not/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.slice()</title>
+		<link>http://api.jquery.com/slice/</link>
+		<comments>http://api.jquery.com/slice/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:14:19 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Filtering]]></category>
+		<category><![CDATA[Version 1.1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=545</guid>
+		<description><![CDATA[Reduce the set of matched elements to a subset specified by a range of indices.]]></description>
+				<content:encoded><![CDATA[<article id="slice1" class="entry method"><h2 class="section-title">
+<span class="name">.slice( start [, end ] )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Reduce the set of matched elements to a subset specified by a range of indices.</p>
+<ul class="signatures"><li class="signature" id="slice-start-end">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.1.4/">1.1.4</a></span>.slice( start [, end ] )</h4>
+<ul>
+<li>
+<div><strong>start</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Integer">Integer</a>
+</div>
+<div>An integer indicating the 0-based position at which the elements begin to be selected. If negative, it indicates an offset from the end of the set.</div>
+</li>
+<li>
+<div><strong>end</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Integer">Integer</a>
+</div>
+<div>An integer indicating the 0-based position at which the elements stop being selected. If negative, it indicates an offset from the end of the set. If omitted, the range continues until the end of the set.</div>
+</li>
+</ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Given a jQuery object that represents a set of DOM elements, the <code>.slice()</code> method constructs a new jQuery object containing a subset of the elements specified by the <code>start</code> and, optionally, <code>end</code> argument. The supplied <code>start</code> index identifies the position of one of the elements in the set; if <code>end</code> is omitted, all elements after this one will be included in the result.</p>
+    <p>Consider a page with a simple list on it:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">ul</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="title">li</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>We can apply this method to the set of list items:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).slice(<span class="number">2</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The result of this call is a red background for items 3, 4, and 5. Note that the supplied index is zero-based, and refers to the position of elements within the jQuery object, not within the DOM tree.</p>
+    <p>The end parameter allows us to limit the selected range even further. For example:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).slice(<span class="number">2</span>, <span class="number">4</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Now only items 3 and 4 are selected. The index is once again zero-based; the range extends up to but not including the specified index.</p>
+    <h4>Negative Indices</h4>
+    <p>The jQuery <code>.slice()</code> method is patterned after the JavaScript .slice() method for arrays. One of the features that it mimics is the ability for negative numbers to be passed as either the <code>start</code> or <code>end</code> parameter. If a negative number is provided, this indicates a position starting from the end of the set, rather than the beginning. For example:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li'</span>).slice(-<span class="number">2</span>, -<span class="number">1</span>).css(<span class="string">'background-color'</span>, <span class="string">'red'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>This time only list item 4 is turned red, since it is the only item in the range between two from the end (<code>-2</code>) and one from the end (<code>-1</code>).</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Turns divs yellow based on a random slice.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+						<div class="line n42">42</div>
+					
+						<div class="line n43">43</div>
+					
+						<div class="line n44">44</div>
+					
+						<div class="line n45">45</div>
+					
+						<div class="line n46">46</div>
+					
+						<div class="line n47">47</div>
+					
+						<div class="line n48">48</div>
+					
+						<div class="line n49">49</div>
+					
+						<div class="line n50">50</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">40</span>px;</span></span> <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">40</span>px;</span></span> <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">10</span>px;</span></span> <span class="rule"><span class="attribute">float</span>:<span class="value">left;</span></span></span></code></div></div><div class="container"><div class="line"><code>        <span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">2</span>px solid blue;</span></span> <span class="rule">}</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">span</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule"><span class="attribute">font-weight</span>:<span class="value">bold;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">button</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">5</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">button</span>&gt;</span>Turn slice yellow<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">span</span>&gt;</span>Click the button!<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="function"><span class="keyword">function</span> <span class="title">colorEm</span><span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> $div = $(<span class="string">"div"</span>);</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> start = Math.floor(Math.random() *</code></div></div><div class="container"><div class="line"><code>                         $div.length);</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> end = Math.floor(Math.random() *</code></div></div><div class="container"><div class="line"><code>                       ($div.length - start)) +</code></div></div><div class="container"><div class="line"><code>                       start + <span class="number">1</span>;</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">if</span> (end == $div.length) end = <span class="literal">undefined</span>;</code></div></div><div class="container"><div class="line"><code>  $div.css(<span class="string">"background"</span>, <span class="string">""</span>);</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">if</span> (end)</code></div></div><div class="container"><div class="line"><code>    $div.slice(start, end).css(<span class="string">"background"</span>, <span class="string">"yellow"</span>);</code></div></div><div class="container"><div class="line"><code>   <span class="keyword">else</span></code></div></div><div class="container"><div class="line"><code>    $div.slice(start).css(<span class="string">"background"</span>, <span class="string">"yellow"</span>);</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"span"</span>).text(<span class="string">'$("div").slice('</span> + start +</code></div></div><div class="container"><div class="line"><code>                 (end ? <span class="string">', '</span> + end : <span class="string">''</span>) +</code></div></div><div class="container"><div class="line"><code>                 <span class="string">').css("background", "yellow");'</span>);</code></div></div><div class="container"><div class="line"><code>}</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$(<span class="string">"button"</span>).click(colorEm);</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo" data-height="240"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Selects all paragraphs, then slices the selection to include only the first element.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).slice(<span class="number">0</span>, <span class="number">1</span>).wrapInner(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Selects all paragraphs, then slices the selection to include only the first and second element.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).slice(<span class="number">0</span>, <span class="number">2</span>).wrapInner(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-3">
+<h4>Example: <span class="desc">Selects all paragraphs, then slices the selection to include only the second element.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).slice(<span class="number">1</span>, <span class="number">2</span>).wrapInner(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-4">
+<h4>Example: <span class="desc">Selects all paragraphs, then slices the selection to include only the second and third element.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).slice(<span class="number">1</span>).wrapInner(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-5">
+<h4>Example: <span class="desc">Selects all paragraphs, then slices the selection to include only the third element.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).slice(-<span class="number">1</span>).wrapInner(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/slice/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

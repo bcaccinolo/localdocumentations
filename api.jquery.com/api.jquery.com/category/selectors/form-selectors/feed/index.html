@@ -1,0 +1,1279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jQuery API Documentation &#187; Form</title>
+	<atom:link href="http://api.jquery.com/category/selectors/form-selectors/feed/" rel="self" type="application/rss+xml" />
+	<link>http://api.jquery.com</link>
+	<description></description>
+	<lastBuildDate>Wed, 13 Feb 2013 22:57:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.5.1</generator>
+		<item>
+		<title>:button Selector</title>
+		<link>http://api.jquery.com/button-selector/</link>
+		<comments>http://api.jquery.com/button-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:11:48 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[jQuery Extensions]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=59</guid>
+		<description><![CDATA[Selects all button elements and elements of type button.]]></description>
+				<content:encoded><![CDATA[<article id="button1" class="entry selector"><h2 class="section-title"><span>button selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects all button elements and elements of type button.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":button" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>An equivalent selector to <code>$(":button")</code> using valid CSS is <code>$("button, input[type='button']")</code>.</p>
+  </div>
+<h3>Additional Notes:</h3>
+<div class="longdesc"><ul><li>
+			Because <code>:button</code> is a jQuery extension and not part of the CSS specification, queries using <code>:button</code> cannot take advantage of the performance boost provided by the native DOM <code>querySelectorAll()</code> method. To achieve the best performance when using <code>:button</code> to select elements, first select the elements using a pure CSS selector, then use <a href="http://api.jquery.com/filter/"><code>.filter(":button")</code></a>.
+		</li></ul></div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Find all button inputs and mark them.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+						<div class="line n42">42</div>
+					
+						<div class="line n43">43</div>
+					
+						<div class="line n44">44</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">textarea</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">35</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value"> red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">fieldset</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span>;</span></span> <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span>;</span></span> <span class="rule"><span class="attribute">border-width</span>:<span class="value"> <span class="number">0</span>;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.marked</span> <span class="rules">{ <span class="rule"><span class="attribute">background-color</span>:<span class="value"> yellow;</span></span> <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">3</span>px red solid;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">fieldset</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Input Button"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"image"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">select</span>&gt;</span><span class="tag">&lt;<span class="title">option</span>&gt;</span>Option<span class="tag">&lt;<span class="title">option</span>/&gt;</span><span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">textarea</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">fieldset</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> input = $(<span class="string">":button"</span>).addClass(<span class="string">"marked"</span>);</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"div"</span>).text( <span class="string">"For this type jQuery found "</span> + input.length + <span class="string">"."</span> );</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"form"</span>).submit(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="keyword">return</span> <span class="literal">false</span>; }); <span class="comment">// so it won't submit</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/button-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:checkbox Selector</title>
+		<link>http://api.jquery.com/checkbox-selector/</link>
+		<comments>http://api.jquery.com/checkbox-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:11:56 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[jQuery Extensions]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=85</guid>
+		<description><![CDATA[Selects all elements of type checkbox.]]></description>
+				<content:encoded><![CDATA[<article id="checkbox1" class="entry selector"><h2 class="section-title"><span>checkbox selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects all elements of type checkbox.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":checkbox" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p><code>$(':checkbox')</code> is equivalent to <code>$('[type=checkbox]')</code>. As with other pseudo-class selectors (those that begin with a ":") it is recommended to precede it with a tag name or some other selector; otherwise, the universal selector ("*") is implied. In other words, the bare <code>$(':checkbox')</code> is equivalent to <code>$('*:checkbox')</code>, so <code>$('input:checkbox')</code> should be used instead. </p>
+  </div>
+<h3>Additional Notes:</h3>
+<div class="longdesc"><ul><li>
+			Because <code>:checkbox</code> is a jQuery extension and not part of the CSS specification, queries using <code>:checkbox</code> cannot take advantage of the performance boost provided by the native DOM <code>querySelectorAll()</code> method. For better performance in modern browsers, use <code>[type="checkbox"]</code> instead.
+		</li></ul></div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Finds all checkbox inputs.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+						<div class="line n42">42</div>
+					
+						<div class="line n43">43</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">textarea</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">25</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Input Button"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"image"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">select</span>&gt;</span><span class="tag">&lt;<span class="title">option</span>&gt;</span>Option<span class="tag">&lt;<span class="title">option</span>/&gt;</span><span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">textarea</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="keyword">var</span> input = $(<span class="string">"form input:checkbox"</span>).wrap(<span class="string">'&lt;span&gt;&lt;/span&gt;'</span>).parent().css({background:<span class="string">"yellow"</span>, border:<span class="string">"3px red solid"</span>});</code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"div"</span>).text(<span class="string">"For this type jQuery found "</span> + input.length + <span class="string">"."</span>)</code></div></div><div class="container"><div class="line"><code>            .css(<span class="string">"color"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"form"</span>).submit(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="keyword">return</span> <span class="literal">false</span>; }); <span class="comment">// so it won't submit</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/checkbox-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:checked Selector</title>
+		<link>http://api.jquery.com/checked-selector/</link>
+		<comments>http://api.jquery.com/checked-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:11:57 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=87</guid>
+		<description><![CDATA[Matches all elements that are checked.]]></description>
+				<content:encoded><![CDATA[<article id="checked1" class="entry selector"><h2 class="section-title"><span>checked selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Matches all elements that are checked.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":checked" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>The <code>:checked</code> selector works for checkboxes and radio buttons. For select elements, use the <code>:selected</code> selector.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Determine how many input elements are checked.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">name</span>=<span class="value">"newsletter"</span> <span class="attribute">value</span>=<span class="value">"Hourly"</span> <span class="attribute">checked</span>=<span class="value">"checked"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">name</span>=<span class="value">"newsletter"</span> <span class="attribute">value</span>=<span class="value">"Daily"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">name</span>=<span class="value">"newsletter"</span> <span class="attribute">value</span>=<span class="value">"Weekly"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">name</span>=<span class="value">"newsletter"</span> <span class="attribute">value</span>=<span class="value">"Monthly"</span> <span class="attribute">checked</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">name</span>=<span class="value">"newsletter"</span> <span class="attribute">value</span>=<span class="value">"Yearly"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> countChecked = <span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> n = $( <span class="string">"input:checked"</span> ).length;</code></div></div><div class="container"><div class="line"><code>  $( <span class="string">"div"</span> ).text( n + (n === <span class="number">1</span> ? <span class="string">" is"</span> : <span class="string">" are"</span>) + <span class="string">" checked!"</span> );</code></div></div><div class="container"><div class="line"><code>};</code></div></div><div class="container"><div class="line"><code>countChecked();</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$( <span class="string">"input[type=checkbox]"</span> ).on( <span class="string">"click"</span>, countChecked );</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Identify the checked radio input.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code><span class="tag">input</span>, <span class="tag">label</span> <span class="rules">{ <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1.5</span>em;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">name</span>=<span class="value">"fruit"</span> <span class="attribute">value</span>=<span class="value">"orange"</span> <span class="attribute">id</span>=<span class="value">"orange"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"orange"</span>&gt;</span>orange<span class="tag">&lt;/<span class="title">label</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">name</span>=<span class="value">"fruit"</span> <span class="attribute">value</span>=<span class="value">"apple"</span> <span class="attribute">id</span>=<span class="value">"apple"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"apple"</span>&gt;</span>apple<span class="tag">&lt;/<span class="title">label</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">name</span>=<span class="value">"fruit"</span> <span class="attribute">value</span>=<span class="value">"banana"</span> <span class="attribute">id</span>=<span class="value">"banana"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"banana"</span>&gt;</span>banana<span class="tag">&lt;/<span class="title">label</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"log"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$( <span class="string">"input"</span> ).on( <span class="string">"click"</span>, <span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  $( <span class="string">"#log"</span> ).html( $(<span class="string">"input:checked"</span>).val() + <span class="string">" is checked!"</span> );</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/checked-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:disabled Selector</title>
+		<link>http://api.jquery.com/disabled-selector/</link>
+		<comments>http://api.jquery.com/disabled-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:18 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=159</guid>
+		<description><![CDATA[Selects all elements that are disabled.]]></description>
+				<content:encoded><![CDATA[<article id="disabled1" class="entry selector"><h2 class="section-title"><span>disabled selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects all elements that are disabled.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":disabled" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>As with other pseudo-class selectors (those that begin with a ":"), it is recommended to precede it with a tag name or some other selector; otherwise, the universal selector ("*") is implied. In other words, the bare <code>$(':disabled')</code> is equivalent to <code>$('*:disabled')</code>, so <code>$('input:disabled')</code> or similar should be used instead. </p>
+
+    <p>Although their resulting selections are usually the same, the <code>:disabled</code> selector is subtly different from the <code>[disabled]</code> attribute selector; <code>:disabled</code> checks the boolean (true/false) value of the element's disabled property while <code>[disabled]</code> checks for the existence of the disabled attribute.</p>
+
+    <p>The <code>:disabled</code> selector should only be used for selecting HTML elements that support the <code>disabled</code> attribute (<code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;optgroup&gt;</code>, <code>&lt;option&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;textarea&gt;</code>).</p>
+
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Finds all input elements that are disabled.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">"email"</span> <span class="attribute">disabled</span>=<span class="value">"disabled"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">"id"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">$(<span class="string">"input:disabled"</span>).val(<span class="string">"this is it"</span>);</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/disabled-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:enabled Selector</title>
+		<link>http://api.jquery.com/enabled-selector/</link>
+		<comments>http://api.jquery.com/enabled-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:21 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=169</guid>
+		<description><![CDATA[Selects all elements that are enabled.]]></description>
+				<content:encoded><![CDATA[<article id="enabled1" class="entry selector"><h2 class="section-title"><span>enabled selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects all elements that are enabled.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":enabled" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>As with other pseudo-class selectors (those that begin with a ":") it is recommended to precede it with a tag name or some other selector; otherwise, the universal selector ("*") is implied. In other words, the bare <code>$(':enabled')</code> is equivalent to <code>$('*:enabled')</code>, so <code>$('input:enabled')</code> or similar should be used instead. </p>
+
+    <p>Although their resulting selections are usually the same, <code>:enabled</code> selector is subtly different from <code>:not([disabled])</code>; <code>:enabled</code> selects elements that have their boolean disabled property strictly equal to false, while <code>:not([disabled])</code> selects elements that do not have a disabled <em>attribute</em> set (regardless of its value).</p>
+
+    <p>The <code>:enabled</code> selector should only be used for selecting HTML elements that support the <code>disabled</code> attribute (<code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;optgroup&gt;</code>, <code>&lt;option&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;textarea&gt;</code>).</p>
+
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Find all input elements that are enabled.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">"email"</span> <span class="attribute">disabled</span>=<span class="value">"disabled"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">"id"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">$(<span class="string">"input:enabled"</span>).val(<span class="string">"this is it"</span>);</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/enabled-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:file Selector</title>
+		<link>http://api.jquery.com/file-selector/</link>
+		<comments>http://api.jquery.com/file-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:39 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[jQuery Extensions]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=227</guid>
+		<description><![CDATA[Selects all elements of type file.]]></description>
+				<content:encoded><![CDATA[<article id="file1" class="entry selector"><h2 class="section-title"><span>file selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects all elements of type file.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":file" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p><code>:file</code> is equivalent to <code>[type="file"]</code>. As with other pseudo-class selectors (those that begin with a ":") it is recommended to precede it with a tag name or some other selector; otherwise, the universal selector ("*") is implied. In other words, the bare <code>$(':file')</code> is equivalent to <code>$('*:file')</code>, so <code>$('input:file')</code> should be used instead. </p>
+  </div>
+<h3>Additional Notes:</h3>
+<div class="longdesc"><ul><li>
+			Because <code>:file</code> is a jQuery extension and not part of the CSS specification, queries using <code>:file</code> cannot take advantage of the performance boost provided by the native DOM <code>querySelectorAll()</code> method. For better performance in modern browsers, use <code>[type="file"]</code> instead.
+		</li></ul></div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Finds all file inputs.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">textarea</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">45</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Input Button"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"image"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">select</span>&gt;</span><span class="tag">&lt;<span class="title">option</span>&gt;</span>Option<span class="tag">&lt;<span class="title">option</span>/&gt;</span><span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">textarea</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="keyword">var</span> input = $(<span class="string">"input:file"</span>).css({background:<span class="string">"yellow"</span>, border:<span class="string">"3px red solid"</span>});</code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"div"</span>).text(<span class="string">"For this type jQuery found "</span> + input.length + <span class="string">"."</span>)</code></div></div><div class="container"><div class="line"><code>            .css(<span class="string">"color"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"form"</span>).submit(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="keyword">return</span> <span class="literal">false</span>; }); <span class="comment">// so it won't submit</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/file-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:focus Selector</title>
+		<link>http://api.jquery.com/focus-selector/</link>
+		<comments>http://api.jquery.com/focus-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:43 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Basic Filter]]></category>
+		<category><![CDATA[Form]]></category>
+		<category><![CDATA[Version 1.6]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=239</guid>
+		<description><![CDATA[Selects element if it is currently focused.]]></description>
+				<content:encoded><![CDATA[<article id="focus1" class="entry selector"><h2 class="section-title"><span>focus selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects element if it is currently focused.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.6/">1.6</a></span>jQuery( ":focus" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>As with other pseudo-class selectors (those that begin with a ":"), it is recommended to precede <code>:focus</code> with a tag name or some other selector; otherwise, the universal selector ("*") is implied. In other words, the bare <code>$(':focus')</code> is equivalent to <code>$('*:focus')</code>.  If you are looking for the currently focused element, <code>$( document.activeElement )</code> will retrieve it without having to search the whole DOM tree.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Adds the focused class to whatever element has focus</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code><span class="class">.focused</span> <span class="rules">{</span></code></div></div><div class="container"><div class="line"><code>    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#abcdef</span>;</span></span></code></div></div><div class="container"><div class="line"><code><span class="rule">}</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"content"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">tabIndex</span>=<span class="value">"1"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">tabIndex</span>=<span class="value">"2"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">select</span> <span class="attribute">tabIndex</span>=<span class="value">"3"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>        <span class="tag">&lt;<span class="title">option</span>&gt;</span>select menu<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">tabIndex</span>=<span class="value">"4"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>        a div</code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$( <span class="string">"#content"</span> ).delegate( <span class="string">"*"</span>, <span class="string">"focus blur"</span>, <span class="keyword">function</span>( event ) {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">var</span> elem = $( <span class="keyword">this</span> );</code></div></div><div class="container"><div class="line"><code>    setTimeout(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>       elem.toggleClass( <span class="string">"focused"</span>, elem.is( <span class="string">":focus"</span> ) );</code></div></div><div class="container"><div class="line"><code>    }, <span class="number">0</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/focus-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:image Selector</title>
+		<link>http://api.jquery.com/image-selector/</link>
+		<comments>http://api.jquery.com/image-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:54 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[jQuery Extensions]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=273</guid>
+		<description><![CDATA[Selects all elements of type image.]]></description>
+				<content:encoded><![CDATA[<article id="image1" class="entry selector"><h2 class="section-title"><span>image selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects all elements of type image.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":image" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p><code>:image</code> is equivalent to <code>[type="image"]</code></p>
+  </div>
+<h3>Additional Notes:</h3>
+<div class="longdesc"><ul><li>
+			Because <code>:image</code> is a jQuery extension and not part of the CSS specification, queries using <code>:image</code> cannot take advantage of the performance boost provided by the native DOM <code>querySelectorAll()</code> method. For better performance in modern browsers, use <code>[type="image"]</code> instead.
+		</li></ul></div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Finds all image inputs.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">textarea</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">45</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Input Button"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"image"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">select</span>&gt;</span><span class="tag">&lt;<span class="title">option</span>&gt;</span>Option<span class="tag">&lt;<span class="title">option</span>/&gt;</span><span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">textarea</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> input = $(<span class="string">"input:image"</span>).css({background:<span class="string">"yellow"</span>, border:<span class="string">"3px red solid"</span>});</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"div"</span>).text(<span class="string">"For this type jQuery found "</span> + input.length + <span class="string">"."</span>)</code></div></div><div class="container"><div class="line"><code>        .css(<span class="string">"color"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"form"</span>).submit(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="keyword">return</span> <span class="literal">false</span>; }); <span class="comment">// so it won't submit</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/image-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:input Selector</title>
+		<link>http://api.jquery.com/input-selector/</link>
+		<comments>http://api.jquery.com/input-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:56 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[jQuery Extensions]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=281</guid>
+		<description><![CDATA[Selects all input, textarea, select and button elements.]]></description>
+				<content:encoded><![CDATA[<article id="input1" class="entry selector"><h2 class="section-title"><span>input selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects all input, textarea, select and button elements.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":input" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>The <code>:input</code> selector basically selects all form controls.</p>
+  </div>
+<h3>Additional Notes:</h3>
+<div class="longdesc"><ul><li>
+			Because <code>:input</code> is a jQuery extension and not part of the CSS specification, queries using <code>:input</code> cannot take advantage of the performance boost provided by the native DOM <code>querySelectorAll()</code> method. To achieve the best performance when using <code>:input</code> to select elements, first select the elements using a pure CSS selector, then use <a href="http://api.jquery.com/filter/"><code>.filter(":input")</code></a>.
+		</li></ul></div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Finds all input elements.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+						<div class="line n42">42</div>
+					
+						<div class="line n43">43</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">textarea</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">25</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Input Button"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"image"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">select</span>&gt;</span><span class="tag">&lt;<span class="title">option</span>&gt;</span>Option<span class="tag">&lt;/<span class="title">option</span>&gt;</span><span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">textarea</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"messages"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> allInputs = $(<span class="string">":input"</span>);</code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> formChildren = $(<span class="string">"form &gt; *"</span>);</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"#messages"</span>).text(<span class="string">"Found "</span> + allInputs.length + <span class="string">" inputs and the form has "</span> +</code></div></div><div class="container"><div class="line"><code>                         formChildren.length + <span class="string">" children."</span>);</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="comment">// so it won't submit</span></code></div></div><div class="container"><div class="line"><code>$(<span class="string">"form"</span>).submit(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="keyword">return</span> <span class="literal">false</span>; });</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/input-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>:password Selector</title>
+		<link>http://api.jquery.com/password-selector/</link>
+		<comments>http://api.jquery.com/password-selector/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:13:58 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form]]></category>
+		<category><![CDATA[jQuery Extensions]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=479</guid>
+		<description><![CDATA[Selects all elements of type password.]]></description>
+				<content:encoded><![CDATA[<article id="password1" class="entry selector"><h2 class="section-title"><span>password selector</span></h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Selects all elements of type password.</p>
+<ul class="signatures"><li class="signature"><h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>jQuery( ":password" )</h4></li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p><code>$(':password')</code> is equivalent to <code>$('[type=password]')</code>. As with other pseudo-class selectors (those that begin with a ":") it is recommended to precede it with a tag name or some other selector; otherwise, the universal selector ("*") is implied. In other words, the bare <code>$(':password')</code> is equivalent to <code>$('*:password')</code>, so <code>$('input:password')</code> should be used instead. </p>
+  </div>
+<h3>Additional Notes:</h3>
+<div class="longdesc"><ul><li>
+			Because <code>:password</code> is a jQuery extension and not part of the CSS specification, queries using <code>:password</code> cannot take advantage of the performance boost provided by the native DOM <code>querySelectorAll()</code> method. For better performance in modern browsers, use <code>[type="password"]</code> instead.
+		</li></ul></div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Finds all password inputs.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">textarea</span> <span class="rules">{ <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">45</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Input Button"</span>/&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"image"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"reset"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">select</span>&gt;</span><span class="tag">&lt;<span class="title">option</span>&gt;</span>Option<span class="tag">&lt;<span class="title">option</span>/&gt;</span><span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">textarea</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">button</span>&gt;</span>Button<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> input = $(<span class="string">"input:password"</span>).css({background:<span class="string">"yellow"</span>, border:<span class="string">"3px red solid"</span>});</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"div"</span>).text(<span class="string">"For this type jQuery found "</span> + input.length + <span class="string">"."</span>)</code></div></div><div class="container"><div class="line"><code>        .css(<span class="string">"color"</span>, <span class="string">"red"</span>);</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"form"</span>).submit(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span> <span class="keyword">return</span> <span class="literal">false</span>; }); <span class="comment">// so it won't submit</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/password-selector/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jQuery API Documentation &#187; Deferred Object</title>
+	<atom:link href="http://api.jquery.com/category/deferred-object/feed/" rel="self" type="application/rss+xml" />
+	<link>http://api.jquery.com</link>
+	<description></description>
+	<lastBuildDate>Wed, 13 Feb 2013 22:57:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.5.1</generator>
+		<item>
+		<title>deferred.always()</title>
+		<link>http://api.jquery.com/deferred.always/</link>
+		<comments>http://api.jquery.com/deferred.always/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:06 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.6]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=115</guid>
+		<description><![CDATA[Add handlers to be called when the Deferred object is either resolved or rejected.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-always1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.always( alwaysCallbacks [, alwaysCallbacks ] )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Deferred">Deferred</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Add handlers to be called when the Deferred object is either resolved or rejected. </p>
+<ul class="signatures"><li class="signature" id="deferred-always-alwaysCallbacks-alwaysCallbacks">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.6/">1.6</a></span>deferred.always( alwaysCallbacks [, alwaysCallbacks ] )</h4>
+<ul>
+<li>
+<div><strong>alwaysCallbacks</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        A function, or array of functions, that is called when the Deferred is resolved or rejected.
+      </div>
+</li>
+<li>
+<div><strong>alwaysCallbacks</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        Optional additional functions, or arrays of functions, that are called when the Deferred is resolved or rejected.
+      </div>
+</li>
+</ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>The argument can be either a single function or an array of functions. When the Deferred is resolved or rejected, the <code>alwaysCallbacks</code> are called. Since <code>deferred.always()</code> returns the Deferred object, other methods of the Deferred object can be chained to this one, including additional <code>.always()</code> methods. When the Deferred is resolved or rejected, callbacks are executed in the order they were added, using the arguments provided to the <a href="/deferred.resolve/"><code>resolve</code></a>, <a href="/deferred.reject/"><code>reject</code></a>, <a href="/deferred.resolveWith/"><code>resolveWith</code></a> or <a href="/deferred.rejectWith/"><code>rejectWith</code></a> method calls. For more information, see the documentation for <a href="/category/deferred-object/">Deferred object</a>.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Since the <a href="http://api.jquery.com/jQuery.get/"><code>jQuery.get()</code></a> method returns a <code>jqXHR</code> object, which is derived from a Deferred object, we can attach a callback for both success and error using the <code>deferred.always()</code> method.</span></h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$.get(<span class="string">"test.php"</span>).always( <span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  alert(<span class="string">"$.get completed with success or error callback arguments"</span>);</code></div></div><div class="container"><div class="line"><code>} );</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.always/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.done()</title>
+		<link>http://api.jquery.com/deferred.done/</link>
+		<comments>http://api.jquery.com/deferred.done/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:06 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.5]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=117</guid>
+		<description><![CDATA[Add handlers to be called when the Deferred object is resolved.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-done1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.done( doneCallbacks [, doneCallbacks ] )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Deferred">Deferred</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Add handlers to be called when the Deferred object is resolved. </p>
+<ul class="signatures"><li class="signature" id="deferred-done-doneCallbacks-doneCallbacks">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.5/">1.5</a></span>deferred.done( doneCallbacks [, doneCallbacks ] )</h4>
+<ul>
+<li>
+<div><strong>doneCallbacks</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        A function, or array of functions, that are called when the Deferred is resolved.
+      </div>
+</li>
+<li>
+<div><strong>doneCallbacks</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        Optional additional functions, or arrays of functions, that are called when the Deferred is resolved.
+      </div>
+</li>
+</ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>The <code>deferred.done()</code> method accepts one or more arguments, all of which can be either a single function or an array of functions. When the Deferred is resolved, the doneCallbacks are called. Callbacks are executed in the order they were added. Since <code>deferred.done()</code> returns the deferred object, other methods of the deferred object can be chained to this one, including additional <code>.done()</code> methods. When the Deferred is resolved, doneCallbacks are executed using the arguments provided to the <a href="/deferred.resolve/"><code>resolve</code></a> or <a href="/deferred.resolveWith/"><code>resolveWith</code></a> method call in the order they were added. For more information, see the documentation for <a href="/category/deferred-object/">Deferred object</a>.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Since the <a href="/jQuery.get"><code>jQuery.get</code></a> method returns a jqXHR object, which is derived from a Deferred object, we can attach a success callback using the <code>.done()</code> method.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$.get(<span class="string">"test.php"</span>).done(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  alert(<span class="string">"$.get succeeded"</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Resolve a Deferred object when the user clicks a button, triggering a number of callback functions:</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+						<div class="line n42">42</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code> <span class="tag">&lt;<span class="title">button</span>&gt;</span>Go<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> <span class="tag">&lt;<span class="title">p</span>&gt;</span>Ready...<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="comment">/* 3 functions to call when the Deferred object is resolved */</span></code></div></div><div class="container"><div class="line"><code><span class="function"><span class="keyword">function</span> <span class="title">fn1</span><span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"p"</span>).append(<span class="string">" 1 "</span>);</code></div></div><div class="container"><div class="line"><code>}</code></div></div><div class="container"><div class="line"><code><span class="function"><span class="keyword">function</span> <span class="title">fn2</span><span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"p"</span>).append(<span class="string">" 2 "</span>);</code></div></div><div class="container"><div class="line"><code>}</code></div></div><div class="container"><div class="line"><code><span class="function"><span class="keyword">function</span> <span class="title">fn3</span><span class="params">(n)</span> {</span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"p"</span>).append(n + <span class="string">" 3 "</span> + n);</code></div></div><div class="container"><div class="line"><code>}</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="comment">/* create a deferred object */</span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> dfd = $.Deferred();</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="comment">/* add handlers to be called when dfd is resolved */</span></code></div></div><div class="container"><div class="line"><code>dfd</code></div></div><div class="container"><div class="line"><code><span class="comment">/* .done() can take any number of functions or arrays of functions */</span></code></div></div><div class="container"><div class="line"><code>.done( [fn1, fn2], fn3, [fn2, fn1] )</code></div></div><div class="container"><div class="line"><code><span class="comment">/* we can chain done methods, too */</span></code></div></div><div class="container"><div class="line"><code>.done(<span class="keyword">function</span>(n) {</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"p"</span>).append(n + <span class="string">" we're done."</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="comment">/* resolve the Deferred object when the button is clicked */</span></code></div></div><div class="container"><div class="line"><code>$(<span class="string">"button"</span>).on(<span class="string">"click"</span>, <span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  dfd.resolve(<span class="string">"and"</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.done/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.fail()</title>
+		<link>http://api.jquery.com/deferred.fail/</link>
+		<comments>http://api.jquery.com/deferred.fail/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:07 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.5]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=119</guid>
+		<description><![CDATA[Add handlers to be called when the Deferred object is rejected.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-fail1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.fail( failCallbacks [, failCallbacks ] )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Deferred">Deferred</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Add handlers to be called when the Deferred object is rejected. </p>
+<ul class="signatures"><li class="signature" id="deferred-fail-failCallbacks-failCallbacks">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.5/">1.5</a></span>deferred.fail( failCallbacks [, failCallbacks ] )</h4>
+<ul>
+<li>
+<div><strong>failCallbacks</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        A function, or array of functions, that are called when the Deferred is rejected.
+      </div>
+</li>
+<li>
+<div><strong>failCallbacks</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        Optional additional functions, or arrays of functions, that are called when the Deferred is rejected.
+      </div>
+</li>
+</ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>The <code>deferred.fail()</code> method accepts one or more arguments, all of which can be either a single function or an array of functions. When the Deferred is rejected, the failCallbacks are called. Callbacks are executed in the order they were added. Since <code>deferred.fail()</code> returns the deferred object, other methods of the deferred object can be chained to this one, including additional <code>deferred.fail()</code> methods. The failCallbacks are executed using the arguments provided to the <a href="deferred.reject"><code>deferred.reject()</code></a> or <a href="deferred.rejectWith"><code>deferred.rejectWith()</code></a> method call in the order they were added. For more information, see the documentation for <a href="/category/deferred-object/">Deferred object</a>.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Since the <a href="http://api.jquery.com/jQuery.get/"><code>jQuery.get</code></a> method returns a jqXHR object, which is derived from a Deferred, you can attach a success and failure callback using the <code>deferred.done()</code> and <code>deferred.fail()</code> methods.</span></h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$.get(<span class="string">"test.php"</span>)</code></div></div><div class="container"><div class="line"><code>  .done(<span class="keyword">function</span>(){ alert(<span class="string">"$.get succeeded"</span>); })</code></div></div><div class="container"><div class="line"><code>  .fail(<span class="keyword">function</span>(){ alert(<span class="string">"$.get failed!"</span>); });</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.fail/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.isRejected()</title>
+		<link>http://api.jquery.com/deferred.isRejected/</link>
+		<comments>http://api.jquery.com/deferred.isRejected/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:07 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.5]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=121</guid>
+		<description><![CDATA[Determine whether a Deferred object has been rejected.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-isRejected1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.isRejected()</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Boolean">Boolean</a></span><span class="version-details">version deprecated: <a href="/category/version/1.7/">1.7</a>, removed: <a href="/category/version/1.8/">1.8</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Determine whether a Deferred object has been rejected. </p>
+<ul class="signatures"><li class="signature" id="deferred-isRejected">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.5/">1.5</a></span>deferred.isRejected()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>As of jQuery 1.7 this API has been deprecated; please use <a href="http://api.jquery.com/deferred.state"><code>deferred.state()</code></a> instead.</p>
+    <p>Returns <code>true</code> if the Deferred object is in the rejected state, meaning that either <a href="http://api.jquery.com/deferred.reject/"><code>deferred.reject()</code></a> or <a href="http://api.jquery.com/deferred.rejectWith/"><code>deferred.rejectWith()</code></a> has been called for the object and the failCallbacks have been called (or are in the process of being called).</p>
+    <p>Note that a Deferred object can be in one of three states: pending, resolved, or rejected; use <a href="http://api.jquery.com/deferred.isResolved/"><code>deferred.isResolved()</code></a> to determine whether the Deferred object is in the resolved state. These methods are primarily useful for debugging, for example to determine whether a Deferred has already been resolved even though you are inside code that intended to reject it.</p>
+  </div>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.isRejected/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.isResolved()</title>
+		<link>http://api.jquery.com/deferred.isResolved/</link>
+		<comments>http://api.jquery.com/deferred.isResolved/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:08 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.5]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=123</guid>
+		<description><![CDATA[Determine whether a Deferred object has been resolved.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-isResolved1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.isResolved()</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Boolean">Boolean</a></span><span class="version-details">version deprecated: <a href="/category/version/1.7/">1.7</a>, removed: <a href="/category/version/1.8/">1.8</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Determine whether a Deferred object has been resolved. </p>
+<ul class="signatures"><li class="signature" id="deferred-isResolved">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.5/">1.5</a></span>deferred.isResolved()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>This API is <code>deprecated</code> as of jQuery 1.7 and <code>removed</code> as of jQuery 1.8; please use <a href="http://api.jquery.com/deferred.state"><code>deferred.state()</code></a> instead.</p>
+    <p>Returns <code>true</code> if the Deferred object is in the resolved state, meaning that either <a href="http://api.jquery.com/deferred.resolve/"><code>deferred.resolve()</code></a> or <a href="http://api.jquery.com/deferred.resolveWith/"><code>deferred.resolveWith()</code></a> has been called for the object and the doneCallbacks have been called (or are in the process of being called).</p>
+    <p>Note that a Deferred object can be in one of three states: pending, resolved, or rejected; use <a href="http://api.jquery.com/deferred.isRejected/"><code>deferred.isRejected()</code></a> to determine whether the Deferred object is in the rejected state. These methods are primarily useful for debugging, for example to determine whether a Deferred has already been resolved even though you are inside code that intended to reject it.</p>
+  </div>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.isResolved/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.notify()</title>
+		<link>http://api.jquery.com/deferred.notify/</link>
+		<comments>http://api.jquery.com/deferred.notify/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:08 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.7]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=125</guid>
+		<description><![CDATA[Call the progressCallbacks on a Deferred object with the given args.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-notify1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.notify( args )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Deferred">Deferred</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Call the progressCallbacks on a Deferred object with the given <code>args</code>. </p>
+<ul class="signatures"><li class="signature" id="deferred-notify-args">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.7/">1.7</a></span>deferred.notify( args )</h4>
+<ul><li>
+<div><strong>args</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>
+        Optional arguments that are passed to the progressCallbacks.
+      </div>
+</li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state or reporting status by returning a restricted Promise object through deferred.promise().</p>
+    <p>When <code>deferred.notify</code> is called, any progressCallbacks added by <a href="http://api.jquery.com/deferred.then/"><code>deferred.then</code></a> or <a href="http://api.jquery.com/deferred.progress/"><code>deferred.progress</code></a> are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.notify()</code>. Any calls to <code>.notify()</code> after a Deferred is resolved or rejected (or any progressCallbacks added after that) are ignored. For more information, see the documentation for <a href="http://api.jquery.com/category/deferred-object/">Deferred object</a>.</p>
+  </div>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.notify/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.notifyWith()</title>
+		<link>http://api.jquery.com/deferred.notifyWith/</link>
+		<comments>http://api.jquery.com/deferred.notifyWith/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:09 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.7]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=127</guid>
+		<description><![CDATA[Call the progressCallbacks on a Deferred object with the given context and args.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-notifyWith1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.notifyWith( context [, args ] )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Deferred">Deferred</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Call the progressCallbacks on a Deferred object with the given context and <code>args</code>. </p>
+<ul class="signatures"><li class="signature" id="deferred-notifyWith-context-args">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.7/">1.7</a></span>deferred.notifyWith( context [, args ] )</h4>
+<ul>
+<li>
+<div><strong>context</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>
+        Context passed to the progressCallbacks as the <code>this</code> object.
+      </div>
+</li>
+<li>
+<div><strong>args</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>
+        Optional arguments that are passed to the progressCallbacks.
+      </div>
+</li>
+</ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state or reporting status by returning a restricted Promise object through deferred.promise().</p>
+    <p>When <code>deferred.notifyWith</code> is called, any progressCallbacks added by <a href="http://api.jquery.com/deferred.then/"><code>deferred.then</code></a> or <a href="http://api.jquery.com/deferred.progress/"><code>deferred.progress</code></a> are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.notifyWith()</code>. Any calls to <code>.notifyWith()</code> after a Deferred is resolved or rejected (or any progressCallbacks added after that) are ignored. For more information, see the documentation for <a href="http://api.jquery.com/category/deferred-object/">Deferred object</a>.</p>
+  </div>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.notifyWith/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.pipe()</title>
+		<link>http://api.jquery.com/deferred.pipe/</link>
+		<comments>http://api.jquery.com/deferred.pipe/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:09 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.6]]></category>
+		<category><![CDATA[Version 1.7]]></category>
+		<category><![CDATA[Version 1.8]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=129</guid>
+		<description><![CDATA[Utility method to filter and/or chain Deferreds.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-pipe1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.pipe(  [doneFilter ] [, failFilter ] )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Promise">Promise</a></span><span class="version-details">version deprecated: <a href="/category/version/1.8/">1.8</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Utility method to filter and/or chain Deferreds.  </p>
+<ul class="signatures">
+<li class="signature" id="deferred-pipe-doneFilter-failFilter">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.6/">1.6</a></span>deferred.pipe(  [doneFilter ] [, failFilter ] )</h4>
+<ul>
+<li>
+<div><strong>doneFilter</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        An optional function that is called when the Deferred is resolved.
+      </div>
+</li>
+<li>
+<div><strong>failFilter</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        An optional function that is called when the Deferred is rejected.
+      </div>
+</li>
+</ul>
+</li>
+<li class="signature" id="deferred-pipe-doneFilter-failFilter-progressFilter">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.7/">1.7</a></span>deferred.pipe(  [doneFilter ] [, failFilter ] [, progressFilter ] )</h4>
+<ul>
+<li>
+<div><strong>doneFilter</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        An optional function that is called when the Deferred is resolved.
+      </div>
+</li>
+<li>
+<div><strong>failFilter</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        An optional function that is called when the Deferred is rejected.
+      </div>
+</li>
+<li>
+<div><strong>progressFilter</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        An optional function that is called when progress notifications are sent to the Deferred.
+      </div>
+</li>
+</ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p><strong>Deprecation Notice:</strong>As of jQuery 1.8, the deferred.pipe() method is deprecated. The <code>deferred.then()</code> method, which replaces it, should be used instead.</p>
+    <p>The <code>deferred.pipe()</code> method returns a new promise that filters the status and values of a deferred through a function.  The <code>doneFilter</code> and <code>failFilter</code> functions filter the original deferred's resolved / rejected status and values. <strong>As of jQuery 1.7</strong>, the method also accepts a <code>progressFilter</code> function to filter any calls to the original deferred's <code>notify</code> or <code>notifyWith</code> methods. These filter functions can return a new value to be passed along to the piped promise's <code>done()</code> or <code>fail()</code> callbacks, or they can return another observable object (Deferred, Promise, etc) which will pass its resolved / rejected status and values to the piped promise's callbacks. If the filter function used is <code>null</code>, or not specified, the piped promise will be resolved or rejected with the same values as the original.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Filter resolve value:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="keyword">var</span> defer = $.Deferred(),</code></div></div><div class="container"><div class="line"><code>    filtered = defer.pipe(<span class="keyword">function</span>( value ) {</code></div></div><div class="container"><div class="line"><code>      <span class="keyword">return</span> value * <span class="number">2</span>;</code></div></div><div class="container"><div class="line"><code>    });</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>defer.resolve( <span class="number">5</span> );</code></div></div><div class="container"><div class="line"><code>filtered.done(<span class="keyword">function</span>( value ) {</code></div></div><div class="container"><div class="line"><code>  alert( <span class="string">"Value is ( 2*5 = ) 10: "</span> + value );</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Filter reject value:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="keyword">var</span> defer = $.Deferred(),</code></div></div><div class="container"><div class="line"><code>    filtered = defer.pipe( <span class="literal">null</span>, <span class="keyword">function</span>( value ) {</code></div></div><div class="container"><div class="line"><code>      <span class="keyword">return</span> value * <span class="number">3</span>;</code></div></div><div class="container"><div class="line"><code>    });</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>defer.reject( <span class="number">6</span> );</code></div></div><div class="container"><div class="line"><code>filtered.fail(<span class="keyword">function</span>( value ) {</code></div></div><div class="container"><div class="line"><code>  alert( <span class="string">"Value is ( 3*6 = ) 18: "</span> + value );</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Chain tasks:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="keyword">var</span> request = $.ajax( url, { dataType: <span class="string">"json"</span> } ),</code></div></div><div class="container"><div class="line"><code>    chained = request.pipe(<span class="keyword">function</span>( data ) {</code></div></div><div class="container"><div class="line"><code>      <span class="keyword">return</span> $.ajax( url2, { data: { user: data.userId } } );</code></div></div><div class="container"><div class="line"><code>    });</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>chained.done(<span class="keyword">function</span>( data ) {</code></div></div><div class="container"><div class="line"><code>  <span class="comment">// data retrieved from url2 as provided by the first request</span></code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code> </code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.pipe/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.progress()</title>
+		<link>http://api.jquery.com/deferred.progress/</link>
+		<comments>http://api.jquery.com/deferred.progress/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:10 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.7]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=131</guid>
+		<description><![CDATA[Add handlers to be called when the Deferred object generates progress notifications.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-progress1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.progress( progressCallbacks )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Deferred">Deferred</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Add handlers to be called when the Deferred object generates progress notifications.</p>
+<ul class="signatures"><li class="signature" id="deferred-progress-progressCallbacks">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.7/">1.7</a></span>deferred.progress( progressCallbacks )</h4>
+<ul><li>
+<div><strong>progressCallbacks</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>
+        A function, or array of functions, that is called when the Deferred generates progress notifications.
+      </div>
+</li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>The argument can be either a single function or an array of functions. When the Deferred generates progress notifications by calling <code>notify</code> or <code>notifyWith</code>, the <code>progressCallbacks</code> are called. Since <code>deferred.progress()</code> returns the Deferred object, other methods of the Deferred object can be chained to this one. When the Deferred is resolved or rejected, progress callbacks will no longer be called, with the exception that any <code>progressCallbacks</code> added after the Deferred enters the resolved or rejected state are executed immediately when they are added, using the arguments that were passed to the <code>.notify()</code> or <code>notifyWith()</code> call. For more information, see the documentation <a href="/jquery.deferred/">jQuery.Deferred()</a>.</p>
+  </div>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.progress/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>deferred.promise()</title>
+		<link>http://api.jquery.com/deferred.promise/</link>
+		<comments>http://api.jquery.com/deferred.promise/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:11 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Deferred Object]]></category>
+		<category><![CDATA[Version 1.5]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=133</guid>
+		<description><![CDATA[Return a Deferred's Promise object.]]></description>
+				<content:encoded><![CDATA[<article id="deferred-promise1" class="entry method"><h2 class="section-title">
+<span class="name">deferred.promise(  [target ] )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Promise">Promise</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong> Return a Deferred's Promise object. </p>
+<ul class="signatures"><li class="signature" id="deferred-promise-target">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.5/">1.5</a></span>deferred.promise(  [target ] )</h4>
+<ul><li>
+<div><strong>target</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>Object onto which the promise methods have to be attached</div>
+</li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>The <code>deferred.promise()</code> method allows an asynchronous function to prevent other code from interfering with the progress or status of its internal request. The Promise exposes only the Deferred methods needed to attach additional handlers or determine the state (<code>then</code>, <code>done</code>, <code>fail</code>, <code>always</code>, <code>pipe</code>, <code>progress</code>, and <code>state</code>), but not ones that change the state (<code>resolve</code>, <code>reject</code>, <code>notify</code>, <code>resolveWith</code>, <code>rejectWith</code>, and <code>notifyWith</code>).</p>
+    <p>If <code>target</code> is provided, <code>deferred.promise()</code> will attach the methods onto it and then return this object rather than create a new one. This can be useful to attach the Promise behavior to an object that already exists.</p>
+    <p>If you are creating a Deferred, keep a reference to the Deferred so that it can be resolved or rejected at some point. Return <em>only</em> the Promise object via <code>deferred.promise()</code> so other code can register callbacks or inspect the current state.</p>
+    <p>For more information, see the documentation for <a href="/category/deferred-object/">Deferred object</a>.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Create a Deferred and set two timer-based functions to either resolve or reject the Deferred after a random interval. Whichever one fires first "wins" and will call one of the callbacks. The second timeout has no effect since the Deferred is already complete (in a resolved or rejected state) from the first timeout action. Also set a timer-based progress notification function, and call a progress handler that adds "working..." to the document body.</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="function"><span class="keyword">function</span> <span class="title">asyncEvent</span><span class="params">()</span>{</span></code></div></div><div class="container"><div class="line"><code>    <span class="keyword">var</span> dfd = <span class="keyword">new</span> jQuery.Deferred();</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="comment">// Resolve after a random interval</span></code></div></div><div class="container"><div class="line"><code>    setTimeout(<span class="keyword">function</span>(){</code></div></div><div class="container"><div class="line"><code>        dfd.resolve(<span class="string">"hurray"</span>);</code></div></div><div class="container"><div class="line"><code>    }, Math.floor(<span class="number">400</span>+Math.random()*<span class="number">2000</span>));</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="comment">// Reject after a random interval</span></code></div></div><div class="container"><div class="line"><code>    setTimeout(<span class="keyword">function</span>(){</code></div></div><div class="container"><div class="line"><code>        dfd.reject(<span class="string">"sorry"</span>);</code></div></div><div class="container"><div class="line"><code>    }, Math.floor(<span class="number">400</span>+Math.random()*<span class="number">2000</span>));</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="comment">// Show a "working..." message every half-second</span></code></div></div><div class="container"><div class="line"><code>    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">working</span><span class="params">()</span>{</span></code></div></div><div class="container"><div class="line"><code>        <span class="keyword">if</span> ( dfd.state() === <span class="string">"pending"</span> ) {</code></div></div><div class="container"><div class="line"><code>            dfd.notify(<span class="string">"working... "</span>);</code></div></div><div class="container"><div class="line"><code>            setTimeout(working, <span class="number">500</span>);</code></div></div><div class="container"><div class="line"><code>        }</code></div></div><div class="container"><div class="line"><code>    }, <span class="number">1</span>);</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="comment">// Return the Promise so caller can't change the Deferred</span></code></div></div><div class="container"><div class="line"><code>    <span class="keyword">return</span> dfd.promise();</code></div></div><div class="container"><div class="line"><code>}</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="comment">// Attach a done, fail, and progress handler for the asyncEvent</span></code></div></div><div class="container"><div class="line"><code>$.when( asyncEvent() ).then(</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">function</span>(status){</code></div></div><div class="container"><div class="line"><code>        alert( status+<span class="string">', things are going well'</span> );</code></div></div><div class="container"><div class="line"><code>    },</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">function</span>(status){</code></div></div><div class="container"><div class="line"><code>        alert( status+<span class="string">', you fail this time'</span> );</code></div></div><div class="container"><div class="line"><code>    },</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">function</span>(status){</code></div></div><div class="container"><div class="line"><code>        $(<span class="string">"body"</span>).append(status);</code></div></div><div class="container"><div class="line"><code>    }</code></div></div><div class="container"><div class="line"><code>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Use the target argument to promote an existing object to a Promise:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="comment">// Existing object</span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> obj = {</code></div></div><div class="container"><div class="line"><code>  hello: <span class="keyword">function</span>( name ) {</code></div></div><div class="container"><div class="line"><code>    alert( <span class="string">"Hello "</span> + name );</code></div></div><div class="container"><div class="line"><code>  }</code></div></div><div class="container"><div class="line"><code>},</code></div></div><div class="container"><div class="line"><code><span class="comment">// Create a Deferred</span></code></div></div><div class="container"><div class="line"><code>defer = $.Deferred();</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="comment">// Set object as a promise</span></code></div></div><div class="container"><div class="line"><code>defer.promise( obj );</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="comment">// Resolve the deferred</span></code></div></div><div class="container"><div class="line"><code>defer.resolve( <span class="string">"John"</span> );</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="comment">// Use the object as a Promise</span></code></div></div><div class="container"><div class="line"><code>obj.done(<span class="keyword">function</span>( name ) {</code></div></div><div class="container"><div class="line"><code>  obj.hello( name ); <span class="comment">// will alert "Hello John"</span></code></div></div><div class="container"><div class="line"><code>}).hello( <span class="string">"Karl"</span> ); <span class="comment">// will alert "Hello Karl"</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/deferred.promise/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

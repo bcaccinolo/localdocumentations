@@ -1,0 +1,4 @@
+COMMAND USED TO LAUNCH:
+
+httrack api.jquery.com -O /Users/benoit/websites/api.jquery.com -%v -*/category/version/* 
+

@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jQuery API Documentation &#187; Class Attribute</title>
+	<atom:link href="http://api.jquery.com/category/manipulation/class-attribute/feed/" rel="self" type="application/rss+xml" />
+	<link>http://api.jquery.com</link>
+	<description></description>
+	<lastBuildDate>Wed, 13 Feb 2013 22:57:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.5.1</generator>
+		<item>
+		<title>.addClass()</title>
+		<link>http://api.jquery.com/addClass/</link>
+		<comments>http://api.jquery.com/addClass/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:11:33 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Attributes]]></category>
+		<category><![CDATA[Class Attribute]]></category>
+		<category><![CDATA[CSS]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=9</guid>
+		<description><![CDATA[Adds the specified class(es) to each of the set of matched elements.]]></description>
+				<content:encoded><![CDATA[<article id="addClass1" class="entry method"><h2 class="section-title">
+<span class="name">.addClass( className )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Adds the specified class(es) to each of the set of matched elements.</p>
+<ul class="signatures">
+<li class="signature" id="addClass-className">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.addClass( className )</h4>
+<ul><li>
+<div><strong>className</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#String">String</a>
+</div>
+<div>One or more space-separated classes to be added to the class attribute of each matched element.</div>
+</li></ul>
+</li>
+<li class="signature" id="addClass-functionindex--currentClass">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.addClass( function(index, currentClass) )</h4>
+<ul><li>
+<div><strong>function(index, currentClass)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function returning one or more space-separated class names to be added to the existing class name(s). Receives the index position of the element in the set and the existing class name(s) as arguments. Within the function, <code>this</code> refers to the current element in the set.</div>
+</li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>It's important to note that this method does not replace a class. It simply adds the class, appending it to any which may already be assigned to the elements.</p>
+    <p>More than one class may be added at a time, separated by a space, to the set of matched elements, like so:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).addClass(<span class="string">"myClass yourClass"</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>This method is often used with <code>.removeClass()</code> to switch elements' classes from one to another, like so:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).removeClass(<span class="string">"myClass noClass"</span>).addClass(<span class="string">"yourClass"</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Here, the <code>myClass</code> and <code>noClass</code> classes are removed from all paragraphs, while <code>yourClass</code> is added.</p>
+    <p>As of jQuery 1.4, the <code>.addClass()</code> method's argument can receive a function.</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"ul li:last"</span>).addClass(<span class="keyword">function</span>(index) {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> <span class="string">"item-"</span> + index;</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Given an unordered list with five <code>&lt;li&gt;</code> elements, this example adds the class "item-4" to the last <code>&lt;li&gt;</code>.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Add the class "selected" to the matched elements.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">8</span>px;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.selected</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.highlight</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">yellow;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>and<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Goodbye<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"p"</span>).last().addClass(<span class="string">"selected"</span>);</code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Add the classes "selected" and "highlight" to the matched elements.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">8</span>px;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.selected</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.highlight</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">yellow;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>and<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Goodbye<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"p:last"</span>).addClass(<span class="string">"selected highlight"</span>);</code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Pass in a function to <code>.addClass()</code> to add the "green" class to a div that already has a "red" class.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value"> white;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.red</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value"> red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.red</span><span class="class">.green</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value"> green;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code> <span class="tag">&lt;<span class="title">div</span>&gt;</span>This div should be white<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"red"</span>&gt;</span>This div will be green because it now has the "green" and "red" classes.</code></div></div><div class="container"><div class="line"><code>   It would be red if the addClass function failed.<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> <span class="tag">&lt;<span class="title">div</span>&gt;</span>This div should be white<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> <span class="tag">&lt;<span class="title">p</span>&gt;</span>There are zero green divs<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"div"</span>).addClass(<span class="keyword">function</span>(index, currentClass) {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">var</span> addedClass;</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="keyword">if</span> ( currentClass === <span class="string">"red"</span> ) {</code></div></div><div class="container"><div class="line"><code>      addedClass = <span class="string">"green"</span>;</code></div></div><div class="container"><div class="line"><code>      $(<span class="string">"p"</span>).text(<span class="string">"There is one green div"</span>);</code></div></div><div class="container"><div class="line"><code>    }</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="keyword">return</span> addedClass;</code></div></div><div class="container"><div class="line"><code>  });</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/addClass/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.hasClass()</title>
+		<link>http://api.jquery.com/hasClass/</link>
+		<comments>http://api.jquery.com/hasClass/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:48 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Attributes]]></category>
+		<category><![CDATA[Class Attribute]]></category>
+		<category><![CDATA[CSS]]></category>
+		<category><![CDATA[Version 1.2]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=257</guid>
+		<description><![CDATA[Determine whether any of the matched elements are assigned the given class.]]></description>
+				<content:encoded><![CDATA[<article id="hasClass1" class="entry method"><h2 class="section-title">
+<span class="name">.hasClass( className )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#Boolean">Boolean</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Determine whether any of the matched elements are assigned the given class.</p>
+<ul class="signatures"><li class="signature" id="hasClass-className">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.2/">1.2</a></span>.hasClass( className )</h4>
+<ul><li>
+<div><strong>className</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#String">String</a>
+</div>
+<div>The class name to search for.</div>
+</li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>Elements may have more than one class assigned to them. In HTML, this is represented by separating the class names with a space:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"mydiv"</span> <span class="attribute">class</span>=<span class="value">"foo bar"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The <code>.hasClass()</code> method will return <code>true</code> if the class is assigned to an element, even if other classes also are. For example, given the HTML above, the following will return <code>true</code>:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#mydiv'</span>).hasClass(<span class="string">'foo'</span>)</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>As would:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#mydiv'</span>).hasClass(<span class="string">'bar'</span>)</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>While this would return <code>false</code>:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#mydiv'</span>).hasClass(<span class="string">'quux'</span>)</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">Looks for the paragraph that contains 'selected' as a class.</span></h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">8</span>px;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.selected</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>This paragraph is black and is the first paragraph.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"selected"</span>&gt;</span>This paragraph is red and is the second paragraph.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"result1"</span>&gt;</span>First paragraph has selected class: <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"result2"</span>&gt;</span>Second paragraph has selected class: <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"result3"</span>&gt;</span>At least one paragraph has selected class: <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$(<span class="string">"div#result1"</span>).append($(<span class="string">"p:first"</span>).hasClass(<span class="string">"selected"</span>).toString());</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"div#result2"</span>).append($(<span class="string">"p:last"</span>).hasClass(<span class="string">"selected"</span>).toString());</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"div#result3"</span>).append($(<span class="string">"p"</span>).hasClass(<span class="string">"selected"</span>).toString());</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/hasClass/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.removeClass()</title>
+		<link>http://api.jquery.com/removeClass/</link>
+		<comments>http://api.jquery.com/removeClass/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:14:07 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Attributes]]></category>
+		<category><![CDATA[Class Attribute]]></category>
+		<category><![CDATA[CSS]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=509</guid>
+		<description><![CDATA[Remove a single class, multiple classes, or all classes from each element in the set of matched elements.]]></description>
+				<content:encoded><![CDATA[<article id="removeClass1" class="entry method"><h2 class="section-title">
+<span class="name">.removeClass(  [className ] )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Remove a single class, multiple classes, or all classes from each element in the set of matched elements.</p>
+<ul class="signatures">
+<li class="signature" id="removeClass-className">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.removeClass(  [className ] )</h4>
+<ul><li>
+<div><strong>className</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#String">String</a>
+</div>
+<div>One or more space-separated classes to be removed from the class attribute of each matched element.</div>
+</li></ul>
+</li>
+<li class="signature" id="removeClass-functionindex--class">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.removeClass( function(index, class) )</h4>
+<ul><li>
+<div><strong>function(index, class)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function returning one or more space-separated class names to be removed. Receives the index position of the element in the set and the old class value as arguments.</div>
+</li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>If a class name is included as a parameter, then only that class will be removed from the set of matched elements. If no class names are specified in the parameter, all classes will be removed.</p>
+    <p>More than one class may be removed at a time, separated by a space, from the set of matched elements, like so:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'p'</span>).removeClass(<span class="string">'myClass yourClass'</span>)</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>This method is often used with <code>.addClass()</code> to switch elements' classes from one to another, like so:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'p'</span>).removeClass(<span class="string">'myClass noClass'</span>).addClass(<span class="string">'yourClass'</span>);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Here, the <code>myClass</code> and <code>noClass</code> classes are removed from all paragraphs, while <code>yourClass</code> is added.</p>
+    <p>To replace all existing classes with another class, we can use <code>.attr('class', 'newClass')</code> instead.</p>
+    <p>As of jQuery 1.4, the <code>.removeClass()</code> method allows us to indicate the class to be removed by passing in a function.</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'li:last'</span>).removeClass(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> $(<span class="keyword">this</span>).prev().attr(<span class="string">'class'</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>This example removes the class name of the penultimate <code>&lt;li&gt;</code> from the last <code>&lt;li&gt;</code>.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Remove the class 'blue' from the matched elements.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">4</span>px;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule"><span class="attribute">font-weight</span>:<span class="value">bolder;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.blue</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.under</span> <span class="rules">{ <span class="rule"><span class="attribute">text-decoration</span>:<span class="value">underline;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.highlight</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">yellow;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under highlight"</span>&gt;</span>and<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>then<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>Goodbye<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">$(<span class="string">"p:even"</span>).removeClass(<span class="string">"blue"</span>);</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Remove the class 'blue' and 'under' from the matched elements.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">4</span>px;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule"><span class="attribute">font-weight</span>:<span class="value">bolder;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.blue</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.under</span> <span class="rules">{ <span class="rule"><span class="attribute">text-decoration</span>:<span class="value">underline;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.highlight</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">yellow;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under highlight"</span>&gt;</span>and<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>then<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>Goodbye<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">$(<span class="string">"p:odd"</span>).removeClass(<span class="string">"blue under"</span>);</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Remove all the classes from the matched elements.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">4</span>px;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule"><span class="attribute">font-weight</span>:<span class="value">bolder;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.blue</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.under</span> <span class="rules">{ <span class="rule"><span class="attribute">text-decoration</span>:<span class="value">underline;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.highlight</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">yellow;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under highlight"</span>&gt;</span>and<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>then<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue under"</span>&gt;</span>Goodbye<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">$(<span class="string">"p:eq(1)"</span>).removeClass();</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/removeClass/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.toggleClass()</title>
+		<link>http://api.jquery.com/toggleClass/</link>
+		<comments>http://api.jquery.com/toggleClass/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:14:27 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Attributes]]></category>
+		<category><![CDATA[Class Attribute]]></category>
+		<category><![CDATA[CSS]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.3]]></category>
+		<category><![CDATA[Version 1.4]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=569</guid>
+		<description><![CDATA[Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.]]></description>
+				<content:encoded><![CDATA[<article id="toggleClass1" class="entry method"><h2 class="section-title">
+<span class="name">.toggleClass( className )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</p>
+<ul class="signatures">
+<li class="signature" id="toggleClass-className">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.toggleClass( className )</h4>
+<ul><li>
+<div><strong>className</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#String">String</a>
+</div>
+<div>One or more class names (separated by spaces) to be toggled for each element in the matched set.</div>
+</li></ul>
+</li>
+<li class="signature" id="toggleClass-className-switch">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.3/">1.3</a></span>.toggleClass( className, switch )</h4>
+<ul>
+<li>
+<div><strong>className</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#String">String</a>
+</div>
+<div>One or more class names (separated by spaces) to be toggled for each element in the matched set.</div>
+</li>
+<li>
+<div><strong>switch</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Boolean">Boolean</a>
+</div>
+<div>A Boolean (not just truthy/falsy) value to determine whether the class should be added or removed.</div>
+</li>
+</ul>
+</li>
+<li class="signature" id="toggleClass-switch">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.toggleClass(  [switch ] )</h4>
+<ul><li>
+<div><strong>switch</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Boolean">Boolean</a>
+</div>
+<div>A boolean value to determine whether the class should be added or removed.</div>
+</li></ul>
+</li>
+<li class="signature" id="toggleClass-functionindex--class--switch-switch">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4/">1.4</a></span>.toggleClass( function(index, class, switch) [, switch ] )</h4>
+<ul>
+<li>
+<div><strong>function(index, class, switch)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function that returns class names to be toggled in the class attribute of each element in the matched set. Receives the index position of the element in the set, the old class value, and the switch as arguments.</div>
+</li>
+<li>
+<div><strong>switch</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Boolean">Boolean</a>
+</div>
+<div>A boolean value to determine whether the class should be added or removed.</div>
+</li>
+</ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>This method takes one or more class names as its parameter. In the first version, if an element in the matched set of elements already has the class, then it is removed; if an element does not have the class, then it is added. For example, we can apply <code>.toggleClass()</code> to a simple <code>&lt;div&gt;</code>: </p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"tumble"</span>&gt;</span>Some text.<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The first time we apply <code>$('div.tumble').toggleClass('bounce')</code>, we get the following:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"tumble bounce"</span>&gt;</span>Some text.<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The second time we apply <code>$('div.tumble').toggleClass('bounce')</code>, the <code>&lt;div&gt;</code> class is returned to the single <code>tumble</code> value:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"tumble"</span>&gt;</span>Some text.<span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Applying <code>.toggleClass('bounce spin')</code> to the same <code>&lt;div&gt;</code> alternates between <code>&lt;div class="tumble bounce spin"&gt;</code> and <code>&lt;div class="tumble"&gt;</code>.</p>
+    <p>The second version of <code>.toggleClass()</code> uses the second parameter for determining whether the class should be added or removed. If this parameter's value is <code>true</code>, then the class is added; if <code>false</code>, the class is removed. In essence, the statement:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#foo'</span>).toggleClass(className, addOrRemove);</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>is equivalent to:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="keyword">if</span> (addOrRemove) {</code></div></div><div class="container"><div class="line"><code>    $(<span class="string">'#foo'</span>).addClass(className);</code></div></div><div class="container"><div class="line"><code>  }</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">else</span> {</code></div></div><div class="container"><div class="line"><code>    $(<span class="string">'#foo'</span>).removeClass(className);</code></div></div><div class="container"><div class="line"><code>  }</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p><strong>As of jQuery 1.4</strong>, if no arguments are passed to <code>.toggleClass()</code>, all class names on the element the first time <code>.toggleClass()</code> is called will be toggled. Also as of jQuery 1.4, the class name to be toggled can be determined by passing in a function.</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'div.foo'</span>).toggleClass(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">if</span> ($(<span class="keyword">this</span>).parent().is(<span class="string">'.bar'</span>)) {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">return</span> <span class="string">'happy'</span>;</code></div></div><div class="container"><div class="line"><code>  } <span class="keyword">else</span> {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">return</span> <span class="string">'sad'</span>;</code></div></div><div class="container"><div class="line"><code>  }</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>This example will toggle the <code>happy</code> class for <code>&lt;div class="foo"&gt;</code> elements if their parent element has a class of <code>bar</code>; otherwise, it will toggle the <code>sad</code> class.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Toggle the class 'highlight' when a paragraph is clicked.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">4</span>px;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule"><span class="attribute">font-weight</span>:<span class="value">bolder;</span></span></span></code></div></div><div class="container"><div class="line"><code>      <span class="rule"><span class="attribute">cursor</span>:<span class="value">pointer;</span></span> <span class="rule">}</span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.blue</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.highlight</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">yellow;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue"</span>&gt;</span>Click to toggle<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue highlight"</span>&gt;</span>highlight<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue"</span>&gt;</span>on these<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue"</span>&gt;</span>paragraphs<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"p"</span>).click(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>      $(<span class="keyword">this</span>).toggleClass(<span class="string">"highlight"</span>);</code></div></div><div class="container"><div class="line"><code>    });</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">Add the "highlight" class to the clicked paragraph on every third click of that paragraph, remove it every first and second click.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">4</span>px;</span></span> <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">16</span>px;</span></span> <span class="rule"><span class="attribute">font-weight</span>:<span class="value">bolder;</span></span></span></code></div></div><div class="container"><div class="line"><code>      <span class="rule"><span class="attribute">cursor</span>:<span class="value">pointer;</span></span> <span class="rule">}</span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.blue</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="class">.highlight</span> <span class="rules">{ <span class="rule"><span class="attribute">background</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue"</span>&gt;</span>Click to toggle (<span class="tag">&lt;<span class="title">span</span>&gt;</span>clicks: 0<span class="tag">&lt;/<span class="title">span</span>&gt;</span>)<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue highlight"</span>&gt;</span>highlight (<span class="tag">&lt;<span class="title">span</span>&gt;</span>clicks: 0<span class="tag">&lt;/<span class="title">span</span>&gt;</span>)<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue"</span>&gt;</span>on these (<span class="tag">&lt;<span class="title">span</span>&gt;</span>clicks: 0<span class="tag">&lt;/<span class="title">span</span>&gt;</span>)<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"blue"</span>&gt;</span>paragraphs (<span class="tag">&lt;<span class="title">span</span>&gt;</span>clicks: 0<span class="tag">&lt;/<span class="title">span</span>&gt;</span>)<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> count = <span class="number">0</span>;</code></div></div><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).each(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> $thisParagraph = $(<span class="keyword">this</span>);</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> count = <span class="number">0</span>;</code></div></div><div class="container"><div class="line"><code>  $thisParagraph.click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>    count++;</code></div></div><div class="container"><div class="line"><code>    $thisParagraph.find(<span class="string">"span"</span>).text(<span class="string">'clicks: '</span> + count);</code></div></div><div class="container"><div class="line"><code>    $thisParagraph.toggleClass(<span class="string">"highlight"</span>, count % <span class="number">3</span> == <span class="number">0</span>);</code></div></div><div class="container"><div class="line"><code>  });</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">Toggle the class name(s) indicated on the buttons for each div.
+  </span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+						<div class="line n36">36</div>
+					
+						<div class="line n37">37</div>
+					
+						<div class="line n38">38</div>
+					
+						<div class="line n39">39</div>
+					
+						<div class="line n40">40</div>
+					
+						<div class="line n41">41</div>
+					
+						<div class="line n42">42</div>
+					
+						<div class="line n43">43</div>
+					
+						<div class="line n44">44</div>
+					
+						<div class="line n45">45</div>
+					
+						<div class="line n46">46</div>
+					
+						<div class="line n47">47</div>
+					
+						<div class="line n48">48</div>
+					
+						<div class="line n49">49</div>
+					
+						<div class="line n50">50</div>
+					
+						<div class="line n51">51</div>
+					
+						<div class="line n52">52</div>
+					
+						<div class="line n53">53</div>
+					
+						<div class="line n54">54</div>
+					
+						<div class="line n55">55</div>
+					
+						<div class="line n56">56</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="undefined"></span></code></div></div><div class="container"><div class="line"><code>.wrap &gt; div { float: left; width: 100px; margin: 1em 1em 0 0;</code></div></div><div class="container"><div class="line"><code>              padding=left: 3px; border: 1px solid #abc; }</code></div></div><div class="container"><div class="line"><code>div.a { background-color: aqua; }</code></div></div><div class="container"><div class="line"><code>div.b { background-color: burlywood; }</code></div></div><div class="container"><div class="line"><code>div.c { background-color: cornsilk; }</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"buttons"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">button</span>&gt;</span>toggle<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"a"</span>&gt;</span>toggle a<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"a b"</span>&gt;</span>toggle a b<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"a b c"</span>&gt;</span>toggle a b c<span class="tag">&lt;/<span class="title">button</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>reset<span class="tag">&lt;/<span class="title">a</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wrap"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"b"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"a b"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"a c"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> cls = [<span class="string">''</span>, <span class="string">'a'</span>, <span class="string">'a b'</span>, <span class="string">'a b c'</span>];</code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> divs = $(<span class="string">'div.wrap'</span>).children();</code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> appendClass = <span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  divs.append(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">return</span> <span class="string">'&lt;div&gt;'</span> + (<span class="keyword">this</span>.className || <span class="string">'none'</span>) + <span class="string">'&lt;/div&gt;'</span>;</code></div></div><div class="container"><div class="line"><code>  });</code></div></div><div class="container"><div class="line"><code>};</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>appendClass();</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$(<span class="string">'button'</span>).on(<span class="string">'click'</span>, <span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> tc = <span class="keyword">this</span>.className || <span class="literal">undefined</span>;</code></div></div><div class="container"><div class="line"><code>  divs.toggleClass(tc);</code></div></div><div class="container"><div class="line"><code>  appendClass();</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$(<span class="string">'a'</span>).on(<span class="string">'click'</span>, <span class="keyword">function</span>(event) {</code></div></div><div class="container"><div class="line"><code>  event.preventDefault();</code></div></div><div class="container"><div class="line"><code>  divs.empty().each(<span class="keyword">function</span>(i) {</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">this</span>.className = cls[i];</code></div></div><div class="container"><div class="line"><code>  });</code></div></div><div class="container"><div class="line"><code>  appendClass();</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/toggleClass/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

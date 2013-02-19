@@ -1,0 +1,1184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>jQuery API Documentation &#187; Form Events</title>
+	<atom:link href="http://api.jquery.com/category/events/form-events/feed/" rel="self" type="application/rss+xml" />
+	<link>http://api.jquery.com</link>
+	<description></description>
+	<lastBuildDate>Wed, 13 Feb 2013 22:57:16 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.5.1</generator>
+		<item>
+		<title>.blur()</title>
+		<link>http://api.jquery.com/blur/</link>
+		<comments>http://api.jquery.com/blur/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:11:48 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form Events]]></category>
+		<category><![CDATA[Forms]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4.3]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=57</guid>
+		<description><![CDATA[Bind an event handler to the "blur" JavaScript event, or trigger that event on an element.]]></description>
+				<content:encoded><![CDATA[<article id="blur1" class="entry method"><h2 class="section-title">
+<span class="name">.blur( handler(eventObject) )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Bind an event handler to the "blur" JavaScript event, or trigger that event on an element.</p>
+<ul class="signatures">
+<li class="signature" id="blur-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.blur( handler(eventObject) )</h4>
+<ul><li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li></ul>
+</li>
+<li class="signature" id="blur-eventData-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4.3/">1.4.3</a></span>.blur(  [eventData ], handler(eventObject) )</h4>
+<ul>
+<li>
+<div><strong>eventData</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>An object containing data that will be passed to the event handler.</div>
+</li>
+<li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li>
+</ul>
+</li>
+<li class="signature" id="blur">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.blur()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>This method is a shortcut for <code>.on('blur', handler)</code> in the first two variations, and <code>.trigger('blur')</code> in the third.</p>
+    <p>The <code>blur</code> event is sent to an element when it loses focus. Originally, this event was only applicable to form elements, such as <code>&lt;input&gt;</code>. In recent browsers, the domain of the event has been extended to include all element types. An element can lose focus via keyboard commands, such as the Tab key, or by mouse clicks elsewhere on the page.</p>
+    <p>For example, consider the HTML:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"target"</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"Field 1"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"Field 2"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"other"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  Trigger the handler</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>The event handler can be bound to the first input field:</code></div></div><div class="container"><div class="line"><code>$('#target').blur(function() {</code></div></div><div class="container"><div class="line"><code>  alert('Handler for .blur() called.');</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Now if the first field has the focus, clicking elsewhere or tabbing away from it displays the alert:</p>
+    <p>
+      <span class="output">Handler for .blur() called.</span>
+    </p>
+    <p>To trigger the event programmatically, apply <code>.blur()</code> without an argument:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#other'</span>).click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">'#target'</span>).blur();</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>After this code executes, clicks on <span class="output">Trigger the handler</span> will also alert the message.</p>
+    <p>The <code>blur</code> event does not bubble in Internet Explorer. Therefore, scripts that rely on event delegation with the <code>blur</code> event will not work consistently across browsers. As of version 1.4.2, however, jQuery works around this limitation by mapping <code>blur</code> to the <code>focusout</code> event in its event delegation methods, <a href="http://api.jquery.com/live/"><code>.live()</code></a> and <a href="http://api.jquery.com/delegate/"><code>.delegate()</code></a>.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Example:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">To trigger the blur event on all paragraphs:</span></h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"p"</span>).blur();</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/blur/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.change()</title>
+		<link>http://api.jquery.com/change/</link>
+		<comments>http://api.jquery.com/change/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:11:55 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form Events]]></category>
+		<category><![CDATA[Forms]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4.3]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=83</guid>
+		<description><![CDATA[Bind an event handler to the "change" JavaScript event, or trigger that event on an element.]]></description>
+				<content:encoded><![CDATA[<article id="change1" class="entry method"><h2 class="section-title">
+<span class="name">.change( handler(eventObject) )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Bind an event handler to the "change" JavaScript event, or trigger that event on an element.</p>
+<ul class="signatures">
+<li class="signature" id="change-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.change( handler(eventObject) )</h4>
+<ul><li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li></ul>
+</li>
+<li class="signature" id="change-eventData-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4.3/">1.4.3</a></span>.change(  [eventData ], handler(eventObject) )</h4>
+<ul>
+<li>
+<div><strong>eventData</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>An object containing data that will be passed to the event handler.</div>
+</li>
+<li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li>
+</ul>
+</li>
+<li class="signature" id="change">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.change()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>This method is a shortcut for <code>.on('change', handler)</code> in the first two variations, and <code>.trigger('change')</code> in the third.</p>
+    <p>The <code>change</code> event is sent to an element when its value changes. This event is limited to <code>&lt;input&gt;</code> elements, <code>&lt;textarea&gt;</code> boxes and <code>&lt;select&gt;</code> elements. For select boxes, checkboxes, and radio buttons, the event is fired immediately when the user makes a selection with the mouse, but for the other element types the event is deferred until the element loses focus.</p>
+    <p>For example, consider the HTML:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">class</span>=<span class="value">"target"</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"Field 1"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">select</span> <span class="attribute">class</span>=<span class="value">"target"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"option1"</span> <span class="attribute">selected</span>=<span class="value">"selected"</span>&gt;</span>Option 1<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">option</span> <span class="attribute">value</span>=<span class="value">"option2"</span>&gt;</span>Option 2<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"other"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  Trigger the handler</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The event handler can be bound to the text input and the select box:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'.target'</span>).change(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  alert(<span class="string">'Handler for .change() called.'</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Now when the second option is selected from the dropdown, the alert is displayed. It is also displayed if you change the text in the field and then click away. If the field loses focus without the contents having changed, though, the event is not triggered. To trigger the event manually, apply <code>.change()</code> without arguments:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#other'</span>).click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">'.target'</span>).change();</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>After this code executes, clicks on <span class="output">Trigger the handler</span> will also alert the message. The message will display twice, because the handler has been bound to the <code>change</code> event on both of the form elements.</p>
+    <p>As of jQuery 1.4, the <code>change</code> event bubbles in Internet Explorer, behaving consistently with the event in other modern browsers.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Attaches a change event to the select that gets the text for each selected option and writes them in the div.  It then triggers the event for the initial text draw.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">select</span> <span class="attribute">name</span>=<span class="value">"sweets"</span> <span class="attribute">multiple</span>=<span class="value">"multiple"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">option</span>&gt;</span>Chocolate<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">option</span> <span class="attribute">selected</span>=<span class="value">"selected"</span>&gt;</span>Candy<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">option</span>&gt;</span>Taffy<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">option</span> <span class="attribute">selected</span>=<span class="value">"selected"</span>&gt;</span>Caramel<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">option</span>&gt;</span>Fudge<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">option</span>&gt;</span>Cookie<span class="tag">&lt;/<span class="title">option</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">select</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$(<span class="string">"select"</span>).change(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">var</span> str = <span class="string">""</span>;</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"select option:selected"</span>).each(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>            str += $(<span class="keyword">this</span>).text() + <span class="string">" "</span>;</code></div></div><div class="container"><div class="line"><code>  });</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"div"</span>).text(str);</code></div></div><div class="container"><div class="line"><code>})</code></div></div><div class="container"><div class="line"><code>.change();</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">To add a validity test to all text input elements:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"input[type='text']"</span>).change( <span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="comment">// check input ($(this).val()) for validity here</span></code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/change/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.focus()</title>
+		<link>http://api.jquery.com/focus/</link>
+		<comments>http://api.jquery.com/focus/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:12:44 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form Events]]></category>
+		<category><![CDATA[Forms]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4.3]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=241</guid>
+		<description><![CDATA[Bind an event handler to the "focus" JavaScript event, or trigger that event on an element.]]></description>
+				<content:encoded><![CDATA[<article id="focus1" class="entry method"><h2 class="section-title">
+<span class="name">.focus( handler(eventObject) )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Bind an event handler to the "focus" JavaScript event, or trigger that event on an element.</p>
+<ul class="signatures">
+<li class="signature" id="focus-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.focus( handler(eventObject) )</h4>
+<ul><li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li></ul>
+</li>
+<li class="signature" id="focus-eventData-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4.3/">1.4.3</a></span>.focus(  [eventData ], handler(eventObject) )</h4>
+<ul>
+<li>
+<div><strong>eventData</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Object">Object</a>
+</div>
+<div>An object containing data that will be passed to the event handler.</div>
+</li>
+<li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li>
+</ul>
+</li>
+<li class="signature" id="focus">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.focus()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <ul>
+      <li>This method is a shortcut for <code>.on('focus', handler)</code> in the first and second variations, and <code>.trigger('focus')</code> in the third.</li>
+      <li>The <code>focus</code> event is sent to an element when it gains focus. This event is implicitly applicable to a limited set of elements, such as  form elements (<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, etc.) and links (<code>&lt;a href&gt;</code>). In recent browser versions, the event can be extended to include all element types by explicitly setting the element's <code>tabindex</code> property. An element can gain focus via keyboard commands, such as the Tab key, or by mouse clicks on the element.</li>
+      <li>Elements with focus are usually highlighted in some way by the browser, for example with a dotted line surrounding the element. The focus is used to determine which element is the first to receive keyboard-related events.</li>
+    </ul>
+    <blockquote>
+      <p>Attempting to set focus to a hidden element causes an error in Internet Explorer. Take care to only use <code>.focus()</code> on elements that are visible. To run an element's focus event handlers without setting focus to the element, use <code>.triggerHandler("focus")</code> instead of <code>.focus()</code>.</p>
+    </blockquote>
+    <p>For example, consider the HTML:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"target"</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"Field 1"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"Field 2"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"other"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  Trigger the handler</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The event handler can be bound to the first input field:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#target'</span>).focus(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  alert(<span class="string">'Handler for .focus() called.'</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Now clicking on the first field, or tabbing to it from another field, displays the alert:</p>
+    <p>
+      <span class="output">Handler for .focus() called.</span>
+    </p>
+    <p>We can trigger the event when another element is clicked:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#other'</span>).click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">'#target'</span>).focus();</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>After this code executes, clicks on <span class="output">Trigger the handler</span> will also alert the message.</p>
+    <p>The <code>focus</code> event does not bubble in Internet Explorer. Therefore, scripts that rely on event delegation with the <code>focus</code> event will not work consistently across browsers. As of version 1.4.2, however, jQuery works around this limitation by mapping <code>focus</code> to the <code>focusin</code> event in its event delegation methods, <a href="http://api.jquery.com/live/"><code>.live()</code></a> and <a href="http://api.jquery.com/delegate/"><code>.delegate()</code></a>.</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">Fire focus.</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="tag">span</span> <span class="rules">{<span class="rule"><span class="attribute">display</span>:<span class="value">none;</span></span><span class="rule">}</span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> /&gt;</span> <span class="tag">&lt;<span class="title">span</span>&gt;</span>focus fire<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> /&gt;</span> <span class="tag">&lt;<span class="title">span</span>&gt;</span>focus fire<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$(<span class="string">"input"</span>).focus(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>  $(<span class="keyword">this</span>).next(<span class="string">"span"</span>).css(<span class="string">'display'</span>,<span class="string">'inline'</span>).fadeOut(<span class="number">1000</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">To stop people from writing in text input boxes, try:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"input[type=text]"</span>).focus(<span class="keyword">function</span>(){</code></div></div><div class="container"><div class="line"><code>  $(<span class="keyword">this</span>).blur();</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">To focus on a login input box with id 'login' on page startup, try:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(document).ready(<span class="keyword">function</span>(){</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"#login"</span>).focus();</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/focus/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.select()</title>
+		<link>http://api.jquery.com/select/</link>
+		<comments>http://api.jquery.com/select/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:14:14 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form Events]]></category>
+		<category><![CDATA[Forms]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4.3]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=529</guid>
+		<description><![CDATA[Bind an event handler to the "select" JavaScript event, or trigger that event on an element.]]></description>
+				<content:encoded><![CDATA[<article id="select1" class="entry method"><h2 class="section-title">
+<span class="name">.select( handler(eventObject) )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Bind an event handler to the "select" JavaScript event, or trigger that event on an element.</p>
+<ul class="signatures">
+<li class="signature" id="select-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.select( handler(eventObject) )</h4>
+<ul><li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li></ul>
+</li>
+<li class="signature" id="select-eventData-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4.3/">1.4.3</a></span>.select(  [eventData ], handler(eventObject) )</h4>
+<ul>
+<li>
+<div><strong>eventData</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#PlainObject">PlainObject</a>
+</div>
+<div>An object containing data that will be passed to the event handler.</div>
+</li>
+<li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li>
+</ul>
+</li>
+<li class="signature" id="select">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.select()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>This method is a shortcut for <code>.on('select', handler)</code> in the first two variations, and <code>.trigger('select')</code> in the third.</p>
+    <p>The <code>select</code> event is sent to an element when the user makes a text selection inside it. This event is limited to <code>&lt;input type="text"&gt;</code> fields and <code>&lt;textarea&gt;</code> boxes.</p>
+    <p>For example, consider the HTML:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"target"</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"Hello there"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"other"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  Trigger the handler</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The event handler can be bound to the text input:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#target'</span>).select(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  alert(<span class="string">'Handler for .select() called.'</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Now when any portion of the text is selected, the alert is displayed. Merely setting the location of the insertion point will not trigger the event. To trigger the event manually, apply <code>.select()</code> without an argument:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#other'</span>).click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">'#target'</span>).select();</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>After this code executes, clicks on the Trigger button will also alert the message:</p>
+    <p>
+      <span class="output">Handler for .select() called.</span>
+    </p>
+    <p>In addition, the default <code>select</code> action on the field will be fired, so the entire text field will be selected.</p>
+    <blockquote>
+      <p>The method for retrieving the current selected text differs from one browser to another. A number of jQuery plug-ins offer cross-platform solutions.</p>
+    </blockquote>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">To do something when text in input boxes is selected:</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    Click and drag the mouse to select text in the inputs.</code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"Some text"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"to test on"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code>$(<span class="string">":input"</span>).select( <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"div"</span>).text(<span class="string">"Something was selected"</span>).show().fadeOut(<span class="number">1000</span>);</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">To trigger the select event on all input elements, try:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"input"</span>).select();</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/select/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>.submit()</title>
+		<link>http://api.jquery.com/submit/</link>
+		<comments>http://api.jquery.com/submit/#comments</comments>
+		<pubDate>Mon, 24 Dec 2012 17:14:23 +0000</pubDate>
+		<dc:creator>jquery</dc:creator>
+				<category><![CDATA[Form Events]]></category>
+		<category><![CDATA[Forms]]></category>
+		<category><![CDATA[Version 1.0]]></category>
+		<category><![CDATA[Version 1.4.3]]></category>
+
+		<guid isPermaLink="false">http://api.jquery.com/?p=557</guid>
+		<description><![CDATA[Bind an event handler to the "submit" JavaScript event, or trigger that event on an element.]]></description>
+				<content:encoded><![CDATA[<article id="submit1" class="entry method"><h2 class="section-title">
+<span class="name">.submit( handler(eventObject) )</span><span class="returns">Returns: <a href="http://api.jquery.com/Types#jQuery">jQuery</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>Description: </strong>Bind an event handler to the "submit" JavaScript event, or trigger that event on an element.</p>
+<ul class="signatures">
+<li class="signature" id="submit-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.submit( handler(eventObject) )</h4>
+<ul><li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li></ul>
+</li>
+<li class="signature" id="submit-eventData-handlereventObject">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.4.3/">1.4.3</a></span>.submit(  [eventData ], handler(eventObject) )</h4>
+<ul>
+<li>
+<div><strong>eventData</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#PlainObject">PlainObject</a>
+</div>
+<div>An object containing data that will be passed to the event handler.</div>
+</li>
+<li>
+<div><strong>handler(eventObject)</strong></div>
+<div>Type: <a href="http://api.jquery.com/Types#Function">Function</a>()</div>
+<div>A function to execute each time the event is triggered.</div>
+</li>
+</ul>
+</li>
+<li class="signature" id="submit">
+<h4 class="name">
+<span class="version-details">version added: <a href="/category/version/1.0/">1.0</a></span>.submit()</h4>
+<ul><li><div class="null-signature">This method does not accept any arguments.</div></li></ul>
+</li>
+</ul>
+<div class="longdesc" id="entry-longdesc">
+    <p>This method is a shortcut for <code>.on('submit', handler)</code> in the first variation, and <code>.trigger('submit')</code> in the third.</p>
+    <p>The <code>submit</code> event is sent to an element when the user is attempting to submit a form. It can only be attached to <code>&lt;form&gt;</code> elements. Forms can be submitted either by clicking an explicit <code>&lt;input type="submit"&gt;</code>, <code>&lt;input type="image"&gt;</code>, or <code>&lt;button type="submit"&gt;</code>, or by pressing <kbd>Enter</kbd> when certain form elements have focus.</p>
+    <blockquote>
+      <p>Depending on the browser, the Enter key may only cause a form submission if the form has exactly one text field, or only when there is a submit button present. The interface should not rely on a particular behavior for this key unless the issue is forced by observing the keypress event for presses of the Enter key.</p>
+    </blockquote>
+    <p>For example, consider the HTML:</p>
+    <div class="syntaxhighlighter xml nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">form</span> <span class="attribute">id</span>=<span class="value">"target"</span> <span class="attribute">action</span>=<span class="value">"destination.html"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"Hello there"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"Go"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"other"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  Trigger the handler</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>The event handler can be bound to the form:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#target'</span>).submit(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  alert(<span class="string">'Handler for .submit() called.'</span>);</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> <span class="literal">false</span>;</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>Now when the form is submitted, the message is alerted. This happens prior to the actual submission, so we can cancel the submit action by calling <code>.preventDefault()</code> on the event object or by returning <code>false</code> from our handler. We can trigger the event manually when another element is clicked:</p>
+    <div class="syntaxhighlighter javascript nogutter">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">'#other'</span>).click(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">'#target'</span>).submit();</code></div></div><div class="container"><div class="line"><code>});</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+    <p>After this code executes, clicks on <span class="output">Trigger the handler</span> will also display the message. In addition, the default <code>submit</code> action on the form will be fired, so the form will be submitted.</p>
+    <p>The JavaScript <code>submit</code> event does not bubble in Internet Explorer. However, scripts that rely on event delegation with the <code>submit</code> event will work consistently across browsers as of jQuery 1.4, which has normalized the event's behavior. </p>
+  </div>
+<h3>Additional Notes:</h3>
+<div class="longdesc"><ul><li>
+			Forms and their child elements should not use input names or ids that conflict with properties of a form, such as <code>submit</code>, <code>length</code>, or <code>method</code>. Name conflicts can cause confusing failures. For a complete list of rules and to check your markup for these problems, see <a href="http://kangax.github.com/domlint/">DOMLint</a>.
+		</li></ul></div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">Examples:</h2></header><div class="entry-example" id="example-0">
+<h4>Example: <span class="desc">If you'd like to prevent forms from being submitted unless a flag variable is set, try:</span>
+</h4>
+<div class="syntaxhighlighter xml ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+						<div class="line n4">4</div>
+					
+						<div class="line n5">5</div>
+					
+						<div class="line n6">6</div>
+					
+						<div class="line n7">7</div>
+					
+						<div class="line n8">8</div>
+					
+						<div class="line n9">9</div>
+					
+						<div class="line n10">10</div>
+					
+						<div class="line n11">11</div>
+					
+						<div class="line n12">12</div>
+					
+						<div class="line n13">13</div>
+					
+						<div class="line n14">14</div>
+					
+						<div class="line n15">15</div>
+					
+						<div class="line n16">16</div>
+					
+						<div class="line n17">17</div>
+					
+						<div class="line n18">18</div>
+					
+						<div class="line n19">19</div>
+					
+						<div class="line n20">20</div>
+					
+						<div class="line n21">21</div>
+					
+						<div class="line n22">22</div>
+					
+						<div class="line n23">23</div>
+					
+						<div class="line n24">24</div>
+					
+						<div class="line n25">25</div>
+					
+						<div class="line n26">26</div>
+					
+						<div class="line n27">27</div>
+					
+						<div class="line n28">28</div>
+					
+						<div class="line n29">29</div>
+					
+						<div class="line n30">30</div>
+					
+						<div class="line n31">31</div>
+					
+						<div class="line n32">32</div>
+					
+						<div class="line n33">33</div>
+					
+						<div class="line n34">34</div>
+					
+						<div class="line n35">35</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>  <span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">0</span>;</span></span> <span class="rule"><span class="attribute">color</span>:<span class="value">blue;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">div</span>,<span class="tag">p</span> <span class="rules">{ <span class="rule"><span class="attribute">margin-left</span>:<span class="value"><span class="number">10</span>px;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">span</span> <span class="rules">{ <span class="rule"><span class="attribute">color</span>:<span class="value">red;</span></span> <span class="rule">}</span></span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">style</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Type 'correct' to validate.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">form</span> <span class="attribute">action</span>=<span class="value">"javascript:alert('success!');"</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> /&gt;</span></code></div></div><div class="container"><div class="line"><code>    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;/<span class="title">form</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$(<span class="string">"form"</span>).submit(<span class="keyword">function</span>() {</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">if</span> ($(<span class="string">"input:first"</span>).val() == <span class="string">"correct"</span>) {</code></div></div><div class="container"><div class="line"><code>    $(<span class="string">"span"</span>).text(<span class="string">"Validated..."</span>).show();</code></div></div><div class="container"><div class="line"><code>    <span class="keyword">return</span> <span class="literal">true</span>;</code></div></div><div class="container"><div class="line"><code>  }</code></div></div><div class="container"><div class="line"><code>  $(<span class="string">"span"</span>).text(<span class="string">"Not valid!"</span>).show().fadeOut(<span class="number">1000</span>);</code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> <span class="literal">false</span>;</code></div></div><div class="container"><div class="line"><code>});</code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"></div>
+</div>
+<div class="entry-example" id="example-1">
+<h4>Example: <span class="desc">If you'd like to prevent forms from being submitted unless a flag variable is set, try:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+						<div class="line n2">2</div>
+					
+						<div class="line n3">3</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"form"</span>).submit( <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span></code></div></div><div class="container"><div class="line"><code>  <span class="keyword">return</span> <span class="keyword">this</span>.some_flag_variable;</code></div></div><div class="container"><div class="line"><code>} );</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+<div class="entry-example" id="example-2">
+<h4>Example: <span class="desc">To trigger the submit event on the first form on the page, try:</span>
+</h4>
+<div class="syntaxhighlighter javascript ">
+	<table>
+		<tbody>
+			<tr>
+				<td class="gutter">
+					
+						<div class="line n1">1</div>
+					
+				</td>
+				<td class="code">
+					<pre><div class="container"><div class="line"><code>$(<span class="string">"form:first"</span>).submit();</code></div></div></pre>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div></section>
+</div></article>]]></content:encoded>
+			<wfw:commentRss>http://api.jquery.com/submit/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
