@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: ActionView::Rendering</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+    <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'>
+    <tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />ActionView::Rendering</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/actionpack/lib/action_view/rendering_rb.html">actionpack/lib/action_view/rendering.rb</a>:
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+  <div id="bodyContent">
+  <div id="content">
+
+  <div class="description">
+<h1 id="label-Action+View+Rendering">Action View <a href="Rendering.html">Rendering</a></h1>
+</div>
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+                <li><a href="#method-i-_layout_for">_layout_for</a></li>
+                <li><a href="#method-i-render">render</a></li>
+      </ul>
+
+
+
+
+                        
+    <div class="sectiontitle">
+      Public      Instance      methods
+    </div>
+
+          
+      <div class="method">
+        <div class="title">
+                      <a name="method-i-_layout_for"></a>
+            <b>_layout_for</b>(*args, &block)          
+        </div>
+
+                  <div class="description">
+            <p>Returns the contents that are yielded to a layout, given a name or a block.</p>
+
+<p>You can think of a layout as a method that is called with a block. If the
+user calls <code>yield :some_name</code>, the block, by default, returns
+<code>content_for(:some_name)</code>. If the user calls simply
+<code>yield</code>, the default block returns
+<code>content_for(:layout)</code>.</p>
+
+<p>The user can override this default by passing a block to the layout:</p>
+
+<pre># The template
+&lt;%= render :layout =&gt; &quot;my_layout&quot; do %&gt;
+  Content
+&lt;% end %&gt;
+
+# The layout
+&lt;html&gt;
+  &lt;%= yield %&gt;
+&lt;/html&gt;</pre>
+
+<p>In this case, instead of the default block, which would return
+<code>content_for(:layout)</code>, this method returns the block that was
+passed in to <code>render :layout</code>, and the response would be</p>
+
+<pre>&lt;html&gt;
+  Content
+&lt;/html&gt;</pre>
+
+<p>Finally, the block can take block arguments, which can be passed in by
+<code>yield</code>:</p>
+
+<pre># The template
+&lt;%= render :layout =&gt; &quot;my_layout&quot; do |customer| %&gt;
+  Hello &lt;%= customer.name %&gt;
+&lt;% end %&gt;
+
+# The layout
+&lt;html&gt;
+  &lt;%= yield Struct.new(:name).new(&quot;David&quot;) %&gt;
+&lt;/html&gt;</pre>
+
+<p>In this case, the layout would receive the block passed into <code>render
+:layout</code>, and the struct specified would be passed into the block as
+an argument. The result would be</p>
+
+<pre>&lt;html&gt;
+  Hello David
+&lt;/html&gt;</pre>          </div>
+        
+        
+                  <div class="sourcecode">
+            <p class="source-link">[
+            <a href="javascript:toggleSource('_layout_for_source')"
+                 id="l_method-i-_layout_for_source">
+              show source
+            </a> ]</p>
+            <div class="dyn-source"
+                    id="_layout_for_source">
+<pre>
+  <span class="ruby-comment"># File actionpack/lib/action_view/rendering.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">_layout_for</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">name</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+    <span class="ruby-ivar">@_content_for</span>[<span class="ruby-identifier">name</span>].<span class="ruby-identifier">html_safe</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">block</span>
+    <span class="ruby-identifier">capture</span>(*<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@_content_for</span>[<span class="ruby-value">:layout</span>].<span class="ruby-identifier">html_safe</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div>
+          </div>
+        
+      </div>
+
+          
+      <div class="method">
+        <div class="title">
+                      <a name="method-i-render"></a>
+            <b>render</b>(options = {}, locals = {}, &block)          
+        </div>
+
+                  <div class="description">
+            <p>Returns the result of a render that’s dictated by the options hash. The
+primary options are:</p>
+<ul><li>
+<p><code>:partial</code> - See <a
+href="Partials.html">ActionView::Partials</a>.</p>
+</li><li>
+<p><code>:update</code> - Calls update_page with the block given.</p>
+</li><li>
+<p><code>:file</code> - Renders an explicit template file (this used to be the
+old default), add :locals to pass in those.</p>
+</li><li>
+<p><code>:inline</code> - Renders an inline template similar to how it's done
+in the controller.</p>
+</li><li>
+<p><code>:text</code> - Renders the text passed in out.</p>
+</li><li>
+<p><code>:once</code> - Accepts a string or an array of strings and <a
+href="../Rails.html">Rails</a> will ensure they each of them are rendered
+just once.</p>
+</li></ul>
+
+<p>If no options hash is passed or :update specified, the default is to render
+a partial and use the second parameter as the locals hash.</p>          </div>
+        
+        
+                  <div class="sourcecode">
+            <p class="source-link">[
+            <a href="javascript:toggleSource('render_source')"
+                 id="l_method-i-render_source">
+              show source
+            </a> ]</p>
+            <div class="dyn-source"
+                    id="render_source">
+<pre>
+  <span class="ruby-comment"># File actionpack/lib/action_view/rendering.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">options</span> = {}, <span class="ruby-identifier">locals</span> = {}, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">options</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">_render_partial</span>(<span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:layout</span>]), &amp;<span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:partial</span>)
+      <span class="ruby-identifier">_render_partial</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:once</span>)
+      <span class="ruby-identifier">_render_once</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">_render_template</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:update</span>
+    <span class="ruby-identifier">update_page</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">_render_partial</span>(<span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">locals</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div>
+          </div>
+        
+      </div>
+
+              </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: ActionView::Helpers::AssetTagHelper::AssetPaths</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+    <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'>
+    <tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />ActionView::Helpers::AssetTagHelper::AssetPaths</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../../../files/actionpack/lib/action_view/helpers/asset_tag_helpers/asset_paths_rb.html">actionpack/lib/action_view/helpers/asset_tag_helpers/asset_paths.rb</a>:
+        </td>
+      </tr>
+      <tr>
+        <td>Parent:</td>
+        <td>
+
+      <a href="../../../Object.html">Object</a>         </td>
+     </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+  <div id="bodyContent">
+  <div id="content">
+
+  <div class="description"></div>
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+                <li><a href="#method-i-add_to_asset_ids_cache">add_to_asset_ids_cache</a></li>
+                <li><a href="#method-i-compute_public_path">compute_public_path</a></li>
+                <li><a href="#method-i-is_uri-3F">is_uri?</a></li>
+                <li><a href="#method-c-new">new</a></li>
+      </ul>
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>config</td>
+    <td class='attr-desc'>
+                        </td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>controller</td>
+    <td class='attr-desc'>
+                        </td>
+  </tr>
+  </table>
+
+        
+    <div class="sectiontitle">
+      Public      Class      methods
+    </div>
+
+          
+      <div class="method">
+        <div class="title">
+                      <a name="method-c-new"></a>
+            <b>new</b>(config, controller)          
+        </div>
+
+                  <div class="description">
+                      </div>
+        
+        
+                  <div class="sourcecode">
+            <p class="source-link">[
+            <a href="javascript:toggleSource('new_source')"
+                 id="l_method-c-new_source">
+              show source
+            </a> ]</p>
+            <div class="dyn-source"
+                    id="new_source">
+<pre>
+  <span class="ruby-comment"># File actionpack/lib/action_view/helpers/asset_tag_helpers/asset_paths.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">config</span>, <span class="ruby-identifier">controller</span>)
+  <span class="ruby-ivar">@config</span> = <span class="ruby-identifier">config</span>
+  <span class="ruby-ivar">@controller</span> = <span class="ruby-identifier">controller</span>
+<span class="ruby-keyword">end</span></pre>
+            </div>
+          </div>
+        
+      </div>
+
+                      
+    <div class="sectiontitle">
+      Public      Instance      methods
+    </div>
+
+          
+      <div class="method">
+        <div class="title">
+                      <a name="method-i-add_to_asset_ids_cache"></a>
+            <b>add_to_asset_ids_cache</b>(source, asset_id)          
+        </div>
+
+                  <div class="description">
+            <p>Add or change an asset id in the asset id cache. This can be used for SASS
+on Heroku. :api: public</p>          </div>
+        
+        
+                  <div class="sourcecode">
+            <p class="source-link">[
+            <a href="javascript:toggleSource('add_to_asset_ids_cache_source')"
+                 id="l_method-i-add_to_asset_ids_cache_source">
+              show source
+            </a> ]</p>
+            <div class="dyn-source"
+                    id="add_to_asset_ids_cache_source">
+<pre>
+  <span class="ruby-comment"># File actionpack/lib/action_view/helpers/asset_tag_helpers/asset_paths.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_to_asset_ids_cache</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">asset_id</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">asset_ids_cache_guard</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">asset_ids_cache</span>[<span class="ruby-identifier">source</span>] = <span class="ruby-identifier">asset_id</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div>
+          </div>
+        
+      </div>
+
+          
+      <div class="method">
+        <div class="title">
+                      <a name="method-i-compute_public_path"></a>
+            <b>compute_public_path</b>(source, dir, ext = nil, include_host = true)          
+        </div>
+
+                  <div class="description">
+            <p>Add the extension <code>ext</code> if not present. Return full URLs
+otherwise untouched. Prefix with <code>/dir/</code> if lacking a leading
+<code>/</code>. Account for relative URL roots. Rewrite the asset path for
+cache-busting asset ids. Include asset host, if configured, with the
+correct request protocol.</p>          </div>
+        
+        
+                  <div class="sourcecode">
+            <p class="source-link">[
+            <a href="javascript:toggleSource('compute_public_path_source')"
+                 id="l_method-i-compute_public_path_source">
+              show source
+            </a> ]</p>
+            <div class="dyn-source"
+                    id="compute_public_path_source">
+<pre>
+  <span class="ruby-comment"># File actionpack/lib/action_view/helpers/asset_tag_helpers/asset_paths.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">compute_public_path</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">include_host</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">source</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_uri?</span>(<span class="ruby-identifier">source</span>)
+
+  <span class="ruby-identifier">source</span> = <span class="ruby-identifier">rewrite_extension</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">ext</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">ext</span>
+  <span class="ruby-identifier">source</span> = <span class="ruby-node">&quot;/#{dir}/#{source}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">source</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">//</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:env</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">env</span>[<span class="ruby-string">&quot;action_dispatch.asset_path&quot;</span>]
+    <span class="ruby-identifier">source</span> = <span class="ruby-identifier">rewrite_asset_path</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">env</span>[<span class="ruby-string">&quot;action_dispatch.asset_path&quot;</span>])
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">source</span> = <span class="ruby-identifier">rewrite_asset_path</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">config</span>.<span class="ruby-identifier">asset_path</span>)
+
+  <span class="ruby-identifier">has_request</span> = <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:request</span>)
+  <span class="ruby-identifier">source</span> = <span class="ruby-identifier">rewrite_relative_url_root</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">config</span>.<span class="ruby-identifier">relative_url_root</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">has_request</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">include_host</span>
+  <span class="ruby-identifier">source</span> = <span class="ruby-identifier">rewrite_host_and_protocol</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">has_request</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_host</span>
+
+  <span class="ruby-identifier">source</span>
+<span class="ruby-keyword">end</span></pre>
+            </div>
+          </div>
+        
+      </div>
+
+          
+      <div class="method">
+        <div class="title">
+                      <a name="method-i-is_uri-3F"></a>
+            <b>is_uri?</b>(path)          
+        </div>
+
+                  <div class="description">
+                      </div>
+        
+        
+                  <div class="sourcecode">
+            <p class="source-link">[
+            <a href="javascript:toggleSource('is_uri-3F_source')"
+                 id="l_method-i-is_uri-3F_source">
+              show source
+            </a> ]</p>
+            <div class="dyn-source"
+                    id="is_uri-3F_source">
+<pre>
+  <span class="ruby-comment"># File actionpack/lib/action_view/helpers/asset_tag_helpers/asset_paths.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">is_uri?</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-identifier">path</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">%r{^[-a-z]+://|^cid:}</span>
+<span class="ruby-keyword">end</span></pre>
+            </div>
+          </div>
+        
+      </div>
+
+              </div>
+  </div>
+  </body>
+</html>

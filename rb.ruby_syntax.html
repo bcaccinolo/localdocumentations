@@ -1,0 +1,2104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Ruby Syntax</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+<a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/options.html">prev</a>
+-
+<a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/function.html">next</a>
+-
+<a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/index.html">index</a>
+<hr>
+<h1>Ruby syntax</h1>
+<hr>
+<ul>
+<li><a href="#lexical">Lexical structure</a>
+<ul>
+<li><a href="#ident">Identifiers</a>
+</li><li><a href="#comment">Comment</a>
+</li><li><a href="#embed_doc">Embedded Documentation</a>
+</li><li><a href="#resword">Reserved words</a>
+</li></ul>
+</li><li><a href="#program">Program</a>
+</li><li><a href="#expression">Expressions</a>
+<ul>
+<li><a href="#string">String literals</a>
+</li><li><a href="#command">Command output</a>
+</li><li><a href="#regexp">Regular expressions</a>
+</li><li><a href="#exprsub">Expression substitution in strings</a>
+</li><li><a href="#here_doc">line-oriented string literals (Here document)</a>
+</li><li><a href="#numeric">Numeric literals</a>
+</li><li><a href="#variable">Variables and constants</a>
+</li><li><a href="#gvar">Global variables</a>
+</li><li><a href="#ivar">Instance variables</a>
+</li><li><a href="#lvar">Local variables</a>
+</li><li><a href="#pvar">Pseudo variables</a>
+</li><li><a href="#const">Constants</a>
+</li><li><a href="#array">Array expressions</a>
+</li><li><a href="#hash">Hash expressions</a>
+</li><li><a href="#method">Method invocation</a>
+</li><li><a href="#super"><code>super</code></a>
+</li><li><a href="#assign">Assignment</a>
+</li><li><a href="#operator">Operator expressions</a>
+</li><li><a href="#control">Control structure</a>
+<ul>
+<li><a href="#if"><code>if</code></a>
+</li><li><a href="#if-mod"><code>if</code> modifier</a>
+</li><li><a href="#unless"><code>unless</code></a>
+</li><li><a href="#unless-mod"><code>unless</code> modifier</a>
+</li><li><a href="#case"><code>case</code></a>
+</li><li><a href="#and"><code>and</code></a>
+</li><li><a href="#or"><code>or</code></a>
+</li><li><a href="#not"><code>not</code></a>
+</li><li><a href="#range">Range expressions</a>
+</li><li><a href="#while"><code>while</code></a>
+</li><li><a href="#while-mod"><code>while</code> modifier</a>
+</li><li><a href="#until"><code>until</code></a>
+</li><li><a href="#until-mod"><code>until</code> modifier</a>
+</li><li><a href="#iter">Iterators</a>
+</li><li><a href="#for"><code>for</code></a>
+</li><li><a href="#yield"><code>yield</code></a>
+</li><li><a href="#raise"><code>raise</code></a>
+</li><li><a href="#begin"><code>begin</code></a>
+</li><li><a href="#retry"><code>retry</code></a>
+</li><li><a href="#return"><code>return</code></a>
+</li><li><a href="#break"><code>break</code></a>
+</li><li><a href="#next"><code>next</code></a>
+</li><li><a href="#redo"><code>redo</code></a>
+</li><li><a href="#BEGIN_proc">BEGIN</a>
+</li><li><a href="#END_proc">END</a>
+</li></ul>
+</li><li><a href="#cdef">Class definitions</a>
+</li><li><a href="#scdef">Singleton-class definitions</a>
+</li><li><a href="#mdef">Module definitions</a>
+</li><li><a href="#method-def">Method definitions</a>
+</li><li><a href="#singleton-def">Singleton-method definitions</a>
+</li><li><a href="#alias"><code>alias</code></a>
+</li><li><a href="#undef"><code>undef</code></a>
+</li><li><a href="#defined_p"><code>defined?</code></a>
+</li></ul>
+</li></ul>
+<hr>
+
+<h2><a name="lexical">Lexical structure</a></h2>
+
+<p>
+The character set used in the Ruby source files for the current
+implementation is based on ASCII.  The case of characters in source
+files is significant. All syntactic constructs except identifiers and
+certain literals may be separated by an arbitrary number of whitespace
+characters and comments. The whitespace characters are space, tab,
+vertical tab, backspace, carriage return, and form feed.  Newlines
+works as whitespace only when expressions obviously continues to the
+next line.
+</p>
+<h3><a name="ident">Identifiers</a></h3>
+<p>
+Examples:
+</p>
+<pre>	foobar
+	ruby_is_simple
+</pre>
+<p>
+Ruby identifiers are consist of alphabets, decimal digits, and the
+underscore character, and begin with a alphabets(including
+underscore).  There are no restrictions on the lengths of Ruby
+identifiers. 
+</p>
+
+<h3><a name="comment">Comment</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	# this is a comment line
+</pre>
+
+<p>
+Ruby comments start with "<code>#</code>" outside of a
+string or character literal (<code>?#</code>) and all
+following text until the end of the line.
+</p>
+
+<h3><a name="embed_doc">Embedded Documentation</a></h3>
+
+<p>
+Example:
+</p>
+
+<pre>	=begin
+	the everything between a line beginning with `=begin' and
+	that with `=end' will be skipped by the interpreter.
+	=end
+</pre>
+
+<p>
+If the Ruby interpreter encounters a line beginning with
+<code>=begin</code>, it skips that line and all remaining lines
+through and including a line that begins with <code>=end</code>.
+</p>
+
+<h3><a name="resword">Reserved words</a></h3>
+
+<p>
+The reserved words are:
+</p>
+
+<pre>	BEGIN	 class	  ensure   nil	    self     when
+	END	 def	  false    not	    super    while
+	alias	 defined  for	   or	    then     yield
+	and	 do	  if	   redo     true
+	begin	 else	  in	   rescue   undef
+	break	 elsif	  module   retry    unless
+	case	 end	  next	   return   until
+</pre>
+
+<h2><a name="program">Program</a></h2>
+
+<p>
+Example:
+</p>
+
+<pre>	print "hello world!\n"
+</pre>
+
+<p>
+Ruby programs are sequence of expressions. Each expression are
+delimited by semicolons(<code>;</code>) or newlines.
+Backslashes at the end of line does not terminate expression.
+</p>
+
+<h2><a name="Expression">Expression</a></h2>
+
+<p>
+Examples:
+</p>
+
+<pre>	true
+	(1+2)*3
+	foo()
+	if test then ok else ng end
+</pre>
+
+<p>
+Ruby expressions can be grouped by parentheses.
+</p>
+
+<h3><a name="string">String literals</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	"this is a string expression\n"
+	"concat#{foobar}"
+	'concat#{foobar}'
+	%q!I said, "You said, 'She said it.'"!
+	%!I said, "You said, 'She said it.'"!
+	%Q('This is it.'\n)
+</pre>
+
+<p>
+String expressions begin and end with double or single quote marks.
+Double-quoted string expressions are subject to backslash escape and
+expression substitution. Single-quoted strings are not (except for
+<code>\'</code> and <code>\\</code>).  
+</p>
+<p>
+The string expressions begin with <code>%</code> are the special form
+to avoid putting too many backslashes into quoted strings.  The
+<samp>%q/STRING/</samp> expression is the generalized single quote.
+The <samp>%Q/STRING/</samp> (or <samp>%/STRING/</samp>) expression is
+the generalized double quote.  Any non-alphanumeric delimiter can be
+used in place of <code>/</code>, including newline.  If the delimiter
+is an opening bracket or parenthesis, the final delimiter will be the
+corresponding closing bracket or parenthesis.  (Embedded occurrences
+of the closing bracket need to be backslashed as usual.)
+</p>
+
+<h4>Backslash notation</h4> 
+
+<blockquote>
+<dl compact="compact">
+
+<dt><samp>\t</samp>
+</dt><dd>
+tab(0x09)
+</dd><dt><samp>\n</samp>
+</dt><dd>
+newline(0x0a)
+</dd><dt><samp>\r</samp>
+</dt><dd>
+carriage return(0x0d)
+</dd><dt><samp>\f</samp>
+</dt><dd>
+form feed(0x0c)
+</dd><dt><samp>\b</samp>
+</dt><dd>
+backspace(0x08)
+</dd><dt><samp>\a</samp>
+</dt><dd>
+bell(0x07)
+</dd><dt><samp>\e</samp>
+</dt><dd>
+escape(0x1b)
+</dd><dt><samp>\s</samp>
+</dt><dd>
+whitespace(0x20)
+</dd><dt><samp>\nnn</samp>
+</dt><dd>
+character in octal value nnn
+</dd><dt><samp>\xnn</samp>
+</dt><dd>
+character in hexadecimal value nn
+</dd><dt><samp>\cx</samp>
+</dt><dd>
+control x
+</dd><dt><samp>\C-x</samp>
+</dt><dd>
+control x
+</dd><dt><samp>\M-x</samp>
+</dt><dd>
+meta x (c | 0x80)
+</dd><dt><samp>\M-\C-x</samp>
+</dt><dd>
+meta control x
+</dd><dt><samp>\x</samp>
+</dt><dd>
+character x itself
+</dd></dl>
+</blockquote>
+
+<p>
+The string literal expression yields new string object each time it
+evaluated.
+</p>
+
+<h3><a name="command">Command output</a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	`date`
+	%x{ date }
+</pre>
+
+<p>
+Strings delimited by backquotes are performed by a subshell after
+escape sequences interpretation and expression substitution.  The
+standard output from the commands are taken as the value. Commands
+performed each time they evaluated.
+</p>
+<p>
+The <samp>%x/STRING/</samp> is the another form of the command output
+expression.
+</p>
+
+<h3><a name="regexp">Regular expression</a></h3>
+<p>
+Examples:
+</p>
+<pre>	/^Ruby the OOPL/
+	/Ruby/i
+	/my name is #{myname}/o
+	%r|^/usr/local/.*|
+</pre>
+
+<p>
+Strings delimited by slashes are regular expressions.  The characters
+right after latter slash denotes the option to the regular expression.
+Option <code>i</code> means that regular expression is case
+insensitive.  Option <code>i</code> means that regular expression does
+<a href="#exprsub">expression substitution</a> only once at the first
+time it evaluated.  Option <samp>x</samp> means extended regular
+expression, which means whitespaces and commens are allowd in the
+expression.  Option <code>p</code> denotes POSIX mode, in which
+newlines are treated as normal character (matches with dots).
+</p>
+<p>
+The <samp>%r/STRING/</samp> is the another form of the regular
+expression.
+</p>
+<blockquote>
+<dl compact="compact">
+
+<dt><code>^</code>
+</dt><dd>
+beginning of a line or string
+</dd><dt><code>$</code>
+</dt><dd>
+end of a line or string
+</dd><dt><code>.</code>
+</dt><dd>
+any character except newline
+</dd><dt><code>\w</code>
+</dt><dd>
+word character[0-9A-Za-z_]
+</dd><dt><code>\W</code>
+</dt><dd>
+non-word character
+</dd><dt><code>\s</code>
+</dt><dd>
+whitespace character[ \t\n\r\f]
+</dd><dt><code>\S</code>
+</dt><dd>
+non-whitespace character
+</dd><dt><code>\d</code>
+</dt><dd>
+digit, same as[0-9]
+</dd><dt><code>\D</code>
+</dt><dd>
+non-digit
+</dd><dt><code>\A</code>
+</dt><dd>
+beginning of a string
+</dd><dt><code>\Z</code>
+</dt><dd>
+end of a string, or before newline at the end
+</dd><dt><code>\z</code>
+</dt><dd>
+end of a string
+</dd><dt><code>\b</code>
+</dt><dd>
+word boundary(outside[]only)
+</dd><dt><code>\B</code>
+</dt><dd>
+non-word boundary
+</dd><dt><code>\b</code>
+</dt><dd>
+backspace(0x08)(inside[]only)
+</dd><dt><code>[ ]</code>
+</dt><dd>
+any single character of set
+</dd><dt><code>*</code>
+</dt><dd>
+0 or more previous regular expression
+</dd><dt><code>*?</code>
+</dt><dd>
+0 or more previous regular expression(non greedy)
+</dd><dt><code>+</code>
+</dt><dd>
+1 or more previous regular expression
+</dd><dt><code>+?</code>
+</dt><dd>
+1 or more previous regular expression(non greedy)
+</dd><dt><code>{m,n}</code>
+</dt><dd>
+at least m but most n previous regular expression
+</dd><dt><code>{m,n}?</code>
+</dt><dd>
+at least m but most n previous regular expression(non greedy)
+</dd><dt><code>?</code>
+</dt><dd>
+0 or 1 previous regular expression
+</dd><dt><code>|</code>
+</dt><dd>
+alternation
+</dd><dt><code>( )</code>
+</dt><dd>
+grouping regular expressions
+</dd><dt><code>(?# )</code>
+</dt><dd>
+comment
+</dd><dt><code>(?: )</code>
+</dt><dd>
+grouping without backreferences
+</dd><dt><code>(?= )</code>
+</dt><dd>
+zero-width positive look-ahead assertion
+</dd><dt><code>(?! )</code>
+</dt><dd>
+zero-width negative look-ahead assertion
+</dd><dt><code>(?ix-ix)</code>
+</dt><dd>
+turns on (or off) `i' and `x' options within regular expression.
+These modifiers are localized inside an enclosing group (if any). 
+</dd><dt><code>(?ix-ix: )</code>
+</dt><dd>
+turns on (or off) `i' and `x' options within this non-capturing group.
+</dd></dl>
+</blockquote>
+
+<p>
+Backslash notation and expression substitution available in regular
+expressions.
+</p>
+
+<h3><a name="exprsub">Expression substitution in strings</a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	"my name is #{$ruby}"
+</pre>
+
+<p>
+In double-quoted strings, regular expressions, and command output
+expressions, the form like "#{expression}" extended to the evaluated
+result of that expression. If the expressions are the variables which
+names begin with the character either `$',`@', expressions
+ are not needed to be surrounded by braces. The character `#' is
+interpreted literally if it it not followed by characters `{',`$',`@'.
+</p>
+
+<h3><a name="here_doc">line-oriented string literals (Here document)</a></h3>
+<p>
+There's a line-oriente form of the string literals that is usually called 
+as `here document'.  Following a <code>&lt;&lt;</code> you can specify 
+a string or an identifier to terminate the string literal, and all
+lines following the current line up to the terminator are the value of 
+the string.  If the terminator is quoted, the type of quotes
+determines the type of the line-oriented string literal.  Notice there 
+must be no space between <code>&lt;&lt;</code> and the terminator.
+</p>
+
+<p>
+If the <code>-</code> placed before the delimiter, then all leading
+whitespcae characters (tabs or spaces) are stripped from input lines
+and the line containing delimiter.  This allows here-documents within
+scripts to be indented in a natural fashion.
+</p>
+
+<pre>	  print &lt;&lt;EOF
+	The price is #{$Price}.
+	EOF
+
+	  print &lt;&lt;"EOF";			# same as above
+	The price is #{$Price}.
+	EOF
+
+	  print &lt;&lt;`EOC`			# execute commands
+	echo hi there
+	echo lo there
+	EOC
+
+	  print &lt;&lt;"foo", &lt;&lt;"bar"	# you can stack them
+	I said foo.
+	foo
+	I said bar.
+	bar
+
+	  myfunc(&lt;&lt;"THIS", 23, &lt;&lt;'THAT')
+	Here's a line
+	or two.
+	THIS
+	and here's another.
+	THAT
+
+	  if need_define_foo
+	    eval &lt;&lt;-EOS			# delimiters can be indented
+              def foo
+                print "foo\n"
+	      end
+	    EOS
+          end
+
+</pre>
+
+<h3><a name="numeric">Numeric literals</a></h3>
+
+<dl compact="compact">
+
+<dt><samp>123</samp>
+</dt><dd>
+integer
+</dd><dt><samp>-123</samp>
+</dt><dd>
+integer(signed)
+</dd><dt><samp>1_234</samp>
+</dt><dd>
+integer(underscore within decimal numbers ignored)
+</dd><dt><samp>123.45</samp>
+</dt><dd>
+floating point number
+</dd><dt><samp>1.2e-3</samp>
+</dt><dd>
+floating point number
+</dd><dt><samp>0xffff</samp>
+</dt><dd>
+hexadecimal integer
+</dd><dt><samp>0b01011</samp>
+</dt><dd>
+binary integer
+</dd><dt><samp>0377</samp>
+</dt><dd>
+octal integer
+</dd><dt><samp>?a</samp>
+</dt><dd>
+ASCII code for character `a'(97)
+</dd><dt><samp>?\C-a</samp>
+</dt><dd>
+Control-a(1)
+</dd><dt><samp>?\M-a</samp>
+</dt><dd>
+Meta-a(225)
+</dd><dt><samp>?\M-\C-a</samp>
+</dt><dd>
+Meta-Control-a(129)
+</dd><dt><samp>:symbol</samp>
+</dt><dd>
+Integer corresponding identifiers, variable names,
+and operators. 
+</dd></dl>
+
+<p>
+In ?-representation all backslash notations are available.
+</p>
+
+<h3><a name="variable">Variables and constants</a></h3>
+
+<p>
+The variable in Ruby programs can be distinguished by the first
+character of its name. They are either global variables, instance
+variables, local variables, and class constants. There are no
+restriction for variable name length (except heap size).
+</p>
+
+<h3><a name="gvar">Global variables</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	$foobar
+	$/
+</pre>
+
+<p>
+The variable which name begins with the character `<code>$</code>',
+has global scope, and can be accessed from any location of the program.
+Global variables are available as long as the program lives.
+Non-initialized global variables has value <code>nil</code>.
+</p>
+
+<h3><a name="ivar">Instance variables</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	@foobar
+</pre>
+
+<p>
+The variable which name begins which the character `<code>@</code>',
+is an instance variable of <code>self</code>.  Instance variables are
+belong to the certain object.  Non-initialized instance variables has
+value <code>nil</code>.
+</p>
+
+<h3><a name="const">Constants</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	FOOBAR
+</pre>
+
+<p>
+The identifier which name begins with upper case letters ([A-Z]) is an
+constant.  The constant definitions are done by assignment in the
+class definition body.  Assignment to the constants must be done once.
+Changing the constant value or accessing to the non-initialized
+constants raises a <code>NameError</code> exception.
+</p>
+<p>
+The constants can be accessed from:
+</p><ul>
+<li> the class or module body in which the constant is defined,
+including the method body and the nested module/class definition body.
+</li><li> the class which inherit the constant defining class.
+</li><li> the class or module which includes the constant defining module.
+</li></ul>
+<p></p>
+<p>
+Class definition defines the constant automatically, all class names
+are constants.
+</p>
+<p>
+To access constants defined in certain class/module, operator
+<code>::</code> can be used.
+</p>
+
+<p>
+To access constants defined in the Object class, operator
+<code>::</code> without the left hand side operand can be used.
+</p>
+
+<p>
+Examples:
+</p>
+
+<pre>	Foo::Bar
+	::Bar
+</pre>
+
+<p>
+No assignment using operator `<code>::</code>' is permitted.
+</p>
+
+<h3><a name="lvar">Local variables</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	foobar
+</pre>
+
+<p>
+The identifier which name begins with lower case character or
+underscore, is a local variable or a method invocation.  The first
+assignment in the local scope (bodies of class, module, method
+definition) to such identifiers are declarations of
+the local variables.  Non-declared identifiers are method invocation
+without arguments.
+</p>
+<p>
+The local variables assigned first time in the blocks are only valid
+in that block.  They are called `dynamic variables.'  For example:
+</p><pre>	i0 = 1
+	loop {
+	  i1 = 2
+	  print defined?(i0), "\n"	# true
+	  print defined?(i1), "\n"	# true
+	  break
+	}
+	print defined?(i0), "\n"	# true
+	print defined?(i1), "\n"	# false
+</pre>
+<p></p>
+
+<h3><a name="pvar">Pseudo variables</a></h3>
+
+<p>
+There are special variables called `pseudo variables'.
+</p>
+<blockquote>
+<dl compact="compact">
+
+<dt><code><a name="self">self</a></code>
+</dt><dd>
+the receiver of the current method
+</dd><dt><code><a name="nil">nil</a></code>
+</dt><dd>
+the sole instance of the Class NilClass(represents false)
+</dd><dt><code><a name="true">true</a></code>
+</dt><dd>
+the sole instance of the Class TrueClass(typical true value)
+</dd><dt><code><a name="false">false</a></code>
+</dt><dd>
+the sole instance of the Class FalseClass(represents false)
+</dd><dt><code><a name="__FILE__">__FILE__</a></code>
+</dt><dd>
+the current source file name.
+</dd><dt><code><a name="__LINE__">__LINE__</a></code>
+</dt><dd>
+the current line number in the source file.
+</dd></dl>
+</blockquote>
+
+<p>
+The values of the pseudo variables cannot be changed. Assignment to
+these variables causes exceptions.
+</p>
+
+<h3><a name="array">Array expression</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	[1, 2, 3]
+</pre>
+<p>
+Syntax:
+</p>
+<pre>	`[' expr,...`]'
+</pre>
+<p>
+Returns an array, which contains result of each expressions.
+Arrays are instances of the class <a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/Array.html">Array</a>.
+</p>
+
+<p>
+<code>%w</code> expressions make creation of the arrays of strings
+easier.  They are equivalent to the single quoted strings split by the
+whitespaces.  For example:
+</p>
+
+<pre>	%w(foo bar baz)
+</pre>
+
+<p>
+is equivalent to <code>["foo", "bar", "baz"]</code>.  Note that
+parenthesis right after <code>%s</code> is the quote delimiter, not
+usual parenthesis.
+</p>
+
+<h3><a name="hash">Hash expression</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	{1=&gt;2, 2=&gt;4, 3=&gt;6}
+</pre>
+<p>
+Syntax:
+</p>
+<pre>	{ expr =&gt; expr...}
+</pre>
+<p>
+Returns a new Hash object, which maps each key to corresponding value.
+Hashes are instances of the class <a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/Hash.html">Hash</a>.
+
+</p><h3><a name="method">Method invocation</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	foo.bar()
+	foo.bar
+	bar()
+	print "hello world\n"
+	print
+</pre>
+
+<p>
+Syntax:
+</p>
+<pre>[expr `.'] identifier [`(' expr...[`*' [expr]],[`&amp;' ] expr`)']
+[expr `::'] identifier [`(' expr...[`*' [expr]],[`&amp;' expr] `)']
+</pre>
+
+<p>
+Method invocation expression invokes the method of the receiver (right 
+hand side expression of the dot) specified by the identifier.  If no
+receiver specified, <code>self</code> is used as a receiver.
+</p>
+
+<p>
+Identifier names are normal identifiers and identifier suffixed by
+character <code>?</code> or <code>!</code>.  As a convention,
+<code>identifier?</code> are used as predicate names, and
+<code>identifier!</code> are used for the more destructive (or more
+dangerous) methods than the method which have same name without
+<code>!</code>.
+</p>
+<p>
+If the last argument expression preceded by <code>*</code>, the value
+of the expression expanded to arguments, that means
+
+</p><pre>	foo(*[1,2,3])
+</pre>
+
+equals
+
+<pre>	foo(1,2,3)
+</pre>
+<p></p>
+<p>
+If the last argument expression preceded by <code>&amp;</code>, the
+value of the expression, which must be a <code>Proc</code> object, is
+set as the block for the calling method.
+</p>
+
+<p>
+Some methods are <i>private</i>, and can be called from function form
+invocations (the forms that omits receiver).
+</p>
+
+<h3><a name="super"><code>super</code></a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	super
+	super(1,2,3)
+</pre>
+
+<p>
+Syntax:
+</p>
+<pre>	super
+	super(expr,...)
+</pre>
+<p>
+the <code>super</code> invokes the method which the current method
+overrides.  If no arguments given, arguments to the current method
+passed to the method.
+</p>
+
+<h3><a name="assign">Assignment</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	foo = bar
+	foo[0] = bar
+	foo.bar = baz
+</pre>
+
+<p>
+Syntax:
+</p>
+<pre>	variable '=' expr
+	constant '=' expr
+	expr`['expr..`]' '=' expr
+	expr`.'identifier '=' expr
+</pre>
+<p>
+Assignment expression are used to assign objects to the variables or
+such.  Assignments sometimes work as declarations for local variables
+or class constants.  The left hand side of the assignment expressions
+can be either:
+</p><ul>
+  <li> variables
+<pre>	variables `=' expression
+</pre>
+ 
+<p>
+If the left hand side is a variables, then assignment is directly
+performed. 
+</p>
+  </li><li> array reference
+<pre>	expr1`[' expr2...`]' `=' exprN
+</pre>
+
+<p>
+This from is evaluated to the invocation of the method named
+<code>[]=</code>, with expr1 as the receiver, and values
+expr2 to exprN as arguments.
+</p>
+  </li><li> attribute reference
+<pre>	expr `.' identifier `=' expr
+</pre>
+
+<p>
+This from is evaluated to the invocation of the method named
+<code>identifier=</code> with the right hand side expression as a
+argument.
+</p>
+</li></ul>
+
+<h4>self assignment</h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	foo += 12
+</pre>
+
+<p>
+Syntax:
+</p>
+<pre>	expr op= expr     # left hand side must be assignable.
+</pre>
+
+<p>
+This form evaluated as <code>expr = expr op expr</code>.  But right
+hand side expression evaluated once.  op can be one of:
+</p>
+
+<pre>	+, -, *, /, %, **, &amp;, |, ^, &lt;&lt;, &gt;&gt;, &amp;&amp;, ||
+</pre>
+
+<p>
+There may be no space between operators and <code>=</code>.
+</p>
+
+<h4>Multiple assignment</h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	foo, bar, baz = 1, 2, 3
+	foo, = list()
+	foo, *rest = list2()
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	expr `,' [expr `,'...] [`*' expr] = expr [, expr...][`*' [expr]]
+	`*' expr = expr [, expr...][`*' expr]
+</pre>
+
+<p>
+Multiple assignment form performs multiple assignment from expressions
+or an array.  Each left hand side expression must be assignable.  If
+single right hand side expression given, the value of the expression
+converted into an array, then each element in array assigned one by
+one to the left hand side expressions.  If number of elements in the
+array is greater than left hand sides, they are just ignored.  If left 
+hand sides are longer than the array, <code>nil</code> will be added
+to the locations.
+</p>
+
+<p>
+Multiple assignment acts like this:
+</p>
+
+<pre>	foo, bar = [1, 2]	# foo = 1; bar = 2
+	foo, bar = 1, 2		# foo = 1; bar = 2
+	foo, bar = 1		# foo = 1; bar = nil
+
+	foo, bar, baz = 1, 2	# foo = 1; bar = 2; baz = nil
+	foo, bar = 1, 2, 3	# foo = 1; bar = 2
+	foo,*bar = 1, 2, 3	# foo = 1; bar = [2, 3]
+</pre>
+
+<p>
+The value of the multiple assignment expressions are the array used to 
+assign.
+</p>
+
+<h3><a name="operator">Operator expressions</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	1+2*3/4
+</pre>
+
+<p>
+As a syntax sugar, several methods and control structures has operator 
+form.  Ruby has operators show below:
+</p>
+
+<pre>	high   ::
+	       []
+	       **
+	       -(unary)  +(unary)  !  ~
+	       *  /  %
+	       +  -
+	       &lt;&lt;  &gt;&gt;
+	       &amp;
+	       |  ^
+	       &gt;  &gt;=  &lt;  &lt;=
+	       &lt;=&gt; ==  === !=  =~  !~
+	       &amp;&amp;
+	       ||
+	       .. ...
+	       =(+=, -=...)
+	       not
+	low    and or
+</pre>
+
+<p>
+Most of operators are just method invocation in special form. But some 
+operators are not methods, but built in to the syntax:
+</p>
+
+<pre>	=, .., ..., !, not, &amp;&amp;, and, ||, or, !=, !~ 
+</pre>
+
+<p>
+In addition, assignment operators(<code>+=</code> etc.) are not user-definable.
+</p>
+
+<h3><a name="control">Control structure</a></h3>
+
+<p>
+Control structures in Ruby are expressions, and have some value.  Ruby 
+has the loop abstraction feature called iterators. Iterators are
+user-definable loop structure.
+</p>
+
+<h4><a name="if"><code>if</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	if age &gt;= 12 then
+	  print "adult fee\n"
+	else
+	  print "child fee\n"
+	end
+	gender = if foo.gender == "male" then "male" else "female" end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	if expr [then]
+	  expr...
+	[elsif expr [then]
+	  expr...]...
+	[else
+	  expr...]
+	end
+</pre>
+
+<p>
+<code>if</code> expressions are used for conditional execution. The
+values <code>false</code> and <code>nil</code> are false, and
+everything else are true.
+Notice Ruby uses <code>elsif</code>, not <code>else if</code> nor
+<code>elif</code>. 
+</p>
+<p>
+If conditional part of <code>if</code> is the regular expression
+literal, then it evaluated like:
+</p><pre>	$_ =~ /re/
+</pre>
+
+<h4><a name="if-mod"><code>if</code> modifier</a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	print "debug\n" if $debug
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	expr if expr
+</pre>
+
+<p>
+executes left hand side expression, if right hand side expression is true.
+</p>
+
+<h4><a name="unless"><code>unless</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	unless $baby
+	  feed_meat
+	else
+	  feed_milk
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	unless expr [then]
+	  expr...
+	[else
+	  expr...]
+	end
+</pre>
+
+<p>
+<code>unless</code> expressions are used for reverse conditional execution.  It
+is equivalent to:
+</p><pre>	if !(cond)
+	  ...
+	else
+	  ...
+	end
+</pre>
+<p></p>
+
+<h4><a name="unless-mod"><code>unless</code> modifier</a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	print "stop\n" unless valid($passwd)
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	expr unless expr
+</pre>
+
+<p>
+executes left hand side expression, if right hand side expression is false.
+</p>
+
+<h4><a name="case"><code>case</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	case $age
+	when 0 .. 2
+	  "baby"
+	when 3 .. 6
+	  "little child"
+	when 7 .. 12
+	  "child"
+	when 12 .. 18
+	  # Note: 12 already matched by "child"
+	  "youth"
+	else
+	  "adult"
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	case expr
+	[when expr [, expr]...[then]
+	  expr..]..
+	[else
+	  expr..]
+	end
+</pre>
+
+<p>
+the <code>case</code> expressions are also for conditional execution.
+Comparisons are done by operator <code>===</code>.  Thus:
+</p>
+
+<pre>	case expr0
+	when expr1, expr2
+	  stmt1
+	when expr3, expr4
+	  stmt2
+	else
+	  stmt3
+	end
+</pre>
+
+<p>
+is basically same to below:
+</p>
+
+<pre>	_tmp = expr0
+	if expr1 === _tmp || expr2 === _tmp
+	  stmt1
+	elsif expr3 === _tmp || expr4 === _tmp
+	  stmt2
+	else
+	  stmt3
+	end
+</pre>
+
+<p>
+Behavior of the <code>===</code> method varies for each Object.  See
+docutmentation for each class.
+</p>
+
+
+<h4><a name="and"><code>and</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	test &amp;&amp; set
+	test and set
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	expr `&amp;&amp;' expr
+	expr `and' expr
+</pre>
+
+<p>
+Evaluates left hand side, then if the result is true, evaluates right
+hand side.  <code>and</code> is lower precedence alias.
+</p>
+
+<h4><a name="or"><code>or</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	demo || die
+	demo or die
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	expr `||' expr
+	expr or expr
+</pre>
+
+<p>
+Evaluates left hand side, then if the result is false, evaluates right
+hand side.  <code>or</code> is lower precedence alias.
+</p>
+
+<h4><a name="not"><code>not</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	! me
+	not me
+	i != you
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	`!' expr
+	not expr
+</pre>
+
+<p>
+Returns true if false, false if true.
+</p>
+
+<pre>	expr `!=' expr
+</pre>
+
+<p>
+Syntax sugar for <code>!(expr == expr)</code>.
+</p>
+
+<pre>	expr `!~' expr
+</pre>
+<p>
+Syntax sugar for <code>!(expr =~ expr)</code>.
+</p>
+
+<h4><a name="range">Range expressions</a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	1 .. 20
+	/first/ ... /second/
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	expr `..' expr
+	expr `...' expr
+</pre>
+
+<p>
+If range expression appears in any other place than conditional
+expression, it returns <a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/Range.html">range object</a>
+from left hand side to right hand side.
+</p>
+<p>
+If range expression appears in conditional expression, it gives false
+until left hand side returns true, it stays true until right hand side 
+is true.  <code>..</code> acts like <samp>awk</samp>, <code>...</code> 
+acts like <samp>sed</samp>.
+</p>
+
+<h4><a name="while"><code>while</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	while sunshine
+	  work()
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	while expr [do]
+	  ...
+	end
+</pre>
+
+<p>
+Executes body while condition expression returns true.
+</p>
+
+<h4><a name="while-mod"><code>while</code> modifier</a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	sleep while idle
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	expr while expr
+</pre>
+
+<p>
+Repeats evaluation of left hand side expression, while right hand side 
+is true.  If left hand side is <code>begin</code> expression,
+<code>while</code> evaluates that expression at lease once.
+</p>
+
+<h4><a name="until"><code>until</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	until sunrise
+	  sleep
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	until expr [do]
+	  ...
+	end
+</pre>
+
+<p>
+Executes body until condition expression returns true.
+</p>
+
+<h4><a name="until-mod"><code>until</code> modifier</a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	work until tired
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	expr until expr
+</pre>
+
+<p>
+Repeats evaluation of left hand side expression, until right hand side 
+is true.  If left hand side is <code>begin</code> expression,
+<code>until</code> evaluates that expression at lease once.
+</p>
+
+<h4><a name="iter">Iterators</a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	[1,2,3].each do |i| print i*2, "\n" end
+	[1,2,3].each{|i| print i*2, "\n"}
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	method_call do [`|' expr...`|'] expr...end
+	method_call `{' [`|' expr...`|'] expr...`}'
+</pre>
+
+<p>
+The method may be invoked with the block (<code>do .. end</code> or
+<code>{..}</code>).  The method may be evaluate back that block from
+inside of the invocation.  The methods that calls back the blocks are
+sometimes called as iterators.  The evaluation of the block from
+iterator is done by <code><a href="#yield">yield</a></code>.
+</p>
+
+<p>
+The difference between <code>do</code> and braces are:
+</p><ul>
+<li> Braces has stronger precedence.  For example:
+<pre>	foobar a, b do .. end	# foobar will be called with the block.
+	foobar a, b { .. }	# b will be called with the block.
+</pre>
+</li><li> Braces introduce the nested local scopes, that is newly declared
+     local variables in the braces are valid only in the blocks.
+     For example:
+<pre>	foobar {
+	  i = 20		# local variable `i' declared in the block.
+	  ...
+	}
+	print defined? i	# `i' is not defined here.     
+	foobar a, b { .. }	# it is not valid outside of the block
+</pre>
+</li></ul>
+<p></p>
+
+<h4><a name="for"><code>for</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	for i in [1, 2, 3]
+	  print i*2, "\n"
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	for lhs... in expr [do]
+	  expr..
+	end
+</pre>
+
+<p>
+Executes body for each element in the result of
+expression. <code>for</code> is the syntax sugar for:
+</p>
+
+<pre>	(expr).each `{' `|' lhs..`|' expr.. `}'
+</pre>
+
+<h4><a name="yield"><code>yield</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	yield data
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	yield `(' [expr [`,' expr...]])
+	yield [expr [`,' expr...]]
+</pre>
+
+<p>
+Evaluates the block given to the current method with arguments, if no
+argument is given, <code>nil</code> is used as an argument.  The
+argument assignment to the block prameter is done just like multiple
+assignment.  If the block is not supplied for the current method, the
+exception is raised.
+</p>
+
+<h4><a name="raise"><code>raise</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	raise "you lose"  # raise RuntimeError
+	# both raises SyntaxError
+	raise SyntaxError, "invalid syntax"
+	raise SyntaxError.new("invalid syntax")
+	raise		  # re-raise last exception
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	raise
+	raise message_or_exception
+	raise error_type, message
+	raise error_type, message, traceback
+</pre>
+
+<p>
+Raises a exception.  In the first form, re-raises last exception.  In
+second form, if the argument is the string, creates a new
+<code>RuntimeError</code> exception, and raises it.  If the argument
+is the exception, <code>raise</code> raises it.  In the third
+form, <code>raise</code> creates a new exception of type
+<var>error_type</var>, and raises it.  In the last form, the 
+third argument is the traceback information for the raising exception in the
+format given by variable <a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/variable.html#at"><var>$@</var></a> or
+<a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/function.html#caller"><code>caller</code></a> function.
+</p>
+<p>
+The exception is assigned to the variable <code>$!</code>, and
+the position in the source file is assigned to the <code>$@</code>.
+</p>
+<p>
+The word `<code>raise</code>' is not the reserved word in Ruby.
+<code>raise</code> is the method of the <a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/Kernel.html">
+<code>Kernel</code></a> module.  There is an alias named
+<code>fail</code>.
+</p>
+
+<h4><a name="begin"><code>begin</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	begin
+	  do_something
+	rescue
+	  recover
+	ensure
+	  must_to_do
+	end
+</pre>
+<p>
+Syntax:
+</p>
+<pre>	begin
+	  expr..
+	[rescue [error_type,..]
+	  expr..]..
+	[else
+	  expr..]
+	[ensure
+	  expr..]
+	end
+</pre>
+
+<p>
+<code>begin</code> expression executes its body and returns the value
+of the last evaluated expression.  
+</p>
+<p>
+If an exception occurs in the <code>begin</code> body, the
+<code>rescue</code> clause with the matching exception type is
+executed (if any).  The match is done by the 
+<code><a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/Object.html#kind_of_p">kind_of?</a></code>.
+The default value of the rescue clause argument is
+the <code>StandardError</code>, which is the superclass of 
+most built-in exceptions.  
+Non-local jumps like <code>SystemExit</code> or <code>Interrupt</code>
+are not subclass of the <code>StandardError</code>.
+</p>
+<p>
+The <code>begin</code> statement has an optional <code>else</code> clause,
+which must follow all <code>rescue</code> clauses.  It is executed
+if the <code>begin</code> body does not raise any exception.
+</p>
+
+<p>
+For the <code>rescue</code> clauses, the
+<code>error_type</code> is evaluated just like the arguments
+to the method call, and the clause matches if the value of
+the variable <var>$!</var> is the instance of any one of the
+<code>error_type</code> of its subclass.  If
+<var>error_type</var> is not class nor module, the
+<code>rescue</code> clause raises <var>TypeError</var>
+exception.
+</p>
+<p>
+If <code>ensure</code> clause given, its clause body executed whenever
+<code>begin</code>body exits.
+</p>
+
+<h4><a name="retry"><code>retry</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	retry
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	retry
+</pre>
+
+<p>
+If <code>retry</code> appears in <code>rescue</code> clause of
+<code>begin</code> expression, restart from the beginning of the
+1<code>begin</code> body.
+</p>
+<pre>	begin
+	  do_something # exception raised
+	rescue
+	  # handles error
+	  retry  # restart from beginning
+	end
+</pre>
+<p>
+If <code>retry</code> appears in the iterator, the block, or the body
+of the <code>for</code> expression, restarts the invocation of the
+iterator call.  Arguments to the iterator is re-evaluated.
+</p>
+
+<pre>	for i in 1..5
+	  retry if some_condition # restart from i == 1
+	end
+</pre>
+
+<pre>	# user defined "until loop"
+	def UNTIL(cond)
+	  yield
+	  retry if not cond
+	end
+</pre>
+
+<p>
+<code>retry</code> out of <code>rescue</code> clause or iterators
+raises exception.
+</p>
+
+<h4><a name="return"><code>return</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	return
+	return 12
+	return 1,2,3
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	return [expr[`,' expr...]]
+</pre>
+
+<p>
+Exits from method with the return value.  If more than two expressions 
+are given, the array contains these values will be the return value.
+If no expression given, <code>nil</code> will be the return value.
+</p>
+
+<h4><a name="break"><code>break</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	i=0
+	while i&lt;3
+	  print i, "\n"
+	  break
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	break
+</pre>
+
+<p>
+Exits from the most internal loop.  Notice <code>break</code> does not
+exit from <code>case</code> expression like C.
+</p>
+
+<h4><a name="next"><code>next</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	next
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	next
+</pre>
+
+<p>
+Jumps to next iteration of the most internal loop.
+</p>
+
+<h4><a name="redo"><code>redo</code></a></h4>
+
+<p>
+Examples:
+</p>
+
+<pre>	redo
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	redo
+</pre>
+
+<p>
+Restarts this iteration of the most internal loop, without checking loop
+condition.
+</p>
+
+<h4><a name="BEGIN_proc">BEGIN</a></h4>
+<p>
+Examples:
+</p>
+
+<pre>	BEGIN {
+	  ...
+	}
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	BEGIN '{'
+	  expr..
+	'}'
+</pre>
+
+<p>
+Registers the initialize routine.  The block followed after
+<code>BEGIN</code> is evaluated before any other statement in that
+file (or string).  If multiple <code>BEGIN</code> blocks are given,
+they are evaluated in the appearing order.
+</p>
+
+<p>
+The <code>BEGIN</code> block introduce new local-variable scope.  They 
+don't share local variables with outer statements.
+</p>
+
+<p>
+The <code>BEGIN</code> statement can only appear at the toplevel.
+</p>
+
+<h3><a name="END_proc">END</a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	END {
+	  ...
+	}
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	END '{' expr.. '}'
+</pre>
+
+<p>
+Registers finalize routine.  The block followed after <code>END</code>
+is evaluated just before the interpreter termination.  Unlike
+<code>BEGIN</code>, <code>END</code> blocks shares their local
+variables, just like blocks.
+</p>
+
+<p>
+The <code>END</code> statement registers its block only once at the
+first execution.  If you want to register finalize routines many
+times, use <a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/function.html#at_exit">at_exit</a>.
+</p>
+
+<p>
+The <code>END</code> statement can only appear at the toplevel.  Also
+you cannot cancel finalize routine registered by <code>END</code>.
+</p>
+
+<h3><a name="cdef">Class definitions</a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	class Foo &lt; Super
+	  def test
+	     :
+	  end
+	     :
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	class identifier [`&lt;' superclass ]
+	  expr..
+	end
+</pre>
+
+<p>
+Defines the new class.  The class names are identifiers
+begin with uppercase character.
+</p>
+
+<h3><a name="scdef">Singleton-class definitions</a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	class &lt;&lt; obj
+	  def test
+	     :
+	  end
+	     :
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	class `&lt;&lt;' expr
+	  expr..
+	end
+</pre>
+
+<p>
+Defines the class attribute for certain object.  The definitions
+within this syntax only affect the specified object.
+</p>
+
+<h3><a name="mdef">Module definitions</a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	module Foo
+	  def test
+	     :
+	  end
+	     :
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	module identifier
+	  expr..
+	end
+</pre>
+
+<p>
+Defines the new module The module names are identifiers
+begin with uppercase character.
+</p>
+
+<h3><a name="method-def">Method definitions</a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	def fact(n)
+	  if n == 1 then
+	     1 
+	  else
+	    n * fact(n-1)
+	  end
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	def method_name [`(' [arg ['=' default]]...[`,' `*' arg ]`)']
+	  expr..
+	end
+</pre>
+<p>
+Defines the new method.  Method_name should be either identifier or
+re-definable operators (e.g. ==, +, -, etc.).  Notice the method is
+not available before the definition.  For example:
+
+</p><pre>	foo
+	def foo
+	  print "foo\n"
+	end
+</pre>
+
+will raise an exception for undefined method invoking.
+<p></p>
+<p>
+The argument with default expression is optional.  The
+evaluation of the default expression is done at the method
+invocation time.  If the last argument preceded by
+<code>*</code>, actual parameters which don't have
+corresponding formal arguments are assigned in this argument
+as an array.
+</p>
+If the last argument preceded by <code>&amp;</code>, the block given
+to the method is converted into the <code>Proc</code> object, and
+assigned in this argument.  In case both <code>*</code> and
+<code>&amp;</code> are present in the argument list,
+<code>&amp;</code> should come later.
+<p>
+
+</p>
+<p>
+The method definitions can not be nested.
+</p>
+<p>
+The return value of the method is the value given to the 
+<a href="#return"><code>return</code></a>, or that of the last
+evaluated expression.
+</p>
+<p>
+Some methods are marked as `private', and must be called in
+the function form.
+</p>
+<p>
+When the method is defined outside of the class definition,
+the method is marked as private by default.  On the other
+hand, the methods defined in the class definition are marked as public by
+default.  The default visibility and 
+the `private' mark of the methods can be changed by 
+<code><a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/Module.html#public">public</a></code> or 
+<code><a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/Module.html#private">private</a></code>
+of the <code><a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/Module.html">Module</a></code>.
+</p>
+
+<p>
+In addition, the methods named <code>initialize</code> are always
+defined as private methods.
+</p>
+
+<h3><a name="singleton-def">Singleton-method definitions</a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	def foo.test
+	  print "this is foo\n"
+	end
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	def expr `.' identifier [`(' [arg [`=' default]]...[`,' `*' arg ]`)']
+	  expr..
+	end
+</pre>
+
+<p>
+The singleton-method is the method which belongs to certain
+object. The singleton-method definitions can be nested.
+</p>
+<p>
+The singleton-methods of classes inherited to its subclasses.  The
+singleton-methods of classes are acts like class methods in other
+object-oriented languages.
+</p>
+
+<h3><a name="alias"><code>alias</code></a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	alias foo bar
+	alias $MATCH $&amp;
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	alias method-name method-name
+	alias global-variable-name global-variable-name
+</pre>
+
+<p>
+Gives alias to methods or global variables.  Aliases can not be
+defined within the method body.
+</p>
+<p>
+The aliase of the method keep the current definition of the method,
+even when methods are overridden.
+</p>
+<p>
+Making aliases for the numbered global variables (<code>$1</code>,
+<code>$2</code>,...) is prohibited.  Overriding the builtin global
+variables may cause serious problems.
+</p>
+
+<h3><a name="undef"><code>undef</code></a></h3>
+<p>
+Examples:
+</p>
+
+<pre>	undef bar
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	undef method-name
+</pre>
+
+<p>
+Cancels the method definition.  <code>Undef</code> can not appear in
+the method body.  By using <code>undef</code> and <code>alias</code>,
+the interface of the class can be modified independently from the
+superclass, but notice it may be broke programs by the internal method
+call to self.
+</p>
+
+<h3><a name="defined_p"><code>defined?</code></a></h3>
+
+<p>
+Examples:
+</p>
+
+<pre>	defined? print
+	defined? File.print
+	defined?(foobar)
+	defined?($foobar)
+	defined?(@foobar)
+	defined?(Foobar)
+</pre>
+
+<p>
+Syntax:
+</p>
+
+<pre>	defined? expr
+</pre>
+
+<p>
+Returns false if the expression is not defined.  Returns the string
+that describes a kind of the expression.
+</p>
+
+<hr>
+<a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/options.html">prev</a>
+-
+<a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/function.html">next</a>
+-
+<a href="http://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/index.html">index</a>
+<p align="right"><a href="mailto:matz@netlab.co.jp">matz@netlab.co.jp</a></p>
+
+
+</body></html>
