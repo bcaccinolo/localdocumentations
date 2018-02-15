@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Resolv::WsControl</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Resolv::WsControl">
+
+  
+
+    <meta name="keywords" content="Resolv::WsControl class">
+  
+    <meta name="keywords" content="wsctl, get_iflist">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span>
+            Resolv::WsControl
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/ext/win32/lib/win32/resolv9x_rb.html">ext/win32/lib/win32/resolv9x.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="../Win32/Resolv/WsControl/WSock32.html">Win32::Resolv::WsControl::WSock32</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-get_iflist">get_iflist</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-wsctl">wsctl</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">WsControl</td>
+            <td>=</td>
+            <td class="attr-value">WSock32.extern &quot;int WsControl(int, int, void *, void *, void *, void *&quot;, :stdcall</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">WSAGetLastError</td>
+            <td>=</td>
+            <td class="attr-value">WSock32.extern &quot;int WSAGetLastError(void)&quot;, :stdcall</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">MAX_TDI_ENTITIES</td>
+            <td>=</td>
+            <td class="attr-value">512</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">IPPROTO_TCP</td>
+            <td>=</td>
+            <td class="attr-value">6</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">WSCTL_TCP_QUERY_INFORMATION</td>
+            <td>=</td>
+            <td class="attr-value">0</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">INFO_CLASS_GENERIC</td>
+            <td>=</td>
+            <td class="attr-value">0x100</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">INFO_CLASS_PROTOCOL</td>
+            <td>=</td>
+            <td class="attr-value">0x200</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">INFO_TYPE_PROVIDER</td>
+            <td>=</td>
+            <td class="attr-value">0x100</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ENTITY_LIST_ID</td>
+            <td>=</td>
+            <td class="attr-value">0</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">GENERIC_ENTITY</td>
+            <td>=</td>
+            <td class="attr-value">0</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">CL_NL_ENTITY</td>
+            <td>=</td>
+            <td class="attr-value">0x301</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">IF_ENTITY</td>
+            <td>=</td>
+            <td class="attr-value">0x200</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ENTITY_TYPE_ID</td>
+            <td>=</td>
+            <td class="attr-value">1</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">CL_NL_IP</td>
+            <td>=</td>
+            <td class="attr-value">0x303</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">IF_MIB</td>
+            <td>=</td>
+            <td class="attr-value">0x202</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">IF_MIB_STATS_ID</td>
+            <td>=</td>
+            <td class="attr-value">1</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">IP_MIB_ADDRTABLE_ENTRY_ID</td>
+            <td>=</td>
+            <td class="attr-value">0x102</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-get_iflist">
+            
+              <b>get_iflist</b>()
+            
+            <a href="../../classes/Resolv/WsControl.html#method-c-get_iflist" name="method-c-get_iflist" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-get_iflist_source')" id="l_method-c-get_iflist_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/0f5a8418818b404473d15f75a33e226ac38cbb01/ext/win32/lib/win32/resolv9x.rb#L189" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-get_iflist_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/win32/lib/win32/resolv9x.rb, line 189</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">get_iflist</span>
+  <span class="ruby-comment"># Get TDI Entity List</span>
+  <span class="ruby-identifier">entities</span>, <span class="ruby-identifier">size</span> =
+    <span class="ruby-identifier">wsctl</span>(<span class="ruby-constant">GENERIC_ENTITY</span>, <span class="ruby-number">0</span>,
+          <span class="ruby-constant">INFO_CLASS_GENERIC</span>,
+          <span class="ruby-constant">INFO_TYPE_PROVIDER</span>,
+          <span class="ruby-constant">ENTITY_LIST_ID</span>,
+          <span class="ruby-constant">MAX_TDI_ENTITIES</span> <span class="ruby-operator">*</span> <span class="ruby-number">8</span>)  <span class="ruby-comment"># sizeof(TDIEntityID)</span>
+  <span class="ruby-identifier">entities</span> = <span class="ruby-identifier">entities</span>[<span class="ruby-number">0</span>, <span class="ruby-identifier">size</span>].
+               <span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/.{8}/</span>).
+               <span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&#39;VV&#39;</span>) }
+
+  <span class="ruby-comment"># Get MIB Interface List</span>
+  <span class="ruby-identifier">iflist</span> = []
+  <span class="ruby-identifier">ifcount</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">entities</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entity</span>, <span class="ruby-identifier">instance</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>( (<span class="ruby-identifier">entity</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">IF_ENTITY</span>)<span class="ruby-operator">&gt;</span><span class="ruby-number">0</span> )
+      <span class="ruby-identifier">ifcount</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+      <span class="ruby-identifier">etype</span>, = <span class="ruby-identifier">wsctl</span>(<span class="ruby-identifier">entity</span>, <span class="ruby-identifier">instance</span>,
+                     <span class="ruby-constant">INFO_CLASS_GENERIC</span>,
+                     <span class="ruby-constant">INFO_TYPE_PROVIDER</span>,
+                     <span class="ruby-constant">ENTITY_TYPE_ID</span>,
+                     <span class="ruby-number">4</span>)
+      <span class="ruby-keyword">if</span>( (<span class="ruby-constant">API</span>.<span class="ruby-identifier">unpackdw</span>(<span class="ruby-identifier">etype</span>) <span class="ruby-operator">&amp;</span> <span class="ruby-constant">IF_MIB</span>)<span class="ruby-operator">==</span><span class="ruby-constant">IF_MIB</span> )
+        <span class="ruby-identifier">ifentry</span>, = <span class="ruby-identifier">wsctl</span>(<span class="ruby-identifier">entity</span>, <span class="ruby-identifier">instance</span>,
+                         <span class="ruby-constant">INFO_CLASS_PROTOCOL</span>,
+                         <span class="ruby-constant">INFO_TYPE_PROVIDER</span>,
+                         <span class="ruby-constant">IF_MIB_STATS_ID</span>,
+                         <span class="ruby-number">21</span> <span class="ruby-operator">*</span> <span class="ruby-number">4</span> <span class="ruby-operator">+</span> <span class="ruby-number">8</span> <span class="ruby-operator">+</span> <span class="ruby-number">130</span>)  <span class="ruby-comment"># sizeof(IFEntry)</span>
+        <span class="ruby-identifier">iflist</span> <span class="ruby-operator">&lt;&lt;</span> [
+          <span class="ruby-constant">API</span>.<span class="ruby-identifier">unpackdw</span>(<span class="ruby-identifier">ifentry</span>[<span class="ruby-number">0</span>,<span class="ruby-number">4</span>]),
+          <span class="ruby-identifier">ifentry</span>[<span class="ruby-number">20</span>, <span class="ruby-number">6</span>]
+        ]
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Get IP Addresses</span>
+  <span class="ruby-identifier">entities</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entity</span>, <span class="ruby-identifier">instance</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">entity</span> <span class="ruby-operator">==</span> <span class="ruby-constant">CL_NL_ENTITY</span>
+      <span class="ruby-identifier">etype</span>, = <span class="ruby-identifier">wsctl</span>(<span class="ruby-identifier">entity</span>, <span class="ruby-identifier">instance</span>,
+                     <span class="ruby-constant">INFO_CLASS_GENERIC</span>,
+                     <span class="ruby-constant">INFO_TYPE_PROVIDER</span>,
+                     <span class="ruby-constant">ENTITY_TYPE_ID</span>,
+                     <span class="ruby-number">4</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-constant">API</span>.<span class="ruby-identifier">unpackdw</span>(<span class="ruby-identifier">etype</span>) <span class="ruby-operator">==</span> <span class="ruby-constant">CL_NL_IP</span>
+        <span class="ruby-identifier">ipentries</span>, = <span class="ruby-identifier">wsctl</span>(<span class="ruby-identifier">entity</span>, <span class="ruby-identifier">instance</span>,
+                           <span class="ruby-constant">INFO_CLASS_PROTOCOL</span>,
+                           <span class="ruby-constant">INFO_TYPE_PROVIDER</span>,
+                           <span class="ruby-constant">IP_MIB_ADDRTABLE_ENTRY_ID</span>,
+                           <span class="ruby-number">24</span> <span class="ruby-operator">*</span> (<span class="ruby-identifier">ifcount</span><span class="ruby-operator">+</span><span class="ruby-number">1</span>))  <span class="ruby-comment"># sizeof(IPAddrEntry)</span>
+        <span class="ruby-identifier">ipentries</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/.{24}/</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ipentry</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">ipaddr</span>, <span class="ruby-identifier">index</span> = <span class="ruby-identifier">ipentry</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&#39;VV&#39;</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">ifitem</span> = <span class="ruby-identifier">iflist</span>.<span class="ruby-identifier">assoc</span>(<span class="ruby-identifier">index</span>)
+            <span class="ruby-identifier">ifitem</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ipaddr</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">iflist</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Class Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-wsctl">
+            
+              <b>wsctl</b>(tei_entity, tei_instance, toi_class, toi_type, toi_id, buffsize)
+            
+            <a href="../../classes/Resolv/WsControl.html#method-c-wsctl" name="method-c-wsctl" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-wsctl_source')" id="l_method-c-wsctl_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/0f5a8418818b404473d15f75a33e226ac38cbb01/ext/win32/lib/win32/resolv9x.rb#L163" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-wsctl_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/win32/lib/win32/resolv9x.rb, line 163</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">wsctl</span>(<span class="ruby-identifier">tei_entity</span>, <span class="ruby-identifier">tei_instance</span>,
+               <span class="ruby-identifier">toi_class</span>, <span class="ruby-identifier">toi_type</span>, <span class="ruby-identifier">toi_id</span>,
+               <span class="ruby-identifier">buffsize</span>)
+  <span class="ruby-identifier">reqinfo</span> = [
+            <span class="ruby-comment">## TDIEntityID</span>
+              <span class="ruby-identifier">tei_entity</span>, <span class="ruby-identifier">tei_instance</span>,
+            <span class="ruby-comment">## TDIObjectID</span>
+              <span class="ruby-identifier">toi_class</span>, <span class="ruby-identifier">toi_type</span>, <span class="ruby-identifier">toi_id</span>,
+            <span class="ruby-comment">## TCP_REQUEST_INFORMATION_EX</span>
+              <span class="ruby-string">&quot;&quot;</span>
+            ].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&#39;VVVVVa16&#39;</span>)
+  <span class="ruby-identifier">reqsize</span> = <span class="ruby-constant">API</span>.<span class="ruby-identifier">packdw</span>(<span class="ruby-identifier">reqinfo</span>.<span class="ruby-identifier">size</span>)
+  <span class="ruby-identifier">buff</span> = <span class="ruby-string">&quot;\0&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">buffsize</span>
+  <span class="ruby-identifier">buffsize</span> = <span class="ruby-constant">API</span>.<span class="ruby-identifier">packdw</span>(<span class="ruby-identifier">buffsize</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-constant">WsControl</span>.<span class="ruby-identifier">call</span>(
+             <span class="ruby-constant">IPPROTO_TCP</span>,
+             <span class="ruby-constant">WSCTL_TCP_QUERY_INFORMATION</span>,
+             <span class="ruby-identifier">reqinfo</span>, <span class="ruby-identifier">reqsize</span>,
+             <span class="ruby-identifier">buff</span>, <span class="ruby-identifier">buffsize</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">!=</span> <span class="ruby-number">0</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">RuntimeError</span>, <span class="ruby-node">&quot;WsControl failed.(#{result})&quot;</span>
+  <span class="ruby-keyword">end</span>
+  [ <span class="ruby-identifier">buff</span>, <span class="ruby-constant">API</span>.<span class="ruby-identifier">unpackdw</span>(<span class="ruby-identifier">buffsize</span>) ]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>

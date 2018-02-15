@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Piece</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Piece">
+
+  
+    
+    <meta name="description" content="describes a piece and caches information about its rotations to as to be efficient for iteration ATTRIBUTES:  rotations -- all the rotations of the piece type -- a numeic &quot;name&quot; of the piece.">
+    <meta property="og:description" content="describes a piece and caches information about its rotations to as to be efficient for iteration ATTRIBUTES:  rotations -- all the rotations of the piece type -- a numeic &quot;name&quot; of the piece.">
+  
+
+    <meta name="keywords" content="Piece class">
+  
+    <meta name="keywords" content="new, generate_rotations, fill_string">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            Piece
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/benchmark/bm_so_meteor_contest_rb.html">benchmark/bm_so_meteor_contest.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>describes a piece and caches information about its rotations to as to be
+efficient for iteration ATTRIBUTES:</p>
+
+<pre><code>rotations -- all the rotations of the piece
+type -- a numeic &quot;name&quot; of the piece
+masks -- an array by location of all legal rotational masks (a n inner array) for that location
+placed -- the mask that this piece was last placed at (not a location, but the actual mask used)</code></pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-fill_string">fill_string</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-generate_rotations">generate_rotations</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>masks</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>placed</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>rotations</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>( directions, type )
+            
+            <a href="../classes/Piece.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L189" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 189</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>( <span class="ruby-identifier">directions</span>, <span class="ruby-identifier">type</span> )
+  <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">type</span>
+  <span class="ruby-ivar">@rotations</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>();
+  <span class="ruby-ivar">@map</span> = {}
+
+  <span class="ruby-identifier">generate_rotations</span>( <span class="ruby-identifier">directions</span> )
+  <span class="ruby-identifier">directions</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">@@flip_converter</span>[<span class="ruby-identifier">value</span>] }
+  <span class="ruby-identifier">generate_rotations</span>( <span class="ruby-identifier">directions</span> )
+
+  <span class="ruby-comment"># creates the masks AND a map that returns [location, rotation] for any given mask</span>
+  <span class="ruby-comment"># this is used when a board is found and we want to draw it, otherwise the map is unused</span>
+  <span class="ruby-ivar">@masks</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>();
+  <span class="ruby-number">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-number">59</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">|</span>
+    <span class="ruby-identifier">even</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-ivar">@masks</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-ivar">@rotations</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">rotation</span> <span class="ruby-operator">|</span>
+      <span class="ruby-identifier">mask</span> = <span class="ruby-identifier">rotation</span>.<span class="ruby-identifier">start_masks</span>[<span class="ruby-identifier">i</span>]
+      <span class="ruby-ivar">@map</span>[<span class="ruby-identifier">mask</span>[<span class="ruby-number">0</span>]] = [ <span class="ruby-identifier">i</span>, <span class="ruby-identifier">rotation</span> ] <span class="ruby-keyword">if</span> (<span class="ruby-identifier">mask</span>)
+      <span class="ruby-identifier">mask</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@masks</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">compact!</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-fill_string">
+            
+              <b>fill_string</b>( board_string)
+            
+            <a href="../classes/Piece.html#method-i-fill_string" name="method-i-fill_string" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>given a board string, adds this piece to the board at whatever
+location/rotation important: the outbound board string is 5 wide, the
+normal location notation is six wide (padded)</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-fill_string_source')" id="l_method-i-fill_string_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L222" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-fill_string_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 222</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">fill_string</span>( <span class="ruby-identifier">board_string</span>)
+  <span class="ruby-identifier">location</span>, <span class="ruby-identifier">rotation</span> = <span class="ruby-ivar">@map</span>[<span class="ruby-ivar">@placed</span>]
+  <span class="ruby-identifier">rotation</span>.<span class="ruby-identifier">offsets</span>(<span class="ruby-identifier">location</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">offset</span> <span class="ruby-operator">|</span>
+    <span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span> = <span class="ruby-identifier">offset</span>.<span class="ruby-identifier">divmod</span>(<span class="ruby-number">6</span>)
+    <span class="ruby-identifier">board_string</span>[ <span class="ruby-identifier">row</span><span class="ruby-operator">*</span><span class="ruby-number">5</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">col</span>, <span class="ruby-number">1</span> ] = <span class="ruby-ivar">@type</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-generate_rotations">
+            
+              <b>generate_rotations</b>( directions )
+            
+            <a href="../classes/Piece.html#method-i-generate_rotations" name="method-i-generate_rotations" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>rotates a set of directions through all six angles and adds a <a
+href="Rotation.html">Rotation</a> to the list for each one</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-generate_rotations_source')" id="l_method-i-generate_rotations_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L213" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-generate_rotations_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 213</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">generate_rotations</span>( <span class="ruby-identifier">directions</span> )
+  <span class="ruby-number">6</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">rotations</span>.<span class="ruby-identifier">push</span>( <span class="ruby-constant">Rotation</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">directions</span>))
+    <span class="ruby-identifier">directions</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">@@rotate_converter</span>[<span class="ruby-identifier">value</span>] }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

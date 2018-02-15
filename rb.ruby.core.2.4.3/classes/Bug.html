@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Bug</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Bug">
+
+  
+
+    <meta name="keywords" content="Bug class">
+  
+    <meta name="keywords" content="start, funcall_callback, funcall, postponed_job_register, postponed_job_register_one, postponed_job_call_direct, unp_st_foreach_check, unp_st_foreach, tracepoint_track_objspace_events, tracepoint_specify_normal_and_internal_events">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span>
+            Bug
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/ext/-test-/bignum/init_c.html">ext/-test-/bignum/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/bug-3571/bug_c.html">ext/-test-/bug-3571/bug.c</a></li>
+            
+            <li><a href="../files/ext/-test-/bug-5832/bug_c.html">ext/-test-/bug-5832/bug.c</a></li>
+            
+            <li><a href="../files/ext/-test-/class/init_c.html">ext/-test-/class/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/debug/init_c.html">ext/-test-/debug/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/exception/init_c.html">ext/-test-/exception/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/file/init_c.html">ext/-test-/file/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/float/init_c.html">ext/-test-/float/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/hash/init_c.html">ext/-test-/hash/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/integer/init_c.html">ext/-test-/integer/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/iter/init_c.html">ext/-test-/iter/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/method/init_c.html">ext/-test-/method/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/notimplement/bug_c.html">ext/-test-/notimplement/bug.c</a></li>
+            
+            <li><a href="../files/ext/-test-/postponed_job/postponed_job_c.html">ext/-test-/postponed_job/postponed_job.c</a></li>
+            
+            <li><a href="../files/ext/-test-/proc/init_c.html">ext/-test-/proc/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/regexp/init_c.html">ext/-test-/regexp/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/scan_args/scan_args_c.html">ext/-test-/scan_args/scan_args.c</a></li>
+            
+            <li><a href="../files/ext/-test-/st/foreach/foreach_c.html">ext/-test-/st/foreach/foreach.c</a></li>
+            
+            <li><a href="../files/ext/-test-/string/init_c.html">ext/-test-/string/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/struct/init_c.html">ext/-test-/struct/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/symbol/init_c.html">ext/-test-/symbol/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/time/init_c.html">ext/-test-/time/init.c</a></li>
+            
+            <li><a href="../files/ext/-test-/tracepoint/tracepoint_c.html">ext/-test-/tracepoint/tracepoint.c</a></li>
+            
+            <li><a href="../files/ext/-test-/typeddata/typeddata_c.html">ext/-test-/typeddata/typeddata.c</a></li>
+            
+            <li><a href="../files/ext/-test-/vm/at_exit_c.html">ext/-test-/vm/at_exit.c</a></li>
+            
+            <li><a href="../files/ext/-test-/win32/console/init_c.html">ext/-test-/win32/console/init.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Bug/Class.html">Bug::Class</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Bug/Debug.html">Bug::Debug</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Bug/File.html">Bug::File</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Bug/Iter.html">Bug::Iter</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Bug/Method.html">Bug::Method</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Bug/Proc.html">Bug::Proc</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Bug/ScanArgs.html">Bug::ScanArgs</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Bug/Win32.html">Bug::Win32</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Bignum.html">Bug::Bignum</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Exception.html">Bug::Exception</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Float.html">Bug::Float</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Hash.html">Bug::Hash</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Integer.html">Bug::Integer</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Regexp.html">Bug::Regexp</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/String.html">Bug::String</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Struct.html">Bug::Struct</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Symbol.html">Bug::Symbol</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/Time.html">Bug::Time</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/TypedData.html">Bug::TypedData</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Bug/VM.html">Bug::VM</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-funcall">funcall</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-funcall_callback">funcall_callback</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-postponed_job_call_direct">postponed_job_call_direct</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-postponed_job_register">postponed_job_register</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-postponed_job_register_one">postponed_job_register_one</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-start">start</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-tracepoint_specify_normal_and_internal_events">tracepoint_specify_normal_and_internal_events</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-tracepoint_track_objspace_events">tracepoint_track_objspace_events</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-unp_st_foreach">unp_st_foreach</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-unp_st_foreach_check">unp_st_foreach_check</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-funcall">
+            
+              <b>funcall</b>(*args)
+            
+            <a href="../classes/Bug.html#method-c-funcall" name="method-c-funcall" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-funcall_source')" id="l_method-c-funcall_source">show</a>
+                
+              </p>
+              <div id="method-c-funcall_source" class="dyn-source">
+                <pre>static VALUE
+bug_funcall(int argc, VALUE *argv, VALUE self)
+{
+    if (argc &lt; 1) rb_raise(rb_eArgError, &quot;not enough argument&quot;);
+    return rb_funcallv(self, rb_to_id(*argv), argc-1, argv+1);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-funcall_callback">
+            
+              <b>funcall_callback</b>(p1)
+            
+            <a href="../classes/Bug.html#method-c-funcall_callback" name="method-c-funcall_callback" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-funcall_callback_source')" id="l_method-c-funcall_callback_source">show</a>
+                
+              </p>
+              <div id="method-c-funcall_callback_source" class="dyn-source">
+                <pre>static VALUE
+bug_funcall_callback(VALUE self, VALUE obj)
+{
+    return rb_funcall(obj, rb_intern(&quot;callback&quot;), 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-postponed_job_call_direct">
+            
+              <b>postponed_job_call_direct</b>(p1)
+            
+            <a href="../classes/Bug.html#method-c-postponed_job_call_direct" name="method-c-postponed_job_call_direct" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-postponed_job_call_direct_source')" id="l_method-c-postponed_job_call_direct_source">show</a>
+                
+              </p>
+              <div id="method-c-postponed_job_call_direct_source" class="dyn-source">
+                <pre>static VALUE
+pjob_call_direct(VALUE self, VALUE obj)
+{
+    pjob_callback((void *)obj);
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-postponed_job_register">
+            
+              <b>postponed_job_register</b>(p1)
+            
+            <a href="../classes/Bug.html#method-c-postponed_job_register" name="method-c-postponed_job_register" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-postponed_job_register_source')" id="l_method-c-postponed_job_register_source">show</a>
+                
+              </p>
+              <div id="method-c-postponed_job_register_source" class="dyn-source">
+                <pre>static VALUE
+pjob_register(VALUE self, VALUE obj)
+{
+    rb_postponed_job_register(0, pjob_callback, (void *)obj);
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-postponed_job_register_one">
+            
+              <b>postponed_job_register_one</b>(p1)
+            
+            <a href="../classes/Bug.html#method-c-postponed_job_register_one" name="method-c-postponed_job_register_one" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-postponed_job_register_one_source')" id="l_method-c-postponed_job_register_one_source">show</a>
+                
+              </p>
+              <div id="method-c-postponed_job_register_one_source" class="dyn-source">
+                <pre>static VALUE
+pjob_register_one(VALUE self, VALUE obj)
+{
+    rb_postponed_job_register_one(0, pjob_one_callback, (void *)obj);
+    rb_postponed_job_register_one(0, pjob_one_callback, (void *)obj);
+    rb_postponed_job_register_one(0, pjob_one_callback, (void *)obj);
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-start">
+            
+              <b>start</b>()
+            
+            <a href="../classes/Bug.html#method-c-start" name="method-c-start" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-start_source')" id="l_method-c-start_source">show</a>
+                
+              </p>
+              <div id="method-c-start_source" class="dyn-source">
+                <pre>static VALUE
+bug_start(VALUE self, VALUE hash)
+{
+    VALUE ary = rb_ary_new3(1, Qnil);
+    rb_block_call(ary, rb_intern(&quot;map&quot;), 0, 0, bug_i, self);
+    return ary;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-tracepoint_specify_normal_and_internal_events">
+            
+              <b>tracepoint_specify_normal_and_internal_events</b>()
+            
+            <a href="../classes/Bug.html#method-c-tracepoint_specify_normal_and_internal_events" name="method-c-tracepoint_specify_normal_and_internal_events" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-tracepoint_specify_normal_and_internal_events_source')" id="l_method-c-tracepoint_specify_normal_and_internal_events_source">show</a>
+                
+              </p>
+              <div id="method-c-tracepoint_specify_normal_and_internal_events_source" class="dyn-source">
+                <pre>static VALUE
+tracepoint_specify_normal_and_internal_events(VALUE self)
+{
+    VALUE tpval = rb_tracepoint_new(0, RUBY_INTERNAL_EVENT_NEWOBJ | RUBY_EVENT_CALL, 0, 0);
+    rb_tracepoint_enable(tpval);
+    return Qnil; /* should not be reached */
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-tracepoint_track_objspace_events">
+            
+              <b>tracepoint_track_objspace_events</b>()
+            
+            <a href="../classes/Bug.html#method-c-tracepoint_track_objspace_events" name="method-c-tracepoint_track_objspace_events" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-tracepoint_track_objspace_events_source')" id="l_method-c-tracepoint_track_objspace_events_source">show</a>
+                
+              </p>
+              <div id="method-c-tracepoint_track_objspace_events_source" class="dyn-source">
+                <pre>static VALUE
+tracepoint_track_objspace_events(VALUE self)
+{
+    struct tracepoint_track track = {0, 0, 0, 0, 0,};
+    VALUE tpval = rb_tracepoint_new(0, RUBY_INTERNAL_EVENT_NEWOBJ | RUBY_INTERNAL_EVENT_FREEOBJ |
+                                    RUBY_INTERNAL_EVENT_GC_START | RUBY_INTERNAL_EVENT_GC_END_MARK |
+                                    RUBY_INTERNAL_EVENT_GC_END_SWEEP,
+                                    tracepoint_track_objspace_events_i, &amp;track);
+    VALUE result = rb_ary_new();
+
+    rb_tracepoint_enable(tpval);
+    rb_ensure(rb_yield, Qundef, rb_tracepoint_disable, tpval);
+
+    rb_ary_push(result, SIZET2NUM(track.newobj_count));
+    rb_ary_push(result, SIZET2NUM(track.free_count));
+    rb_ary_push(result, SIZET2NUM(track.gc_start_count));
+    rb_ary_push(result, SIZET2NUM(track.gc_end_mark_count));
+    rb_ary_push(result, SIZET2NUM(track.gc_end_sweep_count));
+    rb_ary_cat(result, track.objects, track.objects_count);
+
+    return result;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-unp_st_foreach">
+            
+              <b>unp_st_foreach</b>(p1)
+            
+            <a href="../classes/Bug.html#method-c-unp_st_foreach" name="method-c-unp_st_foreach" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-unp_st_foreach_source')" id="l_method-c-unp_st_foreach_source">show</a>
+                
+              </p>
+              <div id="method-c-unp_st_foreach_source" class="dyn-source">
+                <pre>static VALUE
+unp_fe(VALUE self, VALUE test)
+{
+    st_table *tbl = st_init_numtable();
+    struct checker c;
+
+    c.tbl = tbl;
+    c.nr = 0;
+    c.test = test;
+
+    st_add_direct(tbl, 0, 0);
+
+    if (tbl-&gt;bins != NULL) rb_bug(&quot;should still be packed\n&quot;);
+
+    st_foreach(tbl, unp_fe_i, (st_data_t)&amp;c);
+
+    if (c.test == ID2SYM(rb_intern(&quot;unpack_delete&quot;))) {
+        if (c.nr != 1) {
+            rb_bug(&quot;mismatched iteration: %&quot;PRIuVALUE&quot; (expected 1)\n&quot;, (VALUE)c.nr);
+        }
+    }
+    else if (c.nr != expect_size) {
+        rb_bug(&quot;mismatched iteration: %&quot;PRIuVALUE&quot; (expected %&quot;PRIuVALUE&quot;o)\n&quot;,
+                (VALUE)c.nr, (VALUE)expect_size);
+    }
+
+    if (tbl-&gt;bins == NULL) rb_bug(&quot;should be unpacked\n&quot;);
+
+    st_free_table(tbl);
+
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-unp_st_foreach_check">
+            
+              <b>unp_st_foreach_check</b>(p1)
+            
+            <a href="../classes/Bug.html#method-c-unp_st_foreach_check" name="method-c-unp_st_foreach_check" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-unp_st_foreach_check_source')" id="l_method-c-unp_st_foreach_check_source">show</a>
+                
+              </p>
+              <div id="method-c-unp_st_foreach_check_source" class="dyn-source">
+                <pre>static VALUE
+unp_fec(VALUE self, VALUE test)
+{
+    st_table *tbl = st_init_numtable();
+    struct checker c;
+
+    c.tbl = tbl;
+    c.nr = 0;
+    c.test = test;
+
+    st_add_direct(tbl, 0, 0);
+
+    if (tbl-&gt;bins != NULL) rb_bug(&quot;should still be packed\n&quot;);
+
+    st_foreach_check(tbl, unp_fec_i, (st_data_t)&amp;c, -1);
+
+    if (c.test == ID2SYM(rb_intern(&quot;delete2&quot;))) {
+        if (c.nr != 1) {
+            rb_bug(&quot;mismatched iteration: %&quot;PRIuVALUE&quot; (expected 1)\n&quot;, (VALUE)c.nr);
+        }
+    }
+    else if (c.nr != expect_size) {
+        rb_bug(&quot;mismatched iteration: %&quot;PRIuVALUE&quot; (expected %&quot;PRIuVALUE&quot;)\n&quot;,
+                (VALUE)c.nr, (VALUE)expect_size);
+    }
+
+    if (tbl-&gt;bins == NULL) rb_bug(&quot;should be unpacked\n&quot;);
+
+    st_free_table(tbl);
+
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Installation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Installation">
+
+  
+
+    <meta name="keywords" content="Installation class">
+  
+    <meta name="keywords" content="new, manifest, install_program, install_library">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            Installation
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/nacl/package_rb.html">nacl/package.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-install_library">install_library</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-install_program">install_program</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-manifest">manifest</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="NaClConfig.html">
+              NaClConfig
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">SRC_DIRS</td>
+            <td>=</td>
+            <td class="attr-value">[
+Dir.pwd,
+HOST_LIB,
+NACL_LIB,
+]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(destdir)
+            
+            <a href="../classes/Installation.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/165221441c462b8feccefaebc70499765d3f710e/nacl/package.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File nacl/package.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">destdir</span>)
+  <span class="ruby-ivar">@destdir</span> = <span class="ruby-identifier">destdir</span>
+  <span class="ruby-ivar">@manifest</span> = {
+    <span class="ruby-string">&quot;files&quot;</span> =<span class="ruby-operator">&gt;</span> {}
+  }
+  <span class="ruby-identifier">ruby_libs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Collision of #{path}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@manifest</span>[<span class="ruby-string">&#39;files&#39;</span>].<span class="ruby-identifier">key?</span> <span class="ruby-identifier">path</span>
+    <span class="ruby-ivar">@manifest</span>[<span class="ruby-string">&#39;files&#39;</span>][<span class="ruby-identifier">path</span>] = {
+      <span class="ruby-constant">ARCH</span> =<span class="ruby-operator">&gt;</span> {
+        <span class="ruby-string">&quot;url&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>
+      }
+    }
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>[<span class="ruby-regexp">/\.so$/</span>]
+      <span class="ruby-identifier">alternate_path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39;/&#39;</span>, <span class="ruby-string">&quot;_&quot;</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Collision of #{alternate_path}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@manifest</span>[<span class="ruby-string">&#39;files&#39;</span>].<span class="ruby-identifier">key?</span> <span class="ruby-identifier">alternate_path</span>
+      <span class="ruby-ivar">@manifest</span>[<span class="ruby-string">&#39;files&#39;</span>][<span class="ruby-identifier">alternate_path</span>] = {
+        <span class="ruby-constant">ARCH</span> =<span class="ruby-operator">&gt;</span> {
+          <span class="ruby-string">&quot;url&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>
+        }
+      }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-install_library">
+            
+              <b>install_library</b>(name, basename)
+            
+            <a href="../classes/Installation.html#method-i-install_library" name="method-i-install_library" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-install_library_source')" id="l_method-i-install_library_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/165221441c462b8feccefaebc70499765d3f710e/nacl/package.rb#L61" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-install_library_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File nacl/package.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">install_library</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">basename</span>)
+  <span class="ruby-identifier">do_install_binary</span>(<span class="ruby-identifier">basename</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-ivar">@destdir</span>, <span class="ruby-string">&quot;lib&quot;</span>, <span class="ruby-constant">ARCH</span>))
+  <span class="ruby-ivar">@manifest</span>[<span class="ruby-string">&quot;files&quot;</span>][<span class="ruby-identifier">name</span>] = {
+    <span class="ruby-constant">ARCH</span> =<span class="ruby-operator">&gt;</span> {
+      <span class="ruby-string">&quot;url&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;lib&quot;</span>, <span class="ruby-constant">ARCH</span>, <span class="ruby-identifier">basename</span>)
+    }
+  }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-install_program">
+            
+              <b>install_program</b>(basename)
+            
+            <a href="../classes/Installation.html#method-i-install_program" name="method-i-install_program" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-install_program_source')" id="l_method-i-install_program_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/165221441c462b8feccefaebc70499765d3f710e/nacl/package.rb#L52" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-install_program_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File nacl/package.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">install_program</span>(<span class="ruby-identifier">basename</span>)
+  <span class="ruby-identifier">do_install_binary</span>(<span class="ruby-identifier">basename</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-ivar">@destdir</span>, <span class="ruby-string">&quot;bin&quot;</span>, <span class="ruby-constant">ARCH</span>))
+  <span class="ruby-ivar">@manifest</span>[<span class="ruby-string">&quot;program&quot;</span>] = {
+    <span class="ruby-constant">ARCH</span> =<span class="ruby-operator">&gt;</span> {
+      <span class="ruby-string">&quot;url&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;bin&quot;</span>, <span class="ruby-constant">ARCH</span>, <span class="ruby-identifier">basename</span>)
+    }
+  }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-manifest">
+            
+              <b>manifest</b>()
+            
+            <a href="../classes/Installation.html#method-i-manifest" name="method-i-manifest" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-manifest_source')" id="l_method-i-manifest_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/165221441c462b8feccefaebc70499765d3f710e/nacl/package.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-manifest_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File nacl/package.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">manifest</span>
+  <span class="ruby-ivar">@manifest</span>.<span class="ruby-identifier">dup</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

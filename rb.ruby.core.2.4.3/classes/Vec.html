@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Vec</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Vec">
+
+  
+
+    <meta name="keywords" content="Vec class">
+  
+    <meta name="keywords" content="new, vadd, vsub, vcross, vdot, vlength, vnormalize">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            Vec
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/benchmark/bm_app_aobench_rb.html">benchmark/bm_app_aobench.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>V</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-vadd">vadd</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-vcross">vcross</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-vdot">vdot</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-vlength">vlength</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-vnormalize">vnormalize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-vsub">vsub</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>z</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(x, y, z)
+            
+            <a href="../classes/Vec.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L13" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">z</span>)
+  <span class="ruby-ivar">@x</span> = <span class="ruby-identifier">x</span>
+  <span class="ruby-ivar">@y</span> = <span class="ruby-identifier">y</span>
+  <span class="ruby-ivar">@z</span> = <span class="ruby-identifier">z</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-vadd">
+            
+              <b>vadd</b>(b)
+            
+            <a href="../classes/Vec.html#method-i-vadd" name="method-i-vadd" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-vadd_source')" id="l_method-i-vadd_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-vadd_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">vadd</span>(<span class="ruby-identifier">b</span>)
+  <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">x</span>, <span class="ruby-ivar">@y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">y</span>, <span class="ruby-ivar">@z</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">z</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-vcross">
+            
+              <b>vcross</b>(b)
+            
+            <a href="../classes/Vec.html#method-i-vcross" name="method-i-vcross" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-vcross_source')" id="l_method-i-vcross_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L29" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-vcross_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">vcross</span>(<span class="ruby-identifier">b</span>)
+  <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@y</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">z</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@z</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">y</span>,
+          <span class="ruby-ivar">@z</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@x</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">z</span>,
+          <span class="ruby-ivar">@x</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@y</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">x</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-vdot">
+            
+              <b>vdot</b>(b)
+            
+            <a href="../classes/Vec.html#method-i-vdot" name="method-i-vdot" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-vdot_source')" id="l_method-i-vdot_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-vdot_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">vdot</span>(<span class="ruby-identifier">b</span>)
+  <span class="ruby-ivar">@x</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@y</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@z</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">z</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-vlength">
+            
+              <b>vlength</b>()
+            
+            <a href="../classes/Vec.html#method-i-vlength" name="method-i-vlength" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-vlength_source')" id="l_method-i-vlength_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-vlength_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">vlength</span>
+  <span class="ruby-constant">Math</span>.<span class="ruby-identifier">sqrt</span>(<span class="ruby-ivar">@x</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@y</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@y</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@z</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@z</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-vnormalize">
+            
+              <b>vnormalize</b>()
+            
+            <a href="../classes/Vec.html#method-i-vnormalize" name="method-i-vnormalize" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-vnormalize_source')" id="l_method-i-vnormalize_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L43" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-vnormalize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">vnormalize</span>
+  <span class="ruby-identifier">len</span> = <span class="ruby-identifier">vlength</span>
+  <span class="ruby-identifier">v</span> = <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-ivar">@z</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">len</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">1.0e-17</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">v</span>.<span class="ruby-identifier">x</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">len</span>
+    <span class="ruby-identifier">v</span>.<span class="ruby-identifier">y</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">len</span>
+    <span class="ruby-identifier">v</span>.<span class="ruby-identifier">z</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">z</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">len</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">v</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-vsub">
+            
+              <b>vsub</b>(b)
+            
+            <a href="../classes/Vec.html#method-i-vsub" name="method-i-vsub" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-vsub_source')" id="l_method-i-vsub_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L25" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-vsub_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">vsub</span>(<span class="ruby-identifier">b</span>)
+  <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">x</span>, <span class="ruby-ivar">@y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">y</span>, <span class="ruby-ivar">@z</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">z</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

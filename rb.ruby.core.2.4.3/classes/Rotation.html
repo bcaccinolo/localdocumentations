@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Rotation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Rotation">
+
+  
+    
+    <meta name="description" content="class to represent all information about a particular rotation of a particular piece.">
+    <meta property="og:description" content="class to represent all information about a particular rotation of a particular piece.">
+  
+
+    <meta name="keywords" content="Rotation class">
+  
+    <meta name="keywords" content="new, compute_required, flood_fill, offsets, normalize_offsets, mask_for_offsets, start_adjust, get_values">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            Rotation
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/benchmark/bm_so_meteor_contest_rb.html">benchmark/bm_so_meteor_contest.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>class to represent all information about a particular rotation of a
+particular piece</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-compute_required">compute_required</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-flood_fill">flood_fill</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-get_values">get_values</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mask_for_offsets">mask_for_offsets</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-normalize_offsets">normalize_offsets</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-offsets">offsets</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-start_adjust">start_adjust</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>start_masks</td>
+            <td class='attr-desc'><p>an array (by location) containing a bit mask for how the piece maps at the
+given location. if the rotation is invalid at that location the mask will
+contain false</p></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>( directions )
+            
+            <a href="../classes/Rotation.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L26" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>( <span class="ruby-identifier">directions</span> )
+  <span class="ruby-ivar">@even_offsets</span>, <span class="ruby-ivar">@odd_offsets</span> = <span class="ruby-identifier">normalize_offsets</span>( <span class="ruby-identifier">get_values</span>( <span class="ruby-identifier">directions</span> ))
+
+  <span class="ruby-ivar">@even_mask</span> = <span class="ruby-identifier">mask_for_offsets</span>( <span class="ruby-ivar">@even_offsets</span>)
+  <span class="ruby-ivar">@odd_mask</span> = <span class="ruby-identifier">mask_for_offsets</span>( <span class="ruby-ivar">@odd_offsets</span>)
+
+  <span class="ruby-ivar">@start_masks</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-number">60</span>)
+
+  <span class="ruby-comment"># create the rotational masks by placing the base mask at the location and seeing if</span>
+  <span class="ruby-comment"># 1) it overlaps the boundaries and 2) it produces a prunable board.  if either of these</span>
+  <span class="ruby-comment"># is true the piece cannot be placed</span>
+  <span class="ruby-number">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-number">59</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">offset</span> <span class="ruby-operator">|</span>
+    <span class="ruby-identifier">mask</span> = <span class="ruby-identifier">is_even</span>(<span class="ruby-identifier">offset</span>) <span class="ruby-operator">?</span> (<span class="ruby-ivar">@even_mask</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">offset</span>) <span class="ruby-operator">:</span> (<span class="ruby-ivar">@odd_mask</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">offset</span>)
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">blank_board</span> <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">mask</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">prunable</span>(<span class="ruby-identifier">blank_board</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">mask</span>, <span class="ruby-number">0</span>, <span class="ruby-keyword">true</span>)) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">imask</span> = <span class="ruby-identifier">compute_required</span>( <span class="ruby-identifier">mask</span>, <span class="ruby-identifier">offset</span>)
+      <span class="ruby-ivar">@start_masks</span>[<span class="ruby-identifier">offset</span>] = [ <span class="ruby-identifier">mask</span>, <span class="ruby-identifier">imask</span>, <span class="ruby-identifier">imask</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">mask</span> ]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@start_masks</span>[<span class="ruby-identifier">offset</span>] = <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-compute_required">
+            
+              <b>compute_required</b>( mask, offset )
+            
+            <a href="../classes/Rotation.html#method-i-compute_required" name="method-i-compute_required" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-compute_required_source')" id="l_method-i-compute_required_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-compute_required_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">compute_required</span>( <span class="ruby-identifier">mask</span>, <span class="ruby-identifier">offset</span> )
+  <span class="ruby-identifier">board</span> = <span class="ruby-identifier">blank_board</span>
+  <span class="ruby-number">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">offset</span>) { <span class="ruby-operator">|</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">board</span> <span class="ruby-operator">|=</span> <span class="ruby-number">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span> }
+  <span class="ruby-identifier">board</span> <span class="ruby-operator">|=</span> <span class="ruby-identifier">mask</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-number">0</span> <span class="ruby-keyword">if</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">prunable</span>(<span class="ruby-identifier">board</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">mask</span>, <span class="ruby-identifier">offset</span>))
+  <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>(<span class="ruby-identifier">board</span>,<span class="ruby-number">58</span>)
+  <span class="ruby-identifier">count</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">imask</span> = <span class="ruby-number">0</span>
+  <span class="ruby-number">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-number">59</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">board</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-number">0</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">imask</span> <span class="ruby-operator">|=</span> (<span class="ruby-number">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span>)
+      <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  (<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">5</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">imask</span> <span class="ruby-operator">:</span> <span class="ruby-number">0</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-flood_fill">
+            
+              <b>flood_fill</b>( board, location)
+            
+            <a href="../classes/Rotation.html#method-i-flood_fill" name="method-i-flood_fill" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-flood_fill_source')" id="l_method-i-flood_fill_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L65" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-flood_fill_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">board</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">board</span>[<span class="ruby-identifier">location</span>] <span class="ruby-operator">==</span> <span class="ruby-number">1</span>)
+  <span class="ruby-identifier">board</span> <span class="ruby-operator">|=</span> <span class="ruby-number">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">location</span>
+  <span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span> = <span class="ruby-identifier">location</span>.<span class="ruby-identifier">divmod</span>(<span class="ruby-number">6</span>)
+  <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">-</span> <span class="ruby-number">1</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">col</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span>)
+  <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">col</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">4</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">row</span> <span class="ruby-operator">%</span> <span class="ruby-number">2</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">-</span> <span class="ruby-number">7</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">col</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">row</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span>)
+    <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">-</span> <span class="ruby-number">6</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">row</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span>)
+    <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">+</span> <span class="ruby-number">6</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">9</span>)
+    <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">+</span> <span class="ruby-number">5</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">col</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">9</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">-</span> <span class="ruby-number">5</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">col</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">4</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">row</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span>)
+    <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">-</span> <span class="ruby-number">6</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">row</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span>)
+    <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">+</span> <span class="ruby-number">6</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">9</span>)
+    <span class="ruby-identifier">board</span> = <span class="ruby-identifier">flood_fill</span>( <span class="ruby-identifier">board</span>, <span class="ruby-identifier">location</span> <span class="ruby-operator">+</span> <span class="ruby-number">7</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">col</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">4</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;</span> <span class="ruby-number">9</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">board</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_values">
+            
+              <b>get_values</b>( directions )
+            
+            <a href="../classes/Rotation.html#method-i-get_values" name="method-i-get_values" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>given a set of directions places the piece (as defined by a set of
+directions) on the board at a location that will not take it off the edge</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-get_values_source')" id="l_method-i-get_values_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L158" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-get_values_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 158</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_values</span>( <span class="ruby-identifier">directions</span> )
+  <span class="ruby-identifier">start</span> = <span class="ruby-identifier">start_adjust</span>(<span class="ruby-identifier">directions</span>)
+  <span class="ruby-identifier">values</span> = [ <span class="ruby-identifier">start</span> ]
+  <span class="ruby-identifier">directions</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">direction</span> <span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">start</span> <span class="ruby-operator">%</span> <span class="ruby-number">12</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-number">6</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">start</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">@@rotation_odd_adder</span>[<span class="ruby-identifier">direction</span>]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">start</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">@@rotation_even_adder</span>[<span class="ruby-identifier">direction</span>]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">values</span> <span class="ruby-operator">+=</span> [ <span class="ruby-identifier">start</span> ]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># some moves take you back to an existing location, we&#39;ll strip duplicates</span>
+  <span class="ruby-identifier">values</span>.<span class="ruby-identifier">uniq</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mask_for_offsets">
+            
+              <b>mask_for_offsets</b>( offsets )
+            
+            <a href="../classes/Rotation.html#method-i-mask_for_offsets" name="method-i-mask_for_offsets" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>produce a bitmask representation of an array of offset locations</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-mask_for_offsets_source')" id="l_method-i-mask_for_offsets_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L138" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-mask_for_offsets_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">mask_for_offsets</span>( <span class="ruby-identifier">offsets</span> )
+  <span class="ruby-identifier">mask</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">offsets</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">mask</span> = <span class="ruby-identifier">mask</span> <span class="ruby-operator">+</span> ( <span class="ruby-number">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span> ) }
+  <span class="ruby-identifier">mask</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-normalize_offsets">
+            
+              <b>normalize_offsets</b>( values)
+            
+            <a href="../classes/Rotation.html#method-i-normalize_offsets" name="method-i-normalize_offsets" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>returns a set of offsets relative to the top-left most piece of the
+rotation (by even or odd rows) this is hard to explain. imagine we have
+this partial board:</p>
+
+<pre><code>0 0 0 0 0 x        [positions 0-5]
+ 0 0 1 1 0 x       [positions 6-11]
+0 0 1 0 0 x        [positions 12-17]
+ 0 1 0 0 0 x       [positions 18-23]
+0 1 0 0 0 x        [positions 24-29]
+ 0 0 0 0 0 x       [positions 30-35]
+    ...</code></pre>
+
+<p>The top-left of the piece is at position 8, the board would be passed as a
+set of positions (values array) containing [8,9,14,19,25] not necessarily
+in that sorted order.  Since that array starts on an odd row, the offsets
+for an odd row are: [0,1,6,11,17] obtained by subtracting 8 from
+everything.  Now imagine the piece shifted up and to the right so it&#39;s
+on an even row:</p>
+
+<pre><code>0 0 0 1 1 x        [positions 0-5]
+ 0 0 1 0 0 x       [positions 6-11]
+0 0 1 0 0 x        [positions 12-17]
+ 0 1 0 0 0 x       [positions 18-23]
+0 0 0 0 0 x        [positions 24-29]
+ 0 0 0 0 0 x       [positions 30-35]
+    ...</code></pre>
+
+<p>Now the positions are [3,4,8,14,19] which after subtracting the lowest
+value (3) gives [0,1,5,11,16] thus, the offsets for this particular piece
+are (in even, odd order) [<a href="0,1,6,11,17">0,1,5,11,16],</a> which is
+what this function would return</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-normalize_offsets_source')" id="l_method-i-normalize_offsets_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L117" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-normalize_offsets_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">normalize_offsets</span>( <span class="ruby-identifier">values</span>)
+  <span class="ruby-identifier">min</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">min</span>
+  <span class="ruby-identifier">even_min</span> = <span class="ruby-identifier">is_even</span>(<span class="ruby-identifier">min</span>)
+  <span class="ruby-identifier">other_min</span> = <span class="ruby-identifier">even_min</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">min</span> <span class="ruby-operator">+</span> <span class="ruby-number">6</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">min</span> <span class="ruby-operator">+</span> <span class="ruby-number">7</span>
+  <span class="ruby-identifier">other_values</span> = <span class="ruby-identifier">values</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_even</span>(<span class="ruby-identifier">value</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">value</span> <span class="ruby-operator">+</span> <span class="ruby-number">6</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">other_min</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">value</span> <span class="ruby-operator">+</span> <span class="ruby-number">7</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">other_min</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">values</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">min</span> }
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">even_min</span> <span class="ruby-keyword">then</span>
+    [<span class="ruby-identifier">values</span>, <span class="ruby-identifier">other_values</span>]
+  <span class="ruby-keyword">else</span>
+    [<span class="ruby-identifier">other_values</span>, <span class="ruby-identifier">values</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-offsets">
+            
+              <b>offsets</b>( location)
+            
+            <a href="../classes/Rotation.html#method-i-offsets" name="method-i-offsets" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>given a location, produces a list of relative locations covered by the
+piece at this rotation</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-offsets_source')" id="l_method-i-offsets_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L86" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-offsets_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">offsets</span>( <span class="ruby-identifier">location</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_even</span>( <span class="ruby-identifier">location</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-ivar">@even_offsets</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">location</span> }
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@odd_offsets</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">location</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-start_adjust">
+            
+              <b>start_adjust</b>( directions )
+            
+            <a href="../classes/Rotation.html#method-i-start_adjust" name="method-i-start_adjust" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>finds a “safe” position that a position as described by a list of
+directions can be placed without falling off any edge of the board.  the
+values returned a location to place the first piece at so it will fit after
+making the described moves</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-start_adjust_source')" id="l_method-i-start_adjust_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/716610ae565caed8df725dd26ffbc2000b673fcd/benchmark/bm_so_meteor_contest.rb#L147" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-start_adjust_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_so_meteor_contest.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">start_adjust</span>( <span class="ruby-identifier">directions</span> )
+  <span class="ruby-identifier">south</span> = <span class="ruby-identifier">east</span> = <span class="ruby-number">0</span>;
+  <span class="ruby-identifier">directions</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">direction</span> <span class="ruby-operator">|</span>
+    <span class="ruby-identifier">east</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> ( <span class="ruby-identifier">direction</span> <span class="ruby-operator">==</span> <span class="ruby-value">:sw</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">direction</span> <span class="ruby-operator">==</span> <span class="ruby-value">:nw</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">direction</span> <span class="ruby-operator">==</span> <span class="ruby-value">:west</span> )
+    <span class="ruby-identifier">south</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> ( <span class="ruby-identifier">direction</span> <span class="ruby-operator">==</span> <span class="ruby-value">:nw</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">direction</span> <span class="ruby-operator">==</span> <span class="ruby-value">:ne</span> )
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">south</span> <span class="ruby-operator">*</span> <span class="ruby-number">6</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">east</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

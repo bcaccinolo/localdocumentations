@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Progress</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Progress">
+
+  
+
+    <meta name="keywords" content="Progress class">
+  
+    <meta name="keywords" content="new, passed_string, failed_string, init_string, finish_string, pass, fail, init, finish">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            Progress
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/basictest/test_rb.html">basictest/test.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Progress/Rotator.html">Progress::Rotator</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-fail">fail</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-failed_string">failed_string</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-finish">finish</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-finish_string">finish_string</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-init">init</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-init_string">init_string</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-pass">pass</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-passed_string">passed_string</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>()
+            
+            <a href="../classes/Progress.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L7" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+  <span class="ruby-ivar">@color</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@tty</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@quiet</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@verbose</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">arg</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/\A--color(?:=(?:always|(auto)|(never)|(.*)))?\z/</span>
+      <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;unknown --color argument: #$3&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-node">$3</span>
+      <span class="ruby-ivar">@color</span> = <span class="ruby-node">$1</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-operator">!</span><span class="ruby-node">$2</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/\A--tty(=(?:yes|(no)|(.*)))?\z/</span>
+      <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;unknown --tty argument: #$3&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-node">$3</span>
+      <span class="ruby-ivar">@tty</span> = <span class="ruby-operator">!</span><span class="ruby-node">$1</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-node">$2</span>
+      <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/\A-(q|-quiet)\z/</span>
+      <span class="ruby-ivar">@quiet</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/\A-(v|-verbose)\z/</span>
+      <span class="ruby-ivar">@verbose</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@tty</span> = <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">tty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">tty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-regexp">/dumb/</span> <span class="ruby-operator">!~</span> <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;TERM&quot;</span>] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tty</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@eol</span> = <span class="ruby-ivar">@tty</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@verbose</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;\r\e[K\r&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;\n&quot;</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-ivar">@color</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@color</span> = <span class="ruby-ivar">@tty</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@color</span>
+    <span class="ruby-comment"># dircolors-like style</span>
+    <span class="ruby-identifier">colors</span> = (<span class="ruby-identifier">colors</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;TEST_COLORS&#39;</span>]) <span class="ruby-operator">?</span> <span class="ruby-constant">Hash</span>[<span class="ruby-identifier">colors</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/(\w+)=([^:\n]*)/</span>)] <span class="ruby-operator">:</span> {}
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">__dir__</span>, <span class="ruby-string">&quot;../test/colors&quot;</span>)).<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/(\w+)=([^:\n]*)/</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">colors</span>[<span class="ruby-identifier">n</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">rescue</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@passed</span> = <span class="ruby-node">&quot;\e[;#{colors[&quot;pass&quot;] || &quot;32&quot;}m&quot;</span>
+    <span class="ruby-ivar">@failed</span> = <span class="ruby-node">&quot;\e[;#{colors[&quot;fail&quot;] || &quot;31&quot;}m&quot;</span>
+    <span class="ruby-ivar">@reset</span> = <span class="ruby-string">&quot;\e[m&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@passed</span> = <span class="ruby-ivar">@failed</span> = <span class="ruby-ivar">@reset</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">extend</span>(<span class="ruby-constant">Rotator</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tty</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-fail">
+            
+              <b>fail</b>()
+            
+            <a href="../classes/Progress.html#method-i-fail" name="method-i-fail" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-fail_source')" id="l_method-i-fail_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L69" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-fail_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">fail</span>
+  <span class="ruby-ivar">@ok</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">failed_string</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-failed_string">
+            
+              <b>failed_string</b>()
+            
+            <a href="../classes/Progress.html#method-i-failed_string" name="method-i-failed_string" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-failed_string_source')" id="l_method-i-failed_string_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L54" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-failed_string_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">failed_string</span>
+  <span class="ruby-node">&quot;#{@failed}F#{@reset}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-finish">
+            
+              <b>finish</b>()
+            
+            <a href="../classes/Progress.html#method-i-finish" name="method-i-finish" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-finish_source')" id="l_method-i-finish_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-finish_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">finish</span>
+  <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">finish_string</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-finish_string">
+            
+              <b>finish_string</b>()
+            
+            <a href="../classes/Progress.html#method-i-finish_string" name="method-i-finish_string" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-finish_string_source')" id="l_method-i-finish_string_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L59" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-finish_string_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">finish_string</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@quiet</span>
+    <span class="ruby-ivar">@eol</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-node">&quot;#{@passed}#{@ok ? &#39;OK&#39; : &#39;&#39;} #{$testnum}#{@reset}#{@eol}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-init">
+            
+              <b>init</b>()
+            
+            <a href="../classes/Progress.html#method-i-init" name="method-i-init" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-init_source')" id="l_method-i-init_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L73" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-init_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">init</span>
+  <span class="ruby-ivar">@ok</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">init_string</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-init_string">
+            
+              <b>init_string</b>()
+            
+            <a href="../classes/Progress.html#method-i-init_string" name="method-i-init_string" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-init_string_source')" id="l_method-i-init_string_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-init_string_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">init_string</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pass">
+            
+              <b>pass</b>()
+            
+            <a href="../classes/Progress.html#method-i-pass" name="method-i-pass" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-pass_source')" id="l_method-i-pass_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L66" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-pass_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">pass</span>
+  <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">passed_string</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-passed_string">
+            
+              <b>passed_string</b>()
+            
+            <a href="../classes/Progress.html#method-i-passed_string" name="method-i-passed_string" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-passed_string_source')" id="l_method-i-passed_string_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/6b35c34c6808f24f6ac8f03d99620a6406676b0e/basictest/test.rb#L51" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-passed_string_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File basictest/test.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">passed_string</span>
+  <span class="ruby-string">&quot;.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Scene</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Scene">
+
+  
+
+    <meta name="keywords" content="Scene class">
+  
+    <meta name="keywords" content="new, ambient_occlusion, render">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            Scene
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/benchmark/bm_app_aobench_rb.html">benchmark/bm_app_aobench.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ambient_occlusion">ambient_occlusion</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-render">render</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>()
+            
+            <a href="../classes/Scene.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L172" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+  <span class="ruby-ivar">@spheres</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">0</span>] = <span class="ruby-constant">Sphere</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-number">-2.0</span>, <span class="ruby-number">0.0</span>, <span class="ruby-number">-3.5</span>), <span class="ruby-number">0.5</span>)
+  <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">1</span>] = <span class="ruby-constant">Sphere</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-number">-0.5</span>, <span class="ruby-number">0.0</span>, <span class="ruby-number">-3.0</span>), <span class="ruby-number">0.5</span>)
+  <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">2</span>] = <span class="ruby-constant">Sphere</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-number">1.0</span>, <span class="ruby-number">0.0</span>, <span class="ruby-number">-2.2</span>), <span class="ruby-number">0.5</span>)
+  <span class="ruby-ivar">@plane</span> = <span class="ruby-constant">Plane</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-number">0.0</span>, <span class="ruby-number">-0.5</span>, <span class="ruby-number">0.0</span>), <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-number">0.0</span>, <span class="ruby-number">1.0</span>, <span class="ruby-number">0.0</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-ambient_occlusion">
+            
+              <b>ambient_occlusion</b>(isect)
+            
+            <a href="../classes/Scene.html#method-i-ambient_occlusion" name="method-i-ambient_occlusion" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-ambient_occlusion_source')" id="l_method-i-ambient_occlusion_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L180" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-ambient_occlusion_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 180</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ambient_occlusion</span>(<span class="ruby-identifier">isect</span>)
+  <span class="ruby-identifier">basis</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">otherBasis</span>(<span class="ruby-identifier">basis</span>, <span class="ruby-identifier">isect</span>.<span class="ruby-identifier">n</span>)
+
+  <span class="ruby-identifier">ntheta</span>    = <span class="ruby-constant">NAO_SAMPLES</span>
+  <span class="ruby-identifier">nphi</span>      = <span class="ruby-constant">NAO_SAMPLES</span>
+  <span class="ruby-identifier">eps</span>       = <span class="ruby-number">0.0001</span>
+  <span class="ruby-identifier">occlusion</span> = <span class="ruby-number">0.0</span>
+
+  <span class="ruby-identifier">p0</span> = <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">isect</span>.<span class="ruby-identifier">pl</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">eps</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">isect</span>.<span class="ruby-identifier">n</span>.<span class="ruby-identifier">x</span>,
+              <span class="ruby-identifier">isect</span>.<span class="ruby-identifier">pl</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">eps</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">isect</span>.<span class="ruby-identifier">n</span>.<span class="ruby-identifier">y</span>,
+              <span class="ruby-identifier">isect</span>.<span class="ruby-identifier">pl</span>.<span class="ruby-identifier">z</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">eps</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">isect</span>.<span class="ruby-identifier">n</span>.<span class="ruby-identifier">z</span>)
+  <span class="ruby-identifier">nphi</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ntheta</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">rand</span>
+      <span class="ruby-identifier">phi</span> = <span class="ruby-number">2.0</span> <span class="ruby-operator">*</span> <span class="ruby-number">3.14159265</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">rand</span>
+      <span class="ruby-identifier">x</span> = <span class="ruby-constant">Math</span>.<span class="ruby-identifier">cos</span>(<span class="ruby-identifier">phi</span>) <span class="ruby-operator">*</span> <span class="ruby-constant">Math</span>.<span class="ruby-identifier">sqrt</span>(<span class="ruby-number">1.0</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">r</span>)
+      <span class="ruby-identifier">y</span> = <span class="ruby-constant">Math</span>.<span class="ruby-identifier">sin</span>(<span class="ruby-identifier">phi</span>) <span class="ruby-operator">*</span> <span class="ruby-constant">Math</span>.<span class="ruby-identifier">sqrt</span>(<span class="ruby-number">1.0</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">r</span>)
+      <span class="ruby-identifier">z</span> = <span class="ruby-constant">Math</span>.<span class="ruby-identifier">sqrt</span>(<span class="ruby-identifier">r</span>)
+
+      <span class="ruby-identifier">rx</span> = <span class="ruby-identifier">x</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">0</span>].<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">z</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">2</span>].<span class="ruby-identifier">x</span>
+      <span class="ruby-identifier">ry</span> = <span class="ruby-identifier">x</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">0</span>].<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">z</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">2</span>].<span class="ruby-identifier">y</span>
+      <span class="ruby-identifier">rz</span> = <span class="ruby-identifier">x</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">0</span>].<span class="ruby-identifier">z</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">z</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">z</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">basis</span>[<span class="ruby-number">2</span>].<span class="ruby-identifier">z</span>
+
+      <span class="ruby-identifier">raydir</span> = <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">rx</span>, <span class="ruby-identifier">ry</span>, <span class="ruby-identifier">rz</span>)
+      <span class="ruby-identifier">ray</span> = <span class="ruby-constant">Ray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">p0</span>, <span class="ruby-identifier">raydir</span>)
+
+      <span class="ruby-identifier">occisect</span> = <span class="ruby-constant">Isect</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">0</span>].<span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">ray</span>, <span class="ruby-identifier">occisect</span>)
+      <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">ray</span>, <span class="ruby-identifier">occisect</span>)
+      <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">2</span>].<span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">ray</span>, <span class="ruby-identifier">occisect</span>)
+      <span class="ruby-ivar">@plane</span>.<span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">ray</span>, <span class="ruby-identifier">occisect</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">occisect</span>.<span class="ruby-identifier">hit</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">occlusion</span> = <span class="ruby-identifier">occlusion</span> <span class="ruby-operator">+</span> <span class="ruby-number">1.0</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-number">0.0</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">occlusion</span> = (<span class="ruby-identifier">ntheta</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">nphi</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">occlusion</span>) <span class="ruby-operator">/</span> (<span class="ruby-identifier">ntheta</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">nphi</span>.<span class="ruby-identifier">to_f</span>)
+
+  <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">occlusion</span>, <span class="ruby-identifier">occlusion</span>, <span class="ruby-identifier">occlusion</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-render">
+            
+              <b>render</b>(w, h, nsubsamples)
+            
+            <a href="../classes/Scene.html#method-i-render" name="method-i-render" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-render_source')" id="l_method-i-render_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/30280ef6cd66356b03e86d90395b98d07b4e447a/benchmark/bm_app_aobench.rb#L225" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-render_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/bm_app_aobench.rb, line 225</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">render</span>(<span class="ruby-identifier">w</span>, <span class="ruby-identifier">h</span>, <span class="ruby-identifier">nsubsamples</span>)
+  <span class="ruby-identifier">cnt</span> = <span class="ruby-number">0</span>
+  <span class="ruby-identifier">nsf</span> = <span class="ruby-identifier">nsubsamples</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">h</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">w</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">rad</span> = <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-number">0.0</span>, <span class="ruby-number">0.0</span>, <span class="ruby-number">0.0</span>)
+
+      <span class="ruby-comment"># Subsampling</span>
+      <span class="ruby-identifier">nsubsamples</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">nsubsamples</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">u</span><span class="ruby-operator">|</span>
+
+          <span class="ruby-identifier">cnt</span> = <span class="ruby-identifier">cnt</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>
+          <span class="ruby-identifier">wf</span> = <span class="ruby-identifier">w</span>.<span class="ruby-identifier">to_f</span>
+          <span class="ruby-identifier">hf</span> = <span class="ruby-identifier">h</span>.<span class="ruby-identifier">to_f</span>
+          <span class="ruby-identifier">xf</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">to_f</span>
+          <span class="ruby-identifier">yf</span> = <span class="ruby-identifier">y</span>.<span class="ruby-identifier">to_f</span>
+          <span class="ruby-identifier">uf</span> = <span class="ruby-identifier">u</span>.<span class="ruby-identifier">to_f</span>
+          <span class="ruby-identifier">vf</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_f</span>
+
+          <span class="ruby-identifier">px</span> = (<span class="ruby-identifier">xf</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">uf</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">nsf</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">wf</span> <span class="ruby-operator">/</span> <span class="ruby-number">2.0</span>)) <span class="ruby-operator">/</span> (<span class="ruby-identifier">wf</span> <span class="ruby-operator">/</span> <span class="ruby-number">2.0</span>)
+          <span class="ruby-identifier">py</span> = <span class="ruby-operator">-</span>(<span class="ruby-identifier">yf</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">vf</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">nsf</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">hf</span> <span class="ruby-operator">/</span> <span class="ruby-number">2.0</span>)) <span class="ruby-operator">/</span> (<span class="ruby-identifier">hf</span> <span class="ruby-operator">/</span> <span class="ruby-number">2.0</span>)
+
+          <span class="ruby-identifier">eye</span> = <span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">px</span>, <span class="ruby-identifier">py</span>, <span class="ruby-number">-1.0</span>).<span class="ruby-identifier">vnormalize</span>
+
+          <span class="ruby-identifier">ray</span> = <span class="ruby-constant">Ray</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Vec</span>.<span class="ruby-identifier">new</span>(<span class="ruby-number">0.0</span>, <span class="ruby-number">0.0</span>, <span class="ruby-number">0.0</span>), <span class="ruby-identifier">eye</span>)
+
+          <span class="ruby-identifier">isect</span> = <span class="ruby-constant">Isect</span>.<span class="ruby-identifier">new</span>
+          <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">0</span>].<span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">ray</span>, <span class="ruby-identifier">isect</span>)
+          <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">ray</span>, <span class="ruby-identifier">isect</span>)
+          <span class="ruby-ivar">@spheres</span>[<span class="ruby-number">2</span>].<span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">ray</span>, <span class="ruby-identifier">isect</span>)
+          <span class="ruby-ivar">@plane</span>.<span class="ruby-identifier">intersect</span>(<span class="ruby-identifier">ray</span>, <span class="ruby-identifier">isect</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">isect</span>.<span class="ruby-identifier">hit</span> <span class="ruby-keyword">then</span>
+            <span class="ruby-identifier">col</span> = <span class="ruby-identifier">ambient_occlusion</span>(<span class="ruby-identifier">isect</span>)
+            <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">x</span> = <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">col</span>.<span class="ruby-identifier">x</span>
+            <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">y</span> = <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">col</span>.<span class="ruby-identifier">y</span>
+            <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">z</span> = <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">z</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">col</span>.<span class="ruby-identifier">z</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">/</span> (<span class="ruby-identifier">nsf</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">nsf</span>)
+      <span class="ruby-identifier">g</span> = <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">/</span> (<span class="ruby-identifier">nsf</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">nsf</span>)
+      <span class="ruby-identifier">b</span> = <span class="ruby-identifier">rad</span>.<span class="ruby-identifier">z</span> <span class="ruby-operator">/</span> (<span class="ruby-identifier">nsf</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">nsf</span>)
+      <span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;%c&quot;</span>, <span class="ruby-identifier">clamp</span>(<span class="ruby-identifier">r</span>))
+      <span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;%c&quot;</span>, <span class="ruby-identifier">clamp</span>(<span class="ruby-identifier">g</span>))
+      <span class="ruby-identifier">printf</span>(<span class="ruby-string">&quot;%c&quot;</span>, <span class="ruby-identifier">clamp</span>(<span class="ruby-identifier">b</span>))
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

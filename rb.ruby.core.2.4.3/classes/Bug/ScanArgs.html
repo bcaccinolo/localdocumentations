@@ -1,0 +1,1356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Bug::ScanArgs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Bug::ScanArgs">
+
+  
+
+    <meta name="keywords" content="Bug::ScanArgs class">
+  
+    <meta name="keywords" content="lead, opt, lead_opt, var, lead_var, opt_var, lead_opt_var, opt_trail, lead_opt_trail, var_trail, lead_var_trail, opt_var_trail, lead_opt_var_trail, hash, lead_hash, opt_hash, lead_opt_hash, var_hash, lead_var_hash, opt_var_hash, lead_opt_var_hash, opt_trail_hash, lead_opt_trail_hash, var_trail_hash, lead_var_trail_hash, opt_var_trail_hash, lead_opt_var_trail_hash">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span>
+            Bug::ScanArgs
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/ext/-test-/bignum/init_c.html">ext/-test-/bignum/init.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-hash">hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-lead">lead</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_hash">lead_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_opt">lead_opt</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_opt_hash">lead_opt_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_opt_trail">lead_opt_trail</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_opt_trail_hash">lead_opt_trail_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_opt_var">lead_opt_var</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_opt_var_hash">lead_opt_var_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_opt_var_trail">lead_opt_var_trail</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_opt_var_trail_hash">lead_opt_var_trail_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_var">lead_var</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_var_hash">lead_var_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_var_trail">lead_var_trail</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-lead_var_trail_hash">lead_var_trail_hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-opt">opt</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-opt_hash">opt_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-opt_trail">opt_trail</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-opt_trail_hash">opt_trail_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-opt_var">opt_var</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-opt_var_hash">opt_var_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-opt_var_trail">opt_var_trail</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-opt_var_trail_hash">opt_var_trail_hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>V</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-var">var</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-var_hash">var_hash</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-var_trail">var_trail</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-var_trail_hash">var_trail_hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-hash">
+            
+              <b>hash</b>(p1 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-hash" name="method-c-hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>hash</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-hash_source')" id="l_method-c-hash_source">show</a>
+                
+              </p>
+              <div id="method-c-hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[2];
+    int n = rb_scan_args(argc, argv, &quot;:&quot;, args+1);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead">
+            
+              <b>lead</b>(p1)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead" name="method-c-lead" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_source')" id="l_method-c-lead_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[2];
+    int n = rb_scan_args(argc, argv, &quot;1&quot;, args+1);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_hash">
+            
+              <b>lead_hash</b>(p1, p2 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_hash" name="method-c-lead_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_hash_source')" id="l_method-c-lead_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[3];
+    int n = rb_scan_args(argc, argv, &quot;1:&quot;, args+1, args+2);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_opt">
+            
+              <b>lead_opt</b>(p1, p2 = v2)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_opt" name="method-c-lead_opt" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_opt_source')" id="l_method-c-lead_opt_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_opt_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_opt(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[3];
+    int n = rb_scan_args(argc, argv, &quot;11&quot;, args+1, args+2);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_opt_hash">
+            
+              <b>lead_opt_hash</b>(p1, p2 = v2, p3 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_opt_hash" name="method-c-lead_opt_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_opt_hash_source')" id="l_method-c-lead_opt_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_opt_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_opt_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;11:&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_opt_trail">
+            
+              <b>lead_opt_trail</b>(p1, p2 = v2, p3)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_opt_trail" name="method-c-lead_opt_trail" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_opt_trail_source')" id="l_method-c-lead_opt_trail_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_opt_trail_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_opt_trail(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;111&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_opt_trail_hash">
+            
+              <b>lead_opt_trail_hash</b>(p1, p2 = v2, p3, p4 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_opt_trail_hash" name="method-c-lead_opt_trail_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_opt_trail_hash_source')" id="l_method-c-lead_opt_trail_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_opt_trail_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_opt_trail_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[5];
+    int n = rb_scan_args(argc, argv, &quot;111:&quot;, args+1, args+2, args+3, args+4);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_opt_var">
+            
+              <b>lead_opt_var</b>(p1, p2 = v2, *args)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_opt_var" name="method-c-lead_opt_var" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_opt_var_source')" id="l_method-c-lead_opt_var_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_opt_var_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_opt_var(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;11*&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_opt_var_hash">
+            
+              <b>lead_opt_var_hash</b>(p1, p2 = v2, *args, p4 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_opt_var_hash" name="method-c-lead_opt_var_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_opt_var_hash_source')" id="l_method-c-lead_opt_var_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_opt_var_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_opt_var_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[5];
+    int n = rb_scan_args(argc, argv, &quot;11*:&quot;, args+1, args+2, args+3, args+4);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_opt_var_trail">
+            
+              <b>lead_opt_var_trail</b>(p1, p2 = v2, *args, p4)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_opt_var_trail" name="method-c-lead_opt_var_trail" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_opt_var_trail_source')" id="l_method-c-lead_opt_var_trail_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_opt_var_trail_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_opt_var_trail(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[5];
+    int n = rb_scan_args(argc, argv, &quot;11*1&quot;, args+1, args+2, args+3, args+4);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_opt_var_trail_hash">
+            
+              <b>lead_opt_var_trail_hash</b>(p1, p2 = v2, *args, p4, p5 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_opt_var_trail_hash" name="method-c-lead_opt_var_trail_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_opt_var_trail_hash_source')" id="l_method-c-lead_opt_var_trail_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_opt_var_trail_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_opt_var_trail_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[6];
+    int n = rb_scan_args(argc, argv, &quot;11*1:&quot;, args+1, args+2, args+3, args+4, args+5);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_var">
+            
+              <b>lead_var</b>(p1, *args)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_var" name="method-c-lead_var" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_var_source')" id="l_method-c-lead_var_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_var_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_var(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[3];
+    int n = rb_scan_args(argc, argv, &quot;1*&quot;, args+1, args+2);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_var_hash">
+            
+              <b>lead_var_hash</b>(p1, *args, p3 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_var_hash" name="method-c-lead_var_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_var_hash_source')" id="l_method-c-lead_var_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_var_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_var_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;1*:&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_var_trail">
+            
+              <b>lead_var_trail</b>(p1, *args, p3)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_var_trail" name="method-c-lead_var_trail" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_var_trail_source')" id="l_method-c-lead_var_trail_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_var_trail_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_var_trail(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;1*1&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-lead_var_trail_hash">
+            
+              <b>lead_var_trail_hash</b>(p1, *args, p3, p4 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-lead_var_trail_hash" name="method-c-lead_var_trail_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-lead_var_trail_hash_source')" id="l_method-c-lead_var_trail_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-lead_var_trail_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_lead_var_trail_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[5];
+    int n = rb_scan_args(argc, argv, &quot;1*1:&quot;, args+1, args+2, args+3, args+4);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-opt">
+            
+              <b>opt</b>(p1 = v1)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-opt" name="method-c-opt" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-opt_source')" id="l_method-c-opt_source">show</a>
+                
+              </p>
+              <div id="method-c-opt_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_opt(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[2];
+    int n = rb_scan_args(argc, argv, &quot;01&quot;, args+1);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-opt_hash">
+            
+              <b>opt_hash</b>(p1 = v1, p2 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-opt_hash" name="method-c-opt_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-opt_hash_source')" id="l_method-c-opt_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-opt_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_opt_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[3];
+    int n = rb_scan_args(argc, argv, &quot;01:&quot;, args+1, args+2);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-opt_trail">
+            
+              <b>opt_trail</b>(p1 = v1, p2)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-opt_trail" name="method-c-opt_trail" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>trail</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-opt_trail_source')" id="l_method-c-opt_trail_source">show</a>
+                
+              </p>
+              <div id="method-c-opt_trail_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_opt_trail(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[3];
+    int n = rb_scan_args(argc, argv, &quot;011&quot;, args+1, args+2);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-opt_trail_hash">
+            
+              <b>opt_trail_hash</b>(p1 = v1, p2, p3 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-opt_trail_hash" name="method-c-opt_trail_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-opt_trail_hash_source')" id="l_method-c-opt_trail_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-opt_trail_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_opt_trail_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;011:&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-opt_var">
+            
+              <b>opt_var</b>(p1 = v1, *args)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-opt_var" name="method-c-opt_var" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-opt_var_source')" id="l_method-c-opt_var_source">show</a>
+                
+              </p>
+              <div id="method-c-opt_var_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_opt_var(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[3];
+    int n = rb_scan_args(argc, argv, &quot;01*&quot;, args+1, args+2);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-opt_var_hash">
+            
+              <b>opt_var_hash</b>(p1 = v1, *args, p3 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-opt_var_hash" name="method-c-opt_var_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-opt_var_hash_source')" id="l_method-c-opt_var_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-opt_var_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_opt_var_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;01*:&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-opt_var_trail">
+            
+              <b>opt_var_trail</b>(p1 = v1, *args, p3)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-opt_var_trail" name="method-c-opt_var_trail" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-opt_var_trail_source')" id="l_method-c-opt_var_trail_source">show</a>
+                
+              </p>
+              <div id="method-c-opt_var_trail_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_opt_var_trail(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;01*1&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-opt_var_trail_hash">
+            
+              <b>opt_var_trail_hash</b>(p1 = v1, *args, p3, p4 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-opt_var_trail_hash" name="method-c-opt_var_trail_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-opt_var_trail_hash_source')" id="l_method-c-opt_var_trail_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-opt_var_trail_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_opt_var_trail_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[5];
+    int n = rb_scan_args(argc, argv, &quot;01*1:&quot;, args+1, args+2, args+3, args+4);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-var">
+            
+              <b>var</b>(*args)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-var" name="method-c-var" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>var</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-var_source')" id="l_method-c-var_source">show</a>
+                
+              </p>
+              <div id="method-c-var_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_var(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[2];
+    int n = rb_scan_args(argc, argv, &quot;*&quot;, args+1);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-var_hash">
+            
+              <b>var_hash</b>(*args, p2 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-var_hash" name="method-c-var_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-var_hash_source')" id="l_method-c-var_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-var_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_var_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[3];
+    int n = rb_scan_args(argc, argv, &quot;*:&quot;, args+1, args+2);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-var_trail">
+            
+              <b>var_trail</b>(*args, p2)
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-var_trail" name="method-c-var_trail" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-var_trail_source')" id="l_method-c-var_trail_source">show</a>
+                
+              </p>
+              <div id="method-c-var_trail_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_var_trail(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[3];
+    int n = rb_scan_args(argc, argv, &quot;*1&quot;, args+1, args+2);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-var_trail_hash">
+            
+              <b>var_trail_hash</b>(*args, p2, p3 = {})
+            
+            <a href="../../classes/Bug/ScanArgs.html#method-c-var_trail_hash" name="method-c-var_trail_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-var_trail_hash_source')" id="l_method-c-var_trail_hash_source">show</a>
+                
+              </p>
+              <div id="method-c-var_trail_hash_source" class="dyn-source">
+                <pre>static VALUE
+scan_args_var_trail_hash(int argc, VALUE *argv, VALUE self)
+{
+    VALUE args[4];
+    int n = rb_scan_args(argc, argv, &quot;*1:&quot;, args+1, args+2, args+3);
+    args[0] = INT2NUM(n);
+    return rb_ary_new_from_values(numberof(args), args);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>

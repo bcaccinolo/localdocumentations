@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RedBlackTree</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="RedBlackTree">
+
+  
+    
+    <meta name="description" content="Algorithm based on “Introduction to Algorithms” by Cormen and others.">
+    <meta property="og:description" content="Algorithm based on “Introduction to Algorithms” by Cormen and others.">
+  
+
+    <meta name="keywords" content="RedBlackTree class">
+  
+    <meta name="keywords" content="new, add, insert, <<, delete, minimum, maximum, successor, predecessor, inorder_walk, each, reverse_inorder_walk, reverse_each, search, empty?, black_height">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            RedBlackTree
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/benchmark/gc/redblack_rb.html">benchmark/gc/redblack.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Algorithm based on “Introduction to Algorithms” by Cormen and others</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RedBlackTree/NilNode.html">RedBlackTree::NilNode</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RedBlackTree/Node.html">RedBlackTree::Node</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3C-3C">&lt;&lt;</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-add">add</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-black_height">black_height</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-delete">delete</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each">each</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-empty-3F">empty?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-inorder_walk">inorder_walk</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-insert">insert</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-maximum">maximum</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-minimum">minimum</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-predecessor">predecessor</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-reverse_each">reverse_each</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-reverse_inorder_walk">reverse_inorder_walk</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-search">search</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-successor">successor</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="Enumerable.html">
+              Enumerable
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>root</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>size</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>()
+            
+            <a href="../classes/RedBlackTree.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L69" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">root</span> = <span class="ruby-constant">NilNode</span>.<span class="ruby-identifier">instance</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">size</span> = <span class="ruby-number">0</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3C">
+            
+              <b>&lt;&lt;</b>(x)
+            
+            <a href="../classes/RedBlackTree.html#method-i-3C-3C" name="method-i-3C-3C" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="RedBlackTree.html#method-i-insert">insert</a>
+            </div>
+          
+
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add">
+            
+              <b>add</b>(key)
+            
+            <a href="../classes/RedBlackTree.html#method-i-add" name="method-i-add" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-add_source')" id="l_method-i-add_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L74" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-add_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-identifier">insert</span>(<span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">key</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-black_height">
+            
+              <b>black_height</b>(x = root)
+            
+            <a href="../classes/RedBlackTree.html#method-i-black_height" name="method-i-black_height" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-black_height_source')" id="l_method-i-black_height_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L216" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-black_height_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 216</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">black_height</span>(<span class="ruby-identifier">x</span> = <span class="ruby-identifier">root</span>)
+  <span class="ruby-identifier">height</span> = <span class="ruby-number">0</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">left</span>
+    <span class="ruby-identifier">height</span> <span class="ruby-operator">+=</span><span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">black?</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">height</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-delete">
+            
+              <b>delete</b>(z)
+            
+            <a href="../classes/RedBlackTree.html#method-i-delete" name="method-i-delete" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-delete_source')" id="l_method-i-delete_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L122" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-delete_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete</span>(<span class="ruby-identifier">z</span>)
+  <span class="ruby-identifier">y</span> = (<span class="ruby-identifier">z</span>.<span class="ruby-identifier">left</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">z</span>.<span class="ruby-identifier">right</span>.<span class="ruby-identifier">nil?</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">z</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">successor</span>(<span class="ruby-identifier">z</span>)
+  <span class="ruby-identifier">x</span> = <span class="ruby-identifier">y</span>.<span class="ruby-identifier">left</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">right</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">left</span>
+  <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-identifier">y</span>.<span class="ruby-identifier">parent</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">root</span> = <span class="ruby-identifier">x</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">left</span>
+      <span class="ruby-identifier">y</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">left</span> = <span class="ruby-identifier">x</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">y</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">right</span> = <span class="ruby-identifier">x</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">z</span>.<span class="ruby-identifier">key</span> = <span class="ruby-identifier">y</span>.<span class="ruby-identifier">key</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">z</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">color</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>
+    <span class="ruby-identifier">delete_fixup</span>(<span class="ruby-identifier">x</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-=</span> <span class="ruby-number">1</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">y</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each">
+            
+              <b>each</b>(x = root)
+            
+            <a href="../classes/RedBlackTree.html#method-i-each" name="method-i-each" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="RedBlackTree.html#method-i-inorder_walk">inorder_walk</a>
+            </div>
+          
+
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-empty-3F">
+            
+              <b>empty?</b>()
+            
+            <a href="../classes/RedBlackTree.html#method-i-empty-3F" name="method-i-empty-3F" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-empty-3F_source')" id="l_method-i-empty-3F_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L212" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-empty-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 212</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inorder_walk">
+            
+              <b>inorder_walk</b>(x = root)
+            
+            <a href="../classes/RedBlackTree.html#method-i-inorder_walk" name="method-i-inorder_walk" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+            <div class="aka">
+              Also aliased as: <a href="RedBlackTree.html#method-i-each">each</a>
+            </div>
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-inorder_walk_source')" id="l_method-i-inorder_walk_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L185" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-inorder_walk_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 185</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">inorder_walk</span>(<span class="ruby-identifier">x</span> = <span class="ruby-identifier">root</span>)
+  <span class="ruby-identifier">x</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">minimum</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">key</span>
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">successor</span>(<span class="ruby-identifier">x</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-insert">
+            
+              <b>insert</b>(x)
+            
+            <a href="../classes/RedBlackTree.html#method-i-insert" name="method-i-insert" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+            <div class="aka">
+              Also aliased as: <a href="RedBlackTree.html#method-i-3C-3C">&lt;&lt;</a>
+            </div>
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-insert_source')" id="l_method-i-insert_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L78" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-insert_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">insert</span>(<span class="ruby-identifier">x</span>)
+  <span class="ruby-identifier">insert_helper</span>(<span class="ruby-identifier">x</span>)
+
+  <span class="ruby-identifier">x</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">RED</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">root</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">RED</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">left</span>
+      <span class="ruby-identifier">y</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">right</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">y</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">color</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">RED</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>
+        <span class="ruby-identifier">y</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">RED</span>
+        <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">right</span>
+          <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>
+          <span class="ruby-identifier">left_rotate</span>(<span class="ruby-identifier">x</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">RED</span>
+        <span class="ruby-identifier">right_rotate</span>(<span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">y</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">left</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">y</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">color</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">RED</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>
+        <span class="ruby-identifier">y</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">RED</span>
+        <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">left</span>
+          <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>
+          <span class="ruby-identifier">right_rotate</span>(<span class="ruby-identifier">x</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">RED</span>
+        <span class="ruby-identifier">left_rotate</span>(<span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">root</span>.<span class="ruby-identifier">color</span> = <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">BLACK</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-maximum">
+            
+              <b>maximum</b>(x = root)
+            
+            <a href="../classes/RedBlackTree.html#method-i-maximum" name="method-i-maximum" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-maximum_source')" id="l_method-i-maximum_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L154" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-maximum_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">maximum</span>(<span class="ruby-identifier">x</span> = <span class="ruby-identifier">root</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">right</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">right</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">x</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-minimum">
+            
+              <b>minimum</b>(x = root)
+            
+            <a href="../classes/RedBlackTree.html#method-i-minimum" name="method-i-minimum" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-minimum_source')" id="l_method-i-minimum_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L147" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-minimum_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">minimum</span>(<span class="ruby-identifier">x</span> = <span class="ruby-identifier">root</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">left</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">left</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">x</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-predecessor">
+            
+              <b>predecessor</b>(x)
+            
+            <a href="../classes/RedBlackTree.html#method-i-predecessor" name="method-i-predecessor" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-predecessor_source')" id="l_method-i-predecessor_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L173" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-predecessor_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">predecessor</span>(<span class="ruby-identifier">x</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">left</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">maximum</span>(<span class="ruby-identifier">x</span>.<span class="ruby-identifier">left</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">y</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">y</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">left</span>
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">y</span>
+    <span class="ruby-identifier">y</span> = <span class="ruby-identifier">y</span>.<span class="ruby-identifier">parent</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">y</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reverse_each">
+            
+              <b>reverse_each</b>(x = root)
+            
+            <a href="../classes/RedBlackTree.html#method-i-reverse_each" name="method-i-reverse_each" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="RedBlackTree.html#method-i-reverse_inorder_walk">reverse_inorder_walk</a>
+            </div>
+          
+
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reverse_inorder_walk">
+            
+              <b>reverse_inorder_walk</b>(x = root)
+            
+            <a href="../classes/RedBlackTree.html#method-i-reverse_inorder_walk" name="method-i-reverse_inorder_walk" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+            <div class="aka">
+              Also aliased as: <a href="RedBlackTree.html#method-i-reverse_each">reverse_each</a>
+            </div>
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-reverse_inorder_walk_source')" id="l_method-i-reverse_inorder_walk_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L195" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-reverse_inorder_walk_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 195</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reverse_inorder_walk</span>(<span class="ruby-identifier">x</span> = <span class="ruby-identifier">root</span>)
+  <span class="ruby-identifier">x</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">maximum</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">key</span>
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">predecessor</span>(<span class="ruby-identifier">x</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-search">
+            
+              <b>search</b>(key, x = root)
+            
+            <a href="../classes/RedBlackTree.html#method-i-search" name="method-i-search" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-search_source')" id="l_method-i-search_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L205" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-search_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 205</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">x</span> = <span class="ruby-identifier">root</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">key</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">key</span>
+    <span class="ruby-identifier">key</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">key</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">left</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">right</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">x</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-successor">
+            
+              <b>successor</b>(x)
+            
+            <a href="../classes/RedBlackTree.html#method-i-successor" name="method-i-successor" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-successor_source')" id="l_method-i-successor_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/2802afffd688f4f3dce0492a45dab82bfc80e070/benchmark/gc/redblack.rb#L161" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-successor_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File benchmark/gc/redblack.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">successor</span>(<span class="ruby-identifier">x</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">right</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">minimum</span>(<span class="ruby-identifier">x</span>.<span class="ruby-identifier">right</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">y</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">parent</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">y</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">right</span>
+    <span class="ruby-identifier">x</span> = <span class="ruby-identifier">y</span>
+    <span class="ruby-identifier">y</span> = <span class="ruby-identifier">y</span>.<span class="ruby-identifier">parent</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">y</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>NaClConfig</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="NaClConfig">
+
+  
+
+    <meta name="keywords" content="NaClConfig class">
+  
+    <meta name="keywords" content="newlib?, config">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span>
+            NaClConfig
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/nacl/nacl-config_rb.html">nacl/nacl-config.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-config">config</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-newlib-3F">newlib?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">ARCH</td>
+            <td>=</td>
+            <td class="attr-value">cpu_nick.sub(&#39;x86_64&#39;, &#39;x86-64&#39;).sub(&#39;x86_32&#39;, &#39;x86-32&#39;)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">HOST</td>
+            <td>=</td>
+            <td class="attr-value">ARCH.sub(/x86-../, &#39;x86_64&#39;) + &#39;-nacl&#39;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">PYTHON</td>
+            <td>=</td>
+            <td class="attr-value">config[&#39;PYTHON&#39;]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OBJDUMP</td>
+            <td>=</td>
+            <td class="attr-value">config[&#39;OBJDUMP&#39;]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SDK_ROOT</td>
+            <td>=</td>
+            <td class="attr-value">config[&#39;NACL_SDK_ROOT&#39;]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">CREATE_NMF</td>
+            <td>=</td>
+            <td class="attr-value">[
+File.join(SDK_ROOT, &#39;build_tools&#39;, &#39;nacl_sdk_scons&#39;, &#39;site_tools&#39;, &#39;create_nmf.py&#39;),
+File.join(SDK_ROOT, &#39;tools&#39;, &#39;create_nmf.py&#39;)
+].find{|path| File.exist?(path) } or raise &quot;No create_nmf found&quot;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">HOST_LIB</td>
+            <td>=</td>
+            <td class="attr-value">File.join(SDK_ROOT, &#39;toolchain&#39;, config[&#39;NACL_TOOLCHAIN&#39;], HOST, &quot;lib#{lib_suffix}&quot;)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">NACL_LIB</td>
+            <td>=</td>
+            <td class="attr-value">File.join(SDK_ROOT, &#39;lib&#39;, config[&#39;NACL_LIB_PATH&#39;], &#39;Release&#39;)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">INSTALL_PROGRAM</td>
+            <td>=</td>
+            <td class="attr-value">config[&#39;INSTALL_PROGRAM&#39;]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">INSTALL_LIBRARY</td>
+            <td>=</td>
+            <td class="attr-value">config[&#39;INSTALL_DATA&#39;]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SEL_LDR</td>
+            <td>=</td>
+            <td class="attr-value">File.join(SDK_ROOT, &#39;tools&#39;, &quot;sel_ldr_#{cpu_nick}&quot;)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">IRT_CORE</td>
+            <td>=</td>
+            <td class="attr-value">File.join(SDK_ROOT, &#39;tools&#39;, &quot;irt_core_#{cpu_nick}.nexe&quot;)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUNNABLE_LD</td>
+            <td>=</td>
+            <td class="attr-value">File.join(HOST_LIB, &#39;runnable-ld.so&#39;)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-config">
+            
+              <b>config</b>(name)
+            
+            <a href="../classes/NaClConfig.html#method-c-config" name="method-c-config" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-config_source')" id="l_method-c-config_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/165221441c462b8feccefaebc70499765d3f710e/nacl/nacl-config.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-config_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File nacl/nacl-config.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">config</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">NaClConfig</span><span class="ruby-operator">::</span><span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">upcase</span>)
+    <span class="ruby-constant">NaClConfig</span><span class="ruby-operator">::</span><span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">upcase</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-constant">NaClConfig</span><span class="ruby-operator">::</span><span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword">and</span> <span class="ruby-constant">NaClConfig</span><span class="ruby-operator">::</span><span class="ruby-identifier">method</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">arity</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span>
+    <span class="ruby-constant">NaClConfig</span><span class="ruby-operator">::</span><span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;No such config: #{name}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-newlib-3F">
+            
+              <b>newlib?</b>()
+            
+            <a href="../classes/NaClConfig.html#method-i-newlib-3F" name="method-i-newlib-3F" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-newlib-3F_source')" id="l_method-i-newlib-3F_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/165221441c462b8feccefaebc70499765d3f710e/nacl/nacl-config.rb#L42" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-newlib-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File nacl/nacl-config.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">newlib?</span>
+  <span class="ruby-constant">RbConfig</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-string">&#39;NACL_SDK_VARIANT&#39;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;newlib&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

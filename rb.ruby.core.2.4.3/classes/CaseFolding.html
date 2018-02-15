@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>CaseFolding</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="CaseFolding">
+
+  
+    
+    <meta name="description" content="Usage (for case folding only):   $ wget http://www.unicode.org/Public/UNIDATA/CaseFolding.txt  $ ruby case-folding.rb CaseFolding.txt -o casefold.">
+    <meta property="og:description" content="Usage (for case folding only):   $ wget http://www.unicode.org/Public/UNIDATA/CaseFolding.txt  $ ruby case-folding.rb CaseFolding.txt -o casefold.">
+  
+
+    <meta name="keywords" content="CaseFolding class">
+  
+    <meta name="keywords" content="load, range_check, lookup_hash, display, debug!, load">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            CaseFolding
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/enc/unicode/case-folding_rb.html">enc/unicode/case-folding.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Usage (for case folding only):</p>
+
+<pre><code> $ wget http://www.unicode.org/Public/UNIDATA/CaseFolding.txt
+ $ ruby case-folding.rb CaseFolding.txt -o casefold.h
+or (for case folding and case mapping):
+ $ wget http://www.unicode.org/Public/UNIDATA/CaseFolding.txt
+ $ wget http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
+ $ wget http://www.unicode.org/Public/UNIDATA/SpecialCasing.txt
+ $ ruby case-folding.rb -m . -o casefold.h</code></pre>
+
+<p>using -d or –debug will include UTF-8 characters in comments for debugging</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="CaseFolding/Util.html">CaseFolding::Util</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-debug-21">debug!</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-display">display</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-load">load</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-load">load</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-lookup_hash">lookup_hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-range_check">range_check</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="CaseFolding/Util.html">
+              CaseFolding::Util
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>fold</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>fold_locale</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>unfold</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>unfold_locale</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>version</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-load">
+            
+              <b>load</b>(*args)
+            
+            <a href="../classes/CaseFolding.html#method-c-load" name="method-c-load" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-load_source')" id="l_method-c-load_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/8baa73be48a5ed210aad0c7a4a752bad8c1e32e8/enc/unicode/case-folding.rb#L209" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-load_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File enc/unicode/case-folding.rb, line 209</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">load</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">new</span>.<span class="ruby-identifier">load</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-debug-21">
+            
+              <b>debug!</b>()
+            
+            <a href="../classes/CaseFolding.html#method-i-debug-21" name="method-i-debug-21" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-debug-21_source')" id="l_method-i-debug-21_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/8baa73be48a5ed210aad0c7a4a752bad8c1e32e8/enc/unicode/case-folding.rb#L205" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-debug-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File enc/unicode/case-folding.rb, line 205</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">debug!</span>
+  <span class="ruby-ivar">@debug</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-display">
+            
+              <b>display</b>(dest, mapping_data)
+            
+            <a href="../classes/CaseFolding.html#method-i-display" name="method-i-display" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-display_source')" id="l_method-i-display_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/8baa73be48a5ed210aad0c7a4a752bad8c1e32e8/enc/unicode/case-folding.rb#L158" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-display_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File enc/unicode/case-folding.rb, line 158</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">display</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">mapping_data</span>)
+  <span class="ruby-comment"># print the header</span>
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;/* DO NOT EDIT THIS FILE. */\n&quot;</span>)
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;/* Generated by enc/unicode/case-folding.rb */\n\n&quot;</span>)
+
+  <span class="ruby-identifier">versions</span> = <span class="ruby-identifier">version</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\d+/</span>)
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-node">&quot;#if defined ONIG_UNICODE_VERSION_STRING &amp;&amp; !( \\\n&quot;</span>)
+  <span class="ruby-node">%w[MAJOR MINOR TEENY]</span>.<span class="ruby-identifier">zip</span>(<span class="ruby-identifier">versions</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-node">&quot;      ONIG_UNICODE_VERSION_#{n} == #{v} &amp;&amp; \\\n&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;      1)\n&quot;</span>)
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-node">&quot;# error ONIG_UNICODE_VERSION_STRING mismatch\n&quot;</span>)
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-node">&quot;#endif\n&quot;</span>)
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-node">&quot;#define ONIG_UNICODE_VERSION_STRING #{version.dump}\n&quot;</span>)
+  <span class="ruby-node">%w[MAJOR MINOR TEENY]</span>.<span class="ruby-identifier">zip</span>(<span class="ruby-identifier">versions</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-node">&quot;#define ONIG_UNICODE_VERSION_#{n} #{v}\n&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+
+  <span class="ruby-comment"># print folding data</span>
+
+  <span class="ruby-comment"># CaseFold + CaseFold_Locale</span>
+  <span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;CaseFold_11&quot;</span>
+  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">print_table</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">mapping_data</span>, <span class="ruby-string">&quot;CaseFold&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">fold</span>, <span class="ruby-string">&quot;CaseFold_Locale&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">fold_locale</span>)
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">lookup_hash</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&quot;CodePointList3&quot;</span>, <span class="ruby-identifier">data</span>)
+
+  <span class="ruby-comment"># print unfolding data</span>
+
+  <span class="ruby-comment"># CaseUnfold_11 + CaseUnfold_11_Locale</span>
+  <span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;CaseUnfold_11&quot;</span>
+  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">print_table</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">mapping_data</span>, <span class="ruby-identifier">name</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">unfold</span>[<span class="ruby-number">0</span>], <span class="ruby-node">&quot;#{name}_Locale&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">unfold_locale</span>[<span class="ruby-number">0</span>])
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">lookup_hash</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&quot;CodePointList3&quot;</span>, <span class="ruby-identifier">data</span>)
+
+  <span class="ruby-comment"># CaseUnfold_12 + CaseUnfold_12_Locale</span>
+  <span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;CaseUnfold_12&quot;</span>
+  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">print_table</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">mapping_data</span>, <span class="ruby-identifier">name</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">unfold</span>[<span class="ruby-number">1</span>], <span class="ruby-node">&quot;#{name}_Locale&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">unfold_locale</span>[<span class="ruby-number">1</span>])
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">lookup_hash</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&quot;CodePointList2&quot;</span>, <span class="ruby-identifier">data</span>)
+
+  <span class="ruby-comment"># CaseUnfold_13</span>
+  <span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;CaseUnfold_13&quot;</span>
+  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">print_table</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">mapping_data</span>, <span class="ruby-identifier">name</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">unfold</span>[<span class="ruby-number">2</span>])
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">lookup_hash</span>(<span class="ruby-identifier">name</span>, <span class="ruby-string">&quot;CodePointList2&quot;</span>, <span class="ruby-identifier">data</span>)
+
+  <span class="ruby-comment"># TitleCase</span>
+  <span class="ruby-identifier">dest</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">mapping_data</span>.<span class="ruby-identifier">specials_output</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-load">
+            
+              <b>load</b>(filename)
+            
+            <a href="../classes/CaseFolding.html#method-i-load" name="method-i-load" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-load_source')" id="l_method-i-load_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/8baa73be48a5ed210aad0c7a4a752bad8c1e32e8/enc/unicode/case-folding.rb#L55" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-load_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File enc/unicode/case-folding.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load</span>(<span class="ruby-identifier">filename</span>)
+  <span class="ruby-identifier">pattern</span> = <span class="ruby-regexp">/([0-9A-F]{4,6}); ([CFT]); ([0-9A-F]{4,6})(?: ([0-9A-F]{4,6}))?(?: ([0-9A-F]{4,6}))?;/</span>
+
+  <span class="ruby-ivar">@fold</span> = <span class="ruby-identifier">fold</span> = {}
+  <span class="ruby-ivar">@unfold</span> = <span class="ruby-identifier">unfold</span> = [{}, {}, {}]
+  <span class="ruby-ivar">@debug</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@version</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">turkic</span> = []
+
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">mode</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;rb&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@version</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">line</span>[<span class="ruby-regexp">/-([0-9.]+).txt/</span>, <span class="ruby-number">1</span>]
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span> = <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">line</span>)
+    <span class="ruby-identifier">ch_from</span> = <span class="ruby-identifier">res</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">to_i</span>(<span class="ruby-number">16</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>[<span class="ruby-number">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;T&#39;</span>
+      <span class="ruby-comment"># Turkic case folding</span>
+      <span class="ruby-identifier">turkic</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ch_from</span>
+      <span class="ruby-keyword">next</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># store folding data</span>
+    <span class="ruby-identifier">ch_to</span> = <span class="ruby-identifier">res</span>[<span class="ruby-number">3</span><span class="ruby-operator">..</span><span class="ruby-number">6</span>].<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">break</span> <span class="ruby-identifier">a</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">i</span>
+      <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-number">16</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">fold</span>[<span class="ruby-identifier">ch_from</span>] = <span class="ruby-identifier">ch_to</span>
+
+    <span class="ruby-comment"># store unfolding data</span>
+    <span class="ruby-identifier">i</span> = <span class="ruby-identifier">ch_to</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-number">1</span>
+    (<span class="ruby-identifier">unfold</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">ch_to</span>] <span class="ruby-operator">||=</span> []) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ch_from</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># move locale dependent data to (un)fold_locale</span>
+  <span class="ruby-ivar">@fold_locale</span> = <span class="ruby-identifier">fold_locale</span> = {}
+  <span class="ruby-ivar">@unfold_locale</span> = <span class="ruby-identifier">unfold_locale</span> = [{}, {}]
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">ch_from</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">turkic</span>
+    <span class="ruby-identifier">key</span> = <span class="ruby-identifier">fold</span>[<span class="ruby-identifier">ch_from</span>]
+    <span class="ruby-identifier">i</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-number">1</span>
+    <span class="ruby-identifier">unfold_locale</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">key</span>[<span class="ruby-number">0</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">key</span>] = <span class="ruby-identifier">unfold</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">fold_locale</span>[<span class="ruby-identifier">ch_from</span>] = <span class="ruby-identifier">fold</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">ch_from</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-lookup_hash">
+            
+              <b>lookup_hash</b>(key, type, data)
+            
+            <a href="../classes/CaseFolding.html#method-i-lookup_hash" name="method-i-lookup_hash" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-lookup_hash_source')" id="l_method-i-lookup_hash_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/8baa73be48a5ed210aad0c7a4a752bad8c1e32e8/enc/unicode/case-folding.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-lookup_hash_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File enc/unicode/case-folding.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">lookup_hash</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">data</span>)
+  <span class="ruby-identifier">hash</span> = <span class="ruby-node">&quot;onigenc_unicode_#{key}_hash&quot;</span>
+  <span class="ruby-identifier">lookup</span> = <span class="ruby-node">&quot;onigenc_unicode_#{key}_lookup&quot;</span>
+  <span class="ruby-identifier">arity</span> = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">data</span>[<span class="ruby-number">0</span>][<span class="ruby-number">0</span>]).<span class="ruby-identifier">size</span>
+  <span class="ruby-identifier">gperf</span> = <span class="ruby-node">%W&quot;gperf -7 -k#{[*1..(arity*3)].join(&#39;,&#39;)} -F,-1 -c -j1 -i1 -t -T -E -C -H #{hash} -N #{lookup} -n&quot;</span>
+  <span class="ruby-identifier">argname</span> = <span class="ruby-identifier">arity</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">1</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;codes&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;code&quot;</span>
+  <span class="ruby-identifier">argdecl</span> = <span class="ruby-node">&quot;const OnigCodePoint #{arity &gt; 1 ? &quot;*&quot;: &quot;&quot;}#{argname}&quot;</span>
+  <span class="ruby-identifier">n</span> = <span class="ruby-number">7</span>
+  <span class="ruby-identifier">m</span> = (<span class="ruby-number">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n</span>) <span class="ruby-operator">-</span> <span class="ruby-number">1</span>
+  <span class="ruby-identifier">min</span>, <span class="ruby-identifier">max</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span>, <span class="ruby-operator">*</span><span class="ruby-operator">|</span><span class="ruby-identifier">c</span>}.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">minmax</span>
+  <span class="ruby-identifier">src</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-identifier">gperf</span>, <span class="ruby-string">&quot;r+&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;short\n%%\n&quot;</span>
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">each_with_index</span> {<span class="ruby-operator">|</span>(<span class="ruby-identifier">k</span>, <span class="ruby-identifier">_</span>), <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">k</span> = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">k</span>)
+      <span class="ruby-identifier">ks</span> = <span class="ruby-identifier">k</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> [(<span class="ruby-identifier">j</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">n</span><span class="ruby-operator">*</span><span class="ruby-number">2</span>) <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">m</span>, (<span class="ruby-identifier">j</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">n</span>) <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">m</span>, (<span class="ruby-identifier">j</span>) <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">m</span>]}.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-string">&quot;\\x%.2x&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">c</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;&quot;</span>)
+      <span class="ruby-identifier">f</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;\&quot;%s\&quot;, ::::/*%s*/ %d\n&quot;</span>, <span class="ruby-identifier">ks</span>, <span class="ruby-identifier">k</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-string">&quot;0x%.4x&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">c</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;,&quot;</span>), <span class="ruby-identifier">i</span>
+    }
+    <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;%%\n&quot;</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">close_write</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">read</span>
+  }
+  <span class="ruby-identifier">src</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-node">/^(#{hash})\s*\(.*?\).*?\n\{\n(.*)^\}/m</span>) {
+    <span class="ruby-identifier">name</span> = <span class="ruby-node">$1</span>
+    <span class="ruby-identifier">body</span> = <span class="ruby-node">$2</span>
+    <span class="ruby-identifier">body</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\(unsigned char\)str\[(\d+)\]/</span>, <span class="ruby-node">&quot;bits_#{arity &gt; 1 ? &#39;at&#39; : &#39;of&#39;}(#{argname}, \\1)&quot;</span>)
+    <span class="ruby-node">&quot;#{name}(#{argdecl})\n{\n#{body}}&quot;</span>
+  }
+  <span class="ruby-identifier">src</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-node">/const short *\*\n^(#{lookup})\s*\(.*?\).*?\n\{\n(.*)^\}/m</span>) {
+    <span class="ruby-identifier">name</span> = <span class="ruby-node">$1</span>
+    <span class="ruby-identifier">body</span> = <span class="ruby-node">$2</span>
+    <span class="ruby-identifier">body</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp">/\benum\s+\{(\n[ \t]+)/</span>, <span class="ruby-node">&quot;\\&amp;MIN_CODE_VALUE = 0x#{min.to_s(16)},\\1&quot;</span><span class="ruby-node">&quot;MAX_CODE_VALUE = 0x#{max.to_s(16)},\\1&quot;</span>)
+    <span class="ruby-identifier">body</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-node">/(#{hash})\s*\(.*?\)/</span>, <span class="ruby-node">&quot;\\1(#{argname})&quot;</span>)
+    <span class="ruby-identifier">body</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\{&quot;&quot;,-1}/</span>, <span class="ruby-string">&quot;-1&quot;</span>)
+    <span class="ruby-identifier">body</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\{&quot;(?:[^&quot;]|\&quot;)+&quot;, *::::(.*)\}/</span>, <span class="ruby-string">&#39;\1&#39;</span>)
+    <span class="ruby-identifier">body</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp">/(\s+if\s)\(len\b.*\)/</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-node">&quot;#$1(&quot;</span> <span class="ruby-operator">&lt;&lt;</span>
+        (<span class="ruby-identifier">arity</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">1</span> <span class="ruby-operator">?</span> (<span class="ruby-number">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">arity</span>).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">range_check</span>(<span class="ruby-node">&quot;#{argname}[#{i}]&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &amp;&amp;\n      &quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">range_check</span>(<span class="ruby-identifier">argname</span>)) <span class="ruby-operator">&lt;&lt;</span>
+        <span class="ruby-string">&quot;)&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">v</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">body</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp">/(if\s*\(.*MAX_HASH_VALUE.*\)\n([ \t]*))\{(.*?)\n\2\}/m</span>) {
+      <span class="ruby-identifier">pre</span> = <span class="ruby-node">$1</span>
+      <span class="ruby-identifier">indent</span> = <span class="ruby-node">$2</span>
+      <span class="ruby-identifier">s</span> = <span class="ruby-node">$3</span>
+      <span class="ruby-identifier">s</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp">/const char *\* *(\w+)( *= *wordlist\[\w+\]).\w+/</span>, <span class="ruby-string">&#39;short \1 = wordlist[key]&#39;</span>)
+      <span class="ruby-identifier">v</span> = <span class="ruby-node">$1</span>
+      <span class="ruby-identifier">s</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp">/\bif *\(.*\)/</span>, <span class="ruby-node">&quot;if (#{v} &gt;= 0 &amp;&amp; code#{arity}_equal(#{argname}, #{key}_Table[#{v}].from))&quot;</span>)
+      <span class="ruby-node">&quot;#{pre}{#{s}\n#{indent}}&quot;</span>
+    }
+    <span class="ruby-identifier">body</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp">/\b(return\s+&amp;)([^;]+);/</span>, <span class="ruby-string">&#39;\1&#39;</span><span class="ruby-node">&quot;#{key}_Table[#{v}].to;&quot;</span>)
+    <span class="ruby-node">&quot;static const #{type} *\n#{name}(#{argdecl})\n{\n#{body}}&quot;</span>
+  }
+  <span class="ruby-identifier">src</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-range_check">
+            
+              <b>range_check</b>(code)
+            
+            <a href="../classes/CaseFolding.html#method-i-range_check" name="method-i-range_check" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-range_check_source')" id="l_method-i-range_check_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/8baa73be48a5ed210aad0c7a4a752bad8c1e32e8/enc/unicode/case-folding.rb#L99" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-range_check_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File enc/unicode/case-folding.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">range_check</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-node">&quot;#{code} &lt;= MAX_CODE_VALUE &amp;&amp; #{code} &gt;= MIN_CODE_VALUE&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Downloader</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="Downloader">
+
+  
+
+    <meta name="keywords" content="Downloader class">
+  
+    <meta name="keywords" content="https=, https?, https, mode_for, http_options, download, verify, under">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            Downloader
+            
+                <span class="parent">&lt;
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/tool/downloader_rb.html">tool/downloader.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Downloader/GNU.html">Downloader::GNU</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Downloader/RubyGems.html">Downloader::Gems</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Downloader/RubyGems.html">Downloader::RubyGems</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Downloader/Unicode.html">Downloader::Unicode</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-download">download</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-http_options">http_options</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-https">https</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-https-3D">https=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-https-3F">https?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-mode_for">mode_for</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-under">under</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>V</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-verify">verify</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">Gems</td>
+            <td>=</td>
+            <td class="attr-value">RubyGems</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-download">
+            
+              <b>download</b>(url, name, dir = nil, since = true, options = {})
+            
+            <a href="../classes/Downloader.html#method-c-download" name="method-c-download" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p><a href="Downloader.html#method-c-download">::download</a>(url, name, [dir,
+[since]])</p>
+
+<p>Update a file from url if newer version is available. Creates the file if
+the file doesn&#39;t yet exist; however, the directory where the file is
+being created has to exist already. The <code>since</code> parameter can
+take the following values, with associated meanings:</p>
+
+<pre><code>true ::
+  Take the last-modified time of the current file on disk, and only download
+  if the server has a file that was modified later. Download unconditionally
+  if we don&#39;t have the file yet. Default.
++some time value+ ::
+  Use this time value instead of the time of modification of the file on disk.
+nil ::
+  Only download the file if it doesn&#39;t exist yet.
+false ::
+  always download url regardless of whether we already have a file,
+  and regardless of modification times. (This is essentially just a waste of
+  network resources, except in the case that the file we have is somehow damaged.
+  Please note that using this recurringly might create or be seen as a
+  denial of service attack.)</code></pre>
+
+<p>Example usage:</p>
+
+<pre><code>download &#39;http://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt&#39;,
+         &#39;UnicodeData.txt&#39;, &#39;enc/unicode/data&#39;
+</code></pre>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-download_source')" id="l_method-c-download_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/c11e648799cf32d267875381d967e8228a07cea6/tool/downloader.rb#L124" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-download_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/downloader.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">download</span>(<span class="ruby-identifier">url</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">dir</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">since</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:verify</span>)
+  <span class="ruby-identifier">file</span> = <span class="ruby-identifier">under</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">$VERBOSE</span>
+      <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{name} already exists&quot;</span>
+      <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">flush</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">https?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">url</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&quot;https:&quot;</span>)
+    <span class="ruby-identifier">warn</span> <span class="ruby-string">&quot;*** using http instead of https ***&quot;</span>
+    <span class="ruby-identifier">url</span> = <span class="ruby-identifier">url</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/\Ahttps/</span>, <span class="ruby-string">&#39;http&#39;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">url</span> = <span class="ruby-constant">URI</span>(<span class="ruby-identifier">url</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">$VERBOSE</span>
+    <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">print</span> <span class="ruby-node">&quot;downloading #{name} ... &quot;</span>
+    <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">flush</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">url</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">http_options</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">since</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">since</span>)))
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">OpenURI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">http_error</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">http_error</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^304 /</span> <span class="ruby-comment"># 304 Not Modified</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">$VERBOSE</span>
+        <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{name} not modified&quot;</span>
+        <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">flush</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">raise</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Timeout</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file</span>)
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Request for #{url} timed out, using old version.&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">raise</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SocketError</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file</span>)
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;No network connection, unable to download #{url}, using old version.&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">raise</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">mtime</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-string">&quot;wb&quot;</span>, <span class="ruby-number">0600</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">chmod</span>(<span class="ruby-identifier">mode_for</span>(<span class="ruby-identifier">data</span>))
+    <span class="ruby-identifier">mtime</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">meta</span>[<span class="ruby-string">&quot;last-modified&quot;</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">mtime</span>
+    <span class="ruby-identifier">mtime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">httpdate</span>(<span class="ruby-identifier">mtime</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">utime</span>(<span class="ruby-identifier">mtime</span>, <span class="ruby-identifier">mtime</span>, <span class="ruby-identifier">file</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">$VERBOSE</span>
+    <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;done&quot;</span>
+    <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">flush</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;failed to download #{name}\n#{e.message}: #{url}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-http_options">
+            
+              <b>http_options</b>(file, since)
+            
+            <a href="../classes/Downloader.html#method-c-http_options" name="method-c-http_options" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-http_options_source')" id="l_method-c-http_options_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/c11e648799cf32d267875381d967e8228a07cea6/tool/downloader.rb#L83" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-http_options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/downloader.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">http_options</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">since</span>)
+  <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">since</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>
+      <span class="ruby-identifier">since</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">mtime</span>(<span class="ruby-identifier">file</span>).<span class="ruby-identifier">httpdate</span> <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Time</span>
+      <span class="ruby-identifier">since</span> = <span class="ruby-identifier">since</span>.<span class="ruby-identifier">httpdate</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">since</span>
+      <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;If-Modified-Since&#39;</span>] = <span class="ruby-identifier">since</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;Accept-Encoding&#39;</span>] = <span class="ruby-string">&#39;*&#39;</span> <span class="ruby-comment"># to disable Net::HTTP::GenericRequest#decode_content</span>
+  <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-https">
+            
+              <b>https</b>()
+            
+            <a href="../classes/Downloader.html#method-c-https" name="method-c-https" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-https_source')" id="l_method-c-https_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/c11e648799cf32d267875381d967e8228a07cea6/tool/downloader.rb#L45" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-https_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/downloader.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">https</span>
+  <span class="ruby-identifier">@@https</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-https-3D">
+            
+              <b>https=</b>(https)
+            
+            <a href="../classes/Downloader.html#method-c-https-3D" name="method-c-https-3D" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-https-3D_source')" id="l_method-c-https-3D_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/c11e648799cf32d267875381d967e8228a07cea6/tool/downloader.rb#L37" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-https-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/downloader.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">https=</span>(<span class="ruby-identifier">https</span>)
+  <span class="ruby-identifier">@@https</span> = <span class="ruby-identifier">https</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-https-3F">
+            
+              <b>https?</b>()
+            
+            <a href="../classes/Downloader.html#method-c-https-3F" name="method-c-https-3F" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-https-3F_source')" id="l_method-c-https-3F_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/c11e648799cf32d267875381d967e8228a07cea6/tool/downloader.rb#L41" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-https-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/downloader.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">https?</span>
+  <span class="ruby-identifier">@@https</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;https&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-mode_for">
+            
+              <b>mode_for</b>(data)
+            
+            <a href="../classes/Downloader.html#method-c-mode_for" name="method-c-mode_for" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-mode_for_source')" id="l_method-c-mode_for_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/c11e648799cf32d267875381d967e8228a07cea6/tool/downloader.rb#L79" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-mode_for_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/downloader.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">mode_for</span>(<span class="ruby-identifier">data</span>)
+  <span class="ruby-node">/\A#!/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">data</span> <span class="ruby-operator">?</span> <span class="ruby-number">0755</span> <span class="ruby-operator">:</span> <span class="ruby-number">0644</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-under">
+            
+              <b>under</b>(dir, name)
+            
+            <a href="../classes/Downloader.html#method-c-under" name="method-c-under" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-under_source')" id="l_method-c-under_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/c11e648799cf32d267875381d967e8228a07cea6/tool/downloader.rb#L190" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-under_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/downloader.rb, line 190</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">under</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">dir</span> <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">name</span>)) <span class="ruby-operator">:</span> <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-verify">
+            
+              <b>verify</b>(file)
+            
+            <a href="../classes/Downloader.html#method-c-verify" name="method-c-verify" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-verify_source')" id="l_method-c-verify_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/c11e648799cf32d267875381d967e8228a07cea6/tool/downloader.rb#L186" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-verify_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/downloader.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">verify</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>

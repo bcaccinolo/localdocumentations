@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>VCS::SVN</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="VCS::SVN">
+
+  
+
+    <meta name="keywords" content="VCS::SVN class">
+  
+    <meta name="keywords" content="get_revisions, search_root, get_info, url, wcroot, branch, tag, trunk, branch_list, grep, export, after_export, export_changelog">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            VCS::SVN
+            
+                <span class="parent">&lt;
+                    
+                    self
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/tool/vcs_rb.html">tool/vcs.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-after_export">after_export</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-branch">branch</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-branch_list">branch_list</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-export">export</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-export_changelog">export_changelog</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-get_info">get_info</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-get_revisions">get_revisions</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-grep">grep</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-search_root">search_root</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tag">tag</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-trunk">trunk</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-url">url</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-wcroot">wcroot</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-get_revisions">
+            
+              <b>get_revisions</b>(path, srcdir = nil)
+            
+            <a href="../../classes/VCS/SVN.html#method-c-get_revisions" name="method-c-get_revisions" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-get_revisions_source')" id="l_method-c-get_revisions_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L197" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-get_revisions_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 197</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">get_revisions</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">srcdir</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">srcdir</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">local_path?</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">srcdir</span>, <span class="ruby-identifier">path</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">srcdir</span>
+    <span class="ruby-identifier">info_xml</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">pread</span>(<span class="ruby-node">%W&quot;svn info --xml #{srcdir}&quot;</span>)
+    <span class="ruby-identifier">info_xml</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">info_xml</span>[<span class="ruby-regexp">/&lt;url&gt;(.*)&lt;\/url&gt;/</span>, <span class="ruby-number">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">info_xml</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">IO</span>.<span class="ruby-identifier">pread</span>(<span class="ruby-node">%W&quot;svn info --xml #{path}&quot;</span>)
+  <span class="ruby-identifier">_</span>, <span class="ruby-identifier">last</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">changed</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">info_xml</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/revision=&quot;(\d+)&quot;/</span>)
+  <span class="ruby-identifier">modified</span> = <span class="ruby-identifier">info_xml</span>[<span class="ruby-regexp">/&lt;date&gt;([^&lt;&gt;]*)/</span>, <span class="ruby-number">1</span>]
+  <span class="ruby-identifier">branch</span> = <span class="ruby-identifier">info_xml</span>[<span class="ruby-regexp">%r&#39;&lt;relative-url&gt;\^/(?:branches/|tags/)?([^&lt;&gt;]+)&#39;</span>, <span class="ruby-number">1</span>]
+  [<span class="ruby-identifier">last</span>, <span class="ruby-identifier">changed</span>, <span class="ruby-identifier">modified</span>, <span class="ruby-identifier">branch</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-search_root">
+            
+              <b>search_root</b>(path)
+            
+            <a href="../../classes/VCS/SVN.html#method-c-search_root" name="method-c-search_root" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-search_root_source')" id="l_method-c-search_root_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L212" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-search_root_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 212</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">search_root</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">local_path?</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-identifier">parent</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">realpath</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">parent</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">wkdir</span> = <span class="ruby-identifier">parent</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">wkdir</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">wkdir</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/.svn&quot;</span>)
+  <span class="ruby-keyword">end</span> <span class="ruby-keyword">until</span> <span class="ruby-identifier">parent</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">wkdir</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-after_export">
+            
+              <b>after_export</b>(dir)
+            
+            <a href="../../classes/VCS/SVN.html#method-i-after_export" name="method-i-after_export" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-after_export_source')" id="l_method-i-after_export_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L306" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-after_export_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 306</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">after_export</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-identifier">dir</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/.svn&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-branch">
+            
+              <b>branch</b>(name)
+            
+            <a href="../../classes/VCS/SVN.html#method-i-branch" name="method-i-branch" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-branch_source')" id="l_method-i-branch_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L242" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-branch_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 242</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">branch</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">url</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;branches/#{name}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-branch_list">
+            
+              <b>branch_list</b>(pat)
+            
+            <a href="../../classes/VCS/SVN.html#method-i-branch_list" name="method-i-branch_list" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-branch_list_source')" id="l_method-i-branch_list_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L254" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-branch_list_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 254</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">branch_list</span>(<span class="ruby-identifier">pat</span>)
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-node">%W&quot;svn ls #{branch(&#39;&#39;)}&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp!</span>
+      <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp!</span>(<span class="ruby-string">&#39;/&#39;</span>)
+      <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">line</span>) <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">fnmatch?</span>(<span class="ruby-identifier">pat</span>, <span class="ruby-identifier">line</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-export">
+            
+              <b>export</b>(revision, url, dir, keep_temp = false)
+            
+            <a href="../../classes/VCS/SVN.html#method-i-export" name="method-i-export" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-export_source')" id="l_method-i-export_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L276" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-export_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 276</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">export</span>(<span class="ruby-identifier">revision</span>, <span class="ruby-identifier">url</span>, <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">keep_temp</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@srcdir</span> <span class="ruby-keyword">and</span> (<span class="ruby-identifier">rootdir</span> = <span class="ruby-identifier">wcroot</span>)
+    <span class="ruby-identifier">srcdir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">realpath</span>(<span class="ruby-ivar">@srcdir</span>)
+    <span class="ruby-identifier">rootdir</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;/&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">srcdir</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-identifier">rootdir</span>)
+      <span class="ruby-identifier">subdir</span> = <span class="ruby-identifier">srcdir</span>[<span class="ruby-identifier">rootdir</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">..</span><span class="ruby-number">-1</span>]
+      <span class="ruby-identifier">subdir</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">subdir</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">svndir</span> = <span class="ruby-identifier">dir</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/.svn&quot;</span>)
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">ln_s</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">rootdir</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/.svn/*&quot;</span>), <span class="ruby-identifier">svndir</span>)
+      <span class="ruby-identifier">system</span>(<span class="ruby-string">&quot;svn&quot;</span>, <span class="ruby-string">&quot;-q&quot;</span>, <span class="ruby-string">&quot;revert&quot;</span>, <span class="ruby-string">&quot;-R&quot;</span>, <span class="ruby-identifier">subdir</span> <span class="ruby-operator">||</span> <span class="ruby-string">&quot;.&quot;</span>, <span class="ruby-value">:chdir</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dir</span>) <span class="ruby-keyword">or</span> <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-identifier">svndir</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">keep_temp</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">subdir</span>
+        <span class="ruby-identifier">tmpdir</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mktmpdir</span>(<span class="ruby-string">&quot;tmp-co.&quot;</span>, <span class="ruby-node">&quot;#{dir}/#{subdir}&quot;</span>)
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">rename</span>(<span class="ruby-identifier">tmpdir</span>, <span class="ruby-identifier">tmpdir</span> = <span class="ruby-node">&quot;#{dir}/#{File.basename(tmpdir)}&quot;</span>)
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mv</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-node">&quot;#{dir}/#{subdir}/{.[^.]*,..?*,*}&quot;</span>), <span class="ruby-identifier">tmpdir</span>)
+        <span class="ruby-keyword">begin</span>
+          <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">rmdir</span>(<span class="ruby-node">&quot;#{dir}/#{subdir}&quot;</span>)
+        <span class="ruby-keyword">end</span> <span class="ruby-keyword">until</span> (<span class="ruby-identifier">subdir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">subdir</span>)) <span class="ruby-operator">==</span> <span class="ruby-string">&#39;.&#39;</span>
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mv</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-node">&quot;#{tmpdir}/#{subdir}/{.[^.]*,..?*,*}&quot;</span>), <span class="ruby-identifier">dir</span>)
+        <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">rmdir</span>(<span class="ruby-identifier">tmpdir</span>)
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>(<span class="ruby-node">%W&quot;svn export -r #{revision} #{url} #{dir}&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pipe</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">pipe</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-regexp">/^A/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">line</span> <span class="ruby-keyword">or</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">line</span>}
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">$?</span>.<span class="ruby-identifier">success?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-export_changelog">
+            
+              <b>export_changelog</b>(url, from, to, path)
+            
+            <a href="../../classes/VCS/SVN.html#method-i-export_changelog" name="method-i-export_changelog" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-export_changelog_source')" id="l_method-i-export_changelog_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L310" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-export_changelog_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 310</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">export_changelog</span>(<span class="ruby-identifier">url</span>, <span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">path</span>)
+  <span class="ruby-identifier">range</span> = [<span class="ruby-identifier">to</span>, (<span class="ruby-identifier">from</span><span class="ruby-operator">+</span><span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">from</span>)].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;:&#39;</span>)
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>({<span class="ruby-string">&#39;TZ&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;JST-9&#39;</span>, <span class="ruby-string">&#39;LANG&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;C&#39;</span>, <span class="ruby-string">&#39;LC_ALL&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;C&#39;</span>},
+           <span class="ruby-node">%W&quot;svn log -r#{range} #{url}&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-string">&#39;w&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">w</span><span class="ruby-operator">|</span>
+      <span class="ruby-constant">IO</span>.<span class="ruby-identifier">copy_stream</span>(<span class="ruby-identifier">r</span>, <span class="ruby-identifier">w</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_info">
+            
+              <b>get_info</b>()
+            
+            <a href="../../classes/VCS/SVN.html#method-i-get_info" name="method-i-get_info" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-get_info_source')" id="l_method-i-get_info_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L221" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-get_info_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 221</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_info</span>
+  <span class="ruby-ivar">@info</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">IO</span>.<span class="ruby-identifier">pread</span>(<span class="ruby-node">%W&quot;svn info --xml #{@srcdir}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-grep">
+            
+              <b>grep</b>(pat, tag, *files, &amp;block)
+            
+            <a href="../../classes/VCS/SVN.html#method-i-grep" name="method-i-grep" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-grep_source')" id="l_method-i-grep_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L264" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-grep_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 264</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">grep</span>(<span class="ruby-identifier">pat</span>, <span class="ruby-identifier">tag</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">files</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">cmd</span> = <span class="ruby-node">%W&quot;svn cat&quot;</span>
+  <span class="ruby-identifier">files</span>.<span class="ruby-identifier">map!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">tag</span>, <span class="ruby-identifier">n</span>)} <span class="ruby-keyword">if</span> <span class="ruby-identifier">tag</span>
+  <span class="ruby-identifier">set</span> = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">binding</span>.<span class="ruby-identifier">eval</span>(<span class="ruby-string">&quot;proc {|match| $~ = match}&quot;</span>)
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">popen</span>([<span class="ruby-identifier">cmd</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">files</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">grep</span>(<span class="ruby-identifier">pat</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set</span>[<span class="ruby-identifier">$~</span>]
+      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">s</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tag">
+            
+              <b>tag</b>(name)
+            
+            <a href="../../classes/VCS/SVN.html#method-i-tag" name="method-i-tag" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-tag_source')" id="l_method-i-tag_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L246" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-tag_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 246</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tag</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">url</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;tags/#{name}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-trunk">
+            
+              <b>trunk</b>()
+            
+            <a href="../../classes/VCS/SVN.html#method-i-trunk" name="method-i-trunk" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-trunk_source')" id="l_method-i-trunk_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L250" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-trunk_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 250</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">trunk</span>
+  <span class="ruby-identifier">url</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;trunk&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-url">
+            
+              <b>url</b>()
+            
+            <a href="../../classes/VCS/SVN.html#method-i-url" name="method-i-url" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-url_source')" id="l_method-i-url_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L225" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-url_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 225</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">url</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@url</span>
+    <span class="ruby-identifier">url</span> = <span class="ruby-identifier">get_info</span>[<span class="ruby-regexp">/&lt;root&gt;(.*)&lt;\/root&gt;/</span>, <span class="ruby-number">1</span>]
+    <span class="ruby-ivar">@url</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">url</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">url</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@url</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-wcroot">
+            
+              <b>wcroot</b>()
+            
+            <a href="../../classes/VCS/SVN.html#method-i-wcroot" name="method-i-wcroot" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-wcroot_source')" id="l_method-i-wcroot_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/333345469d1bc2c1bd5b3e56e97de7231009cd4b/tool/vcs.rb#L233" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-wcroot_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File tool/vcs.rb, line 233</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">wcroot</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@wcroot</span>
+    <span class="ruby-identifier">info</span> = <span class="ruby-identifier">get_info</span>
+    <span class="ruby-ivar">@wcroot</span> = <span class="ruby-identifier">info</span>[<span class="ruby-regexp">/&lt;wcroot-abspath&gt;(.*)&lt;\/wcroot-abspath&gt;/</span>, <span class="ruby-number">1</span>]
+    <span class="ruby-ivar">@wcroot</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">search_root</span>(<span class="ruby-ivar">@srcdir</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@wcroot</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>
